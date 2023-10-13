@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import PostList from './pages/PostList/PostList'
+import PostDetails from './pages/PostDetails/PostDetails'
 import About from './pages/About/About'
 
 // components
@@ -94,6 +95,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <NewPost handleAddPost={handleAddPost}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts/:postId"
+          element={
+            <ProtectedRoute user={user}>
+              <PostDetails user={user}/>
             </ProtectedRoute>
           }
         />
