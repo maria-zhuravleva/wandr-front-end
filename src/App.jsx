@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import PostList from './pages/PostList/PostList'
 import About from './pages/About/About'
 
 // components
@@ -16,13 +17,17 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as postService from './services/postService'
 
 // styles
 import './App.css'
+import NewPost from './pages/NewPost/NewPost'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+
+  const [posts, setPosts] = useState([])
 
   const handleLogout = () => {
     authService.logout()
@@ -32,6 +37,13 @@ function App() {
 
   const handleAuthEvt = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddPost = async (postFormData) => {
+    //change later when model
+    // const newPost = await postService.create(postFormData) 
+    setPosts([postFormData, ...posts])
+    navigate('/posts')
   }
 
   return (
@@ -66,6 +78,22 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleAuthEvt={handleAuthEvt} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts"
+          element={
+            <ProtectedRoute user={user}>
+              <PostList posts={posts}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts/new"
+          element={
+            <ProtectedRoute user={user}>
+              <NewPost handleAddPost={handleAddPost}/>
             </ProtectedRoute>
           }
         />
