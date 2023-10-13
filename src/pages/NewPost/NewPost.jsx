@@ -7,7 +7,7 @@ import { initialState } from './initialState.js'
 import { useState } from 'react'
 import './NewPost.module.css'
 
-const NewPost = () => {
+const NewPost = (props) => {
   const [formData, setFormData] = useState(initialState)
 
   const handleChange = (e) => {
@@ -20,7 +20,7 @@ const NewPost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    //pass from app.jsx
+    props.handleAddPost(formData)
   }
 
   return ( 
@@ -58,7 +58,6 @@ const NewPost = () => {
       />
       <label htmlFor="isPublic-input">Make Public?</label>
       <input 
-        required
         type="checkbox"
         name="isPublic"
         id="isPublic-input"
