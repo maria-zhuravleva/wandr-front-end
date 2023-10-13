@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import PostList from './pages/PostList/PostList'
+import PostDetails from './pages/PostDetails/PostDetails'
 import About from './pages/About/About'
 
 // components
@@ -38,6 +39,15 @@ function App() {
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
+
+  //wait for database
+  // useEffect(() => {
+  //   const fetchAllPosts =  async () => {
+  //     const postData = await postService.index()
+  //     setPosts(postData)
+  //   }
+  //   fetchAllPosts()
+  // }, [posts])
 
   const handleAddPost = async (postFormData) => {
     //change later when model
@@ -84,9 +94,9 @@ function App() {
         <Route
           path="/posts"
           element={
-            <ProtectedRoute user={user}>
+            // <ProtectedRoute user={user}>
               <PostList posts={posts}/>
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
@@ -95,6 +105,14 @@ function App() {
             <ProtectedRoute user={user}>
               <NewPost handleAddPost={handleAddPost}/>
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts/:postId"
+          element={
+            // <ProtectedRoute user={user}>
+              <PostDetails user={user}/>
+            // </ProtectedRoute>
           }
         />
       </Routes>

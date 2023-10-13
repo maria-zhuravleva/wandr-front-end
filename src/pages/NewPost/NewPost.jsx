@@ -15,7 +15,7 @@ const NewPost = (props) => {
   }
 
   const handleChecked = (e, status) => {
-    setFormData({...formData, isPublic: status})
+    setFormData({...formData, public: status})
   }
 
   const handleSubmit = (e) => {
@@ -56,13 +56,13 @@ const NewPost = (props) => {
           placeholder="Content"
           onChange={handleChange}
         />
-        <label htmlFor="isPublic-input">Make Public?</label>
+        <label htmlFor="public-input">Make Public?</label>
         <input 
           type="checkbox"
-          name="isPublic"
-          id="isPublic-input"
-          value={formData.isPublic}
-          onChange={e => handleChecked(e, !formData.isPublic)}    
+          name="public"
+          id="public-input"
+          value={formData.public}
+          onChange={e => handleChecked(e, !formData.public)}    
         />
         <button type="submit">Submit</button>
       </form>
