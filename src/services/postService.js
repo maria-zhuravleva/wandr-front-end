@@ -32,9 +32,10 @@ async function show(postId) {
 
 async function index() {
   try {
-    const res = await fetch(BASE_URL, {
+    const res = await fetch(BASE_URL, /* {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
+    } */)
+    //public post, no token?
   return res.json()
   } catch (err) {
     console.log(err)

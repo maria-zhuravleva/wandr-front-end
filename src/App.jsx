@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -39,6 +39,15 @@ function App() {
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
+
+  //wait for database
+  // useEffect(() => {
+  //   const fetchAllPosts =  async () => {
+  //     const postData = await postService.index()
+  //     setPosts(postData)
+  //   }
+  //   fetchAllPosts()
+  // }, [posts])
 
   const handleAddPost = async (postFormData) => {
     //change later when model
