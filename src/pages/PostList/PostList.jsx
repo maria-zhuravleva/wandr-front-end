@@ -7,7 +7,7 @@ const PostList = (props) => {
     <h1>Post List</h1>
     {props.posts.map(post =>  
       <>
-      {post.isPublic && <PostCard key={post._id} post={post} />}
+      {post.public && <PostCard key={post._id} post={post} />}
       </>
     )}
     </main>

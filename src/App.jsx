@@ -94,9 +94,9 @@ function App() {
         <Route
           path="/posts"
           element={
-            <ProtectedRoute user={user}>
+            // <ProtectedRoute user={user}>
               <PostList posts={posts}/>
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
@@ -110,9 +110,9 @@ function App() {
         <Route
           path="/posts/:postId"
           element={
-            <ProtectedRoute user={user}>
+            // <ProtectedRoute user={user}>
               <PostDetails user={user}/>
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
       </Routes>

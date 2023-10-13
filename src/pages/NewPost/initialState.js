@@ -4,5 +4,5 @@ export const initialState = {
   content: '',
   //main photo
   //photos
-  isPublic: false,
+  public: false,
 }
