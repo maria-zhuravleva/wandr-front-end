@@ -18,10 +18,13 @@ import * as authService from './services/authService'
 
 // styles
 import './App.css'
+import NewPost from './pages/NewPost/NewPost'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+
+  const [posts, setPosts] = useState([])
 
   const handleLogout = () => {
     authService.logout()
@@ -31,6 +34,11 @@ function App() {
 
   const handleAuthEvt = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddPost = (postFormData) => {
+    //connect to db later
+    setPosts([postFormData, ...posts]) //connect to db later
   }
 
   return (
@@ -59,6 +67,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <ChangePassword handleAuthEvt={handleAuthEvt} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts/new"
+          element={
+            <ProtectedRoute user={user}>
+              <NewPost handleAddPost={handleAddPost}/>
             </ProtectedRoute>
           }
         />
