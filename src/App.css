@@ -36,13 +36,18 @@ nav > ul {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'DM Serif Text';
+  src: url('src/assets/DMSerifText-Regular.ttf') format('truetype');
+}
+
 html, body {
   margin: 0;
   height: 100%;
   background-color: #f2f4f8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: canada-type-gibson, sans-serif;
+  font-family: 'DM Serif Text', sans-serif;
 
   --primary: #00a0df;
   --background: #f2f4f8;
