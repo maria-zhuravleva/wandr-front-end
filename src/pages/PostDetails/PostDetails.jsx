@@ -71,7 +71,7 @@ const PostDetails = (props) => {
         )}
       </section>
     </main>
-   )
+  )
 }
- 
+
 export default PostDetails
