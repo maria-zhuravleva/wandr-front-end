@@ -8,7 +8,9 @@ const CommentCard = (props) => {
        {/* author */}
       </header>
       <p>{props.comment.text}</p>
-      {props.author === props.user.profile._id &&  <button onClick={() => props.handleDeleteComment(props.comment._id)}>Delete</button>}
+      {props.author === props.user.profile._id 
+      && <button onClick={() => props.handleEditComment(props.comment._id)}>Edit</button>
+      && <button onClick={() => props.handleDeleteComment(props.comment._id)}>Delete</button>}
     </article>
    )
 }

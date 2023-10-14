@@ -1,5 +1,5 @@
 //npm modules
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLocation } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 //services
 import * as postService from '../../services/postService'
@@ -18,6 +18,8 @@ const PostDetails = (props) => {
   const { postId } = useParams()
 
   const navigate = useNavigate()
+
+  // const { commentState } = useLocation()
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -41,6 +43,10 @@ const PostDetails = (props) => {
   const handleDeleteComment = async (commentId) => {
     const deletedComment = await postService.deleteComment(postId, commentId)
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
+  }
+
+  const handleEditComment = async (commentId) => {
+    
   }
 
   const handleLikePost = async (profileId) => {
@@ -86,7 +92,8 @@ const PostDetails = (props) => {
         <h1>Comments</h1>
         <NewComment handleAddComment={handleAddComment} />
         {post.comments.map(comment => 
-          <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} />
+          <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
+          />
         )}
       </section>
     </main>
