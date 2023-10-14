@@ -21,7 +21,6 @@ const NewPost = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleAddPost(formData)
-    console.log("submitted")
   }
 
   return ( 

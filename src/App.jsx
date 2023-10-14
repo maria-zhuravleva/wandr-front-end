@@ -40,13 +40,13 @@ function App() {
     setUser(authService.getUser())
   }
 
-  // useEffect(() => {
-  //   const fetchAllPosts =  async () => {
-  //     const postData = await postService.index()
-  //     setPosts(postData)
-  //   }
-  //   fetchAllPosts()
-  // }, [posts])
+  useEffect(() => {
+    const fetchAllPosts =  async () => {
+      const postData = await postService.index()
+      setPosts(postData)
+    }
+    fetchAllPosts()
+  }, [])
 
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.create(postFormData)
