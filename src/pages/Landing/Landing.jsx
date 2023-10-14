@@ -9,34 +9,23 @@ import quotes from "../../assets/icons/quotes.png"
 import NavBar from '../../components/NavBar/NavBar';
 
 //components
-import SearchPost from '../../components/SearchPost/SearchPost';
-import { index } from '../../services/postService';
-import PostCard from '../../components/PostCard/PostCard';
-
-const Landing = ({ user }) => {
-
-  const [allPosts,setAllPosts]=useState([])
+import SearchPost from '../../components/SearchPost/SearchPost'
+import PostCard from '../../components/PostCard/PostCard'
+const Landing = (props) => {
+  const allPosts = props.posts
   const [searchResults,setSearchResults]=useState([])
   const [errMsg,setErrMsg]=useState("")
 
-  const handlePostSearch = formData => {
-    const filterPostSearch= allPosts.filter(post => post.location.toLowerCase().includes(formData.query.toLowerCase()))
-    if(!filterPostSearch.length){
+  const handlePostSearch = formData =>{
+    const filteredPostSearch= allPosts.filter(post => post.location.toLowerCase().includes(formData.query.toLowerCase()))
+    if(!filteredPostSearch.length){
       setErrMsg('No posts')
     }else{
       setErrMsg("")
     }
-    setSearchResults(filterPostSearch)
+    setSearchResults(filteredPostSearch)
   }
-
-  useEffect(()=>{
-    const fetchPostList = async() =>{
-      const postData=await index()
-      setAllPosts(postData)
-    }
-    fetchPostList()
-  },[])
-
+  
   return (
     <>
       {/* <NavBar user={user} /> */}
