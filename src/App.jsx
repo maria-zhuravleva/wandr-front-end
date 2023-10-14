@@ -56,7 +56,15 @@ function App() {
   }
 
   const handleDeletePost = async (postId) => {
-    
+    const deletedPost = await postService.deletePost(postId)
+    setPosts(posts.filter(p => p._id !== deletedPost._id))
+    navigate('/posts')
+  }
+
+  const handleUpDatePost = async (postFormData) => {
+    const updatedPost = await postService.update(postFormData)
+    console.log(updatedPost)
+    setPosts(posts.map(p => p._id === postFormData._id ? updatedPost : p))
     navigate('/posts')
   }
 
@@ -119,7 +127,7 @@ function App() {
           path="/posts/:postId/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditPost />
+              <EditPost handleUpDatePost={handleUpDatePost}/>
             </ProtectedRoute>
           }
         />
