@@ -24,7 +24,7 @@ const PostDetails = (props) => {
       console.log(PostData)
       setPost(PostData)
     }
-   fetchPost()
+  fetchPost()
   }, [postId])
 
   const handleAddComment = async (commentFormData) => {
@@ -32,10 +32,10 @@ const PostDetails = (props) => {
     setPost({...post, comments: [...post.comments, newComment]})
   }
 
-  //* NOT YET FUNCTIONAL - ADD createRecommendation ON BACK END AND ADJUST AS NEEDED
-  const handleAddRecommendation= async (recommendation) => {
-    const newRecommendation = await postService.createRecommendation(postId, recommendation)
-    setPost({...post, recommendation: [...post.recommendation, newRecommendation]})
+  // NOT YET FUNCTIONAL - working to fix
+  const handleAddRec= async (recFormData) => {
+    const newRecommendation = await postService.createRec(postId, recFormData)
+    setPost({...post, recommendations: [...post.recommendations, newRecommendation]})
   }
 
   const handleDeleteComment = async (commentId) => {
@@ -66,7 +66,10 @@ const PostDetails = (props) => {
       </article>
 
       <section>
-        <Recommendation user={props.user} handleAddRecommendation={handleAddRecommendation}/>
+        <Recommendation user={props.user} handleAddRec={handleAddRec}/>
+        {post.recommendations.map(recommendation => 
+          <Recommendation key={recommendation._id} recommendation={recommendation} user={props.user}  />
+        )}
       </section>
 
       <section>

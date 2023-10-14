@@ -30,5 +30,5 @@ const NewComment = (props) => {
     </form>
   )
 }
- 
+
 export default NewComment
