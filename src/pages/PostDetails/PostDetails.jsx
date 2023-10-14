@@ -7,6 +7,8 @@ import * as postService from '../../services/postService'
 import Loading from '../../components/Loading/Loading'
 import NewComment from '../../components/NewComment/NewComment'
 import CommentCard from '../../components/CommentCard/CommentCard'
+import Recommendation from '../../components/Recommendation/Recommendation'
+
 //css
 import styles from './PostDetails.module.css'
 
@@ -56,6 +58,10 @@ const PostDetails = (props) => {
         </header>
         <p>{post.content}</p>
       </article>
+
+      <section>
+        <Recommendation />
+      </section>
 
       <section>
         <h1>Comments</h1>
