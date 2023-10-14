@@ -65,7 +65,9 @@ const PostDetails = (props) => {
                 <button onClick={() => props.handleDeletePost(postId)}>Delete</button>
               </>
             }
-            {post.author._id !== props.user.profile && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>}
+            {post.author._id !== props.user.profile 
+            && !post.likes.some(p => p == props.user.profile)
+            && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>}
           </span>
         </header>
         <p>{post.content}</p>
