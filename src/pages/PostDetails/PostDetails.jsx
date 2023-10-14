@@ -44,6 +44,10 @@ const PostDetails = (props) => {
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
   }
 
+  const handleLikePost = async (postId, profileId) => {
+    
+  }
+
   if (!post) return <Loading />
 
   return ( 
@@ -61,6 +65,7 @@ const PostDetails = (props) => {
                 <button onClick={() => props.handleDeletePost(postId)}>Delete</button>
               </>
             }
+            {post.author._id !== props.user.profile && <button onClick={() => handleLikePost(postId, props.user.profile)}>Like</button>}
           </span>
         </header>
         <p>{post.content}</p>
