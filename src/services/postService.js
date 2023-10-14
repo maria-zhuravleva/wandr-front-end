@@ -65,10 +65,27 @@ async function deleteComment(postId, commentId) {
   }
 }
 
+async function createRec(postId, rec) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/recommendations`, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(rec)
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export {
   create,
   show,
   index,
   createComment,
   deleteComment,
+  createRec,
 }
