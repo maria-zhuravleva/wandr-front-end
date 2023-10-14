@@ -25,7 +25,7 @@ const NewPost = (props) => {
 
   return ( 
     <>
-      <main>
+      <main className={styles.container}>
         <h1>NEW POST</h1>
         <form onSubmit={handleSubmit}>
           <div className={styles.inputWrapper}>
