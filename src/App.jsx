@@ -92,7 +92,7 @@ function App() {
         <Route
           path="/posts"
           element={
-              <PostList posts={posts}/>
+              <PostList posts={posts} />
           }
         />
         <Route
@@ -106,7 +106,7 @@ function App() {
         <Route
           path="/posts/:postId"
           element={
-              <PostDetails user={user}/>
+              <PostDetails user={user} />
           }
         />
       </Routes>

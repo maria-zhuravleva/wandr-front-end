@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 //services
 import * as postService from '../../services/postService'
+//components
+import Loading from '../../components/Loading/Loading'
 //css
 import styles from './PostDetails.module.css'
 
@@ -21,8 +23,26 @@ const PostDetails = (props) => {
    fetchPost()
   }, [postId])
 
+  if (!post) return <Loading />
+
   return ( 
-    <h1>Post Details here</h1>
+    <main>
+      <article className={styles.container}>
+        <header>
+          <h1>{post.title}</h1>
+          <span>
+            {/* author info */}
+            {post.author === props.user.profile && 
+              <>
+                <button>Edit</button>
+                <button>Delete</button>
+              </>
+            }
+          </span>
+        </header>
+        <p>{post.content}</p>
+      </article>
+    </main>
    )
 }
  
