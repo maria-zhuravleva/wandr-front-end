@@ -61,6 +61,10 @@ function App() {
     navigate('/posts')
   }
 
+  const handleUpDatePost = async (postId) => {
+
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -120,7 +124,7 @@ function App() {
           path="/posts/:postId/edit"
           element={
             <ProtectedRoute user={user}>
-              <EditPost />
+              <EditPost handleUpDatePost={handleUpDatePost}/>
             </ProtectedRoute>
           }
         />
