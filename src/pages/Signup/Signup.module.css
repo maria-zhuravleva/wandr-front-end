@@ -1,47 +1,49 @@
-input {
-  margin-left: 16px;
-  padding: 4px 8px;
-  font-size: 16px;
-  width: 300px;
-}
-
-input[type="file"] {
-  padding: 0;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.message {
-  margin-top: 0;
-  height: 20px;
-  color: #dd1b16;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.form {
+.signUpContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  justify-content: center;
+  height: 100vh;
+}
+
+.signupForm {
+  width: 500px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .label {
+  display: block;
+  margin-bottom: 16px; /* Increase margin between labels */
+  font-weight: bold;
+}
+
+.label input {
   width: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-bottom: 8px;
+  padding: 12px; /* Increase padding for input fields */
+  margin-top: 8px; /* Add space between label and input */
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.button {
-  margin-left: 16px;
-}
-
-.form > label:last-of-type {
+.signupMessage {
+  color: red;
   margin-bottom: 16px;
+}
+
+.signupButton {
+  margin-top: 24px; /* Increase margin between last input and button */
+  padding: 14px 28px; /* Increase padding for more space around button text */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.signupButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

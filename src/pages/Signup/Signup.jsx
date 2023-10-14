@@ -78,15 +78,15 @@ const Signup = ({ handleAuthEvt }) => {
   }
 
   return (
-    <main className={styles.container}>
+    <main className={styles.signUpContainer}>
       <h1>Sign Up</h1>
-      <p className={styles.message}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
+      <p className={styles.signupMessage}>{message}</p>
+      <form autoComplete="off" onSubmit={handleSubmit} className={styles.signupForm}>
         <label className={styles.label}>
           Name
           <input type="text" value={name} name="name" onChange={handleChange} />
         </label>
-        <label className={styles.label}>
+        <label className={styles.signupLabel}>
           Email
           <input
             type="text"
@@ -95,7 +95,7 @@ const Signup = ({ handleAuthEvt }) => {
             onChange={handleChange}
           />
         </label>
-        <label className={styles.label}>
+        <label className={styles.signupLabel}>
           Password
           <input
             type="password"
@@ -104,7 +104,7 @@ const Signup = ({ handleAuthEvt }) => {
             onChange={handleChange}
           />
         </label>
-        <label className={styles.label}>
+        <label className={styles.signupLabel}>
           Confirm Password
           <input
             type="password"
@@ -113,7 +113,7 @@ const Signup = ({ handleAuthEvt }) => {
             onChange={handleChange}
           />
         </label>
-        <label className={styles.label}>
+        <label className={styles.signupLabel}>
           Upload Photo
           <input 
             type="file" 
@@ -125,7 +125,7 @@ const Signup = ({ handleAuthEvt }) => {
         <div>
           <Link to="/">Cancel</Link>
           <button
-            className={styles.button}
+            className={styles.signupButton}
             disabled={ isFormInvalid() || isSubmitted }
           >
             {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
