@@ -46,8 +46,10 @@ const PostDetails = (props) => {
             {/* author info */}
             {post.author === props.user.profile && 
               <>
-                <button>Edit</button>
-                <button>Delete</button>
+                <Link to={`/posts/${postId}/edit`} state={post}>
+                  <button>Edit</button>
+                </Link>
+                <button onClick={() => props.handleDeletePost(postId)}>Delete</button>
               </>
             }
           </span>

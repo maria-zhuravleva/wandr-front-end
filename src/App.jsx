@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import PostList from './pages/PostList/PostList'
 import PostDetails from './pages/PostDetails/PostDetails'
+import EditPost from './pages/EditPost/EditPost'
 import About from './pages/About/About'
 
 // components
@@ -51,6 +52,11 @@ function App() {
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.create(postFormData)
     setPosts([newPost, ...posts])
+    navigate('/posts')
+  }
+
+  const handleDeletePost = async (postId) => {
+    
     navigate('/posts')
   }
 
@@ -106,7 +112,15 @@ function App() {
         <Route
           path="/posts/:postId"
           element={
-              <PostDetails user={user} />
+              <PostDetails user={user} handleDeletePost={handleDeletePost}/>
+          }
+        />
+         <Route
+          path="/posts/:postId/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditPost />
+            </ProtectedRoute>
           }
         />
       </Routes>
