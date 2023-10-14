@@ -10,7 +10,7 @@ import NavBar from '../../components/NavBar/NavBar';
 const Landing = ({ user }) => {
   return (
     <>
-      <NavBar user={user} />
+      {/* <NavBar user={user} /> */}
       <div className={styles.banner}>
         <h1>Wandr</h1>
       </div>
