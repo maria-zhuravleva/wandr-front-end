@@ -12,6 +12,7 @@ import RecCard from '../../components/RecCard/RecCard'
 
 //css
 import styles from './PostDetails.module.css'
+import EditComment from '../../components/EditComment/EditComment'
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
@@ -44,9 +45,9 @@ const PostDetails = (props) => {
     const deletedComment = await postService.deleteComment(postId, commentId)
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
   }
-
-  const handleEditComment = async (commentId) => {
-    
+  
+  const handleEditComment = (commentFormData) => {
+    setPost({...post, comments: post.comments.map(cmt => cmt._id === commentFormData._id ? commentFormData : cmt)})
   }
 
   const handleLikePost = async (profileId) => {
