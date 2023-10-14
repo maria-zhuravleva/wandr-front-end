@@ -110,6 +110,20 @@ async function createRec(postId, rec) {
   }
 }
 
+async function likePost(postId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/likes`, {
+      method: 'PATCH',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    return res.json()
+  } catch (err) { 
+    console.log(err)
+  }
+}
+
 export {
   create,
   show,
@@ -119,4 +133,5 @@ export {
   deleteComment,
   createRec,
   deletePost,
+  likePost,
 }
