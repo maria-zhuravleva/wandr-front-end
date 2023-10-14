@@ -8,6 +8,7 @@ import Loading from '../../components/Loading/Loading'
 import NewComment from '../../components/NewComment/NewComment'
 import CommentCard from '../../components/CommentCard/CommentCard'
 import Recommendation from '../../components/Recommendation/Recommendation'
+import RecCard from '../../components/RecCard/RecCard'
 
 //css
 import styles from './PostDetails.module.css'
@@ -68,7 +69,7 @@ const PostDetails = (props) => {
       <section>
         <Recommendation user={props.user} handleAddRec={handleAddRec}/>
         {post.recommendations.map(recommendation => 
-          <Recommendation key={recommendation._id} recommendation={recommendation} user={props.user}  />
+          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user}  />
         )}
       </section>
 
