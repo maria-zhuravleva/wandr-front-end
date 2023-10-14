@@ -37,6 +37,35 @@ async function index() {
   }
 }
 
+async function deletePost(postId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+async function update(postFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postFormData._id}`, {
+      method: 'PUT',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postFormData)
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+
 async function createComment(postId, commentFormData) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/comments`, {
@@ -85,7 +114,9 @@ export {
   create,
   show,
   index,
+  update,
   createComment,
   deleteComment,
   createRec,
+  deletePost,
 }

@@ -53,7 +53,7 @@ const PostDetails = (props) => {
           <h1>{post.title}</h1>
           <span>
             {/* author info */}
-            {post.author === props.user.profile && 
+            {post.author._id === props.user.profile && 
               <>
                 <Link to={`/posts/${postId}/edit`} state={post}>
                   <button>Edit</button>
