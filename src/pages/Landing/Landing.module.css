@@ -50,6 +50,8 @@
 .quotesWrapper {
   width: 300px; 
   opacity: 0.2; 
+  width: 260px; 
+  opacity: 0.3; 
   position: absolute;
   top: 34%;
   left: 53%;
@@ -87,6 +89,11 @@
 .topPosts {
   text-align: center;
   margin-top: 20px;
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; 
 }
 
 .topPostsContent {
