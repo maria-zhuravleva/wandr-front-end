@@ -63,16 +63,15 @@ function App() {
 
   const handleUpDatePost = async (postFormData) => {
     const updatedPost = await postService.update(postFormData)
-    console.log(updatedPost)
     setPosts(posts.map(p => p._id === postFormData._id ? updatedPost : p))
-    navigate('/posts')
+    navigate(`/posts/${updatedPost._id}`)
   }
 
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={<Landing user={user} posts={posts}/>} />
         <Route
           path="/about"
           element={
