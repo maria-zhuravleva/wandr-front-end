@@ -56,7 +56,8 @@ function App() {
   }
 
   const handleDeletePost = async (postId) => {
-    
+    const deletedPost = await postService.deletePost(postId)
+    setPosts(posts.filter(p => p._id !== deletedPost._id))
     navigate('/posts')
   }
 
