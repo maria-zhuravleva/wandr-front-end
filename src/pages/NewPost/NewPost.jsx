@@ -72,6 +72,7 @@ const NewPost = (props) => {
               id="public-input"
               checked={formData.public}
               onChange={e => handleChecked(e, !formData.public)}
+              className={styles.checkbox}
             />
           </div>
           <div className={styles.buttonWrapper}>

@@ -3,9 +3,12 @@
   justify-content: center;
   align-items: center;
   height: 100vh; 
+  max-width: 1200px;
 }
 
 h1 {
+  margin: 0;
+  padding: 0;
   font-size: 80px;
   writing-mode: vertical-lr;
   text-orientation: upright;
@@ -14,12 +17,15 @@ h1 {
   display: inline-block;
   margin-bottom: 150px;
   font-weight: 100;
-  margin-left: -10px;
+  position: absolute;
+  top: 13%;
+  right: 80%; 
 }
 
 
 form {
-  margin-top: -350px; 
+  margin-top: -250px; 
+  margin-left: 150px;
   width: 100%; 
   max-width: 950px; 
   padding: 20px; 
@@ -42,15 +48,24 @@ button {
 
 .buttonWrapper {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .buttonWrapper button {
-  background-color: white;
   color: black;
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   padding: 15px 20px;
   width: 150px;
+  cursor: pointer;
+  border-left: none; 
+  border-right: none;
+  width: 150px;
+  height: 50px;
+  outline: none;
+  background: transparent;
+  text-transform: uppercase;
+  border-radius: 0; 
 }
 
 .buttonWrapper button:hover {
@@ -69,26 +84,46 @@ button {
 }
 
 .inputWrapper textarea {
-  min-width: 350px;
+  max-width: 350px;
   min-height: 150px;
   border: solid 1px black;
+  border-radius: 10px;
 }
 
 .inputWrapper input {
   max-width: 300px;
   border: solid 1px black;
+  border-radius: 8px;
 }
+
+.inputWrapper label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.inputWrapper .checkbox {
+  position: absolute;
+  top: 77%;
+  right: 35%;
+}
+
 
 .imageWrapper {
   position: absolute;
   top: 20%;
-  right: -20%;
+  right: 1%;
   height: 30%;
   background: url('../../assets/img/form.jpg');
   background-size: cover;
-  width: 50%;
+  width: 40%;
   transform: rotate(90deg);
 }
+
+
+
+
+
+
 
 
 
