@@ -1,51 +1,94 @@
 .container {
-  height: 100%;
   display: flex;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  padding: 28px 21px;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  height: 100vh; 
 }
 
-.container input, textarea, button { 
-  width: 100%;
-  padding: 14px;
-  font-size: 14px;
-  resize: vertical;
-  border-radius: 5px;
-  margin: 7px 0px 14px 0px;
-  border: 1px solid var(--border);
-  font-family: canada-type-gibson, sans-serif;
+h1 {
+  font-size: 80px;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  padding-right: 15px; 
+  border-right: 1px solid black; 
+  display: inline-block;
+  margin-bottom: 150px;
+  font-weight: 100;
+  margin-left: -10px;
 }
 
-.container textarea {
-  min-height: 50px;
+
+form {
+  margin-top: -350px; 
+  width: 100%; 
+  max-width: 950px; 
+  padding: 20px; 
+  background-color: rgba(176, 176, 176, 0.1); 
+  background-size: cover;
+  padding: 20px;
+  position: relative;
+  box-sizing: border-box;
 }
 
-.container label {
-  font-weight: 600;
-  margin: 7px 0px 14px 0px;
+
+label, input, textarea {
+  font-size: 20px;
 }
 
-.container button {
-  color: white;
-  font-weight: 600;
-  margin: 21px 0px 0px 0px;
-  background: var(--primary);
+button {
+  font-size: 18px;
+  padding: 10px 20px;
 }
 
-.container a {
-  border: none;
-  font-size: 14px;
-  background: none;
-  font-weight: 500;
-  margin-top: 14px;
+.buttonWrapper {
   text-align: center;
-  color: rgb(200, 200, 200);
+  margin-top: 20px;
 }
 
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border: 1px solid var(--primary);
+.buttonWrapper button {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  padding: 15px 20px;
+  width: 150px;
 }
+
+.buttonWrapper button:hover {
+  background-color: black;
+  color: white;
+}
+
+.inputWrapper {
+  margin-bottom: 20px; 
+  text-align: center;
+}
+
+.inputWrapper label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.inputWrapper textarea {
+  min-width: 350px;
+  min-height: 150px;
+  border: solid 1px black;
+}
+
+.inputWrapper input {
+  max-width: 300px;
+  border: solid 1px black;
+}
+
+.imageWrapper {
+  position: absolute;
+  top: 20%;
+  right: -20%;
+  height: 30%;
+  background: url('../../assets/img/form.jpg');
+  background-size: cover;
+  width: 50%;
+  transform: rotate(90deg);
+}
+
+
+
