@@ -30,6 +30,11 @@ const PostDetails = (props) => {
     setPost({...post, comments: [...post.comments, newComment]})
   }
 
+  const handleDeleteComment = async (commentId) => {
+    const deletedComment = await postService.deleteComment(postId, commentId)
+    setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
+  }
+
   if (!post) return <Loading />
 
   return ( 
@@ -54,7 +59,7 @@ const PostDetails = (props) => {
         <h1>Comments</h1>
         <NewComment handleAddComment={handleAddComment} />
         {post.comments.map(comment => 
-          <CommentCard key={comment._id} comment={comment} user={props.user}/>
+          <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} />
         )}
       </section>
     </main>
