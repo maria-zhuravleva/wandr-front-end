@@ -43,10 +43,9 @@ const PostDetails = (props) => {
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
   }
 
-  const handleLikePost = (profileId) => {
-    //back end function here
-    setPost({...post, likes: [...post.likes, profileId]})
-    console.log(post.likes)
+  const handleLikePost = async (profileId) => {
+    const like = await postService.likePost(postId, profileId)
+    setPost({...post, likes: [...post.likes, like]})
   }
 
   if (!post) return <Loading />
