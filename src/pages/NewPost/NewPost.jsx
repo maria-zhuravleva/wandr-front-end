@@ -21,6 +21,7 @@ const NewPost = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleAddPost(formData)
+    console.log("submitted")
   }
 
   return ( 
@@ -62,7 +63,7 @@ const NewPost = (props) => {
           name="public"
           id="public-input"
           value={formData.public}
-          onChange={e => handleChecked(e, !formData.public)}    
+          onChange={e => handleChecked(e, !formData.public)}
         />
         <button type="submit">Submit</button>
       </form>

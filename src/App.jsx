@@ -40,7 +40,6 @@ function App() {
     setUser(authService.getUser())
   }
 
-  //wait for database
   // useEffect(() => {
   //   const fetchAllPosts =  async () => {
   //     const postData = await postService.index()
@@ -50,9 +49,8 @@ function App() {
   // }, [posts])
 
   const handleAddPost = async (postFormData) => {
-    //change later when model
-    // const newPost = await postService.create(postFormData) 
-    setPosts([postFormData, ...posts])
+    const newPost = await postService.create(postFormData)
+    setPosts([newPost, ...posts])
     navigate('/posts')
   }
 

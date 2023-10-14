@@ -6,12 +6,12 @@ const BASE_URL=`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`
 async function create(postFormData) {
   try {
     const res = await fetch(BASE_URL, {
+      method: 'POST',
       headers: { 
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(postFormData)
-
     })
     return res.json()
   } catch (err) {
@@ -22,6 +22,7 @@ async function create(postFormData) {
 async function show(postId) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}`, {
+      method: 'POST',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return res.json()
