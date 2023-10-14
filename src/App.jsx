@@ -122,7 +122,7 @@ function App() {
               <PostDetails user={user} handleDeletePost={handleDeletePost}/>
           }
         />
-         <Route
+        <Route
           path="/posts/:postId/edit"
           element={
             <ProtectedRoute user={user}>

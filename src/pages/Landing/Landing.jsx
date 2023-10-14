@@ -3,9 +3,11 @@ import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom'
 // css
 import styles from './Landing.module.css'
-import bannerImage from "../../assets/img/default.jpg"
+// import bannerImage from "../../assets/img/default.jpg"
 import missionImage from "../../assets/img/default-pic2.jpg"
 import quotes from "../../assets/icons/quotes.png"
+import NavBar from '../../components/NavBar/NavBar';
+
 //components
 import SearchPost from '../../components/SearchPost/SearchPost'
 import PostCard from '../../components/PostCard/PostCard'
@@ -26,27 +28,26 @@ const Landing = (props) => {
   
   return (
     <>
-    <div className='searchpost'>
-    {errMsg && <h2>{errMsg}</h2>}
-      <SearchPost handlePostSearch={handlePostSearch}/>
-      {searchResults.map(post =>
-        <PostCard key={post._id}
-        post={post}/>)}
-    </div>
+      {/* <NavBar user={user} /> */}
+      <div className='searchpost'>
+      {errMsg && <h2>{errMsg}</h2>}
+        <SearchPost handlePostSearch={handlePostSearch}/>
+        {searchResults.map(post =>
+          <PostCard key={post._id}
+          post={post}/>)}
+      </div>
       <div className={styles.banner}>
-        <img src={bannerImage} alt="Banner"/>
-      
+        <h1>Wandr</h1>
       </div>
       <div className={styles.container}>
-        <div className={styles.column}>
-          <img src={missionImage} alt="waterfall" />
+        <div className={styles.columnOne}>
         </div>
         <div className={styles.column}>
           <h5>Our Mission</h5>
           <div className={styles.quotesWrapper}>
             <img src={quotes} alt="quotes" className={styles.quotes} />
           </div>
-          <p style={{ width: '200px', opacity: '1' }}>Explore the world, and let every adventure be a story worth telling</p>
+          <p>Explore the world, and let every adventure be a story worth telling</p>
           <div className={styles.linkWrapper}>
             <Link to="/about" className={styles.customLink}>Learn more</Link>
           </div>
