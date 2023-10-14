@@ -1,16 +1,49 @@
 import React from 'react';
+import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom'
 // css
 import styles from './Landing.module.css'
 import bannerImage from "../../assets/img/default.jpg"
 import missionImage from "../../assets/img/default-pic2.jpg"
 import quotes from "../../assets/icons/quotes.png"
-
+//components
+import SearchPost from '../../components/SearchPost/SearchPost';
+import { index } from '../../services/postService';
+import PostCard from '../../components/PostCard/PostCard';
 const Landing = ({ user }) => {
+
+  const [allPosts,setAllPosts]=useState([])
+  const [searchResults,setSearchResults]=useState([])
+  const [errMsg,setErrMsg]=useState("")
+
+  const handlePostSearch = formData =>{
+    const filterPostSearch= allPosts.filter(post => post.location.toLowerCase().includes(formData.query.toLowerCase()))
+    if(!filterPostSearch.length){
+      setErrMsg('No posts')
+    }else{
+      setErrMsg("")
+    }
+    setSearchResults(filterPostSearch)
+  }
+  useEffect(()=>{
+    const fetchPostList = async() =>{
+      const postData=await index()
+      setAllPosts(postData)
+    }
+    fetchPostList()
+  },[])
   return (
     <>
+    <div className='searchpost'>
+    {errMsg && <h2>{errMsg}</h2>}
+      <SearchPost handlePostSearch={handlePostSearch}/>
+      {searchResults.map(post =>
+        <PostCard key={post._id}
+        post={post}/>)}
+    </div>
       <div className={styles.banner}>
-        <img src={bannerImage} alt="Banner" />
+        <img src={bannerImage} alt="Banner"/>
+      
       </div>
       <div className={styles.container}>
         <div className={styles.column}>
