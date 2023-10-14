@@ -63,6 +63,7 @@ function App() {
 
   const handleUpDatePost = async (postFormData) => {
     const updatedPost = await postService.update(postFormData)
+    console.log(updatedPost)
     setPosts(posts.map(p => p._id === postFormData._id ? updatedPost : p))
     navigate('/posts')
   }
