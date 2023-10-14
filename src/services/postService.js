@@ -21,10 +21,7 @@ async function create(postFormData) {
 
 async function show(postId) {
   try {
-    const res = await fetch(`${BASE_URL}/${postId}`, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
+    const res = await fetch(`${BASE_URL}/${postId}`)
     return res.json()
   } catch (err) {
     console.log(err)
