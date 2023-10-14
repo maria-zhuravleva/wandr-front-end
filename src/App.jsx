@@ -12,6 +12,7 @@ import PostList from './pages/PostList/PostList'
 import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
 import About from './pages/About/About'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -130,6 +131,12 @@ function App() {
             </ProtectedRoute>
           }
         />
+          <Route
+            path="/profiles/:profileId"
+            element={
+                <ProfilePage user={user} />
+            }
+          />
       </Routes>
     </>
   )

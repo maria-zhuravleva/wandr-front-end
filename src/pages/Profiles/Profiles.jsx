@@ -7,6 +7,9 @@ import * as profileService from '../../services/profileService'
 // css
 import styles from './Profiles.module.css'
 
+// pages
+import ProfilePage from '../ProfilePage/ProfilePage'
+
 const Profiles = () => {
   const [profiles, setProfiles] = useState([])
 
@@ -28,6 +31,7 @@ const Profiles = () => {
       {profiles.map(profile => (
         <p key={profile._id}>{profile.name}</p>
       ))}
+      <ProfilePage />
     </main>
   )
 }
