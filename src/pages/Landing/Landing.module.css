@@ -46,22 +46,21 @@
 }
 
 .quotesWrapper {
-  width: 260px; /* Set the width of the wrapper */
-  opacity: 0.3; /* Set the opacity of the wrapper */
+  width: 260px; 
+  opacity: 0.3; 
   position: absolute;
   top: 35%;
   left: 65%;
 }
 
 .quotes {
-  width: 100%; /* Make the quotes image fill the wrapper */
+  width: 100%; 
 }
 
-/* Landing.module.css */
 
 .linkWrapper {
   text-align: center;
-  margin-top: 10px; /* Adjust the margin as needed */
+  margin-top: 10px; 
 }
 
 .customLink {
@@ -84,7 +83,7 @@
   top: 125%;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%; /* Added this */
+  width: 100%; 
 }
 
 .topPostsContent {
@@ -95,7 +94,7 @@
 
 .topPosts h3 {
   font-size: 24px;
-  margin-bottom: 10px; /* Add space between h3 and images */
+  margin-bottom: 10px; 
 }
 
 .topPosts img {
