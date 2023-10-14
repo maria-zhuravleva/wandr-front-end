@@ -1,5 +1,119 @@
 .container {
   display: flex;
+  height: 60vh;
+  position: relative;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
+.banner img,
+.column img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.column img {
+  width: 60%;
+  height: auto;
+}
+
+.column p {
+  font-size: 25px;
+  position: absolute;
+  top: 55%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  text-align: center;
+}
+
+.column h5 {
+  font-size: 80px;
+  position: absolute;
+  top: 8%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  text-align: center;
+  line-height: 80px;
+}
+
+.quotesWrapper {
+  width: 260px; /* Set the width of the wrapper */
+  opacity: 0.3; /* Set the opacity of the wrapper */
+  position: absolute;
+  top: 35%;
+  left: 65%;
+}
+
+.quotes {
+  width: 100%; /* Make the quotes image fill the wrapper */
+}
+
+/* Landing.module.css */
+
+.linkWrapper {
+  text-align: center;
+  margin-top: 10px; /* Adjust the margin as needed */
+}
+
+.customLink {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 15px 20px;
+  display: inline-block;
+  position: absolute;
+  top: 70%;
+  left: 58%;
+  font-weight: 50;
+}
+
+
+.topPosts {
+  text-align: center;
+  margin-top: 20px;
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* Added this */
+}
+
+.topPostsContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topPosts h3 {
+  font-size: 24px;
+  margin-bottom: 10px; /* Add space between h3 and images */
+}
+
+.topPosts img {
+  width: 30%;
+  min-height: 90px;
+  margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
