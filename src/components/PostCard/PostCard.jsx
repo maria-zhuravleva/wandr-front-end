@@ -1,18 +1,20 @@
+//npm modules
+import { Link } from 'react-router-dom'
 //css
 import styles from './PostCard.module.css'
 
-const PostCard = (props) => {
+const PostCard = ({ post }) => {
   return ( 
-    <main>
-      <article className={styles.container}>
-        <header>
-          <h1>{props.post.title}</h1>
-          {/* main photo */}
-          {/* author info ? */}
-        </header>
-          <p>{props.post.location}</p>
-      </article>
-    </main>
+      <Link to={`/posts/${post._id}`}>
+        <article className={styles.container}>
+          <header>
+            <h1>{post.title}</h1>
+            {/* main photo */}
+            {/* author info ? */}
+          </header>
+            <p>{post.location}</p>
+        </article>
+      </Link>
    )
 }
  

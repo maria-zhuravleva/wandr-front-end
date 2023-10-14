@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import PostList from './pages/PostList/PostList'
 import PostDetails from './pages/PostDetails/PostDetails'
+import EditPost from './pages/EditPost/EditPost'
 import About from './pages/About/About'
 
 // components
@@ -54,6 +55,11 @@ function App() {
     navigate('/posts')
   }
 
+  const handleDeletePost = async (postId) => {
+    
+    navigate('/posts')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -92,9 +98,7 @@ function App() {
         <Route
           path="/posts"
           element={
-            // <ProtectedRoute user={user}>
-              <PostList posts={posts}/>
-            // </ProtectedRoute>
+              <PostList posts={posts} />
           }
         />
         <Route
@@ -108,9 +112,15 @@ function App() {
         <Route
           path="/posts/:postId"
           element={
-            // <ProtectedRoute user={user}>
-              <PostDetails user={user}/>
-            // </ProtectedRoute>
+              <PostDetails user={user} handleDeletePost={handleDeletePost}/>
+          }
+        />
+         <Route
+          path="/posts/:postId/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditPost />
+            </ProtectedRoute>
           }
         />
       </Routes>

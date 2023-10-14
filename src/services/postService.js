@@ -21,10 +21,7 @@ async function create(postFormData) {
 
 async function show(postId) {
   try {
-    const res = await fetch(`${BASE_URL}/${postId}`, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
+    const res = await fetch(`${BASE_URL}/${postId}`)
     return res.json()
   } catch (err) {
     console.log(err)
@@ -40,8 +37,38 @@ async function index() {
   }
 }
 
+async function createComment(postId, commentFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/comments`, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(commentFormData)
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+async function deleteComment(postId, commentId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/comments/${commentId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export {
   create,
   show,
   index,
+  createComment,
+  deleteComment,
 }
