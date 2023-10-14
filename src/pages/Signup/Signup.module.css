@@ -1,4 +1,4 @@
-.signUpContainer {
+.signupContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,27 +6,26 @@
   height: 100vh;
 }
 
-.signupForm {
-  width: 1000px;
-  height: 50vh;
-  text-align: center;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the form items */
+.signupContainer h1 {
+  margin: 0 auto;
 }
 
-.label {
+.signupForm {
+  width: 400px; 
+  text-align: center;
+  margin-top: 50px; 
+}
+
+.signupLabel {
   display: block;
-  margin-bottom: 16px; /* Increase margin between labels */
+  margin-bottom: 8px;
   font-weight: bold;
 }
 
-.label input {
+.signupLabel input {
   width: 100%;
-  margin: 20px;
-  padding: 12px; /* Increase padding for input fields */
-  margin-top: 8px; /* Add space between label and input */
+  padding: 8px;
+  margin-top: 4px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -37,8 +36,8 @@
 }
 
 .signupButton {
-  margin-top: 24px; /* Increase margin between last input and button */
-  padding: 14px 28px; /* Increase padding for more space around button text */
+  margin-top: 16px;
+  padding: 8px 16px;
   background-color: #007bff;
   color: #fff;
   border: none;
