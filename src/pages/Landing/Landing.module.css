@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20px;
 }
 
 .banner img,
@@ -43,14 +44,17 @@
   width: 200px;
   text-align: center;
   line-height: 80px;
+  margin-bottom: 20px;
 }
 
 .quotesWrapper {
+  width: 300px; 
+  opacity: 0.2; 
   width: 260px; 
   opacity: 0.3; 
   position: absolute;
-  top: 35%;
-  left: 65%;
+  top: 34%;
+  left: 53%;
 }
 
 .quotes {
@@ -73,6 +77,12 @@
   top: 70%;
   left: 58%;
   font-weight: 50;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.customLink:hover {
+  background-color: black;
+  color: white;
 }
 
 
@@ -99,9 +109,24 @@
 
 .topPosts img {
   width: 30%;
-  min-height: 90px;
   margin: 10px;
 }
+
+.topPostsLines {
+  display: flex;
+  align-items: center;
+}
+
+.topPostsLine {
+  flex-grow: 1;
+  height: 1px;
+  background-color: black;
+}
+
+.topPosts h3 {
+  margin: 0 20px;
+}
+
 
 
 
