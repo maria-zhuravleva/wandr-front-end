@@ -10,8 +10,9 @@ const PostList = (props) => {
       {post.public && <PostCard key={post._id} post={post} />}
       </>
     )}
+    
     </main>
-   )
+  )
 }
- 
+
 export default PostList
