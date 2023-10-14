@@ -5,6 +5,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import * as postService from '../../services/postService'
 //components
 import Loading from '../../components/Loading/Loading'
+import NewComment from '../../components/NewComment/NewComment'
 //css
 import styles from './PostDetails.module.css'
 
@@ -22,6 +23,11 @@ const PostDetails = (props) => {
     }
    fetchPost()
   }, [postId])
+
+  const handleAddComment = async (commentFormData) => {
+    const newComment = await postService.createComment(postId, commentFormData)
+    setPost({...post, comments: [...post.comments, newComment]})
+  }
 
   if (!post) return <Loading />
 
@@ -42,6 +48,11 @@ const PostDetails = (props) => {
         </header>
         <p>{post.content}</p>
       </article>
+
+      <section>
+        <h1>Comments</h1>
+        <NewComment handleAddComment={handleAddComment} />
+      </section>
     </main>
    )
 }
