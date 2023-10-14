@@ -68,25 +68,27 @@ const PostDetails = (props) => {
             {post.author._id !== props.user.profile 
             && !post.likes.some(p => p == props.user.profile)
             && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>}
+            {/* display number of likes here */}
+            <div>✈️ {post.likes.length}</div>
           </span>
         </header>
         <p>{post.content}</p>
       </article>
 
-      <section>
+      {/* <section>
         <Recommendation user={props.user} handleAddRec={handleAddRec}/>
         {post.recommendations.map(recommendation => 
           <RecCard key={recommendation._id} recommendation={recommendation} user={props.user}  />
         )}
-      </section>
+      </section> */}
 
-      <section>
+      {/* <section>
         <h1>Comments</h1>
         <NewComment handleAddComment={handleAddComment} />
         {post.comments.map(comment => 
           <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} />
         )}
-      </section>
+      </section> */}
     </main>
   )
 }
