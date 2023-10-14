@@ -17,8 +17,9 @@ const EditPost = (props) => {
   }
 
   const handleSubmit = (e) => {
+    console.log('clicked')
     e.preventDefault()
-    props.handleUpdatePost(formData)
+    props.handleUpDatePost(formData)
   }
 
   return ( 

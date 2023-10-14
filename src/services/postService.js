@@ -49,6 +49,22 @@ async function deletePost(postId) {
   }
 }
 
+async function update(postFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postFormData._id}`, {
+      method: 'PUT',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postFormData)
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 
 async function createComment(postId, commentFormData) {
   try {
@@ -98,6 +114,7 @@ export {
   create,
   show,
   index,
+  update,
   createComment,
   deleteComment,
   createRec,
