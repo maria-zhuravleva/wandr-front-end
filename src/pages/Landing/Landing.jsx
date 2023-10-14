@@ -28,7 +28,11 @@ const Landing = ({ user }) => {
         </div>
       </div>
       <div className={styles.topPosts}>
+        <div className={styles.topPostsLines}>
+          <hr className={styles.topPostsLine} />
           <h3>Top Posts</h3>
+          <hr className={styles.topPostsLine} />
+        </div>
         <div className={styles.topPostsContent}>
           <img src={missionImage} alt="waterfall" />
           <img src={missionImage} alt="waterfall" />
