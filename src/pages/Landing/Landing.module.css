@@ -89,11 +89,6 @@
 .topPosts {
   text-align: center;
   margin-top: 20px;
-  position: absolute;
-  top: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%; 
 }
 
 .topPostsContent {
@@ -127,6 +122,7 @@
 .topPosts h3 {
   margin: 0 20px;
 }
+
 
 
 
