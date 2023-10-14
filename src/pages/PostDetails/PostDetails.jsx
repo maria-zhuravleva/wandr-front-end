@@ -6,6 +6,7 @@ import * as postService from '../../services/postService'
 //components
 import Loading from '../../components/Loading/Loading'
 import NewComment from '../../components/NewComment/NewComment'
+import CommentCard from '../../components/CommentCard/CommentCard'
 //css
 import styles from './PostDetails.module.css'
 
@@ -52,6 +53,9 @@ const PostDetails = (props) => {
       <section>
         <h1>Comments</h1>
         <NewComment handleAddComment={handleAddComment} />
+        {post.comments.map(comment => 
+          <CommentCard key={comment._id} comment={comment} user={props.user}/>
+        )}
       </section>
     </main>
    )
