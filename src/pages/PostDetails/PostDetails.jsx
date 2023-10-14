@@ -22,7 +22,6 @@ const PostDetails = (props) => {
   useEffect(() => {
     const fetchPost = async () => {
       const PostData = await postService.show(postId)
-      console.log(PostData)
       setPost(PostData)
     }
   fetchPost()
@@ -44,6 +43,11 @@ const PostDetails = (props) => {
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
   }
 
+  const handleLikePost = async (profileId) => {
+    const like = await postService.likePost(postId, profileId)
+    setPost({...post, likes: [...post.likes, like]})
+  }
+
   if (!post) return <Loading />
 
   return ( 
@@ -61,6 +65,9 @@ const PostDetails = (props) => {
                 <button onClick={() => props.handleDeletePost(postId)}>Delete</button>
               </>
             }
+            {post.author._id !== props.user.profile 
+            && !post.likes.some(p => p == props.user.profile)
+            && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>}
           </span>
         </header>
         <p>{post.content}</p>
