@@ -44,7 +44,7 @@ nav > ul {
 html, body {
   margin: 0;
   height: 100%;
-  background-color: #f2f4f8;
+  background-color: #f8f8f8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'DM Serif Text', sans-serif;
@@ -66,31 +66,31 @@ body {
 
 /* article img {
   width: 80px;
-}
+} */
 
-h1, h3 { margin: 7px 0px 14px 0px; }
+/* h1, h3 { margin: 7px 0px 14px 0px; } */
 
-h1 {
+/* h1 {
   font-size: 28px;
   font-weight: 600;
-}
+} */
 
-h3 {
+/* h3 {
   font-size: 20px;
   font-weight: 500;
-}
+} */
 
-h4 {
+/* h4 {
   font-size: 15px;
   font-weight: 500;
   margin-bottom: 2px;
-}
+} */
 
-h5 {
+/* h5 {
   font-size: 12px;
   font-weight: 500;
-}
-
+} */
+/* 
 p {
   margin: 0;
   opacity: .4;
@@ -130,12 +130,8 @@ form {
   position: fixed; 
   padding: 14px 21px;
   align-items: center;
-  background: white;
+  /* background: white; */
   border-bottom: 1px solid rgb(200, 200, 200);
-}
-
-.container img {
-  width: 50px;
 }
 
 .container ul {

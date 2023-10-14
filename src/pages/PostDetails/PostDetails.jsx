@@ -7,6 +7,9 @@ import * as postService from '../../services/postService'
 import Loading from '../../components/Loading/Loading'
 import NewComment from '../../components/NewComment/NewComment'
 import CommentCard from '../../components/CommentCard/CommentCard'
+import Recommendation from '../../components/Recommendation/Recommendation'
+import RecCard from '../../components/RecCard/RecCard'
+
 //css
 import styles from './PostDetails.module.css'
 
@@ -22,12 +25,18 @@ const PostDetails = (props) => {
       console.log(PostData)
       setPost(PostData)
     }
-   fetchPost()
+  fetchPost()
   }, [postId])
 
   const handleAddComment = async (commentFormData) => {
     const newComment = await postService.createComment(postId, commentFormData)
     setPost({...post, comments: [...post.comments, newComment]})
+  }
+
+  // NOT YET FUNCTIONAL - working to fix
+  const handleAddRec= async (recFormData) => {
+    const newRecommendation = await postService.createRec(postId, recFormData)
+    setPost({...post, recommendations: [...post.recommendations, newRecommendation]})
   }
 
   const handleDeleteComment = async (commentId) => {
@@ -58,6 +67,13 @@ const PostDetails = (props) => {
       </article>
 
       <section>
+        <Recommendation user={props.user} handleAddRec={handleAddRec}/>
+        {post.recommendations.map(recommendation => 
+          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user}  />
+        )}
+      </section>
+
+      <section>
         <h1>Comments</h1>
         <NewComment handleAddComment={handleAddComment} />
         {post.comments.map(comment => 
@@ -65,7 +81,7 @@ const PostDetails = (props) => {
         )}
       </section>
     </main>
-   )
+  )
 }
- 
+
 export default PostDetails
