@@ -32,6 +32,12 @@ const PostDetails = (props) => {
     setPost({...post, comments: [...post.comments, newComment]})
   }
 
+  //* NOT YET FUNCTIONAL - ADD createRecommendation ON BACK END AND ADJUST AS NEEDED
+  const handleAddRecommendation= async (recommendation) => {
+    const newRecommendation = await postService.createRecommendation(postId, recommendation)
+    setPost({...post, recommendation: [...post.recommendation, newRecommendation]})
+  }
+
   const handleDeleteComment = async (commentId) => {
     const deletedComment = await postService.deleteComment(postId, commentId)
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
@@ -60,7 +66,7 @@ const PostDetails = (props) => {
       </article>
 
       <section>
-        <Recommendation />
+        <Recommendation user={props.user} handleAddRecommendation={handleAddRecommendation}/>
       </section>
 
       <section>
