@@ -36,6 +36,7 @@ form {
 }
 
 
+
 label, input, textarea {
   font-size: 20px;
 }
@@ -92,7 +93,8 @@ button {
 .inputWrapper input {
   max-width: 300px;
   border: solid 1px black;
-  border-radius: 8px;
+  border-radius: 5px;
+  height: 50px;
 }
 
 .inputWrapper label {
@@ -103,7 +105,7 @@ button {
 .inputWrapper .checkbox {
   position: absolute;
   top: 77%;
-  right: 35%;
+  right: 50%;
 }
 
 
