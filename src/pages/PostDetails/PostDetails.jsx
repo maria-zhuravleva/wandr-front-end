@@ -1,5 +1,5 @@
 //npm modules
-import { useState, useEffect, useLocation } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 //services
 import * as postService from '../../services/postService'
@@ -12,7 +12,7 @@ import RecCard from '../../components/RecCard/RecCard'
 
 //css
 import styles from './PostDetails.module.css'
-import EditComment from '../../components/EditComment/EditComment'
+
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
@@ -46,8 +46,9 @@ const PostDetails = (props) => {
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
   }
   
-  const handleEditComment = (commentFormData) => {
-    setPost({...post, comments: post.comments.map(cmt => cmt._id === commentFormData._id ? commentFormData : cmt)})
+  const handleEditComment = async (commentFormData) => {
+    const editedComment = await postService.editComment(postId, commentFormData)
+    setPost({...post, comments: post.comments.map(cmt => cmt._id === commentFormData._id ? editedComment : cmt)})
   }
 
   const handleLikePost = async (profileId) => {

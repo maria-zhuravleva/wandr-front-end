@@ -1,12 +1,12 @@
-import React from 'react';
-import { useState,useEffect } from 'react';
+import React from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 // css
 import styles from './Landing.module.css'
 // import bannerImage from "../../assets/img/default.jpg"
 import missionImage from "../../assets/img/default-pic2.jpg"
 import quotes from "../../assets/icons/quotes.png"
-import NavBar from '../../components/NavBar/NavBar';
+import NavBar from '../../components/NavBar/NavBar'
 
 //components
 import SearchPost from '../../components/SearchPost/SearchPost'
