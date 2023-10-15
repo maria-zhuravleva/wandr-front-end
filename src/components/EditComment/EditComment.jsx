@@ -14,7 +14,7 @@ const EditComment = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleEditComment(formData)
-    setFormData({ text: '' })
+    props.handleHideForm()
   }
 
   return ( 
