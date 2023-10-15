@@ -101,7 +101,6 @@ const Recommendation = (props) => {
         />
         <button type="submit">Submit</button>
       </form>
-      {/* delete btn */}
     </main>
     </>
   )
