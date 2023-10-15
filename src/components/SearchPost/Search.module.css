@@ -9,7 +9,8 @@
   cursor: pointer;
   width: 25px; 
   height: 25px;
-  background-color: white; 
+  outline: none;
+  background: transparent;
 }
 
 .searchImg {

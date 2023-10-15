@@ -8,7 +8,7 @@ import styles from './PostCard.module.css'
 const PostCard = ({ post }) => {
   return ( 
       <Link to={`/posts/${post._id}`} key={post._id}>
-        <article className={styles.container}>
+        <article className={styles.postcardContainer}>
           <header>
             <h1 key={post._id}>{post.title}</h1>
             {/* main photo */}

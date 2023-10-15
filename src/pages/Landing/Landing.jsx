@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 // css
 import styles from './Landing.module.css'
-import missionImage from "../../assets/img/default-pic2.jpg"
+// import missionImage from "../../assets/img/default-pic2.jpg"
+import arrowRight from "../../assets/icons/arrow-right.png"
 import quotes from "../../assets/icons/quotes.png"
 
 //components
@@ -39,7 +40,7 @@ const Landing = (props) => {
       <div className={styles.banner}>
         <h1>Wandr</h1>
       </div>
-      <div className={styles.container}>
+      <div className={styles.landingContainer}>
         <div className={styles.columnOne}>
         </div>
         <div className={styles.column}>
@@ -57,19 +58,20 @@ const Landing = (props) => {
         <div className={styles.topPostsLines}>
           <hr className={styles.topPostsLine} />
           <h3>Top Posts</h3>
+          <hr className={styles.topPostsLine} />
+        </div>
+        <div className={styles.topPostsContent}>
           {props.posts.filter((post,idx)=>(idx<5))
           .map((postEle)=>{
             return(
               postEle.public && <PostCard key={postEle._id} post={postEle}/>
             )
           })}
-          <hr className={styles.topPostsLine} />
         </div>
-        <div className={styles.topPostsContent}>
-          <img src={missionImage} alt="waterfall" />
-          <img src={missionImage} alt="waterfall" />
-          <img src={missionImage} alt="waterfall" />
-        </div>
+        <Link to="/posts" className={styles.landingPageArrow}>
+          <p>See More</p> 
+          <img src={arrowRight} alt="arrow" />
+        </Link>
       </div>
     </>
   )

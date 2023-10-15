@@ -56,8 +56,8 @@ function App() {
   }, [])
 
 
-  const handleAddPost = async (postFormData) => {
-    const newPost = await postService.create(postFormData)
+  const handleAddPost = async (postFormData, photoData) => {
+    const newPost = await postService.create(postFormData, photoData)
     setPosts([newPost, ...posts])
     navigate('/posts')
   }
