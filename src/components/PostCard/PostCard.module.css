@@ -34,6 +34,7 @@
 .postcardContainer h1 {
   margin: 0;
   font-size: 19px;
+  font-weight: 100;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -44,7 +45,7 @@
 .postcardContainer p {
   width: 100%;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 100;
   overflow: hidden;
   line-height: 1.5rem;
   display: -webkit-box;
