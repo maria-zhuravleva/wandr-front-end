@@ -10,9 +10,7 @@ const SearchPost = (props) => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    if (formData.query) {
-      props.handlePostSearch(formData)
-  }
+    props.handlePostSearch(formData)
 }
   return (
     <form onSubmit={handleSubmit}

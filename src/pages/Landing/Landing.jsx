@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 // css
@@ -13,8 +13,8 @@ import PostCard from '../../components/PostCard/PostCard'
 
 const Landing = (props) => {
   const allPosts = props.posts
-  const [searchResults,setSearchResults]=useState([])
-  const [errMsg,setErrMsg]=useState("")
+  const [searchResults,setSearchResults]= useState([])
+  const [errMsg,setErrMsg]= useState("")
 
   const handlePostSearch = formData =>{
     const filteredPostSearch= allPosts.filter(post => post.location.toLowerCase().includes(formData.query.toLowerCase()))
@@ -25,7 +25,7 @@ const Landing = (props) => {
     }
     setSearchResults(filteredPostSearch)
   }
-  
+
   return (
     <>
       <div className={styles.searchpost}>
@@ -35,6 +35,7 @@ const Landing = (props) => {
           <PostCard key={post._id}
           post={post}/>)}
       </div>
+
       <div className={styles.banner}>
         <h1>Wandr</h1>
       </div>
@@ -56,6 +57,12 @@ const Landing = (props) => {
         <div className={styles.topPostsLines}>
           <hr className={styles.topPostsLine} />
           <h3>Top Posts</h3>
+          {props.posts.filter((post,idx)=>(idx<5))
+          .map((postEle)=>{
+            return(
+              postEle.public && <PostCard key={postEle._id} post={postEle}/>
+            )
+          })}
           <hr className={styles.topPostsLine} />
         </div>
         <div className={styles.topPostsContent}>
