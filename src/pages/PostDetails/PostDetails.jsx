@@ -1,5 +1,5 @@
 //npm modules
-import { useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 //services
 import * as postService from '../../services/postService'
