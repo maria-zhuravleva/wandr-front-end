@@ -1,4 +1,4 @@
-.container {
+.landingContainer {
   display: flex; 
   height: 60vh;
   position: relative;
@@ -116,12 +116,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 30px;
+  min-width: 200px;
+  min-height: 400px;
+  margin-top: -50px;
 }
 
 .topPosts img {
-  width: 250px;
-  height: 400px;
-  margin: 30px;
+  margin: 10px;
 }
 
 .topPostsLines {
@@ -149,6 +151,27 @@
   justify-content: flex-end; 
   margin-right: 50px; 
 }
+
+.landingPageArrow img {
+  width: 50px;
+  height: 35px;
+  float: right;
+  margin-right: -150px;
+  margin-top: -25px;
+}
+
+.landingPageArrow img:hover {
+  cursor: pointer;
+}
+
+.landingPageArrow p {
+  float: right;
+  margin-right: 330px;
+  margin-top: -23px;
+  font-weight: 100;
+  font-size: 20px;
+}
+
 
 
 
