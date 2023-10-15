@@ -9,14 +9,16 @@ import NewComment from '../../components/NewComment/NewComment'
 import CommentCard from '../../components/CommentCard/CommentCard'
 import Recommendation from '../../components/Recommendation/Recommendation'
 import RecCard from '../../components/RecCard/RecCard'
+import PhotoUpload from '../../components/UploadPhoto/MainPostPhoto'
 
 //css
 import styles from './PostDetails.module.css'
 
-
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
   const { postId } = useParams()
+
+  const [showPhotoUploadField, setShowPhotoUploadField] = useState(false)
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -57,6 +59,15 @@ const PostDetails = (props) => {
     setPost({...post, saves: [...post.saves, save]})
   }
 
+  const handleShow = () => {
+    setShowPhotoUploadField(true)
+  }
+
+  const handleDeletePostPhoto = async () => {
+    const post = await postService.deletePostPhoto(postId)
+    setPost(post)
+  }
+
   if (!post) return <Loading />
 
   return ( 
@@ -72,23 +83,28 @@ const PostDetails = (props) => {
                   <button>Edit</button>
                 </Link>
                 <button onClick={() => props.handleDeletePost(postId)}>Delete</button>
+                <button onClick={handleShow}>{post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}</button>
+                {post.mainPhoto && <button onClick={handleDeletePostPhoto}>Delete Main Photo</button>}
+                {showPhotoUploadField && <PhotoUpload post={post} />}
               </>
             }
+          
             {post.author._id !== props.user.profile 
               && !post.likes.some(p => p === props.user.profile)
               && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>
             }
-            <div>✈️ {post.likes.length}</div>
+            <div>✈️ Likes: {post.likes.length}</div>
 
             {post.author._id !== props.user.profile 
               && !post.saves.some(p => p === props.user.profile)
               && <button onClick={() => handleSavePost(props.user.profile)}>Save</button>
             }
-            <div>💌 {post.saves.length}</div>
+            <div>💌 Saves: {post.saves.length}</div>
             
           </span>
         </header>
         <p>{post.content}</p>
+        <img src={post.mainPhoto} />
       </article>
 
       <section>

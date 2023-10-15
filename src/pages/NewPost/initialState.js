@@ -2,7 +2,7 @@ export const initialState = {
   title: '',
   location: '',
   content: '',
-  //main photo
+  mainPhoto: '',
   //photos
-  public: false,
+  isPublic: false,
 }
