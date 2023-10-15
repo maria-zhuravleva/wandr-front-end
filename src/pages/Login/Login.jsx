@@ -72,7 +72,8 @@ const LoginPage = ({ handleAuthEvt }) => {
             Log In
           </button>
         </div>
-        <div className={styles.signinImageWrapper}></div>
+        <div className={styles.signinImageWrapper}>
+        </div>
       </form>
     </main>
   )

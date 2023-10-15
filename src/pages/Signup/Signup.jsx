@@ -78,11 +78,11 @@ const Signup = ({ handleAuthEvt }) => {
   }
 
   return (
-    <main className={styles.signUpContainer}>
-      <h1>Sign Up</h1>
+    <main className={styles.signupContainer}>
+      <h1>SIGN UP</h1>
       <p className={styles.signupMessage}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} className={styles.signupForm}>
-        <label className={styles.label}>
+        <label className={styles.signupLabel}>
           Name
           <input type="text" value={name} name="name" onChange={handleChange} />
         </label>
@@ -120,16 +120,19 @@ const Signup = ({ handleAuthEvt }) => {
             name="photo" 
             onChange={handleChangePhoto}
             ref={imgInputRef}
+            className={styles.signupImg}
           />
         </label>
-        <div>
-          <Link to="/">Cancel</Link>
+        <div className={styles.signupButtonWrapper}>
+          <Link to="/" style={{ color: 'black', textDecoration: 'none', borderTop: '1px solid black', padding: '15px 20px', borderBottom: '1px solid black', width: '150px', cursor: 'pointer', borderRadius: '0', display: 'inline-block', textAlign: 'center', marginRight: '20px', fontSize: '20px'}}>CANCEL</Link>
           <button
             className={styles.signupButton}
             disabled={ isFormInvalid() || isSubmitted }
           >
             {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
           </button>
+        </div>
+        <div className={styles.signupImageWrapper}>
         </div>
       </form>
     </main>
