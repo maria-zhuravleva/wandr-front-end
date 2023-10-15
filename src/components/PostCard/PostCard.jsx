@@ -17,7 +17,7 @@ const PostCard = ({ post }) => {
             <p key={post._id}>{post.location}</p>
         </article>
       </Link>
-   )
+  )
 }
- 
+
 export default PostCard
