@@ -1,29 +1,52 @@
 .signupContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
+  align-items: center;
+  height: 100vh; 
+  max-width: 1200px;
+  margin-top: -100px;
 }
 
 .signupContainer h1 {
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
+  font-size: 80px;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  padding-right: 15px; 
+  border-right: 1px solid black; 
+  display: inline-block;
+  margin-bottom: 150px;
+  font-weight: 100;
+  position: absolute;
+  top: 15%;
+  right: 80%; 
 }
 
 .signupForm {
-  width: 400px; 
+  margin-left: 150px;
+  width: 600px; 
+  height: 700px;
+  padding: 20px; 
+  background-color: rgba(95, 74, 53, 0.4); 
+  /* background-color: rgba(169, 159, 151, 0.4);  */
+  padding: 20px;
+  position: relative;
+  box-sizing: border-box;
   text-align: center;
-  margin-top: 50px; 
+  padding-top: 100px;
 }
 
 .signupLabel {
   display: block;
   margin-bottom: 8px;
-  font-weight: bold;
+  font-size: 20px;
 }
 
 .signupLabel input {
-  width: 100%;
+  display: block;
+  margin: 0 auto;
+  width: 60%;
   padding: 8px;
   margin-top: 4px;
   border: 1px solid #ccc;
@@ -35,20 +58,46 @@
   margin-bottom: 16px;
 }
 
-.signupButton {
-  margin-top: 16px;
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+.signupButtonWrapper {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.signupButtonWrapper button {
+  font-family: 'DM Serif Text', serif;
+  color: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 15px 25px;
+  width: 150px;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
+  border-left: none; 
+  border-right: none;
+  height: 60px;
+  outline: none;
+  background: transparent;
+  text-transform: uppercase;
+  border-radius: 0; 
+  font-size: 20px;
+  font-weight: 100;
 }
 
 .signupButton:disabled {
-  background-color: #ccc;
   cursor: not-allowed;
+}
+
+.signupImageWrapper {
+  position: absolute;
+  top: 50%;
+  right: -60%;
+  height: 100%;
+  background: url('../../assets/img/signup.jpg');
+  background-size: cover;
+  width: 80%;
+}
+
+.signupLabel .signupImg {
+  margin-top: 20px;
+  padding: 20px;
 }
 

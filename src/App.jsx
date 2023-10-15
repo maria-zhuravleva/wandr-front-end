@@ -12,6 +12,7 @@ import PostList from './pages/PostList/PostList'
 import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
 import About from './pages/About/About'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -19,6 +20,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 import * as postService from './services/postService'
 
 // styles
@@ -130,6 +132,12 @@ function App() {
             </ProtectedRoute>
           }
         />
+          <Route
+            path="/profiles/:profileId"
+            element={
+                <ProfilePage user={user}  />
+            }
+          />
       </Routes>
     </>
   )

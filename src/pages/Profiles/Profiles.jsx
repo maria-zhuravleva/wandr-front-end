@@ -1,11 +1,15 @@
 // npm modules
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 // services
 import * as profileService from '../../services/profileService'
 
 // css
 import styles from './Profiles.module.css'
+
+// pages
+import ProfilePage from '../ProfilePage/ProfilePage'
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([])
@@ -26,8 +30,11 @@ const Profiles = () => {
     <main className={styles.container}>
       <h1>Hello. This is a list of all the profiles.</h1>
       {profiles.map(profile => (
-        <p key={profile._id}>{profile.name}</p>
+        <Link key={profile._id} to={`/profiles/${profile._id}`}>
+        <p >{profile.name}</p>
+        </Link>
       ))}
+      {/* <ProfilePage /> */}
     </main>
   )
 }
