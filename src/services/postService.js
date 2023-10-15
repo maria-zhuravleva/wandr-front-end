@@ -94,6 +94,22 @@ async function deleteComment(postId, commentId) {
   }
 }
 
+async function editComment(postId, commentFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/comments/${commentFormData._id}`, {
+      method: 'PATCH',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(commentFormData)
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 async function createRec(postId, rec) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/recommendations`, {
@@ -123,6 +139,19 @@ async function likePost(postId) {
     console.log(err)
   }
 }
+async function savePost(postId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/saves`, {
+      method: 'PATCH',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    return res.json()
+  } catch (err) { 
+    console.log(err)
+  }
+}
 
 export {
   create,
@@ -131,7 +160,9 @@ export {
   update,
   createComment,
   deleteComment,
+  editComment,
   createRec,
   deletePost,
   likePost,
+  savePost,
 }

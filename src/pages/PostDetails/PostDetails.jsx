@@ -1,6 +1,6 @@
 //npm modules
-import { useState, useEffect, useLocation } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useState, useEffect} from 'react'
+import { useParams, Link } from 'react-router-dom'
 //services
 import * as postService from '../../services/postService'
 //components
@@ -12,15 +12,11 @@ import RecCard from '../../components/RecCard/RecCard'
 
 //css
 import styles from './PostDetails.module.css'
-import EditComment from '../../components/EditComment/EditComment'
+
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
   const { postId } = useParams()
-
-  const navigate = useNavigate()
-
-  // const { commentState } = useLocation()
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -46,13 +42,19 @@ const PostDetails = (props) => {
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
   }
   
-  const handleEditComment = (commentFormData) => {
-    setPost({...post, comments: post.comments.map(cmt => cmt._id === commentFormData._id ? commentFormData : cmt)})
+  const handleEditComment = async (commentFormData) => {
+    const editedComment = await postService.editComment(postId, commentFormData)
+    setPost({...post, comments: post.comments.map(cmt => cmt._id === commentFormData._id ? editedComment : cmt)})
   }
 
   const handleLikePost = async (profileId) => {
     const like = await postService.likePost(postId, profileId)
     setPost({...post, likes: [...post.likes, like]})
+  }
+
+  const handleSavePost = async (profileId) => {
+    const save = await postService.savePost(postId, profileId)
+    setPost({...post, saves: [...post.saves, save]})
   }
 
   if (!post) return <Loading />
@@ -73,10 +75,17 @@ const PostDetails = (props) => {
               </>
             }
             {post.author._id !== props.user.profile 
-            && !post.likes.some(p => p == props.user.profile)
-            && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>}
-            {/* display number of likes here */}
+              && !post.likes.some(p => p === props.user.profile)
+              && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>
+            }
             <div>✈️ {post.likes.length}</div>
+
+            {post.author._id !== props.user.profile 
+              && !post.saves.some(p => p === props.user.profile)
+              && <button onClick={() => handleSavePost(props.user.profile)}>Save</button>
+            }
+            <div>💌 {post.saves.length}</div>
+            
           </span>
         </header>
         <p>{post.content}</p>

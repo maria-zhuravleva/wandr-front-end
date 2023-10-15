@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'DM Serif Text';
-  src: url('src/assets/DMSerifText-Regular.ttf') format('truetype');
-}
-
 html, body {
   margin: 0;
   height: 100%;

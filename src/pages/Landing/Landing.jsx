@@ -1,16 +1,16 @@
-import React from 'react';
-import { useState,useEffect } from 'react';
+import React from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 // css
 import styles from './Landing.module.css'
-// import bannerImage from "../../assets/img/default.jpg"
 import missionImage from "../../assets/img/default-pic2.jpg"
 import quotes from "../../assets/icons/quotes.png"
-// import NavBar from '../../components/NavBar/NavBar';
 
 //components
 import SearchPost from '../../components/SearchPost/SearchPost'
 import PostCard from '../../components/PostCard/PostCard'
+
+
 const Landing = (props) => {
   const allPosts = props.posts
   const [searchResults,setSearchResults]=useState([])
@@ -28,8 +28,7 @@ const Landing = (props) => {
   
   return (
     <>
-      {/* <NavBar user={user} /> */}
-      <div className='searchpost'>
+      <div className={styles.searchpost}>
       {errMsg && <h2>{errMsg}</h2>}
         <SearchPost handlePostSearch={handlePostSearch}/>
         {searchResults.map(post =>
