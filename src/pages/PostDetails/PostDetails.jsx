@@ -38,6 +38,11 @@ const PostDetails = (props) => {
     setPost({...post, recommendations: [...post.recommendations, newRecommendation]})
   }
 
+  const handleDeleteRec = async (recId) => {
+    const deltedRec = await postService.deleteRec(postId, recId)
+    setPost({...post, recommendations: post.recommendations.filter(rec => rec._id !== deltedRec._id)})
+  }
+
   const handleDeleteComment = async (commentId) => {
     const deletedComment = await postService.deleteComment(postId, commentId)
     setPost({...post, comments: post.comments.filter(cmt => cmt._id !== deletedComment._id)})
@@ -109,7 +114,7 @@ const PostDetails = (props) => {
       <section>
         <Recommendation user={props.user} handleAddRec={handleAddRec}/>
         {post.recommendations.map(recommendation => 
-          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user}  />
+          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user} handleDeleteRec={handleDeleteRec} />
         )}
       </section>
 
