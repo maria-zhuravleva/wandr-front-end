@@ -22,7 +22,7 @@
   right: 80%; 
 }
 
-form {
+.container form {
   margin-top: -250px; 
   margin-left: 150px;
   width: 100%; 
@@ -37,11 +37,11 @@ form {
 
 
 
-label, input, textarea {
+.container label, input, textarea {
   font-size: 20px;
 }
 
-button {
+.container button {
   font-size: 18px;
   padding: 10px 20px;
 }

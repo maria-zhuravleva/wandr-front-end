@@ -74,7 +74,7 @@ const PostDetails = (props) => {
               </>
             }
             {post.author._id !== props.user.profile 
-            && !post.likes.some(p => p == props.user.profile)
+            && !post.likes.some(p => p === props.user.profile)
             && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>}
             {/* display number of likes here */}
             <div>✈️ {post.likes.length}</div>

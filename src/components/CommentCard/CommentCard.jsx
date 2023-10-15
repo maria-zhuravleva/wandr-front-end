@@ -12,6 +12,8 @@ const CommentCard = (props) => {
   const showEditCommentForm = () => {
     setShowForm(true)
   }
+  console.log(props.comment.author, 'author')
+  console.log(props.user, 'user')
  
   return ( 
     <article>
@@ -19,8 +21,8 @@ const CommentCard = (props) => {
         {<AuthorInfo content={props.comment}/>}
       </header>
       <p>{props.comment.text}</p>
-      {props.comment.author === props.user.profile._id && <button onClick={() => showEditCommentForm()}>Edit</button>}
-      {props.comment.author === props.user.profile._id && <button onClick={() => props.handleDeleteComment(props.comment._id)}>Delete</button>}
+      {props.comment.author._id === props.user.profile && <button onClick={() => showEditCommentForm()}>Edit</button>}
+      {props.comment.author._id === props.user.profile && <button onClick={() => props.handleDeleteComment(props.comment._id)}>Delete</button>}
       
       {/* show edit comment form on button click */}
       {showForm && <EditComment comment={props.comment} handleEditComment={props.handleEditComment} />}
