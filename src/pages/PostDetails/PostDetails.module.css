@@ -1,4 +1,4 @@
-.container {
+/* .container {
   height: 100%;
   display: flex;
   overflow: scroll;
@@ -83,4 +83,129 @@
 
 .container > section article p {
   text-indent: 0px;
+} */
+
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 100px;
+  grid-template-areas:
+    "cardDetailsContainer likeAndSaveBtn"
+    "cardDetailsBtn recommendationsContainer"
+    "commentsContainer commentsContainer";
+    height: 100%;
 }
+
+.cardDetailsContainer {
+  grid-area: cardDetailsContainer;
+  padding: 50px;
+  width: 1400px;
+  height: 800px;
+  display: flex;
+}
+
+.textContainer {
+  flex: 1;
+  padding: 20px; 
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.likeAndSaveBtn {
+  grid-area: likeAndSaveBtn;
+  display: flex;
+  align-items: center;
+}
+
+.likeAndSaveBtn button {
+  margin-right: 10px; 
+}
+
+.likeCount,
+.saveCount {
+  margin-right: 20px; 
+  padding: 10px;
+}
+
+.likeCount {
+  margin-left: 55px;
+}
+
+.likeImg,
+.saveImg {
+  width: 15px; 
+  height: 15px;
+}
+
+.cardDetailsBtn {
+  grid-area: cardDetailsBtn;
+  display: flex;
+  /* flex-direction: row; */
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.cardDetailsBtn button {
+  font-family: 'DM Serif Text', sans-serif;
+  font-weight: 100;
+  cursor: pointer;
+  font-size: 15px;
+  color: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: none; 
+  border-right: none;
+  width: 150px;
+  height: 50px;
+  outline: none;
+  background: transparent;
+  /* text-transform: uppercase; */
+  margin: 0;
+  border-radius: 0;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  flex-basis: 50%;
+}
+
+.cardDetailsBtn button:hover {
+  background: black; 
+  color: white; 
+}
+
+.cardDetailsBtn button:first-child {
+  margin-top: 50px;
+}
+
+
+.recommendationsContainer {
+  grid-area: recommendationsContainer;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  background-color: #e0e0e0; 
+  padding: 50px;
+  margin-bottom: 50px;
+}
+
+.commentsContainer {
+  grid-area: commentsContainer;
+  background-color: #d0d0d0; 
+  padding: 20px;
+}
+
+
+
+
