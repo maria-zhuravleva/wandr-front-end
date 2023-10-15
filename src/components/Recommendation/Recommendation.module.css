@@ -2,7 +2,11 @@
   /* position: fixed;
   bottom: 600px;
   right: 20px; */
-  width: 500px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px; 
   background-color: white; 
   border: 1px solid black; 
   padding: 30px; 
@@ -15,10 +19,48 @@
 
 .recCard label,
 .recCard select,
-.recCard input {
+.recCard input,
+.recCard textarea {
   margin-bottom: 30px;
   width: 50%;
 }
+
+.recCard label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.recCard input {
+  height: 30px;
+  font-size: 14px;
+  font-style: italic;
+  border: solid 1px black;
+  width: 305px;
+  padding: 10px;
+}
+
+.recCard select {
+  height: 70px;
+  font-size: 14px;
+  font-style: italic;
+  border: solid 1px black;
+  height: 30px;
+  width: 300px;
+  margin-left: 5px;
+}
+
+.recCard textarea {
+  height: 70px;
+  font-size: 14px;
+  font-style: italic;
+  border: solid 1px black;
+  height: 30px;
+  width: 300px;
+  margin-left: 5px;
+  border-radius: 0;
+}
+
 
 .recCard button {
   cursor: pointer;
@@ -34,7 +76,7 @@
   background: transparent;
   text-transform: uppercase;
   border-radius: 0;
-  margin-left: 140px;
+  margin-left: 190px;
   margin-bottom: 50px;
 }
 
