@@ -24,9 +24,9 @@ const ProfilePage = (props) => {
   return (  
     <main>
       <header>
-        
+        <h1>{profile.name}</h1>
       </header>
-      <h1>This is a profile page</h1>
+      
       
     </main>
 
