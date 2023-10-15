@@ -75,9 +75,10 @@ function App() {
   }
   const handlePostSearch = formData =>{
     let filteredPostSearch = posts
+    
     if(formData.query)
     {
-      filteredPostSearch= posts.filter(post => post.location.toLowerCase() === formData.query.toLowerCase())
+      filteredPostSearch= posts.filter(post => post.location?.toLowerCase().includes(formData.query.toLowerCase()))
     }
     
     if(!filteredPostSearch.length){

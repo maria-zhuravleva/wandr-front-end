@@ -7,7 +7,9 @@ const SearchPost = (props) => {
   const handleChange = evt => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value})
   }
-
+  const handleClearField = e => {
+    setFormData({...formData, [e.target.name]: ''})
+  }
   const handleSubmit = evt => {
     evt.preventDefault()
     props.handlePostSearch(formData)
@@ -22,6 +24,7 @@ const SearchPost = (props) => {
         placeholder="Search"
         value={formData.query}
         onChange={handleChange}
+        onClick={handleClearField}     
         style={{
           color: '#999',       
           fontSize: '14px',
