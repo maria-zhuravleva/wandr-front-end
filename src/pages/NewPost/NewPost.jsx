@@ -1,10 +1,10 @@
 //npm modules
+import { useState, useRef } from 'react'
 
 //components
 import { initialState } from './initialState.js'
 
 //css
-import { useState } from 'react'
 import styles from './NewPost.module.css'
 
 const NewPost = (props) => {
@@ -15,7 +15,7 @@ const NewPost = (props) => {
   }
 
   const handleChecked = (e, status) => {
-    setFormData({...formData, public: status})
+    setFormData({...formData, isPublic: status})
   }
 
   const handleSubmit = (e) => {
@@ -65,13 +65,13 @@ const NewPost = (props) => {
             />
           </div>
           <div className={styles.inputWrapper}>
-            <label htmlFor="public-input">Make Public?</label>
+            <label htmlFor="isPublic-input">Make Public?</label>
             <input 
               type="checkbox"
-              name="public"
-              id="public-input"
-              checked={formData.public}
-              onChange={e => handleChecked(e, !formData.public)}
+              name="isPublic"
+              id="isPublic-input"
+              checked={formData.isPublic}
+              onChange={e => handleChecked(e, !formData.isPublic)}
               className={styles.checkbox}
             />
           </div>
