@@ -9,7 +9,7 @@ import styles from './ProfilePage.module.css'
 import * as profileService from '../../services/profileService'
 
 const ProfilePage = (props) => {
-  const [profile, setProfile] = useState(null)
+  const [profile, setProfile] = useState({})
   const { profileId } = useParams()
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const ProfilePage = (props) => {
       setProfile(ProfileData)
     }
     fetchProfile()
-  }, [])
+  }, [profileId])
   
   
   return (  
@@ -29,8 +29,6 @@ const ProfilePage = (props) => {
       <h1>This is a profile page</h1>
       
     </main>
-
-
   )
 }
 
