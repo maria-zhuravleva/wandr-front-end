@@ -33,7 +33,6 @@ const PostDetails = (props) => {
     setPost({...post, comments: [...post.comments, newComment]})
   }
 
-  // NOT YET FUNCTIONAL - working to fix
   const handleAddRec= async (recFormData) => {
     const newRecommendation = await postService.createRec(postId, recFormData)
     setPost({...post, recommendations: [...post.recommendations, newRecommendation]})
