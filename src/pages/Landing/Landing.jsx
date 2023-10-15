@@ -1,41 +1,22 @@
-import React from 'react'
-import { useState } from 'react'
+
 import { Link } from 'react-router-dom'
 // css
 import styles from './Landing.module.css'
 // import bannerImage from "../../assets/img/default.jpg"
+import React from 'react'
 import missionImage from "../../assets/img/default-pic2.jpg"
 import quotes from "../../assets/icons/quotes.png"
 import NavBar from '../../components/NavBar/NavBar'
+import PostCard from '../../components/PostCard/PostCard'
 
 //components
-import SearchPost from '../../components/SearchPost/SearchPost'
-import PostCard from '../../components/PostCard/PostCard'
-const Landing = (props) => {
-  const allPosts = props.posts
-  const [searchResults,setSearchResults]=useState([])
-  const [errMsg,setErrMsg]=useState("")
 
-  const handlePostSearch = formData =>{
-    const filteredPostSearch= allPosts.filter(post => post.location.toLowerCase().includes(formData.query.toLowerCase()))
-    if(!filteredPostSearch.length){
-      setErrMsg('No posts')
-    }else{
-      setErrMsg("")
-    }
-    setSearchResults(filteredPostSearch)
-  }
-  
-  return (
+const Landing = (props) => {
+
+    return (
     <>
       {/* <NavBar user={user} /> */}
-      <div className='searchpost'>
-      {errMsg && <h2>{errMsg}</h2>}
-        <SearchPost handlePostSearch={handlePostSearch}/>
-        {searchResults.map(post =>
-          <PostCard key={post._id}
-          post={post}/>)}
-      </div>
+
       <div className={styles.banner}>
         <h1>Wandr</h1>
       </div>
@@ -57,6 +38,15 @@ const Landing = (props) => {
         <div className={styles.topPostsLines}>
           <hr className={styles.topPostsLine} />
           <h3>Top Posts</h3>
+      {props.posts.filter((post,idx)=>(idx<5))
+      .map((postEle)=>{
+        return(
+          postEle.public && <PostCard key={postEle._id} post={postEle}/>
+        )
+      })}
+      
+              
+
           <hr className={styles.topPostsLine} />
         </div>
         <div className={styles.topPostsContent}>
