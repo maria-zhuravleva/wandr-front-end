@@ -1,5 +1,7 @@
 //npm modules
 import { Link } from 'react-router-dom'
+//components
+import AuthorInfo from '../AuthorInfo/AuthorInfo'
 //css
 import styles from './PostCard.module.css'
 
@@ -10,7 +12,7 @@ const PostCard = ({ post }) => {
           <header>
             <h1 key={post._id}>{post.title}</h1>
             {/* main photo */}
-            {/* author info ? */}
+            <AuthorInfo content={post}/>
           </header>
             <p key={post._id}>{post.location}</p>
         </article>

@@ -147,6 +147,19 @@ async function likePost(postId) {
     console.log(err)
   }
 }
+async function savePost(postId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/saves`, {
+      method: 'PATCH',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    return res.json()
+  } catch (err) { 
+    console.log(err)
+  }
+}
 
 export {
   create,
@@ -160,4 +173,5 @@ export {
   createRec,
   deletePost,
   likePost,
+  savePost,
 }
