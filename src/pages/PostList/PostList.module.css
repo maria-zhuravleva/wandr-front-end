@@ -1,0 +1,60 @@
+.postListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postListSearch {
+  align-self: flex-end;
+  margin-right: 70px;
+  margin-bottom: 50px;
+  margin-top: 0;
+  position: relative;
+}
+
+.postListHeading {
+  background-image: url('../../assets/img/header.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  height: 250px; 
+  width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.postListHeading::after {
+  content: "";
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.postListHeading h1 {
+  font-weight: 100;
+  font-size: 80px;
+  color: white;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+
+
+.postCardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 1200px; 
+  width: 100%;
+}
+
+
+
+
+
