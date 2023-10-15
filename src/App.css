@@ -25,6 +25,11 @@ a {
   text-decoration: none;
 }
 
+.search-form
+{
+  margin: auto;
+}
+
 /* Nav Bar */
 /* .container {
   top: 0; 
