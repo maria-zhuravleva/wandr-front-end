@@ -1,4 +1,4 @@
-.container {
+.postcardContainer {
   width: 100%;
   height: 220px;
   padding: 14px 21px;
@@ -31,9 +31,10 @@
   border: 1px solid var(--border);
 } */
 
-.container h1 {
+.postcardContainer h1 {
   margin: 0;
   font-size: 19px;
+  font-weight: 100;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -41,10 +42,10 @@
   -webkit-box-orient: vertical;
 }
 
-.container p {
+.postcardContainer p {
   width: 100%;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 100;
   overflow: hidden;
   line-height: 1.5rem;
   display: -webkit-box;
