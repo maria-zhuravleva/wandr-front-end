@@ -1,8 +1,7 @@
 .postcardContainer {
-  width: 100%;
-  height: 220px;
-  padding: 14px 21px;
-  border-radius: 5px;
+  width: 270px;
+  height: 300px;
+  padding: 20px 25px;
   border: 1px solid var(--border);
   background-color: var(--card-background);
   box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
@@ -10,7 +9,7 @@
   -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
 }
 
-.container header {
+.postcardContainer header {
   margin-bottom: 14px;
 }
 
