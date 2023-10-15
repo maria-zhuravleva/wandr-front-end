@@ -1,6 +1,6 @@
 //npm modules
 import { useState, useEffect} from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 //services
 import * as postService from '../../services/postService'
 //components
@@ -17,10 +17,6 @@ import styles from './PostDetails.module.css'
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
   const { postId } = useParams()
-
-  const navigate = useNavigate()
-
-  // const { commentState } = useLocation()
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -56,6 +52,11 @@ const PostDetails = (props) => {
     setPost({...post, likes: [...post.likes, like]})
   }
 
+  const handleSavePost = async (profileId) => {
+    const save = await postService.savePost(postId, profileId)
+    setPost({...post, saves: [...post.saves, save]})
+  }
+
   if (!post) return <Loading />
 
   return ( 
@@ -74,10 +75,17 @@ const PostDetails = (props) => {
               </>
             }
             {post.author._id !== props.user.profile 
-            && !post.likes.some(p => p === props.user.profile)
-            && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>}
-            {/* display number of likes here */}
+              && !post.likes.some(p => p === props.user.profile)
+              && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>
+            }
             <div>✈️ {post.likes.length}</div>
+
+            {post.author._id !== props.user.profile 
+              && !post.saves.some(p => p === props.user.profile)
+              && <button onClick={() => handleSavePost(props.user.profile)}>Save</button>
+            }
+            <div>💌 {post.saves.length}</div>
+            
           </span>
         </header>
         <p>{post.content}</p>
