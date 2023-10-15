@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 // css
 import styles from './Landing.module.css'
 // import bannerImage from "../../assets/img/default.jpg"
+import React from 'react'
 import missionImage from "../../assets/img/default-pic2.jpg"
 import quotes from "../../assets/icons/quotes.png"
 import NavBar from '../../components/NavBar/NavBar'
+import PostCard from '../../components/PostCard/PostCard'
 
 //components
 
@@ -36,6 +38,15 @@ const Landing = (props) => {
         <div className={styles.topPostsLines}>
           <hr className={styles.topPostsLine} />
           <h3>Top Posts</h3>
+      {props.posts.filter((post,idx)=>(idx<5))
+      .map((postEle)=>{
+        return(
+          postEle.public && <PostCard key={postEle._id} post={postEle}/>
+        )
+      })}
+      
+              
+
           <hr className={styles.topPostsLine} />
         </div>
         <div className={styles.topPostsContent}>
