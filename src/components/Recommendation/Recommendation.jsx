@@ -8,6 +8,7 @@ const Recommendation = (props) => {
     activity: '',
     time: '30 min',
     rating: 5,
+    text: ''
   })
 
   const handleChange = (e) => {
@@ -79,6 +80,16 @@ const Recommendation = (props) => {
           min="1"
           max="5"
           placeholder="Rating"
+          onChange={handleChange}
+        />
+         <label htmlFor="text-input">Tell us about it:</label>
+        <input
+          required
+          type="text"
+          name="text"
+          id="text-input"
+          value={rec.text}
+          placeholder="Text"
           onChange={handleChange}
         />
         <button type="submit">Submit</button>
