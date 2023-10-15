@@ -36,6 +36,14 @@ async function index() {
     console.log(err)
   }
 }
+// async function filterSearch(){
+//   try {
+//     const res= await fetch(`${BASE_URL}/filterSearch`)
+//     return res.json()
+//   }  catch (err) {
+//     console.log(err)
+//   }
+// }
 
 async function deletePost(postId) {
   try {
@@ -144,6 +152,7 @@ export {
   create,
   show,
   index,
+  // filterSearch,
   update,
   createComment,
   deleteComment,
