@@ -20,6 +20,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 import * as postService from './services/postService'
 
 // styles
@@ -134,7 +135,7 @@ function App() {
           <Route
             path="/profiles/:profileId"
             element={
-                <ProfilePage user={user} />
+                <ProfilePage user={user}  />
             }
           />
       </Routes>
