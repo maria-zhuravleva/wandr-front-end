@@ -11,7 +11,9 @@ const PostList = (props) => {
 
   return ( 
     <div className={styles.postListContainer}>
-      <h1>Post List </h1>
+      <div className={styles.postListHeading}>
+        <h1>All Posts</h1>
+      </div>
       {props.errMsg && <h2>{props.errMsg}</h2>}
       <div className={styles.postListSearch}> <SearchPost handlePostSearch={props.handlePostSearch}/></div>
 
@@ -19,7 +21,7 @@ const PostList = (props) => {
         {props.isSearch 
           ? props.searchResults.map(post =>
             <React.Fragment key={post._id}>
-              {post.public && <PostCard key={post._id} post={post} />}
+              {post.public && <PostCard key={post._id} post={post} className={styles.postListSearch} />}
             </React.Fragment> )
           : props.posts.map(post =>  
             <React.Fragment key={post._id}>

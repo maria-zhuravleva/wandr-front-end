@@ -14,7 +14,7 @@ const PostCard = ({ post }) => {
           {/* main photo */}
           <AuthorInfo content={post}/>
         </header>
-          <p key={post._id}>{post.location}</p>
+        <p key={post._id}>{post.location}</p>
       </article>
     </Link>
   )

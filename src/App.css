@@ -25,6 +25,8 @@ a {
   text-decoration: none;
 }
 
+<<<<<<< HEAD
+=======
 .search-form
 {
   margin: auto;
@@ -58,6 +60,7 @@ a {
   text-align: right;
 } */
 
+>>>>>>> main
 @media only screen and (max-width: 414px) {
   .container ul {
     padding-left: 0px;

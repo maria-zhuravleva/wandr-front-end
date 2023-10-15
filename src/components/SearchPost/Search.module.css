@@ -1,0 +1,20 @@
+.searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+}
+
+
+.searchIcon {
+  cursor: pointer;
+  width: 25px; 
+  height: 25px;
+  outline: none;
+  background: transparent;
+}
+
+.searchImg {
+  width: 100%;
+  width: 25px; 
+  height: 25px;
+}

@@ -1,6 +1,7 @@
 // npm modules
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
+
 // css
 import styles from './NavBar.module.css'
 

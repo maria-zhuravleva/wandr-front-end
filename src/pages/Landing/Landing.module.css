@@ -15,7 +15,7 @@
 .banner h1 {
   text-align: center;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: -30px;
   font-weight: 400;
   font-size: 100px;
 }
@@ -143,6 +143,12 @@
   font-weight: 100;
 }
 
+.searchpost {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  margin-right: 50px; 
+}
 
 
 
