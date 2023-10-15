@@ -55,6 +55,7 @@ function App() {
     fetchAllPosts()
   }, [])
 
+
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.create(postFormData)
     setPosts([newPost, ...posts])
@@ -73,8 +74,12 @@ function App() {
     navigate(`/posts/${updatedPost._id}`)
   }
   const handlePostSearch = formData =>{
-    const filteredPostSearch= posts.filter(post => post.location.toLowerCase() === formData.query.toLowerCase()
-    )
+    let filteredPostSearch = posts
+    if(formData.query)
+    {
+      filteredPostSearch= posts.filter(post => post.location.toLowerCase() === formData.query.toLowerCase())
+    }
+    
     if(!filteredPostSearch.length){
       setErrMsg("No Post")
     }else{
