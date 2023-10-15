@@ -18,7 +18,7 @@ const ProfilePage = (props) => {
       setProfile(ProfileData)
     }
     fetchProfile()
-  }, [profileId])
+  }, [])
   
   
   return (  
@@ -26,7 +26,7 @@ const ProfilePage = (props) => {
       <header>
         <h1>{profile.name}</h1>
       </header>
-      
+      <h1>This is a profile page</h1>
       
     </main>
 
