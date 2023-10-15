@@ -33,10 +33,14 @@ const PostDetails = (props) => {
     setPost({...post, comments: [...post.comments, newComment]})
   }
 
-  // NOT YET FUNCTIONAL - working to fix
   const handleAddRec= async (recFormData) => {
     const newRecommendation = await postService.createRec(postId, recFormData)
     setPost({...post, recommendations: [...post.recommendations, newRecommendation]})
+  }
+
+  const handleDeleteRec = async (recId) => {
+    const deltedRec = await postService.deleteRec(postId, recId)
+    setPost({...post, recommendations: post.recommendations.filter(rec => rec._id !== deltedRec._id)})
   }
 
   const handleDeleteComment = async (commentId) => {
@@ -110,7 +114,7 @@ const PostDetails = (props) => {
       <section>
         <Recommendation user={props.user} handleAddRec={handleAddRec}/>
         {post.recommendations.map(recommendation => 
-          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user}  />
+          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user} handleDeleteRec={handleDeleteRec} />
         )}
       </section>
 
