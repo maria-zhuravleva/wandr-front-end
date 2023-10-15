@@ -1,5 +1,5 @@
 //npm modules
-import { useState, useEffect, useLocation } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 //services
 import * as postService from '../../services/postService'
@@ -12,7 +12,7 @@ import RecCard from '../../components/RecCard/RecCard'
 
 //css
 import styles from './PostDetails.module.css'
-import EditComment from '../../components/EditComment/EditComment'
+
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
