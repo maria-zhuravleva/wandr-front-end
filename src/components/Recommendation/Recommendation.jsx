@@ -22,7 +22,7 @@ const Recommendation = (props) => {
 
   return (  
     <>
-      <p>This is a Recommendation</p>
+      <h1>Add a Recommended Activtiy Here</h1>
       <main>
       <form onSubmit={handleSubmit}>
       <label htmlFor="name-input">Name:</label>
@@ -82,15 +82,16 @@ const Recommendation = (props) => {
           placeholder="Rating"
           onChange={handleChange}
         />
-         <label htmlFor="text-input">Tell us about it:</label>
-        <input
+        <label htmlFor="text-input">Tell us about it:</label>
+        <textarea
           required
-          type="text"
           name="text"
           id="text-input"
           value={rec.text}
-          placeholder="Text"
+          placeholder="I loved this activity because ..."
           onChange={handleChange}
+          rows={4}
+          cols={30}
         />
         <button type="submit">Submit</button>
       </form>
