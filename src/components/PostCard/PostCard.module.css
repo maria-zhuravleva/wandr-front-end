@@ -55,4 +55,6 @@
   -webkit-box-orient: vertical;
 }
 
-
+.imageContainer {
+  height: 45%;
+}
