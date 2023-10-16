@@ -31,7 +31,6 @@ import NewPost from './pages/NewPost/NewPost'
 function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
-
   const [posts, setPosts] = useState([])
   console.log(posts)
   const [searchResults,setSearchResults]=useState([])
@@ -47,7 +46,11 @@ function App() {
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
-
+const handleUpdateprofile = async (profileFormData) =>{
+  const updateProfile = await profileService.update(profileFormData)
+  setUser(user.map(ele =>ele._id === profileFormData._id ? updateProfile : ele ))
+navigate(`/profiles/${updateProfile._id}`)
+}
   useEffect(() => {
     const fetchAllPosts =  async () => {
       const postData = await postService.index()
@@ -113,6 +116,9 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path='/profils/:profileId/edit' element={<ProtectedRoute>
+        <  EditPost handleUpdateprofile={handleUpdateprofile} />
+        </ProtectedRoute>}/>
         <Route
           path="/auth/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}
@@ -129,6 +135,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        
         <Route
           path="/posts"
           element={
