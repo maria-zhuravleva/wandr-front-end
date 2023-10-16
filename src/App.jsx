@@ -158,7 +158,7 @@ function App() {
           <Route
             path="/profiles/:profileId"
             element={
-                <ProfilePage user={user}  />
+                <ProfilePage user={user} />
             }
           />
       </Routes>

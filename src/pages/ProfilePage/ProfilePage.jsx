@@ -11,8 +11,9 @@ import * as postService from '../../services/postService'
 
 // components
 import PostCard from "../../components/PostCard/PostCard"
+import Following from "../../components/Following/Following"
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
   const [profile, setProfile] = useState({})
   const { profileId } = useParams()
 
@@ -34,7 +35,10 @@ const ProfilePage = () => {
     fetchProfile()
   }, [profileId])
   
-  
+  const handleFollow = async (profileId) => {
+    const followedProfile = await profileService.addFollow(profileId)
+    setProfile(followedProfile)
+  }
   
   return (  
     <main>
@@ -48,14 +52,19 @@ const ProfilePage = () => {
       {/* change how the date is presented later */}
       <p>{profile.createdAt}</p> 
       </section>
+
+      <section>
+        {<Following profile={profile} user={props.user} handleFollow={handleFollow} />}
+      </section>
+
       <section>
         <h1>My Posts</h1>
         {profilePosts &&
-    profilePosts
-      .filter((post) => post !== null) // Filter out null posts
-      .map((post) => (
-        <PostCard key={post._id} post={post} />
-      ))}
+          profilePosts
+          .filter((post) => post !== null) // Filter out null posts
+          .map((post) => (
+            <PostCard key={post._id} post={post} />
+        ))}
       </section>
     </main>
   )
