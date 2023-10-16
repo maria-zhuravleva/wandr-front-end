@@ -1,0 +1,21 @@
+.editDeleteComment button {
+  cursor: pointer;
+  font-size: 15px;
+  color: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: none; 
+  border-right: none;
+  width: 150px;
+  height: 50px;
+  outline: none;
+  background: transparent;
+  text-transform: uppercase;
+  border-radius: 0;
+  margin-left: 80px;
+}
+
+.editDeleteComment button:hover {
+  background: black; 
+  color: white; 
+}

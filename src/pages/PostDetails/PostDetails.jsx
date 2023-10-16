@@ -95,23 +95,23 @@ const PostDetails = (props) => {
       </div>
 
       <div className={styles.likeAndSaveBtn}>       
-        {post.author._id !== props.user.profile 
-          && !post.likes.some(p => p === props.user.profile)
-          && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>
-        }
         <div className={styles.likeCount}>
           <img src={likesIcon} alt="Likes" className={styles.likeImg} />  
           : {post.likes.length}
         </div>
-
-        {post.author._id !== props.user.profile 
-          && !post.saves.some(p => p === props.user.profile)
-          && <button onClick={() => handleSavePost(props.user.profile)}>Save</button>
-        }
         <div className={styles.saveCount}>
           <img src={savesIcon} alt="Saves" className={styles.saveImg} /> 
           : {post.saves.length}
         </div>       
+
+        {post.author._id !== props.user.profile 
+          && !post.likes.some(p => p === props.user.profile)
+          && <button onClick={() => handleLikePost(props.user.profile)} className={styles.likeBtn}>Like</button>
+        }
+        {post.author._id !== props.user.profile 
+          && !post.saves.some(p => p === props.user.profile)
+          && <button onClick={() => handleSavePost(props.user.profile)} className={styles.saveBtn}>Save</button>
+        }
       </div>
 
       <div className={styles.cardDetailsBtn}>
@@ -141,13 +141,18 @@ const PostDetails = (props) => {
       </div>
 
       <div className={styles.commentsContainer}>
-        <h1>Comments</h1>
+        <div className={styles.commentsLines}>
+          <hr className={styles.commentsLine} />
+          <h3>Comments</h3>
+          <hr className={styles.commentsLine} />
+        </div>
         <NewComment handleAddComment={handleAddComment} />
         {post.comments.map(comment => 
           <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
           />
         )}
       </div>
+      <div className={styles.blackRectangle}></div>
     </main>
   )
 }
