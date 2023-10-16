@@ -65,6 +65,7 @@ const ProfilePage = (props) => {
           <img src={avatar} alt="avatar" />
         )}
       </div>
+      <div><Link to={`/profiles/${profileId}/edit`}><button>Edit profile</button></Link></div>
       <div className={styles.ppBio}>
         <p>This is bio section</p>
       </div>
