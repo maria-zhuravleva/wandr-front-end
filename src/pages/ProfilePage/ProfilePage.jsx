@@ -17,6 +17,7 @@ const ProfilePage = () => {
   const { profileId } = useParams()
 
   const [profilePosts, setProfilePosts] = useState([])
+  const [savedProfilePosts, setSavedProfilePosts] = useState([])
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -29,6 +30,14 @@ const ProfilePage = () => {
           })
         )
         setProfilePosts(postDetails);
+      }
+      if(ProfileData.saves && ProfileData.saves.length > 0) {
+        const savedPostDetails = await Promise.all(
+          ProfileData.saves.map(async (postId) => {
+            return await postService.show(postId)
+          })
+        )
+        setSavedProfilePosts(savedPostDetails)
       }
     }
     fetchProfile()

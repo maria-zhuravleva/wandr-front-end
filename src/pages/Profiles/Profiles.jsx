@@ -34,7 +34,7 @@ const Profiles = () => {
         <p >{profile.name}</p>
         </Link>
       ))}
-      {/* <ProfilePage /> */}
+
     </main>
   )
 }
