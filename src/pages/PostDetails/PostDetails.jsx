@@ -112,11 +112,19 @@ const PostDetails = (props) => {
       </article>
 
       <section>
-        <Recommendation user={props.user} handleAddRec={handleAddRec}/>
-        {post.recommendations.map(recommendation => 
-          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user} handleDeleteRec={handleDeleteRec} />
+        {post.author._id === props.user.profile && (
+          <Recommendation user={props.user} handleAddRec={handleAddRec} />
         )}
+        {post.recommendations.map((recommendation) => (
+          <RecCard
+            key={recommendation._id}
+            recommendation={recommendation}
+            user={props.user}
+            handleDeleteRec={handleDeleteRec}
+          />
+        ))}
       </section>
+
 
       <section>
         <h1>Comments</h1>
