@@ -9,7 +9,7 @@ const NewComment = (props) => {
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
-
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleAddComment(formData)
