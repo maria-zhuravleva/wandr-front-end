@@ -57,6 +57,9 @@ const ProfilePage = (props) => {
       <div className={styles.ppAvatar}>
         <img src={profile.photo} alt="profile image" />
       </div>
+      <div className={styles.ppBio}>
+        <p>This is bio section</p>
+      </div>
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>
         {/* change how the date is presented later */}
@@ -67,24 +70,28 @@ const ProfilePage = (props) => {
         {<Following profile={profile} user={props.user} handleFollow={handleFollow} />}
       </div>
 
-      <div className={styles.profilePosts}>
+      <div className={styles.profilePostsSection}>
         <h1>{profile.name}'s Posts</h1>
-        {profilePosts &&
-          profilePosts
-          .filter((post) => post !== null) // Filter out null posts
-          .map((post) => (
-            <PostCard key={post._id} post={post} />
-        ))}
+        <div className={styles.profilePosts}>
+          {profilePosts &&
+            profilePosts
+            .filter((post) => post !== null) // Filter out null posts
+            .map((post) => (
+              <PostCard key={post._id} post={post} />
+          ))}
+        </div>
       </div>
 
-      <div className={styles.savedPosts}>
-        <h1>{profile.name}'s Saved Posts</h1>
-        {savedProfilePosts &&
-    savedProfilePosts
-      .filter((post) => post !== null) // Filter out null posts
-      .map((post) => (
-        <PostCard key={post._id} post={post} />
-      ))}
+      <div className={styles.savedPostsContainer}>
+        <div className={styles.savedPosts}>
+          <h1>{profile.name}'s Saved Posts</h1>
+          {savedProfilePosts &&
+      savedProfilePosts
+        .filter((post) => post !== null) // Filter out null posts
+        .map((post) => (
+          <PostCard key={post._id} post={post} />
+        ))}
+        </div>
       </div>
     </div>
   )
