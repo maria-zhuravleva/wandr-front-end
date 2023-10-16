@@ -12,7 +12,7 @@ const FollowerList = () => {
 
 useEffect(() => {
   const fetchFollowers = async () => {
-    const followerData = await profileService.showFollowing(profileId)
+    const followerData = await profileService.showFollowers(profileId)
     setFollowerList(followerData)
   }
   fetchFollowers()
@@ -25,10 +25,10 @@ useEffect(() => {
       <p>No followers yet</p>
     ) : (
       <ul>
-        {followerList.map((follower) => {
-          <li key={follower._id}>{follower.name}</li>
-        })}
-      </ul>
+          {followerList.map((follower) => (
+            <li key={follower._id}>{follower.name}</li>
+          ))}
+        </ul>
     )}
     </>
   )

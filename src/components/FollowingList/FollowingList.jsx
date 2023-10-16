@@ -24,10 +24,10 @@ const FollowingList = () => {
       <p>Not following anyone yet</p>
     ) : (
       <ul>
-        {followingList.map((follower) => {
-          <li key={follower._id}>{follower.name}</li>
-        })}
-      </ul>
+          {followingList.map((follower) => (
+            <li key={follower._id}>{follower.name}</li>
+          ))}
+        </ul>
     )}
     </>
   )
