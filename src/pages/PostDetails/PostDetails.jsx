@@ -79,8 +79,8 @@ const PostDetails = (props) => {
   }
   
   const handleAddPostPhoto = async (postId, photoData) => {
-    const postWithPhoto = await postService.addPostPhoto(postId, photoData)
-    setPost(postWithPhoto)
+    const mainPhoto = await postService.addPostPhoto(postId, photoData)
+    setPost({...post, mainPhoto: mainPhoto})
   }
 
   if (!post) return <Loading />

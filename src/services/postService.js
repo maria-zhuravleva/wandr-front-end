@@ -23,7 +23,24 @@ async function addPostPhoto(postId, photoData) {
   try {
     const photoFormData = new FormData()
     photoFormData.append('photo', photoData)
-    const res = await fetch(`${BASE_URL}/${postId}/mainPhoto`, {
+    const res = await fetch(`${BASE_URL}/${postId}/main-photo`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoFormData,
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function addMorePostPhotos(postId, photoData) {
+  try {
+    const photoFormData = new FormData()
+    photoFormData.append('photo', photoData)
+    const res = await fetch(`${BASE_URL}/${postId}/photos`, {
       method: 'PATCH',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
@@ -38,7 +55,7 @@ async function addPostPhoto(postId, photoData) {
 
 async function deletePostPhoto(postId) {
   try {
-    const res = await fetch(`${BASE_URL}/${postId}/deletePostPhoto`, {
+    const res = await fetch(`${BASE_URL}/${postId}/delete-main-photo`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
@@ -218,4 +235,5 @@ export {
   savePost,
   addPostPhoto,
   deletePostPhoto,
+  addMorePostPhotos,
 }
