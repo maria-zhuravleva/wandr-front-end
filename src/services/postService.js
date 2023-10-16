@@ -192,6 +192,22 @@ async function deleteRec(postId, recId) {
   }
 }
 
+async function editRec(postId, recFormData){
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/recommendations/${recFormData._id}`, {
+      method: 'PATCH',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(recFormData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function likePost(postId) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/likes`, {
@@ -230,6 +246,7 @@ export {
   editComment,
   createRec,
   deleteRec,
+  editRec,
   deletePost,
   likePost,
   savePost,

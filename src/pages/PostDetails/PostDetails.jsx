@@ -9,7 +9,8 @@ import NewComment from '../../components/NewComment/NewComment'
 import CommentCard from '../../components/CommentCard/CommentCard'
 import Recommendation from '../../components/Recommendation/Recommendation'
 import RecCard from '../../components/RecCard/RecCard'
-import PhotoUpload from '../../components/UploadPhoto/MainPostPhoto'
+import PhotoUpload from '../../components/UploadPhoto/PhotoUpload'
+import MorePhotosUpload from '../../components/UploadPhoto/MorePhotosUpload'
 
 //css
 import styles from './PostDetails.module.css'
@@ -25,6 +26,7 @@ const PostDetails = (props) => {
   const { postId } = useParams()
 
   const [showPhotoUploadField, setShowPhotoUploadField] = useState(false)
+  const [showMorePhotosUploadField, setShowMorePhotosUploadField] = useState(false)
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -59,6 +61,11 @@ const PostDetails = (props) => {
     setPost({...post, comments: post.comments.map(cmt => cmt._id === commentFormData._id ? editedComment : cmt)})
   }
 
+  const handleEditRec = async (recFormData) => {
+    const editedRec = await postService.editRec(postId, recFormData)
+    setPost({...post, recommendations: post.recommendations.map(rec => rec._id === recFormData._id ? editedRec : rec)})
+  }
+
   const handleLikePost = async (profileId) => {
     const like = await postService.likePost(postId, profileId)
     setPost({...post, likes: [...post.likes, like]})
@@ -72,6 +79,9 @@ const PostDetails = (props) => {
   const handleShow = () => {
     setShowPhotoUploadField(true)
   }
+  const handleShowMore = () => {
+    setShowMorePhotosUploadField(true)
+  }
 
   const handleDeletePostPhoto = async () => {
     const deletedPhoto = await postService.deletePostPhoto(postId)
@@ -83,7 +93,7 @@ const PostDetails = (props) => {
     setPost({...post, mainPhoto: mainPhoto})
   }
 
-  const handleMorePostPhotos = async (postId, photoData) => {
+  const handleAddMorePostPhotos = async (postId, photoData) => {
     const photo = await postService.addPostPhoto(postId, photoData)
     setPost({...post, morePhotos: [photo, ...post.morePhotos]})
   }
@@ -151,7 +161,11 @@ const PostDetails = (props) => {
               {post.mainPhoto && <button onClick={handleDeletePostPhoto}>
                 Delete Main Photo
               </button>}
+              {post.morePhotos.length < 5 && <button onClick={handleShowMore}>
+                Upload More Photos
+              </button>}
               {showPhotoUploadField && <PhotoUpload post={post} handleAddPostPhoto={handleAddPostPhoto} />}
+              {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} />}
             </>
           )}
           
@@ -169,6 +183,7 @@ const PostDetails = (props) => {
                 recommendation={recommendation}
                 user={props.user}
                 handleDeleteRec={handleDeleteRec}
+                handleEditRec={handleEditRec}
                 author={post.author}
               />
             ))} 
