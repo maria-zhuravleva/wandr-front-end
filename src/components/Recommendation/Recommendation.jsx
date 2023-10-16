@@ -8,7 +8,7 @@ const Recommendation = (props) => {
 
   const [rec, setRec] = useState({
     name: '',
-    activity: '',
+    activity: 'Hiking',
     time: '30 min',
     rating: 5,
     text: ''
@@ -21,6 +21,13 @@ const Recommendation = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleAddRec(rec)
+    setRec({
+      name: '',
+      activity: 'Hiking',
+      time: '30 min',
+      rating: 5,
+      text: '',
+    })
   }
 
   return (  

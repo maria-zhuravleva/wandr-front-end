@@ -34,7 +34,7 @@ const PostDetails = (props) => {
     const newComment = await postService.createComment(postId, commentFormData)
     setPost({...post, comments: [...post.comments, newComment]})
   }
-
+  
   const handleAddRec= async (recFormData) => {
     const newRecommendation = await postService.createRec(postId, recFormData)
     setPost({...post, recommendations: [...post.recommendations, newRecommendation]})
@@ -134,10 +134,18 @@ const PostDetails = (props) => {
 
 
       <div className={styles.recommendationsContainer}>
-        <Recommendation user={props.user} handleAddRec={handleAddRec}/>
-        {post.recommendations.map(recommendation => 
-          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user} handleDeleteRec={handleDeleteRec} />
+      {post.author._id === props.user.profile && (
+          <Recommendation user={props.user} handleAddRec={handleAddRec} />
         )}
+        {post.recommendations.map((recommendation) => (
+          <RecCard
+            key={recommendation._id}
+            recommendation={recommendation}
+            user={props.user}
+            handleDeleteRec={handleDeleteRec}
+            author={post.author}
+          />
+        ))}
       </div>
 
       <div className={styles.commentsContainer}>
