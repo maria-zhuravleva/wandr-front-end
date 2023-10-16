@@ -43,8 +43,21 @@ async function showProfile(profileId) {
   }
 }
 
+async function addFollow(profileId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export { 
   getAllProfiles, 
   addPhoto,
-  showProfile
+  showProfile,
+  addFollow,
 }

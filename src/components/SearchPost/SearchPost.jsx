@@ -4,8 +4,11 @@ import styles from './Search.module.css'
 
 const SearchPost = (props) => {
   const [formData,setFormData]=useState({query:''})
+  
   const handleChange = evt => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value})
+    props.handlePostSearch(formData)
+
   }
   const handleClearField = e => {
     setFormData({...formData, [e.target.name]: ''})
