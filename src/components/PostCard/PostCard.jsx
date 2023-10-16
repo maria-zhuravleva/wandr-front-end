@@ -13,8 +13,8 @@ const PostCard = ({ post }) => {
             <h1 key={post._id}>{post.title}</h1>
             <AuthorInfo content={post}/>
           </header>
-            <p key={post._id}>{post.location}</p>
-            <img className={styles.imageContainer} src={post.mainPhoto} />
+          <p key={post._id}>{post.location}</p>
+          {post.mainPhoto && <img className={styles.imageContainer} src={post.mainPhoto} />}
         </article>
       </Link>
   )
