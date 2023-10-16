@@ -71,7 +71,9 @@ const ProfilePage = (props) => {
       </div>
 
       <div className={styles.profilePostsSection}>
-        <h1>{profile.name}'s Posts</h1>
+        <div className={styles.ppH}>
+          <h1>{profile.name}'s Posts</h1>
+        </div>
         <div className={styles.profilePosts}>
           {profilePosts &&
             profilePosts
@@ -83,16 +85,17 @@ const ProfilePage = (props) => {
       </div>
 
       <div className={styles.savedPostsContainer}>
+        <h1>{profile.name}'s Saved Posts</h1>
         <div className={styles.savedPosts}>
-          <h1>{profile.name}'s Saved Posts</h1>
           {savedProfilePosts &&
-      savedProfilePosts
-        .filter((post) => post !== null) // Filter out null posts
-        .map((post) => (
+          savedProfilePosts
+          .filter((post) => post !== null) // Filter out null posts
+          .map((post) => (
           <PostCard key={post._id} post={post} />
         ))}
         </div>
       </div>
+
     </div>
   )
 }
