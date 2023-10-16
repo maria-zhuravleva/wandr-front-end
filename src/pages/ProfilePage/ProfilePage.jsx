@@ -50,22 +50,24 @@ const ProfilePage = (props) => {
   }
   
   return (  
-    <main>
-      <header>
+    <div className={styles.profilePageContainer}>
+      <header className={styles.ppHeader}>
         <h1>{profile.name}</h1>
       </header>
-      <section>
-      <img src={profile.photo} alt="profile image" />
-      <h5>Member Since </h5>
-      {/* change how the date is presented later */}
-      <p>{profile.createdAt}</p> 
-      </section>
+      <div className={styles.ppAvatar}>
+        <img src={profile.photo} alt="profile image" />
+      </div>
+      <div className={styles.ppInfo}>
+        <h5>Member Since </h5>
+        {/* change how the date is presented later */}
+        <p>{profile.createdAt}</p> 
+      </div>
 
-      <section>
+      <div className={styles.followersContainer}>
         {<Following profile={profile} user={props.user} handleFollow={handleFollow} />}
-      </section>
+      </div>
 
-      <section>
+      <div className={styles.profilePosts}>
         <h1>{profile.name}'s Posts</h1>
         {profilePosts &&
           profilePosts
@@ -73,8 +75,9 @@ const ProfilePage = (props) => {
           .map((post) => (
             <PostCard key={post._id} post={post} />
         ))}
-      </section>
-      <section>
+      </div>
+
+      <div className={styles.savedPosts}>
         <h1>{profile.name}'s Saved Posts</h1>
         {savedProfilePosts &&
     savedProfilePosts
@@ -82,8 +85,8 @@ const ProfilePage = (props) => {
       .map((post) => (
         <PostCard key={post._id} post={post} />
       ))}
-      </section>
-    </main>
+      </div>
+    </div>
   )
 }
 
