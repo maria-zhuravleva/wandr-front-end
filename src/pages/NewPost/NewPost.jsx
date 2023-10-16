@@ -1,5 +1,5 @@
 //npm modules
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 
 //components
 import { initialState } from './initialState.js'
@@ -15,7 +15,7 @@ const NewPost = (props) => {
   }
 
   const handleChecked = (e, status) => {
-    setFormData({...formData, isPublic: status})
+    setFormData({...formData, public: status})
   }
 
   const handleSubmit = (e) => {
@@ -65,13 +65,13 @@ const NewPost = (props) => {
             />
           </div>
           <div className={styles.inputWrapper}>
-            <label htmlFor="isPublic-input">Make Public?</label>
+            <label htmlFor="public-input">Make Public?</label>
             <input 
               type="checkbox"
-              name="isPublic"
-              id="isPublic-input"
-              checked={formData.isPublic}
-              onChange={e => handleChecked(e, !formData.isPublic)}
+              name="public"
+              id="public-input"
+              checked={formData.public}
+              onChange={e => handleChecked(e, !formData.public)}
               className={styles.checkbox}
             />
           </div>

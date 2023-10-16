@@ -13,7 +13,8 @@ const EditComment = (props) => {
 
   const handleClearField = e => {
     setFormData({...formData, [e.target.name]: ''})
-
+  }
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleEditComment(formData)

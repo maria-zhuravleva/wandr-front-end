@@ -56,8 +56,8 @@ function App() {
   }, [])
 
 
-  const handleAddPost = async (postFormData, photoData) => {
-    const newPost = await postService.create(postFormData, photoData)
+  const handleAddPost = async (postFormData) => {
+    const newPost = await postService.create(postFormData)
     setPosts([newPost, ...posts])
     navigate('/posts')
   }
@@ -77,9 +77,11 @@ function App() {
     let filteredPostSearch = posts
     
     if(formData.query)
-    {
-      filteredPostSearch= posts.filter(post => post.location?.toLowerCase().includes(formData.query.toLowerCase()))
-    }
+      {filteredPostSearch= posts.filter(post =>
+        post.location?.toLowerCase().includes(formData.query.toLowerCase())
+        || post.title?.toLowerCase().includes(formData.query.toLowerCase())
+        || post.author?.name.toLowerCase().includes(formData.query.toLowerCase())
+      )}
     
     if(!filteredPostSearch.length){
       setErrMsg("No Post")
@@ -94,7 +96,7 @@ function App() {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} posts={posts}/>} />
+        <Route path="/" element={<Landing user={user} posts={posts} errMsg ={errMsg} searchResults ={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}/>} />
         <Route
           path="/about"
           element={

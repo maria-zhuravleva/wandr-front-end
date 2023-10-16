@@ -15,7 +15,7 @@ const EditPost = (props) => {
   const handleClearField = e => {
     setFormData({...formData, [e.target.name]: ''})
   }
-  
+
   const handleChecked = (e, status) => {
     setFormData({...formData, public: status})
   }
