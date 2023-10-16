@@ -55,7 +55,6 @@ const ProfilePage = (props) => {
         <h1>{profile.name}</h1>
       </header>
       <section>
-      <h1>This is a profile page</h1>
       <img src={profile.photo} alt="profile image" />
       <h5>Member Since </h5>
       {/* change how the date is presented later */}
@@ -67,7 +66,7 @@ const ProfilePage = (props) => {
       </section>
 
       <section>
-        <h1>My Posts</h1>
+        <h1>{profile.name}'s Posts</h1>
         {profilePosts &&
           profilePosts
           .filter((post) => post !== null) // Filter out null posts
@@ -76,7 +75,7 @@ const ProfilePage = (props) => {
         ))}
       </section>
       <section>
-        <h1>Saved Posts</h1>
+        <h1>{profile.name}'s Saved Posts</h1>
         {savedProfilePosts &&
     savedProfilePosts
       .filter((post) => post !== null) // Filter out null posts
