@@ -13,6 +13,7 @@ import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
 import About from './pages/About/About'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
+import FollowingIndex from './pages/FollowingIndex/FollowingIndex'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -27,6 +28,8 @@ import * as postService from './services/postService'
 // styles
 import './App.css'
 import NewPost from './pages/NewPost/NewPost'
+import FollowerList from './components/FollowerList/FollowerList'
+import FollowingList from './components/FollowingList/FollowingList'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
@@ -162,6 +165,10 @@ function App() {
             element={
                 <ProfilePage user={user} />
             }
+          />
+          <Route
+            path="/profiles/:profileId/following"
+            element={<FollowingIndex user={user} />}
           />
       </Routes>
     </>

@@ -11,6 +11,9 @@ import avatar from "../../assets/icons/avatar.png"
 import * as profileService from '../../services/profileService'
 import * as postService from '../../services/postService'
 
+// pages
+import FollowingIndex from "../FollowingIndex/FollowingIndex"
+
 // components
 import PostCard from "../../components/PostCard/PostCard"
 import Following from "../../components/Following/Following"
@@ -75,7 +78,10 @@ const ProfilePage = (props) => {
       </div>
 
       <div className={styles.followersContainer}>
-        {<Following profile={profile} user={props.user} handleFollow={handleFollow} />}
+          {<Following profile={profile} user={props.user} handleFollow={handleFollow} />}
+          <Link to={`/profiles/${profile._id}/following`}>
+            View Following
+          </Link>
       </div>
 
       <div className={styles.profilePostsSection}>

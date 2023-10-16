@@ -55,9 +55,29 @@ async function addFollow(profileId) {
   }
 }
 
+async function showFollowers(profileId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/followers`)
+    return res.json()
+  } catch (error) {
+    console.log()
+  }
+}
+
+async function showFollowing(profileId){
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/following`)
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export { 
   getAllProfiles, 
   addPhoto,
   showProfile,
   addFollow,
+  showFollowing,
+  showFollowers
 }
