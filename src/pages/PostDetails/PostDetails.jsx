@@ -32,7 +32,7 @@ const PostDetails = (props) => {
     const newComment = await postService.createComment(postId, commentFormData)
     setPost({...post, comments: [...post.comments, newComment]})
   }
-
+  
   const handleAddRec= async (recFormData) => {
     const newRecommendation = await postService.createRec(postId, recFormData)
     setPost({...post, recommendations: [...post.recommendations, newRecommendation]})
