@@ -117,7 +117,11 @@ const PostDetails = (props) => {
         <div className={styles.imageContainer}>
             <img src={post.mainPhoto ? post.mainPhoto : DefaultPhoto} alt="Post Main Photo" />
         </div>
-         
+        <div className={styles.imageCollection}>
+         {post.morePhotos.map((photo, idx) => 
+            <img key={idx} src={photo} alt={`Post Photo ${idx}`} />
+            )}
+        </div>
       </div>
 
       <div className={styles.likeAndSaveBtn}>       
