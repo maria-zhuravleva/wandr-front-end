@@ -1,4 +1,4 @@
-.container {
+/* .container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,17 +106,55 @@
   position: absolute;
   top: 77%;
   right: 50%;
+} */
+
+.newPostContainer {
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px black;
+  height: 100vh;
+}
+
+.newPostContainer h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 80px;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  padding-right: 15px; 
+  border-right: 1px solid black; 
+  display: inline-block;
+  margin-bottom: 150px;
+  font-weight: 100;
+  /* position: absolute;
+  top: 13%;
+  right: 80%;  */
+}
+
+.newPostFormContainer {
+  flex: 1;
+  margin-right: 20px; 
+  border: solid 1px black;
+}
+
+.imageWrapper {
+  flex: 1;
 }
 
 
 .imageWrapper {
-  position: absolute;
+  /* position: absolute;
   top: 20%;
   right: 1%;
-  height: 30%;
+  height: 30%; */
   background: url('../../assets/img/form.jpg');
   background-size: cover;
-  width: 40%;
+  max-width: 500px;
+  max-height: 600px;
+  margin-top: 900px;
+  margin-right: 50px;
+  margin-left: 50px;
+  /* width: 40%; */
   transform: rotate(90deg);
 }
 
