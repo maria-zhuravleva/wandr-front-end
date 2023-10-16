@@ -74,13 +74,18 @@ const PostDetails = (props) => {
   }
 
   const handleDeletePostPhoto = async () => {
-    const post = await postService.deletePostPhoto(postId)
-    setPost(post)
+    const deletedPhoto = await postService.deletePostPhoto(postId)
+    setPost({...post, mainPhoto: deletedPhoto})
   }
   
   const handleAddPostPhoto = async (postId, photoData) => {
     const mainPhoto = await postService.addPostPhoto(postId, photoData)
     setPost({...post, mainPhoto: mainPhoto})
+  }
+
+  const handleMorePostPhotos = async (postId, photoData) => {
+    const photo = await postService.addPostPhoto(postId, photoData)
+    setPost({...post, morePhotos: [photo, ...post.morePhotos]})
   }
 
   if (!post) return <Loading />
