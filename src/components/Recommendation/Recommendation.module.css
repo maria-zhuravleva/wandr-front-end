@@ -7,9 +7,10 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 600px; 
+  width: 700px; 
   background-color: white; 
-  border: 1px solid black; 
+  border-top: 1px solid black; 
+  border-left: solid 1px black; 
   padding: 30px; 
   box-sizing: border-box;
 }
@@ -53,21 +54,19 @@
 }
 
 .recCard select {
-  height: 70px;
   font-size: 14px;
   font-style: italic;
   border: solid 1px black;
-  height: 30px;
+  height: 50px;
   width: 300px;
   margin-left: 5px;
 }
 
 .recCard textarea {
-  height: 80px;
+  height: 90px;
   font-size: 14px;
   font-style: italic;
   border: solid 1px black;
-  height: 40px;
   width: 300px;
   margin-left: 5px;
   border-radius: 0;
@@ -92,7 +91,7 @@
   margin: 20px auto; 
 }
 
-.submitButton {
+.recCard .submitButton {
   margin: 20px auto;
   border-top: 1px solid black;
   border-bottom: 1px solid black;

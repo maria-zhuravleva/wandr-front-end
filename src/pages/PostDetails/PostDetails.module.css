@@ -8,7 +8,7 @@
     "cardDetailsContainer likeAndSaveBtn"
     "cardDetailsBtn recommendationsContainer"
     "commentsContainer commentsContainer";
-    height: 100%;
+    height: 100vh;
 }
 
 .cardDetailsContainer {
@@ -76,12 +76,19 @@
   height: 15px;
 }
 
+.secondRow {
+  display: flex;
+  width: 1400px;
+  height: 800px;
+  padding: 60px;
+}
+
 .cardDetailsBtn {
-  grid-area: cardDetailsBtn;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   margin-left: 200px;
+  margin-right: 40px;
 }
 
 .cardDetailsBtn button,
@@ -104,12 +111,13 @@
   margin: 0;
   border-radius: 0;
   margin-bottom: 20px;
-  margin-left: 40px;
+  margin-left: -20px;
 }
 
 .likeBtn,
 .saveBtn {
   margin-top: 53px;
+  margin-left: 60px;
 }
 
 .cardDetailsBtn button:last-child {
@@ -138,41 +146,49 @@
 }
 
 
+.map {
+  height: 100px;
+  margin-left: -150px;
+  opacity: 0.1;
+  margin-top: 20px;
+}
+
+
 .recommendationsContainer {
-  grid-area: recommendationsContainer;
-  position: absolute;
-  top: 880px;
-  right: 100px;
   padding: 50px;
   margin-bottom: 50px;
+  margin-left: 250px;
 }
 
 .commentsContainer {
-  grid-area: commentsContainer;
   display: flex;
   flex-direction: column;
-  width: 600px;
+  width: 850px;
   margin-left: 30px;
   background-color: white;
-  border: solid 1px black; 
-  padding: 20px;
-  margin-top: 80px;
-  padding: 10px;
-  padding: 50px;
-  padding-top: 30px;
+  border-top: solid 1px black; 
+  border-right: solid 1px black; 
+  margin-top: 0px;
+  padding: 0 50px;
 }
 
 .commentsContainer h3 {
+  margin-bottom: 0;
+  height: 200px;
+  padding: 0 20px;
   font-weight: 100;
+  font-size: 35px;
   text-align: center;
+  background: url('../../assets/icons/comments.png');
+  background-size: 90px; 
+  background-position: 465px 0;
+  background-repeat: no-repeat;
 }
 
-/* .blackRectangle {
-  position: absolute;
-  left: 600px;
-  background-color: black;
-  width: 700px; 
-  height: 500px; 
+
+/* .commentsContainer .watercolor img {
+  width: 50px;
+  height: 50px;
 } */
 
 
