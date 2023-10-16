@@ -1,6 +1,9 @@
 // npm modules
 import { useState } from "react"
 
+// css
+import styles from './Recommendation.module.css'
+
 const Recommendation = (props) => {
 
   const [rec, setRec] = useState({
@@ -28,8 +31,8 @@ const Recommendation = (props) => {
   }
 
   return (  
-    <>
-      <h1>Add a Recommended Activtiy Here</h1>
+    <div className={styles.recCard}>
+      <h1>Share a Top Activity!</h1>
       <main>
       <form onSubmit={handleSubmit}>
       <label htmlFor="name-input">Name:</label>
@@ -106,10 +109,10 @@ const Recommendation = (props) => {
           rows={4}
           cols={30}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className={styles.submitButton}>Submit</button>
       </form>
     </main>
-    </>
+    </div>
   )
 }
 

@@ -8,49 +8,40 @@
   align-items: center;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
+  height: 150px;
 }
 
-.container h3 {
-  margin: 0;
-  color: black;
-}
-
-.container input, .container textarea { 
-  width: 100%;
-  padding: 14px;
-  font-size: 14px;
-  resize: vertical;
-  border-radius: 5px;
-  margin: 14px 0px 14px 0px;
-  border: 1px solid var(--border);
-}
-
-.container textarea {
-  min-height: 50px;
+.commentTextarea {
+  box-shadow: 0 0 0 0.5px black;
+  height: 100px;
+  font-size: 15px;
+  font-style: italic;
+  height: 100px;
+  width: 300px;
+  margin-left: 5px;
+  border-radius: 0;
 }
 
 .container button {
   margin: 0;
-  color: white;
-  font-weight: 600;
-  background: #00a0df;
+}
+
+.sendArrow .send {
+  width: 40px;
+  height: 40px;
 }
 
 .container button[type="submit"] {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   display: flex;
   margin-left: 14px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
+  margin-left: 30px;
 }
 
 .container button[type="submit"]:hover {
   cursor: pointer;
-}
-
-.container button[type="submit"] img {
-  width: 18px;
-  height: 18px;
 }
