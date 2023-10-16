@@ -16,7 +16,6 @@ import styles from './PostDetails.module.css'
 import likesIcon from "../../assets/icons/likes.png"
 import savesIcon from "../../assets/icons/saves.png"
 import map from "../../assets/icons/map.png"
-import watercolor from "../../assets/icons/comments.png"
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
