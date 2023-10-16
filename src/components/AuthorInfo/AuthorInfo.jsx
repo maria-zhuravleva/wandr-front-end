@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 
 const AuthorInfo = ({ content }) => {
-  const photo = content.author.photo ? content.author.photo : <FontAwesomeIcon icon={faCircleUser} />
+  const photo = content.author?.photo ? content.author?.photo : <FontAwesomeIcon icon={faCircleUser} />
 
   return (
     <div className={styles.container}>

@@ -13,26 +13,14 @@ import PostCard from '../../components/PostCard/PostCard'
 
 
 const Landing = (props) => {
-  const allPosts = props.posts
-  const [searchResults,setSearchResults]= useState([])
-  const [errMsg,setErrMsg]= useState("")
-
-  const handlePostSearch = formData =>{
-    const filteredPostSearch= allPosts.filter(post => post.location.toLowerCase().includes(formData.query.toLowerCase()))
-    if(!filteredPostSearch.length){
-      setErrMsg('No posts')
-    }else{
-      setErrMsg("")
-    }
-    setSearchResults(filteredPostSearch)
-  }
+  const publicPosts = props.posts.filter(post => post.public)
 
   return (
     <>
       <div className={styles.searchpost}>
-      {errMsg && <h2>{errMsg}</h2>}
-        <SearchPost handlePostSearch={handlePostSearch}/>
-        {searchResults.map(post =>
+      {props.errMsg && <h2>{props.errMsg}</h2>}
+        <SearchPost handlePostSearch={props.handlePostSearch}/>
+        {props.searchResults.map(post =>
           <PostCard key={post._id}
           post={post}/>)}
       </div>
@@ -61,12 +49,11 @@ const Landing = (props) => {
           <hr className={styles.topPostsLine} />
         </div>
         <div className={styles.topPostsContent}>
-          {props.posts.filter((post,idx)=>(idx<5))
-          .map((postEle)=>{
-            return(
-              postEle.public && <PostCard key={postEle._id} post={postEle}/>
-            )
-          })}
+          {publicPosts.map((post, idx) => 
+            <>
+              {idx < 5 && <PostCard key={post._id} post={post}/>}
+            </>
+          )}
         </div>
         <Link to="/posts" className={styles.landingPageArrow}>
           <p>See More</p> 

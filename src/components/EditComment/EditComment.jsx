@@ -11,6 +11,10 @@ const EditComment = (props) => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
+  const handleClearField = e => {
+    setFormData({...formData, [e.target.name]: ''})
+  }
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleEditComment(formData)
@@ -25,6 +29,7 @@ const EditComment = (props) => {
         name='text'
         value={formData.text}
         onChange={handleChange}
+        onClick={handleClearField}
       />
       <button type='submit'>Save</button>
     </form>
