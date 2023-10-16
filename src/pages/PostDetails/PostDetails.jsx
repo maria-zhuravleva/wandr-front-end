@@ -121,6 +121,7 @@ const PostDetails = (props) => {
             recommendation={recommendation}
             user={props.user}
             handleDeleteRec={handleDeleteRec}
+            author={post.author}
           />
         ))}
       </section>
