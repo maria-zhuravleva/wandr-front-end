@@ -51,7 +51,7 @@ const PhotoUpload = (props) => {
       </label>
       <button type="submit">Upload</button>
     </form>
-   )
+  )
 }
- 
+
 export default PhotoUpload

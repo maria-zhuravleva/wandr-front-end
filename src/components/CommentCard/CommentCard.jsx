@@ -18,7 +18,7 @@ const CommentCard = (props) => {
   }
 
   return ( 
-    <article>
+    <div className={styles.commentContainer}>
       <header>
         {<AuthorInfo content={props.comment}/>}
       </header>
@@ -30,7 +30,7 @@ const CommentCard = (props) => {
       
       {/* show edit comment form on button click */}
       {showForm && <EditComment comment={props.comment} handleEditComment={props.handleEditComment} handleHideForm={handleHideForm}/>}
-    </article>
+    </div>
   )
 }
 

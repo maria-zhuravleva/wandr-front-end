@@ -15,6 +15,8 @@ import PhotoUpload from '../../components/UploadPhoto/MainPostPhoto'
 import styles from './PostDetails.module.css'
 import likesIcon from "../../assets/icons/likes.png"
 import savesIcon from "../../assets/icons/saves.png"
+import map from "../../assets/icons/map.png"
+import watercolor from "../../assets/icons/comments.png"
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
@@ -103,7 +105,7 @@ const PostDetails = (props) => {
           <img src={savesIcon} alt="Saves" className={styles.saveImg} /> 
           : {post.saves.length}
         </div> 
-         
+
         {props.user
           && post.author._id !== props.user?.profile 
           && !post.likes.some(p => p === props.user?.profile)
@@ -116,46 +118,56 @@ const PostDetails = (props) => {
         }
         
       </div>
-        
-      <div className={styles.cardDetailsBtn}>
-        {post.author._id === props.user?.profile && (
-          <>
-            <Link to={`/posts/${postId}/edit`} state={post}>
-              <button>
-                Edit</button>
-            </Link>
-            <button onClick={() => props.handleDeletePost(postId)}>
-                Delete</button>
-            <button onClick={handleShow}>
-              {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
-            </button>
-            {post.mainPhoto && <button onClick={handleDeletePostPhoto}>Delete Main Photo</button>}
-            {showPhotoUploadField && <PhotoUpload post={post} />}
-          </>
-        )}
-      </div>
 
+      <div className={styles.secondRow}>
+        <div className={styles.cardDetailsBtn}>
+          {post.author._id === props.user?.profile && (
+            <>
+              <Link to={`/posts/${postId}/edit`} state={post}>
+                <button>
+                  Edit
+                </button>
+              </Link>
+              <button onClick={() => props.handleDeletePost(postId)}>
+                Delete
+              </button>
+              <button onClick={handleShow}>
+                {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
+              </button>
+              {post.mainPhoto && <button onClick={handleDeletePostPhoto}>
+                Delete Main Photo
+              </button>}
+              {showPhotoUploadField && <PhotoUpload post={post} />}
+            </>
+          )}
+          
+          <div className={styles.map}>
+            <img src={map} alt="map" />
+          </div>
 
-      <div className={styles.recommendationsContainer}>
-      {post.author._id === props.user?.profile && (
-          <Recommendation user={props.user} handleAddRec={handleAddRec} />
-        )}
-        {post.recommendations.map((recommendation) => (
-          props.user && <RecCard
-            key={recommendation._id}
-            recommendation={recommendation}
-            user={props.user}
-            handleDeleteRec={handleDeleteRec}
-            author={post.author}
-          />
-        ))}
-      </div>
+          <div className={styles.recommendationsContainer}>
+            {post.author._id === props.user?.profile && (
+              <Recommendation user={props.user} handleAddRec={handleAddRec} />
+            )}
+            {post.recommendations.map((recommendation) => (
+              props.user && <RecCard
+                key={recommendation._id}
+                recommendation={recommendation}
+                user={props.user}
+                handleDeleteRec={handleDeleteRec}
+                author={post.author}
+              />
+            ))} 
+          </div>
+        </div>
+      </div>  
 
       <div className={styles.commentsContainer}>
         <div className={styles.commentsLines}>
-          <hr className={styles.commentsLine} />
+          {/* <hr className={styles.commentsLine} /> */}
           <h3>Comments</h3>
-          <hr className={styles.commentsLine} />
+          {/* <img src={watercolor} alt="watercolor" /> */}
+          {/* <hr className={styles.commentsLine} /> */}
         </div>
         {props.user && <NewComment handleAddComment={handleAddComment} />}
         {post.comments.map(comment => 
@@ -167,7 +179,7 @@ const PostDetails = (props) => {
           </>
         )}
       </div>
-      <div className={styles.blackRectangle}></div>
+
     </main>
   )
 }

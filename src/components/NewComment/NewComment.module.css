@@ -2,6 +2,8 @@
   padding: 0;
   display: flex;
   border: none;
+  flex-direction: column;
+  justify-content: center;
   max-width: 100%;
   box-shadow: none;
   flex-direction: row;
