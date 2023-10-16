@@ -34,7 +34,7 @@ const PostDetails = (props) => {
     const newComment = await postService.createComment(postId, commentFormData)
     setPost({...post, comments: [...post.comments, newComment]})
   }
-
+  
   const handleAddRec= async (recFormData) => {
     const newRecommendation = await postService.createRec(postId, recFormData)
     setPost({...post, recommendations: [...post.recommendations, newRecommendation]})
@@ -102,20 +102,23 @@ const PostDetails = (props) => {
         <div className={styles.saveCount}>
           <img src={savesIcon} alt="Saves" className={styles.saveImg} /> 
           : {post.saves.length}
-        </div>       
-
-        {post.author._id !== props.user.profile 
-          && !post.likes.some(p => p === props.user.profile)
+        </div> 
+         
+        {props.user
+          && post.author._id !== props.user?.profile 
+          && !post.likes.some(p => p === props.user?.profile)
           && <button onClick={() => handleLikePost(props.user.profile)} className={styles.likeBtn}>Like</button>
         }
-        {post.author._id !== props.user.profile 
-          && !post.saves.some(p => p === props.user.profile)
-          && <button onClick={() => handleSavePost(props.user.profile)} className={styles.saveBtn}>Save</button>
+        {props.user
+          && post.author._id !== props.user?.profile 
+          && !post.saves.some(p => p === props.user?.profile)
+          && <button onClick={() => handleSavePost(props.user?.profile)} className={styles.saveBtn}>Save</button>
         }
+        
       </div>
-
+        
       <div className={styles.cardDetailsBtn}>
-        {post.author._id === props.user.profile && (
+        {post.author._id === props.user?.profile && (
           <>
             <Link to={`/posts/${postId}/edit`} state={post}>
               <button>
@@ -134,10 +137,18 @@ const PostDetails = (props) => {
 
 
       <div className={styles.recommendationsContainer}>
-        <Recommendation user={props.user} handleAddRec={handleAddRec}/>
-        {post.recommendations.map(recommendation => 
-          <RecCard key={recommendation._id} recommendation={recommendation} user={props.user} handleDeleteRec={handleDeleteRec} />
+      {post.author._id === props.user?.profile && (
+          <Recommendation user={props.user} handleAddRec={handleAddRec} />
         )}
+        {post.recommendations.map((recommendation) => (
+          props.user && <RecCard
+            key={recommendation._id}
+            recommendation={recommendation}
+            user={props.user}
+            handleDeleteRec={handleDeleteRec}
+            author={post.author}
+          />
+        ))}
       </div>
 
       <div className={styles.commentsContainer}>
@@ -146,10 +157,14 @@ const PostDetails = (props) => {
           <h3>Comments</h3>
           <hr className={styles.commentsLine} />
         </div>
-        <NewComment handleAddComment={handleAddComment} />
+        {props.user && <NewComment handleAddComment={handleAddComment} />}
         {post.comments.map(comment => 
-          <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
-          />
+          <>
+            { props.user &&
+              <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
+              />
+            }
+          </>
         )}
       </div>
       <div className={styles.blackRectangle}></div>
