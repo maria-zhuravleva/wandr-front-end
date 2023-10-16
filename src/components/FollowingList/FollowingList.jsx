@@ -19,7 +19,7 @@ const FollowingList = () => {
 
   return ( 
     <>
-      <h1>This is a Following List</h1>
+      <h1>Following: </h1>
       {followingList.length === 0 ? (
       <p>Not following anyone yet</p>
     ) : (

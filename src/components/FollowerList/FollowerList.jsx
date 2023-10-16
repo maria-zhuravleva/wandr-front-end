@@ -20,7 +20,7 @@ useEffect(() => {
 
   return (  
     <>
-    <h1>List of Followers</h1>
+    <h1>Followers: </h1>
     {followerList.length === 0 ? (
       <p>No followers yet</p>
     ) : (

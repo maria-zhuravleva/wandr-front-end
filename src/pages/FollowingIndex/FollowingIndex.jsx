@@ -25,7 +25,6 @@ const FollowingIndex = () => {
 
   return (  
     <>
-      <h1>This is a following index page</h1>
       <FollowerList />
       <FollowingList />
       <Link to={`/profiles/${profile._id}`} >
