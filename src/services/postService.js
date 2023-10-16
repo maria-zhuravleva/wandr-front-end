@@ -23,7 +23,24 @@ async function addPostPhoto(postId, photoData) {
   try {
     const photoFormData = new FormData()
     photoFormData.append('photo', photoData)
-    const res = await fetch(`${BASE_URL}/${postId}/mainPhoto`, {
+    const res = await fetch(`${BASE_URL}/${postId}/main-photo`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: photoFormData,
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function addMorePostPhotos(postId, photoData) {
+  try {
+    const photoFormData = new FormData()
+    photoFormData.append('photo', photoData)
+    const res = await fetch(`${BASE_URL}/${postId}/photos`, {
       method: 'PATCH',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
@@ -38,7 +55,7 @@ async function addPostPhoto(postId, photoData) {
 
 async function deletePostPhoto(postId) {
   try {
-    const res = await fetch(`${BASE_URL}/${postId}/deletePostPhoto`, {
+    const res = await fetch(`${BASE_URL}/${postId}/delete-main-photo`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
@@ -175,6 +192,22 @@ async function deleteRec(postId, recId) {
   }
 }
 
+async function editRec(postId, recFormData){
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/recommendations/${recFormData._id}`, {
+      method: 'PATCH',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(recFormData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function likePost(postId) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/likes`, {
@@ -213,9 +246,11 @@ export {
   editComment,
   createRec,
   deleteRec,
+  editRec,
   deletePost,
   likePost,
   savePost,
   addPostPhoto,
   deletePostPhoto,
+  addMorePostPhotos,
 }

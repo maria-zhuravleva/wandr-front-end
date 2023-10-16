@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom"
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
 
+
 // services
 import * as profileService from '../../services/profileService'
 import * as postService from '../../services/postService'
