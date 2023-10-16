@@ -16,6 +16,7 @@ import styles from './PostDetails.module.css'
 import likesIcon from "../../assets/icons/likes.png"
 import savesIcon from "../../assets/icons/saves.png"
 import map from "../../assets/icons/map.png"
+import watercolor from "../../assets/icons/comments.png"
 import AuthorInfo from '../../components/AuthorInfo/AuthorInfo'
 import DefaultPhoto from '../../assets/img/default-pic2.jpg'
 
