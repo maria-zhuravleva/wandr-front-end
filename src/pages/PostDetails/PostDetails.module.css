@@ -192,8 +192,11 @@
 } */
 
 .imageCollection {
-  height: 20%;
+  max-height: 250px;
 }
 
+.imageCollection img {
+  height: 200px;
+}
 
 

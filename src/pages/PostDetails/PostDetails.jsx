@@ -11,6 +11,7 @@ import Recommendation from '../../components/Recommendation/Recommendation'
 import RecCard from '../../components/RecCard/RecCard'
 import PhotoUpload from '../../components/UploadPhoto/PhotoUpload'
 import MorePhotosUpload from '../../components/UploadPhoto/MorePhotosUpload'
+import PhotoCard from '../../components/PhotoCard/PhotoCard'
 
 //css
 import styles from './PostDetails.module.css'
@@ -94,8 +95,12 @@ const PostDetails = (props) => {
   }
 
   const handleAddMorePostPhotos = async (postId, photoData) => {
-    const photo = await postService.addPostPhoto(postId, photoData)
+    const photo = await postService.addMorePostPhotos(postId, photoData)
     setPost({...post, morePhotos: [photo, ...post.morePhotos]})
+  }
+
+  const handleDeleteMorePhotos = (idx) => {
+    setPost({...post, morePhotos: post.morePhotos.splice(idx, 1)})
   }
 
   if (!post) return <Loading />
@@ -119,8 +124,8 @@ const PostDetails = (props) => {
         </div>
         <div className={styles.imageCollection}>
          {post.morePhotos.map((photo, idx) => 
-            <img key={idx} src={photo} alt={`Post Photo ${idx}`} />
-            )}
+            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos}/>
+          )}
         </div>
       </div>
 
