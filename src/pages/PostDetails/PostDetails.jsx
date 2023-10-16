@@ -56,6 +56,11 @@ const PostDetails = (props) => {
     setPost({...post, comments: post.comments.map(cmt => cmt._id === commentFormData._id ? editedComment : cmt)})
   }
 
+  const handleEditRec = async (recFormData) => {
+    const editedRec = await postService.editRec(postId, recFormData)
+    setPost({...post, recommendations: post.recommendations.map(rec => rec._id === recFormData._id ? editedRec : rec)})
+  }
+
   const handleLikePost = async (profileId) => {
     const like = await postService.likePost(postId, profileId)
     setPost({...post, likes: [...post.likes, like]})
@@ -155,6 +160,7 @@ const PostDetails = (props) => {
                 user={props.user}
                 handleDeleteRec={handleDeleteRec}
                 author={post.author}
+                handleEditRec={handleEditRec}
               />
             ))} 
           </div>
