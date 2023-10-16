@@ -77,6 +77,10 @@ const PostDetails = (props) => {
     const post = await postService.deletePostPhoto(postId)
     setPost(post)
   }
+  const handleAddPostPhoto = async (postId, photoData) => {
+    const postWithPhoto = await postService.addPostPhoto(postId, photoData)
+    setPost(postWithPhoto)
+  }
 
   if (!post) return <Loading />
 
@@ -93,14 +97,11 @@ const PostDetails = (props) => {
             <p>{post.content}</p>
           </div>
         </div>
-        {props.mainPhoto 
-          ? <div className={styles.imageContainer}>
-            <img src={post.mainPhoto} alt="Post Main Photo" />
-          </div>
-          : <div className={styles.imageContainer}>
-            <img src={DefaultPhoto} alt="Post Default Photo" />
-          </div>
-        }
+  
+        <div className={styles.imageContainer}>
+            <img src={post.mainPhoto ? post.mainPhoto : DefaultPhoto} alt="Post Main Photo" />
+        </div>
+         
       </div>
 
       <div className={styles.likeAndSaveBtn}>       
@@ -144,7 +145,7 @@ const PostDetails = (props) => {
               {post.mainPhoto && <button onClick={handleDeletePostPhoto}>
                 Delete Main Photo
               </button>}
-              {showPhotoUploadField && <PhotoUpload post={post} />}
+              {showPhotoUploadField && <PhotoUpload post={post} handleAddPostPhoto={handleAddPostPhoto} />}
             </>
           )}
           
