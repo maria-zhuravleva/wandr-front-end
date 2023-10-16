@@ -2,6 +2,7 @@
 import { useState } from "react"
 //css
 import styles from './NewComment.module.css'
+import sendArrow from "../../assets/icons/send.png"
 
 const NewComment = (props) => {
   const [formData, setFormData] = useState({text: ''})
@@ -25,8 +26,11 @@ const NewComment = (props) => {
         value={formData.text}
         placeholder='Add a comment'
         onChange={handleChange}
+        className={styles.commentTextarea}
       />
-      <button type='submit'>Create</button>
+      <button type='submit' className={styles.sendArrow}>
+        <img src={sendArrow} alt="send" className={styles.send} />
+      </button>
     </form>
   )
 }
