@@ -87,6 +87,7 @@
 
 
 .mainContainer {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -109,6 +110,20 @@
 .textContainer {
   flex: 1;
   padding: 20px; 
+}
+
+.textContainer h1 {
+  font-size: 50px;
+  font-weight: 100;
+  border-left: solid 1px black;
+  padding-left: 20px;
+}
+
+.cardLocation p {
+  font-size: 20px;
+  font-weight: 100;
+  padding-left: 25px;
+  margin-top: -30px;
 }
 
 .imageContainer {
@@ -152,10 +167,10 @@
 .cardDetailsBtn {
   grid-area: cardDetailsBtn;
   display: flex;
-  /* flex-direction: row; */
   flex-direction: column;
   flex-wrap: wrap;
   margin: 5px;
+  margin-left: 200px;
 }
 
 .cardDetailsBtn button {
@@ -172,7 +187,7 @@
   height: 50px;
   outline: none;
   background: transparent;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   margin: 0;
   border-radius: 0;
   margin-bottom: 20px;
@@ -192,18 +207,24 @@
 
 .recommendationsContainer {
   grid-area: recommendationsContainer;
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-  background-color: #e0e0e0; 
+  position: absolute;
+  top: 850px;
+  right: 100px;
   padding: 50px;
   margin-bottom: 50px;
 }
 
 .commentsContainer {
   grid-area: commentsContainer;
+  position: absolute;
+  left: 400px;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
   background-color: #d0d0d0; 
   padding: 20px;
+  margin-top: 400px;
+  padding: 10px;
 }
 
 

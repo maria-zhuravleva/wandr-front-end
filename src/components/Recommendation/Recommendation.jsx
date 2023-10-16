@@ -25,7 +25,7 @@ const Recommendation = (props) => {
 
   return (  
     <div className={styles.recCard}>
-      <h1>Add a Recommended Activtiy Here</h1>
+      <h1>Share a Top Activity!</h1>
       <main>
       <form onSubmit={handleSubmit}>
       <label htmlFor="name-input">Name:</label>
@@ -102,7 +102,7 @@ const Recommendation = (props) => {
           rows={4}
           cols={30}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className={styles.submitButton}>Submit</button>
       </form>
     </main>
     </div>

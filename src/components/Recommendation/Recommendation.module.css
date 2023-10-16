@@ -6,11 +6,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 600px; 
   background-color: white; 
   border: 1px solid black; 
   padding: 30px; 
   box-sizing: border-box;
+}
+
+.recCard h1 {
+  font-weight: 100;
 }
 
 .recCard p {
@@ -22,7 +27,14 @@
 .recCard input,
 .recCard textarea {
   margin-bottom: 30px;
-  width: 50%;
+  width: 100%;
+}
+
+.recCard input,
+.recCard select,
+.recCard textarea {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recCard label {
@@ -32,7 +44,7 @@
 }
 
 .recCard input {
-  height: 30px;
+  height: 40px;
   font-size: 14px;
   font-style: italic;
   border: solid 1px black;
@@ -51,11 +63,11 @@
 }
 
 .recCard textarea {
-  height: 70px;
+  height: 80px;
   font-size: 14px;
   font-style: italic;
   border: solid 1px black;
-  height: 30px;
+  height: 40px;
   width: 300px;
   margin-left: 5px;
   border-radius: 0;
@@ -76,9 +88,19 @@
   background: transparent;
   text-transform: uppercase;
   border-radius: 0;
-  margin-left: 190px;
-  margin-bottom: 50px;
+  margin-left: 100px;
+  margin: 20px auto; 
 }
+
+.submitButton {
+  margin: 20px auto;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: none;
+  border-right: none;
+  display: block;
+}
+
 
 .recCard button:hover {
   background: black; 
