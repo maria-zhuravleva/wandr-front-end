@@ -24,10 +24,10 @@ const NewPost = (props) => {
   }
 
   return ( 
-    <>
-      <main className={styles.container}>
-        <h1>NEW POST</h1>
-        <form onSubmit={handleSubmit}>
+    <div className={styles.newPostContainer}>
+      <h1>NEW POST</h1>
+      <div className={styles.newPostFormWrapper}>
+        <form onSubmit={handleSubmit} className={styles.newPostFormContainer}>
           <div className={styles.inputWrapper}>
             <label htmlFor="title-input">Title</label>
             <input
@@ -79,9 +79,10 @@ const NewPost = (props) => {
             <button type="submit">Submit</button>
           </div>
         </form>
-        <div className={styles.imageWrapper}></div>
-      </main>
-    </>
+
+      </div>
+      <div className={styles.imageWrapper}></div>
+    </div>
   )
 }
 

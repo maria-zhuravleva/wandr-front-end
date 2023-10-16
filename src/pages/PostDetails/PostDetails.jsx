@@ -127,6 +127,7 @@ const PostDetails = (props) => {
             <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos}/>
           )}
         </div>
+
       </div>
 
       <div className={styles.likeAndSaveBtn}>       
