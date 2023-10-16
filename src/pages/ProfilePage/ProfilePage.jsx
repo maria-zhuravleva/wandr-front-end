@@ -66,6 +66,15 @@ const ProfilePage = () => {
         <PostCard key={post._id} post={post} />
       ))}
       </section>
+      <section>
+        <h1>Saved Posts</h1>
+        {savedProfilePosts &&
+    savedProfilePosts
+      .filter((post) => post !== null) // Filter out null posts
+      .map((post) => (
+        <PostCard key={post._id} post={post} />
+      ))}
+      </section>
     </main>
   )
 }
