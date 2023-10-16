@@ -33,6 +33,7 @@ function App() {
   const navigate = useNavigate()
 
   const [posts, setPosts] = useState([])
+  console.log(posts)
   const [searchResults,setSearchResults]=useState([])
   const[errMsg,setErrMsg]=useState("")
   const[isSearch,setIsSearch]=useState(false)
@@ -51,6 +52,7 @@ function App() {
     const fetchAllPosts =  async () => {
       const postData = await postService.index()
       setPosts(postData)
+      console.log(posts)
     }
     fetchAllPosts()
   }, [])
@@ -107,7 +109,7 @@ function App() {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <Profiles />
+              <Profiles user={user}/>
             </ProtectedRoute>
           }
         />

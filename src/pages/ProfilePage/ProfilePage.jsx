@@ -15,6 +15,7 @@ import PostCard from "../../components/PostCard/PostCard"
 import Following from "../../components/Following/Following"
 
 const ProfilePage = (props) => {
+  console.log(props.user)
   const [profile, setProfile] = useState({})
   const { profileId } = useParams()
 
@@ -25,15 +26,16 @@ const ProfilePage = (props) => {
     const fetchProfile = async () => {
       const ProfileData = await profileService.showProfile(profileId)
       setProfile(ProfileData)
-      if (ProfileData.posts && ProfileData.posts.length > 0) {
-        const postDetails = await Promise.all(
+          if (ProfileData.posts && ProfileData.posts.length > 0  ) {
+              const postDetails = await Promise.all(
           ProfileData.posts.map(async (postId) => {
             return await postService.show(postId)
           })
         )
+        console.log(postDetails)
         setProfilePosts(postDetails);
       }
-      if(ProfileData.saves && ProfileData.saves.length > 0) {
+      if (ProfileData.saves && ProfileData.saves.length > 0) {
         const savedPostDetails = await Promise.all(
           ProfileData.saves.map(async (postId) => {
             return await postService.show(postId)
@@ -44,13 +46,13 @@ const ProfilePage = (props) => {
     }
     fetchProfile()
   }, [profileId])
-  
+
   const handleFollow = async (profileId) => {
     const followedProfile = await profileService.addFollow(profileId)
     setProfile(followedProfile)
   }
-  
-  return (  
+
+  return (
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
         <h1>{profile.name}</h1>
@@ -68,7 +70,7 @@ const ProfilePage = (props) => {
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>
         {/* change how the date is presented later */}
-        <p>{profile.createdAt}</p> 
+        <p>{profile.createdAt}</p>
       </div>
 
       <div className={styles.followersContainer}>
@@ -80,12 +82,16 @@ const ProfilePage = (props) => {
           <h1>{profile.name}'s Posts</h1>
         </div>
         <div className={styles.profilePosts}>
-          {profilePosts &&
-            profilePosts
-            .filter((post) => post !== null) // Filter out null posts
-            .map((post) => (
-              <PostCard key={post._id} post={post} />
+        
+        {profilePosts &&
+        profilePosts
+          .filter((post) => post !== null && (post.public || props.user.profile == post.author._id)) // Filter out null posts
+          .map((post) => (
+            <PostCard key={post._id} post={post} />
           ))}
+
+        
+        
         </div>
       </div>
 
@@ -93,11 +99,11 @@ const ProfilePage = (props) => {
         <h1>{profile.name}'s Saved Posts</h1>
         <div className={styles.savedPosts}>
           {savedProfilePosts &&
-          savedProfilePosts
-          .filter((post) => post !== null) // Filter out null posts
-          .map((post) => (
-          <PostCard key={post._id} post={post} />
-        ))}
+            savedProfilePosts
+              .filter((post) => post !== null) // Filter out null posts
+              .map((post) => (
+                <PostCard key={post._id} post={post} />
+              ))}
         </div>
       </div>
 
