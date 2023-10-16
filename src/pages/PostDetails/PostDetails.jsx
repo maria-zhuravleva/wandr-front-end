@@ -17,6 +17,7 @@ import likesIcon from "../../assets/icons/likes.png"
 import savesIcon from "../../assets/icons/saves.png"
 import map from "../../assets/icons/map.png"
 import watercolor from "../../assets/icons/comments.png"
+import AuthorInfo from '../../components/AuthorInfo/AuthorInfo'
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
@@ -83,17 +84,19 @@ const PostDetails = (props) => {
       <div className={styles.cardDetailsContainer}>
         <div className={styles.textContainer}>
           <h1>{post.title}</h1>
-          {/* author info */}
           <div className={styles.cardLocation}>
             <p>{post.location}</p>
           </div>
+          <AuthorInfo content={post} />
           <div className={styles.cardContent}>
             <p>{post.content}</p>
           </div>
         </div>
+        {props.mainPhoto && 
         <div className={styles.imageContainer}>
           <img src={post.mainPhoto} alt="Post Main Photo" />
         </div>
+        }
       </div>
 
       <div className={styles.likeAndSaveBtn}>       
@@ -150,7 +153,7 @@ const PostDetails = (props) => {
               <Recommendation user={props.user} handleAddRec={handleAddRec} />
             )}
             {post.recommendations.map((recommendation) => (
-              props.user && <RecCard
+              <RecCard
                 key={recommendation._id}
                 recommendation={recommendation}
                 user={props.user}
@@ -171,12 +174,8 @@ const PostDetails = (props) => {
         </div>
         {props.user && <NewComment handleAddComment={handleAddComment} />}
         {post.comments.map(comment => 
-          <>
-            { props.user &&
-              <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
-              />
-            }
-          </>
+          <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
+          />
         )}
       </div>
 
