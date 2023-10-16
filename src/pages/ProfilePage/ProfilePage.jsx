@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 
 // css
 import styles from './ProfilePage.module.css'
+import avatar from "../../assets/icons/avatar.png"
 
 // services
 import * as profileService from '../../services/profileService'
@@ -50,40 +51,57 @@ const ProfilePage = (props) => {
   }
   
   return (  
-    <main>
-      <header>
+    <div className={styles.profilePageContainer}>
+      <header className={styles.ppHeader}>
         <h1>{profile.name}</h1>
       </header>
-      <section>
-      <img src={profile.photo} alt="profile image" />
-      <h5>Member Since </h5>
-      {/* change how the date is presented later */}
-      <p>{profile.createdAt}</p> 
-      </section>
+      <div className={styles.ppAvatar}>
+        {profile.photo ? (
+          <img src={profile.photo} alt="profile image" />
+        ) : (
+          <img src={avatar} alt="avatar" />
+        )}
+      </div>
+      <div className={styles.ppBio}>
+        <p>This is bio section</p>
+      </div>
+      <div className={styles.ppInfo}>
+        <h5>Member Since </h5>
+        {/* change how the date is presented later */}
+        <p>{profile.createdAt}</p> 
+      </div>
 
-      <section>
+      <div className={styles.followersContainer}>
         {<Following profile={profile} user={props.user} handleFollow={handleFollow} />}
-      </section>
+      </div>
 
-      <section>
-        <h1>{profile.name}'s Posts</h1>
-        {profilePosts &&
-          profilePosts
+      <div className={styles.profilePostsSection}>
+        <div className={styles.ppH}>
+          <h1>{profile.name}'s Posts</h1>
+        </div>
+        <div className={styles.profilePosts}>
+          {profilePosts &&
+            profilePosts
+            .filter((post) => post !== null) // Filter out null posts
+            .map((post) => (
+              <PostCard key={post._id} post={post} />
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.savedPostsContainer}>
+        <h1>{profile.name}'s Saved Posts</h1>
+        <div className={styles.savedPosts}>
+          {savedProfilePosts &&
+          savedProfilePosts
           .filter((post) => post !== null) // Filter out null posts
           .map((post) => (
-            <PostCard key={post._id} post={post} />
+          <PostCard key={post._id} post={post} />
         ))}
-      </section>
-      <section>
-        <h1>{profile.name}'s Saved Posts</h1>
-        {savedProfilePosts &&
-    savedProfilePosts
-      .filter((post) => post !== null) // Filter out null posts
-      .map((post) => (
-        <PostCard key={post._id} post={post} />
-      ))}
-      </section>
-    </main>
+        </div>
+      </div>
+
+    </div>
   )
 }
 
