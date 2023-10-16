@@ -11,10 +11,10 @@ const PostCard = ({ post }) => {
         <article className={styles.postcardContainer}>
           <header>
             <h1 key={post._id}>{post.title}</h1>
-            {/* main photo */}
             <AuthorInfo content={post}/>
           </header>
             <p key={post._id}>{post.location}</p>
+            <img className={styles.imageContainer} src={post.mainPhoto} />
         </article>
       </Link>
   )
