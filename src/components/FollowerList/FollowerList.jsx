@@ -9,7 +9,7 @@ import * as profileService from '../../services/profileService'
 const FollowerList = () => {
   const [followerList, setFollowerList] = useState([])
   const { profileId } = useParams()
-// api call useEffect
+
 useEffect(() => {
   const fetchFollowers = async () => {
     const followerData = await profileService.showFollowing(profileId)
@@ -18,14 +18,18 @@ useEffect(() => {
   fetchFollowers()
 },[profileId])
 
-// handleShowFollowers
-
   return (  
-
-    // set State
     <>
     <h1>List of Followers</h1>
-    
+    {followerList.length === 0 ? (
+      <p>No followers yet</p>
+    ) : (
+      <ul>
+        {followerList.map((follower) => {
+          <li key={follower._id}>{follower.name}</li>
+        })}
+      </ul>
+    )}
     </>
   )
 }
