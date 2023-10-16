@@ -35,8 +35,8 @@ const PhotoUpload = (props) => {
     }
     setPhotoData({ mainPhoto: e.target.files[0] })
   }
-  const handleSubmit = async () => {
-    await postService.addPostPhoto(props.post._id, photoData.mainPhoto)
+  const handleSubmit = () => {
+    props.handleAddPostPhoto(props.post._id, photoData.mainPhoto)
   }
 
   return ( 

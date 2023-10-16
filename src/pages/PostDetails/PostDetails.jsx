@@ -9,19 +9,24 @@ import NewComment from '../../components/NewComment/NewComment'
 import CommentCard from '../../components/CommentCard/CommentCard'
 import Recommendation from '../../components/Recommendation/Recommendation'
 import RecCard from '../../components/RecCard/RecCard'
-import PhotoUpload from '../../components/UploadPhoto/MainPostPhoto'
+import PhotoUpload from '../../components/UploadPhoto/PhotoUpload'
+import MorePhotosUpload from '../../components/UploadPhoto/MorePhotosUpload'
 
 //css
 import styles from './PostDetails.module.css'
 import likesIcon from "../../assets/icons/likes.png"
 import savesIcon from "../../assets/icons/saves.png"
 import map from "../../assets/icons/map.png"
+import watercolor from "../../assets/icons/comments.png"
+import AuthorInfo from '../../components/AuthorInfo/AuthorInfo'
+import DefaultPhoto from '../../assets/img/default-pic2.jpg'
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
   const { postId } = useParams()
 
   const [showPhotoUploadField, setShowPhotoUploadField] = useState(false)
+  const [showMorePhotosUploadField, setShowMorePhotosUploadField] = useState(false)
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -74,10 +79,23 @@ const PostDetails = (props) => {
   const handleShow = () => {
     setShowPhotoUploadField(true)
   }
+  const handleShowMore = () => {
+    setShowMorePhotosUploadField(true)
+  }
 
   const handleDeletePostPhoto = async () => {
-    const post = await postService.deletePostPhoto(postId)
-    setPost(post)
+    const deletedPhoto = await postService.deletePostPhoto(postId)
+    setPost({...post, mainPhoto: deletedPhoto})
+  }
+  
+  const handleAddPostPhoto = async (postId, photoData) => {
+    const mainPhoto = await postService.addPostPhoto(postId, photoData)
+    setPost({...post, mainPhoto: mainPhoto})
+  }
+
+  const handleAddMorePostPhotos = async (postId, photoData) => {
+    const photo = await postService.addPostPhoto(postId, photoData)
+    setPost({...post, morePhotos: [photo, ...post.morePhotos]})
   }
 
   if (!post) return <Loading />
@@ -87,17 +105,19 @@ const PostDetails = (props) => {
       <div className={styles.cardDetailsContainer}>
         <div className={styles.textContainer}>
           <h1>{post.title}</h1>
-          {/* author info */}
           <div className={styles.cardLocation}>
             <p>{post.location}</p>
           </div>
+          <AuthorInfo content={post} />
           <div className={styles.cardContent}>
             <p>{post.content}</p>
           </div>
         </div>
+  
         <div className={styles.imageContainer}>
-          <img src={post.mainPhoto} alt="Post Main Photo" />
+            <img src={post.mainPhoto ? post.mainPhoto : DefaultPhoto} alt="Post Main Photo" />
         </div>
+         
       </div>
 
       <div className={styles.likeAndSaveBtn}>       
@@ -141,7 +161,11 @@ const PostDetails = (props) => {
               {post.mainPhoto && <button onClick={handleDeletePostPhoto}>
                 Delete Main Photo
               </button>}
-              {showPhotoUploadField && <PhotoUpload post={post} />}
+              {post.morePhotos.length < 5 && <button onClick={handleShowMore}>
+                Upload More Photos
+              </button>}
+              {showPhotoUploadField && <PhotoUpload post={post} handleAddPostPhoto={handleAddPostPhoto} />}
+              {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} />}
             </>
           )}
           
@@ -154,7 +178,7 @@ const PostDetails = (props) => {
               <Recommendation user={props.user} handleAddRec={handleAddRec} />
             )}
             {post.recommendations.map((recommendation) => (
-              props.user && <RecCard
+              <RecCard
                 key={recommendation._id}
                 recommendation={recommendation}
                 user={props.user}
@@ -176,12 +200,8 @@ const PostDetails = (props) => {
         </div>
         {props.user && <NewComment handleAddComment={handleAddComment} />}
         {post.comments.map(comment => 
-          <>
-            { props.user &&
-              <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
-              />
-            }
-          </>
+          <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
+          />
         )}
       </div>
 

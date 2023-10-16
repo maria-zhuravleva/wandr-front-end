@@ -1,9 +1,85 @@
-.container {
+.allProfilesContainer {
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
+  margin-left: 30px;
 }
 
-.container > p {
+.allProfilesContainer > p {
   margin: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.allProfilesContainer p {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.allProfilesContainer p:hover {
+  color: #5a7480;
+}
+
+.allProfilesContainer > a {
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+.allProfilesLines {
+  display: flex;
+  align-items: center;
+}
+
+.allProfilesLine {
+  flex-grow: 1;
+  height: 1px;
+  background-color: black;
+}
+
+.allProfilesContainer h1 {
+  width: 1550px;
+  font-weight: 100;
+  font-size: 40px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 70px;
+  max-width: 100%;
+  padding-bottom: 30px;
+  border-bottom: solid 2px black;
+}
+
+.allProfilesContainer img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.namesContainer {
+  flex: 1;
+  border-right: solid 2px black;
+  border-top: solid 2px black;
+  margin-right: 90px;
+  margin-left: 50px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  height: 100%;
+}
+
+.communityImg img {
+  width: 700px;
+  height: 1000px;
+  border-radius: 0;
+  margin-right: 70px;
+  margin-top: 50px;
 }
