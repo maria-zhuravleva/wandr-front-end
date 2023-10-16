@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 
 // css
 import styles from './ProfilePage.module.css'
+import avatar from "../../assets/icons/avatar.png"
 
 // services
 import * as profileService from '../../services/profileService'
@@ -55,7 +56,11 @@ const ProfilePage = (props) => {
         <h1>{profile.name}</h1>
       </header>
       <div className={styles.ppAvatar}>
-        <img src={profile.photo} alt="profile image" />
+        {profile.photo ? (
+          <img src={profile.photo} alt="profile image" />
+        ) : (
+          <img src={avatar} alt="avatar" />
+        )}
       </div>
       <div className={styles.ppBio}>
         <p>This is bio section</p>
