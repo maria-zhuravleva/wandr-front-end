@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 // css
 import styles from './NavBar.module.css'
+import menuIcon from "../../assets/icons/menu.png"
 
 const NavBar = ({ user, handleLogout }) => {
   const [showDropdown, setShowDropdown] = useState(false)
@@ -15,7 +16,8 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     <nav className={`${styles.container} ${showDropdown ? styles.fixed : ''}`}>
       <div className={styles.icon} onClick={toggleDropdown} style={{ cursor: 'pointer' }}>
-        <img src="src/assets/icons/menu.png" alt="menu" className={styles.img} />     
+        {/* <img src="src/assets/icons/menu.png" alt="menu" className={styles.img} /> */}
+        <img src={menuIcon} alt="Menu" className={styles.img} />             
       </div>
 
       {user && showDropdown && (

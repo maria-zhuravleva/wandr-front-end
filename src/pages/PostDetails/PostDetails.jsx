@@ -13,6 +13,8 @@ import PhotoUpload from '../../components/UploadPhoto/MainPostPhoto'
 
 //css
 import styles from './PostDetails.module.css'
+import likesIcon from "../../assets/icons/likes.png"
+import savesIcon from "../../assets/icons/saves.png"
 
 const PostDetails = (props) => {
   const [post, setPost] = useState(null)
@@ -76,56 +78,81 @@ const PostDetails = (props) => {
 
   return ( 
     <main>
-      <article className={styles.container}>
-        <header>
+      <div className={styles.cardDetailsContainer}>
+        <div className={styles.textContainer}>
           <h1>{post.title}</h1>
-          <span>
-            {/* author info */}
-            {post.author._id === props.user.profile && 
-              <>
-                <Link to={`/posts/${postId}/edit`} state={post}>
-                  <button>Edit</button>
-                </Link>
-                <button onClick={() => props.handleDeletePost(postId)}>Delete</button>
-                <button onClick={handleShow}>{post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}</button>
-                {post.mainPhoto && <button onClick={handleDeletePostPhoto}>Delete Main Photo</button>}
-                {showPhotoUploadField && <PhotoUpload post={post} />}
-              </>
-            }
-          
-            {post.author._id !== props.user.profile 
-              && !post.likes.some(p => p === props.user.profile)
-              && <button onClick={() => handleLikePost(props.user.profile)}>Like</button>
-            }
-            <div>✈️ Likes: {post.likes.length}</div>
+          {/* author info */}
+          <div className={styles.cardLocation}>
+            <p>{post.location}</p>
+          </div>
+          <div className={styles.cardContent}>
+            <p>{post.content}</p>
+          </div>
+        </div>
+        <div className={styles.imageContainer}>
+          <img src={post.mainPhoto} alt="Post Main Photo" />
+        </div>
+      </div>
 
-            {post.author._id !== props.user.profile 
-              && !post.saves.some(p => p === props.user.profile)
-              && <button onClick={() => handleSavePost(props.user.profile)}>Save</button>
-            }
-            <div>💌 Saves: {post.saves.length}</div>
-            
-          </span>
-        </header>
-        <p>{post.content}</p>
-        <img src={post.mainPhoto} />
-      </article>
+      <div className={styles.likeAndSaveBtn}>       
+        <div className={styles.likeCount}>
+          <img src={likesIcon} alt="Likes" className={styles.likeImg} />  
+          : {post.likes.length}
+        </div>
+        <div className={styles.saveCount}>
+          <img src={savesIcon} alt="Saves" className={styles.saveImg} /> 
+          : {post.saves.length}
+        </div>       
 
-      <section>
+        {post.author._id !== props.user.profile 
+          && !post.likes.some(p => p === props.user.profile)
+          && <button onClick={() => handleLikePost(props.user.profile)} className={styles.likeBtn}>Like</button>
+        }
+        {post.author._id !== props.user.profile 
+          && !post.saves.some(p => p === props.user.profile)
+          && <button onClick={() => handleSavePost(props.user.profile)} className={styles.saveBtn}>Save</button>
+        }
+      </div>
+
+      <div className={styles.cardDetailsBtn}>
+        {post.author._id === props.user.profile && (
+          <>
+            <Link to={`/posts/${postId}/edit`} state={post}>
+              <button>
+                Edit</button>
+            </Link>
+            <button onClick={() => props.handleDeletePost(postId)}>
+                Delete</button>
+            <button onClick={handleShow}>
+              {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
+            </button>
+            {post.mainPhoto && <button onClick={handleDeletePostPhoto}>Delete Main Photo</button>}
+            {showPhotoUploadField && <PhotoUpload post={post} />}
+          </>
+        )}
+      </div>
+
+
+      <div className={styles.recommendationsContainer}>
         <Recommendation user={props.user} handleAddRec={handleAddRec}/>
         {post.recommendations.map(recommendation => 
           <RecCard key={recommendation._id} recommendation={recommendation} user={props.user} handleDeleteRec={handleDeleteRec} />
         )}
-      </section>
+      </div>
 
-      <section>
-        <h1>Comments</h1>
+      <div className={styles.commentsContainer}>
+        <div className={styles.commentsLines}>
+          <hr className={styles.commentsLine} />
+          <h3>Comments</h3>
+          <hr className={styles.commentsLine} />
+        </div>
         <NewComment handleAddComment={handleAddComment} />
         {post.comments.map(comment => 
           <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
           />
         )}
-      </section>
+      </div>
+      <div className={styles.blackRectangle}></div>
     </main>
   )
 }
