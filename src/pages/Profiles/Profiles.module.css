@@ -1,9 +1,54 @@
-.container {
+.allProfilesContainer {
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
+  text-align: center;
+  margin-left: 30px;
 }
 
-.container > p {
+.allProfilesContainer > p {
   margin: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.allProfilesContainer p {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.allProfilesContainer p:hover {
+  color: #5a7480;
+}
+
+.allProfilesContainer > a {
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+.allProfilesContainer h1 {
+  font-weight: 100;
+  font-size: 40px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.allProfilesContainer img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.allProfilesLines {
+  display: flex;
+  align-items: center;
+}
+
+.allProfilesLine {
+  flex-grow: 1;
+  height: 1px;
+  background-color: black;
 }
