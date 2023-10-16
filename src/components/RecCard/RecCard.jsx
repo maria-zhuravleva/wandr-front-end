@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // css
-import styles from './RecCard.module.css'
+// import styles from './RecCard.module.css'
 
 // components
 import EditRec from '../EditRec/EditRec'
@@ -25,16 +25,16 @@ const RecCard = (props) => {
       <p>{props.recommendation.time}</p>
       <p>{props.recommendation.rating}/5</p>
       <p>{props.recommendation.text}</p>
-      <div className={styles.editDeleteComment}>
+
+      <div>
       {props.author._id === props.user.profile && <button onClick={() => handleShowForm()}>Edit</button>}
-        {props.author._id === props.user.profile && (
-          <button onClick={() => props.handleDeleteRec(props.recommendation._id)}>Delete</button>
-        )}
+      {props.author._id === props.user.profile && (
+        <button onClick={() => props.handleDeleteRec(props.recommendation._id)}>Delete</button>
+      )}
         </div>
+
         <div>
-      
-      {/* show edit comment form on button click */}
-      {showForm && <EditRec rec={props.recommendation} handleEditRec={props.handleEditRec} handleHideForm={handleHideForm}/>}
+      {showForm && <EditRec recommendation={props.recommendation} handleEditRec={props.handleEditRec} handleHideForm={handleHideForm}/>}
     </div>
     </>
   )

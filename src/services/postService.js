@@ -185,6 +185,7 @@ async function editRec(postId, recFormData){
       },
       body: JSON.stringify(recFormData)
     })
+    return res.json()
   } catch (error) {
     console.log(error)
   }

@@ -1,22 +1,18 @@
 // npm modules
 import { useState } from "react";
 
-import styles from './EditRec.module.css'
+// import styles from './EditRec.module.css'
 
 const EditRec = (props) => {
-  const [formData, setFormData] = useState(props.rec)
+  const [formData, setFormData] = useState(props.recommendation)
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
-  // const handleClearField = e => {
-  //   setFormData({...formData, [e.target.name]: ''})
-  // }
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.handleEditComment(formData)
+    props.handleEditRec(formData)
     props.handleHideForm()
   }
 
@@ -96,7 +92,7 @@ const EditRec = (props) => {
         rows={4}
         cols={30}
       />
-      <button type="submit" className={styles.submitButton}>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   )
 }
