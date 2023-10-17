@@ -92,7 +92,10 @@ const Landing = (props) => {
     ) : null
   ))}
   </div>  
-  {/* Add a link to see more following posts  */}
+    <Link to="/posts" className={styles.landingPageArrow}>
+      <p>See More</p> 
+      <img src={arrowRight} alt="arrow" />
+    </Link>
 </div>
     </>
   )
