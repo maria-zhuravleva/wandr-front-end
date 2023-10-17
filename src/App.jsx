@@ -14,6 +14,7 @@ import EditPost from './pages/EditPost/EditPost'
 import About from './pages/About/About'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 import FollowingIndex from './pages/FollowingIndex/FollowingIndex'
+import ExplorePage from './pages/ExplorePage/ExplorePage'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -169,6 +170,10 @@ function App() {
           <Route
             path="/profiles/:profileId/following"
             element={<FollowingIndex user={user} />}
+          />
+          <Route
+            path="/profiles/:profileId/following/posts"
+            element={<ExplorePage user={user} />}
           />
       </Routes>
     </>
