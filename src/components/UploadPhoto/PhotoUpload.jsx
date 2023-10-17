@@ -43,7 +43,7 @@ const PhotoUpload = (props) => {
   }
 
   return ( 
-    <div className={styles.uploadPhotoContainer}>
+    <div className={styles.movePhotosUploadContainer}>
       <form onSubmit={handleSubmit} className={styles.uploadPhotoForm}>
         <label>Upload Photo
           <input 
