@@ -15,10 +15,8 @@ import PostCard from "../../components/PostCard/PostCard"
 import Following from "../../components/Following/Following"
 //
 const ProfilePage = (props) => {
-  console.log(props.user)
   const [profile, setProfile] = useState({})
   const { profileId } = useParams()
-  console.log(profileId)
   const [profilePosts, setProfilePosts] = useState([])
   const [savedProfilePosts, setSavedProfilePosts] = useState([])
   useEffect(() => {
@@ -33,7 +31,6 @@ const ProfilePage = (props) => {
             return await postService.show(postId)
           })
         )
-        console.log(postDetails)
         setProfilePosts(postDetails);
       }
       if (ProfileData.saves && ProfileData.saves.length > 0) {
@@ -63,7 +60,13 @@ const ProfilePage = (props) => {
           <img src={avatar} alt="avatar" />
         )}
       </div>
-      <div className={styles.edit}><Link to={`/profiles/${profileId}/edit`} state={profile} ><button>Edit profile</button></Link></div>
+      <div className={styles.edit}>
+        {props.user?.profile === profileId && (
+          <Link to={`/profiles/${profileId}/edit`} state={profile} >
+            <button>Edit profile</button>
+          </Link>
+        )}
+      </div>
       <div className={styles.ppBio}>
         <p>This is bio section</p>
       </div>
