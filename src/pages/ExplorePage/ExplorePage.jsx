@@ -13,15 +13,15 @@ import PostCard from "../../components/PostCard/PostCard"
 
 
 const ExplorePage = () => {
-  // set state
+
   const [followingPosts, setFollowingPosts] = useState([])
-  // set useParams
   const { profileId } = useParams()
 
   // useEffect for database query
   useEffect(() => {
     const fetchFollowingPosts = async () => {
       const followingPostsData = await profileService.explorePage(profileId)
+      console.log("Following Posts Data:", followingPostsData)
       setFollowingPosts(followingPostsData)
     }
     fetchFollowingPosts()
@@ -41,7 +41,6 @@ const ExplorePage = () => {
             <button>Explore More Profiles</button>
           </Link>
         </>
-        // put link or btn to profiles page
       ) : (
         <>
         {followingPosts.map((post) => {
@@ -50,11 +49,12 @@ const ExplorePage = () => {
           }
           return null
         })}
-      
+        <Link to={'/profiles'}>
+            <button>Explore More Profiles</button>
+          </Link>
       </>
       )}
     </main>
-
     </>
   )
 }
