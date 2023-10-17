@@ -31,9 +31,10 @@ function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
   const [posts, setPosts] = useState([])
-  const [searchResults, setSearchResults] = useState([])
-  const [errMsg, setErrMsg] = useState("")
-  const [isSearch, setIsSearch] = useState(false)
+  const [searchResults,setSearchResults]=useState([])
+  const[errMsg,setErrMsg]=useState("")
+  const[isSearch,setIsSearch]=useState(false)
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -54,7 +55,6 @@ function App() {
     const fetchAllPosts = async () => {
       const postData = await postService.index()
       setPosts(postData)
-      console.log(posts)
     }
     fetchAllPosts()
   }, [])

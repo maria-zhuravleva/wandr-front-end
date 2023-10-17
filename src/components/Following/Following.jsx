@@ -3,8 +3,10 @@ const Following = (props) => {
 
   const isSelf = props.profile._id === props.user.profile
   
-  const handleClick = () => {
+  const handleClick = (e) => {
     props.handleFollow(props.profile._id)
+    e.target.innerText = 'Following'
+    e.currentTarget.disabled = true
   }
 
   return ( 
