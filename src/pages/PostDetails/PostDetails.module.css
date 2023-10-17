@@ -1,4 +1,4 @@
-.mainContainer {
+/* .mainContainer {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -93,7 +93,8 @@
 
 .cardDetailsBtn button,
 .likeBtn,
-.saveBtn {
+.saveBtn,
+.cardPhotosBtn button {
   font-family: 'DM Serif Text', sans-serif;
   font-weight: 100;
   cursor: pointer;
@@ -185,15 +186,234 @@
   background-repeat: no-repeat;
 }
 
-
-/* .commentsContainer .watercolor img {
-  width: 50px;
-  height: 50px;
-} */
-
 .imageCollection {
   height: 200px;
   display: flex;
+} */
+
+.cardDetailsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between; 
+  padding: 50px;
+  max-width: 900px;
+  height: 800px;
+  display: flex;
+}
+
+/* First Row */
+.textContainer {
+  flex-basis: 80%;
+  padding: 20px; 
+  padding-right: 50px;
+}
+
+.textContainer h1 {
+  font-size: 50px;
+  font-weight: 100;
+  border-left: solid 1px black;
+  padding-left: 20px;
+}
+
+.cardLocation p {
+  font-size: 20px;
+  font-weight: 100;
+  padding-left: 25px;
+  margin-top: -30px;
+}
+
+.imageContainer {
+  flex-basis: 20%;
+  display: flex;
+  max-height: 750px;
+  margin-left: 200px;
+}
+
+.imageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+
+.cardDetailsBtnContainer {
+  display: flex;
+}
+
+.likeAndSaveBtn {
+  display: flex;
+  align-items: center;
+}
+
+
+.likeAndSaveBtn button {
+  margin-right: 10px; 
+}
+
+.likeCount,
+.saveCount {
+  margin-right: 20px; 
+  padding: 10px;
+}
+
+.likeCount {
+  margin-left: 55px;
+}
+
+.likeImg,
+.saveImg {
+  width: 15px; 
+  height: 15px;
+}
+
+.cardDetailsBtn {
+  flex-wrap: wrap;
+  margin-left: 70px;
+  margin-right: 40px;
+  float: left;
+}
+
+.cardDetailsBtn button,
+.likeBtn,
+.saveBtn,
+.cardPhotosBtn button {
+  font-family: 'DM Serif Text', sans-serif;
+  font-weight: 100;
+  cursor: pointer;
+  font-size: 15px;
+  color: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: none; 
+  border-right: none;
+  width: 150px;
+  height: 60px;
+  outline: none;
+  background: transparent;
+  text-transform: uppercase;
+  margin: 0;
+  border-radius: 0;
+}
+
+.cardDetailsBtn .editBtn,
+.cardDetailsBtn .deleteBtn {
+  padding-top: 18px;
+}
+
+.likeBtn,
+.saveBtn {
+  margin-top: 53px;
+  margin-left: 60px;
+}
+
+.cardDetailsBtn button:last-child {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+
+.cardDetailsBtn button:hover,
+.cardPhotosBtn button:hover {
+  background: black; 
+  color: white; 
+}
+
+.likeBtn:hover {
+  background: black; 
+  color: white; 
+}
+
+.saveBtn:hover {
+  background: black; 
+  color: white; 
+}
+
+.cardDetailsBtn button:first-child {
+  margin-top: 50px;
+  margin-right: 50px;
+}
+
+.cardPhotosBtn button {
+  margin-right: 50px;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: right;
+  max-width: 150px;
+  height: 60px;
+}
+
+.cardPhotosBtn button:first-child {
+  margin-right: 140px;
+}
+
+
+.cardDetailsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardDetailsBtn,
+.cardPhotosBtn {
+  flex-basis: 48%;
+}
+
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .map {
+  flex-basis: 40%;
+  height: 100px;
+  margin-left: -150px;
+  opacity: 0.1;
+  margin-top: 20px;
+} */
+
+/* Second Row */
+
+.secondRow {
+  display: flex;
+  justify-content: center;
+}
+
+
+.recommendationsContainer {
+  flex-basis: 50%;
+  max-width: 600px;
+  margin-bottom: 50px;
+  margin-left: 150px;
+  margin-right: -200px;
+  margin-top: 20px;
+}
+
+
+.commentsContainer {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  background-color: white;
+  border-top: solid 1px black; 
+  border-right: solid 1px black; 
+  margin-top: 100px;
+  margin-left: -300px;
+}
+
+.commentsContainer h3 {
+  height: 200px;
+  padding-top: 50px;
+  padding-right: 60px;
+  font-weight: 100;
+  font-size: 35px;
+  text-align: center;
+  background: url('../../assets/icons/comments.png');
+  background-size: 90px; 
+  background-position: 45px 0;
+  background-repeat: no-repeat;
 }
 
 

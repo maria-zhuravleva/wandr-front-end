@@ -109,7 +109,7 @@ const PostDetails = (props) => {
   if (!post) return <Loading />
 
   return ( 
-    <main>
+    <div>
       <div className={styles.cardDetailsContainer}>
         <div className={styles.textContainer}>
           <h1>{post.title}</h1>
@@ -125,14 +125,12 @@ const PostDetails = (props) => {
         <div className={styles.imageContainer}>
             <img src={post.mainPhoto ? post.mainPhoto : DefaultPhoto} alt="Post Main Photo" />
         </div>
-
-      </div>
         <div className={styles.imageCollection}>
-         {post.morePhotos.map((photo, idx) => 
+          {post.morePhotos.map((photo, idx) => 
             <PhotoCard key={idx} photo={photo} idx={idx} /* handleDeleteMorePhotos={handleDeleteMorePhotos} *//>
           )}
         </div>
-
+      </div>
       <div className={styles.likeAndSaveBtn}>       
         <div className={styles.likeCount}>
           <img src={likesIcon} alt="Likes" className={styles.likeImg} />  
@@ -152,22 +150,31 @@ const PostDetails = (props) => {
           && post.author._id !== props.user?.profile 
           && !post.saves.some(p => p === props.user?.profile)
           && <button onClick={() => handleSavePost(props.user?.profile)} className={styles.saveBtn}>Save</button>
-        }
-        
+        } 
       </div>
 
-      <div className={styles.secondRow}>
+      <div className={styles.buttonsContainer}>
         <div className={styles.cardDetailsBtn}>
           {post.author._id === props.user?.profile && (
             <>
               <Link to={`/posts/${postId}/edit`} state={post}>
-                <button>
+                <button  className={styles.editBtn}>
                   Edit
                 </button>
               </Link>
-              <button onClick={() => props.handleDeletePost(postId)}>
+              <button onClick={() => props.handleDeletePost(postId)} className={styles.deleteBtn}>
                 Delete
               </button>
+            </>
+          )}
+          
+          {/* <div className={styles.map}>
+            <img src={map} alt="map" />
+          </div> */}
+        </div>
+        <div className={styles.cardPhotosBtn}>
+          {post.author._id === props.user?.profile && (
+            <>
               <button onClick={handleShow}>
                 {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
               </button>
@@ -180,45 +187,40 @@ const PostDetails = (props) => {
               {showPhotoUploadField && <PhotoUpload post={post} handleAddPostPhoto={handleAddPostPhoto} />}
               {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} />}
             </>
-          )}
-          
-          <div className={styles.map}>
-            <img src={map} alt="map" />
-          </div>
-
-          <div className={styles.recommendationsContainer}>
-            {post.author._id === props.user?.profile && (
-              <Recommendation user={props.user} handleAddRec={handleAddRec} />
-            )}
-            {post.recommendations.map((recommendation) => (
-              <RecCard
-                key={recommendation._id}
-                recommendation={recommendation}
-                user={props.user}
-                handleDeleteRec={handleDeleteRec}
-                handleEditRec={handleEditRec}
-                author={post.author}
-              />
-            ))} 
-          </div>
+          )}         
         </div>
-      </div>  
-
-      <div className={styles.commentsContainer}>
-        <div className={styles.commentsLines}>
-          {/* <hr className={styles.commentsLine} /> */}
-          <h3>Comments</h3>
-          {/* <img src={watercolor} alt="watercolor" /> */}
-          {/* <hr className={styles.commentsLine} /> */}
-        </div>
-        {props.user && <NewComment handleAddComment={handleAddComment} />}
-        {post.comments.map(comment => 
-          <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
-          />
-        )}
       </div>
 
-    </main>
+
+      <div className={styles.secondRow}>
+
+        <div className={styles.commentsContainer}>
+          <h3>Comments</h3>
+    
+          {props.user && <NewComment handleAddComment={handleAddComment} />}
+          {post.comments.map(comment => 
+            <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
+            />
+            )}
+        </div>  
+        <div className={styles.recommendationsContainer}>
+          {post.author._id === props.user?.profile && (
+            <Recommendation user={props.user} handleAddRec={handleAddRec} />
+          )}
+          {post.recommendations.map((recommendation) => (
+            <RecCard
+              key={recommendation._id}
+              recommendation={recommendation}
+              user={props.user}
+              handleDeleteRec={handleDeleteRec}
+              handleEditRec={handleEditRec}
+              author={post.author}
+            />
+          ))} 
+        </div>
+
+      </div>
+    </div>
   )
 }
 
