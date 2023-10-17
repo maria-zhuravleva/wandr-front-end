@@ -1,6 +1,6 @@
 // npm modules
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 // services
 import * as profileService from '../../services/profileService'
@@ -37,6 +37,9 @@ const ExplorePage = () => {
         <>
           <p>No posts by available by people you follow</p>
           <h4>Explore more people to follow here!</h4>
+          <Link to={'/profiles'}>
+            <button>Explore More Profiles</button>
+          </Link>
         </>
         // put link or btn to profiles page
       ) : (
@@ -47,6 +50,7 @@ const ExplorePage = () => {
           }
           return null
         })}
+      
       </>
       )}
     </main>
