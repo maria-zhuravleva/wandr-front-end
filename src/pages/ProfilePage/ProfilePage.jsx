@@ -65,13 +65,6 @@ const ProfilePage = (props) => {
           <img src={avatar} alt="avatar" />
         )}
       </div>
-      <div className={styles.edit}>
-        {props.user?.profile === profileId && (
-          <Link to={`/profiles/${profileId}/edit`} state={profile} >
-            <button>Edit profile</button>
-          </Link>
-        )}
-      </div>
       <div className={styles.ppBio}>
         <p>{profile.bio}</p>
       </div>
@@ -79,6 +72,13 @@ const ProfilePage = (props) => {
         <h5>Member Since </h5>
         {/* change how the date is presented later */}
         <p>{profile.createdAt}</p>
+        <div className={styles.editProfileButton}>
+          {props.user?.profile === profileId && (
+            <Link to={`/profiles/${profileId}/edit`} state={profile} >
+              <button>Edit profile</button>
+            </Link>
+          )}
+        </div>
       </div>
       <div className={styles.followersContainer}>
         {<Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
@@ -93,7 +93,7 @@ const ProfilePage = (props) => {
         <div className={styles.profilePosts}>
           {profilePosts &&
             profilePosts
-              .filter((post) => post !== null && (post.public || props.user.profile == post.author._id)) // Filter out null posts
+              .filter((post) => post !== null && (post.public || props.user?.profile == post.author._id)) // Filter out null posts
               .map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}

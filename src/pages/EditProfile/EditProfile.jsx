@@ -1,13 +1,14 @@
 import { useState, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
+
+
 const EditProfile = (props) => {
-  const { state } = useLocation()
   const imgInputRef = useRef(null)
   const [message, setMessage] = useState('')
-  const [profile, setprofile] = useState(state)
-  const [profileFormData, setProfileFormData] = useState(props.user)
+  const { state } = useLocation()
+  const [profileFormData, setProfileFormData] = useState(state)
   const [photoData, setPhotoData] = useState({ photo: null })
   const handleChange = (e) => {
     setProfileFormData({ ...profileFormData, [e.target.name]: e.target.value })
@@ -40,13 +41,13 @@ const EditProfile = (props) => {
     props.handleUpdateProfile(profileFormData, photoData.photo)
   }
   return (
-    <>
-      <h1>Edit profile</h1>
+    <div className={styles.editProfileContainer}>
+      <h1>Profile Settings</h1>
       <p className={styles.editMessage}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} >
         <div className={styles.ppAvatar}>
-          {profile.photo ? (
-            <img src={profile.photo} alt="profile image" />
+          {profileFormData.photo ? (
+            <img src={profileFormData.photo} alt="profile image" />
           ) : (
             <img src={avatar} alt="avatar" />
           )}
@@ -72,7 +73,7 @@ const EditProfile = (props) => {
         <label>Email</label>
         <input
           type="text"
-          value={profileFormData.email}
+          value={props.user.email}
           name="email"
           onChange={handleChange}
         />
@@ -87,7 +88,7 @@ const EditProfile = (props) => {
 
         <button type='submit'>Save Changes</button>
       </form>
-    </>
-  );
+    </div>
+  )
 }
-export default EditProfile;
+export default EditProfile

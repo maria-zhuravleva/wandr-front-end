@@ -22,17 +22,19 @@ const EditComment = (props) => {
   }
 
   return ( 
-    <form className={styles.container} onSubmit={handleSubmit}>
-      <textarea 
-        required
-        type='text'
-        name='text'
-        value={formData.text}
-        onChange={handleChange}
-        onClick={handleClearField}
-      />
-      <button type='submit'>Save</button>
-    </form>
+    <div className={styles.editCommentContainer}>
+      <form className={styles.editCommentForm} onSubmit={handleSubmit}>
+        <textarea 
+          required
+          type='text'
+          name='text'
+          value={formData.text}
+          onChange={handleChange}
+          onClick={handleClearField}
+        />
+        <button type='submit' className={styles.editCommentButton}>Save</button>
+      </form>
+    </div>
   )
 }
 

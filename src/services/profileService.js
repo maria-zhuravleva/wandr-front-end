@@ -42,7 +42,7 @@ async function showProfile(profileId) {
     console.log(err)
   }
 }
-async function updateProfile(profileFormData){
+async function updateProfile(profileFormData, photoData) {
   try {
     const res = await fetch(`${BASE_URL}/${profileFormData._id}`, {
       method: 'PUT',
@@ -52,11 +52,17 @@ async function updateProfile(profileFormData){
       },
       body: JSON.stringify(profileFormData)
     })
-    return res.json()
-  } catch (err) {
-    console.log(err)
-  }
+    const json = await res.json()
 
+    if (json.err) throw new Error(json.err)
+
+    if (photoData) {
+      await addPhoto(photoData)
+    }
+    
+  } catch (err) {
+    throw new Error(err)
+  }
 }
 
 async function addFollow(profileId) {

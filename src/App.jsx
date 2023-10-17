@@ -45,12 +45,9 @@ function App() {
     setUser(authService.getUser())
   }
   const handleUpdateProfile = async (profileFormData, photoData) => {
-    const updateProfile = await profileService.updateProfile(profileFormData)
-    if (photoData) {
-      await profileService.addPhoto(photoData)
-    }
-    setUser(updateProfile)
-    navigate(`/profiles/${updateProfile.profile}`)
+    const updatedProfile = await profileService.updateProfile(profileFormData, photoData)
+    setUser({...user, profile: updatedProfile})
+    navigate(`/profiles/${updatedProfile._id}`)
   }
   useEffect(() => {
     const fetchAllPosts = async () => {
