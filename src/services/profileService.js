@@ -56,8 +56,8 @@ async function updateProfile(profileFormData){
   } catch (err) {
     console.log(err)
   }
-
 }
+
 
 async function addFollow(profileId) {
   try {

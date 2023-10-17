@@ -62,9 +62,12 @@ const ProfilePage = (props) => {
       </div>
       <div className={styles.edit}>
         {props.user?.profile === profileId && (
+         <>
           <Link to={`/profiles/${profileId}/edit`} state={profile} >
-            <button>Edit profile</button>
+            <button>Edit Profile</button>
           </Link>
+          <button>Delete Profile</button>
+         </>
         )}
       </div>
       <div className={styles.ppBio}>
