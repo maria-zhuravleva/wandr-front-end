@@ -1,21 +1,16 @@
 // npm modules
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-
 // services
 import * as profileService from '../../services/profileService'
-
 // css
 import styles from './Profiles.module.css'
 import avatar from "../../assets/icons/avatar.png"
 import community from "../../assets/img/community.jpg"
-
 // pages
 import ProfilePage from '../ProfilePage/ProfilePage'
-
 const Profiles = () => {
   const [profiles, setProfiles] = useState([])
-
   useEffect(() => {
     const fetchProfiles = async () => {
       const profileData = await profileService.getAllProfiles()
@@ -23,11 +18,9 @@ const Profiles = () => {
     }
     fetchProfiles()
   }, [])
-
   if (!profiles.length) {
     return <main className={styles.container}><h1>Loading...</h1></main>
   }
-  
   return (
     <div className={styles.allProfilesContainer}>
       <div className={styles.allProfilesLines}>
@@ -37,7 +30,7 @@ const Profiles = () => {
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.namesContainer}>
-        <h3>Wanderers</h3>
+          <h3>Wanderers</h3>
           {profiles.map(profile => (
             <Link key={profile._id} to={`/profiles/${profile._id}`}>
               {profile.photo ? (
@@ -54,7 +47,6 @@ const Profiles = () => {
         </div>
       </div>
     </div>
-  )  
+  )
 }
-
 export default Profiles
