@@ -92,8 +92,8 @@ const Landing = (props) => {
     ) : null
   ))}
   </div>  
-    <Link to="/posts" className={styles.landingPageArrow}>
-      <p>See More</p> 
+    <Link to={`/profiles/${props.user.profile}/following/posts`} className={styles.landingPageArrow}>
+      <p>Explore the Most Recent Posts of your Following</p> 
       <img src={arrowRight} alt="arrow" />
     </Link>
 </div>
