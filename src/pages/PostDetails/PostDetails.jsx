@@ -17,8 +17,6 @@ import PhotoCard from '../../components/PhotoCard/PhotoCard'
 import styles from './PostDetails.module.css'
 import likesIcon from "../../assets/icons/likes.png"
 import savesIcon from "../../assets/icons/saves.png"
-import map from "../../assets/icons/map.png"
-import watercolor from "../../assets/icons/comments.png"
 import AuthorInfo from '../../components/AuthorInfo/AuthorInfo'
 import DefaultPhoto from '../../assets/img/default-pic2.jpg'
 
@@ -84,27 +82,25 @@ const PostDetails = (props) => {
     setShowMorePhotosUploadField(true)
   }
 
-  const handleDeletePostPhoto = async () => {
-    const post = await postService.deletePostPhoto(postId)
-    setPost(post)
+  const handleDeleteMainPhoto = async () => {
+    const mainPhoto = await postService.deleteMainPhoto(postId)
+    setPost({...post, mainPhoto: mainPhoto})
   }
   
-  const handleAddPostPhoto = async (postId, photoData) => {
-    const post = await postService.addPostPhoto(postId, photoData)
-    setPost(post)
+  const handleAddMainPhoto = async (postId, photoData) => {
+    const mainPhoto = await postService.addMainPhoto(postId, photoData)
+    setPost({...post, mainPhoto: mainPhoto})
   }
 
   const handleAddMorePostPhotos = async (postId, photoData) => {
-    const post = await postService.addMorePostPhotos(postId, photoData)
-    setPost(post)
+    const photo = await postService.addMorePostPhotos(postId, photoData)
+    setPost({...post, morePhotos: [photo, ...post.morePhotos]})
   }
 
-  // const handleDeleteMorePhotos = async (idx) => {
-  //   const photoId = post.morePhotos[idx].split('/').pop().split('.')[0]
-  //   const deletedPhoto = await postService.deleteMorePostPhotos(photoId)
-  //   console.log(photoId, post.morePhotos)
-  //   setPost({...post, morePhotos: post.morePhotos.filter(p => p !== deletedPhoto)})
-  // }
+  const handleDeleteMorePhotos = async (photoId) => {
+    const deletedPhoto = await postService.deleteMorePostPhotos(postId, photoId)
+    setPost({...post, morePhotos: post.morePhotos.filter(p => p._id !== deletedPhoto._id)})
+  }
 
   if (!post) return <Loading />
 
@@ -167,10 +163,6 @@ const PostDetails = (props) => {
               </button>
             </>
           )}
-          
-          {/* <div className={styles.map}>
-            <img src={map} alt="map" />
-          </div> */}
         </div>
         <div className={styles.cardPhotosBtn}>
           {post.author._id === props.user?.profile && (
@@ -178,13 +170,13 @@ const PostDetails = (props) => {
               <button onClick={handleShow}>
                 {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
               </button>
-              {post.mainPhoto && <button onClick={handleDeletePostPhoto}>
+              {post.mainPhoto && <button onClick={handleDeleteMainPhoto}>
                 Delete Main Photo
               </button>}
               {post.morePhotos.length < 5 && <button onClick={handleShowMore}>
                 Upload More Photos
               </button>}
-              {showPhotoUploadField && <PhotoUpload post={post} handleAddPostPhoto={handleAddPostPhoto} />}
+              {showPhotoUploadField && <PhotoUpload post={post} handleAddMainPhoto={handleAddMainPhoto} />}
               {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} />}
             </>
           )}         
