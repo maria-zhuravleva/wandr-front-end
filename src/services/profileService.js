@@ -58,6 +58,10 @@ async function updateProfile(profileFormData){
   }
 }
 
+async function deleteProfile(){
+
+}
+
 
 async function addFollow(profileId) {
   try {
@@ -108,6 +112,7 @@ export {
   addPhoto,
   showProfile,
   updateProfile,
+  deleteProfile,
   addFollow,
   showFollowing,
   showFollowers,
