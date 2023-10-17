@@ -39,7 +39,7 @@ const PhotoUpload = (props) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.handleAddPostPhoto(props.post._id, photoData.mainPhoto)
+    props.handleAddMainPhoto(props.post._id, photoData.mainPhoto)
   }
 
   return ( 
