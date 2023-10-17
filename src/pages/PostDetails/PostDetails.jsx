@@ -148,8 +148,10 @@ const PostDetails = (props) => {
           && <button onClick={() => handleSavePost(props.user?.profile)} className={styles.saveBtn}>Save</button>
         } 
 
-        {props.user && post.likes.some(p => p === props.user?.profile) && <p>Liked!</p>}
-        {props.user && post.saves.some(p => p === props.user?.profile) && <p>Saved! </p>}
+        <div className={styles.savedLikedContainer}>
+          {props.user && post.likes.some(p => p === props.user?.profile) && <p className={styles.liked}>Liked!</p>}
+          {props.user && post.saves.some(p => p === props.user?.profile) && <p className={styles.saved}>Saved! </p>}
+        </div>
         
       </div>
 
