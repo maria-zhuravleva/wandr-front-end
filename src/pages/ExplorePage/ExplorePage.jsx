@@ -54,7 +54,6 @@ const ExplorePage = () => {
       </>
       )}
     </main>
-
     </>
   )
 }
