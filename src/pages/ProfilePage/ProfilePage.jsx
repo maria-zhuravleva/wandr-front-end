@@ -73,7 +73,7 @@ const ProfilePage = (props) => {
         )}
       </div>
       <div className={styles.ppBio}>
-        <p>This is bio section</p>
+        <p>{profile.bio}</p>
       </div>
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>

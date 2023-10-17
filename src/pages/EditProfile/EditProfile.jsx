@@ -34,6 +34,7 @@ const EditProfile = (props) => {
     }
     setPhotoData({ photo: evt.target.files[0] })
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleUpdateProfile(profileFormData, photoData.photo)
@@ -43,23 +44,6 @@ const EditProfile = (props) => {
       <h1>Edit profile</h1>
       <p className={styles.editMessage}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} >
-        <label >
-          Name
-          <input
-            type="text"
-            value={profileFormData.name}
-            name="name"
-            onChange={handleChange} />
-        </label>
-        <label >
-          Email
-          <input
-            type="text"
-            value={profileFormData.email}
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
         <div className={styles.ppAvatar}>
           {profile.photo ? (
             <img src={profile.photo} alt="profile image" />
@@ -67,16 +51,41 @@ const EditProfile = (props) => {
             <img src={avatar} alt="avatar" />
           )}
         </div>
-        <label>
-          Upload Photo
-          <input
-            type="file"
-            name="photo"
-            onChange={handleChangePhoto}
-            ref={imgInputRef}
-          />
-        </label>
-        <button type='submit'>Submit</button>
+
+        <label>Change Profile Picture</label>
+        <input
+          type="file"
+          name="photo"
+          onChange={handleChangePhoto}
+          ref={imgInputRef}
+        />
+        
+
+        <label>Name</label>
+        <input
+          type="text"
+          value={profileFormData.name}
+          name="name"
+          onChange={handleChange} 
+        />
+        
+        <label>Email</label>
+        <input
+          type="text"
+          value={profileFormData.email}
+          name="email"
+          onChange={handleChange}
+        />
+
+        <label>Bio</label>
+        <textarea
+          type="text"
+          value={profileFormData.bio}
+          name="bio"
+          onChange={handleChange}
+        />
+
+        <button type='submit'>Save Changes</button>
       </form>
     </>
   );
