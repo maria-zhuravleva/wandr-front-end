@@ -1,6 +1,7 @@
 // import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import React from 'react'
 // css
 import styles from './Landing.module.css'
 // import missionImage from "../../assets/img/default-pic2.jpg"
@@ -11,9 +12,25 @@ import quotes from "../../assets/icons/quotes.png"
 import SearchPost from '../../components/SearchPost/SearchPost'
 import PostCard from '../../components/PostCard/PostCard'
 
+// services
+import * as profileService from '../../services/profileService'
 
 const Landing = (props) => {
   const publicPosts = props.posts.filter(post => post.public)
+
+  const [followingPosts, setFollowingPosts] = useState([])
+
+  useEffect(() => {
+    const fetchFollowingPosts = async () => {
+      try {
+        const followingPostsData = await profileService.explorePage(props.user.profile)
+        setFollowingPosts(followingPostsData)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchFollowingPosts()
+  }, [props.user.profile])
 
   return (
     <>
@@ -60,6 +77,26 @@ const Landing = (props) => {
           <img src={arrowRight} alt="arrow" />
         </Link>
       </div>
+      <div className={styles.topPosts}>
+  <div className={styles.topPostsLines}>
+    <hr className={styles.topPostsLine} />
+    <h3>Explore Posts by Those You're Following</h3>
+    <hr className={styles.topPostsLine} />
+  </div>
+  <div className={styles.topPostsContent}>
+  {followingPosts.map((post, idx) => (
+    post.public ? (
+      <React.Fragment key={post._id}>
+        {idx < 5 && <PostCard post={post} />}
+      </React.Fragment>
+    ) : null
+  ))}
+  </div>  
+    <Link to={`/profiles/${props.user.profile}/following/posts`} className={styles.landingPageArrow}>
+      <p>Explore the Most Recent Posts of your Following</p> 
+      <img src={arrowRight} alt="arrow" />
+    </Link>
+</div>
     </>
   )
 }

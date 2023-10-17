@@ -2,6 +2,8 @@
 import { useState, useRef } from 'react'
 //services
 import * as postService from '../../services/postService'
+//css
+import styles from './PhotoUpload.module.css'
 
 const MorePhotosUpload = (props) => {
   const [photoData, setPhotoData] = useState({ photo: null })
@@ -35,22 +37,25 @@ const MorePhotosUpload = (props) => {
     }
     setPhotoData({ photo: e.target.files[0] })
   }
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     props.handleAddMorePostPhotos(props.post._id, photoData.photo)
   }
 
   return ( 
-    <form onSubmit={handleSubmit}>
-      <label>Upload Photo
-        <input 
-          type="file" 
-          name="photo" 
-          onChange={handleChangePhoto}
-          ref={imgInputRef}
-        />
-      </label>
-      <button type="submit">Upload</button>
-    </form>
+    <div className={styles.movePhotosUploadContainer}>
+      <form onSubmit={handleSubmit}>
+        <label>Upload Photo
+          <input 
+            type="file" 
+            name="photo" 
+            onChange={handleChangePhoto}
+            ref={imgInputRef}
+          />
+        </label>
+        <button type="submit" className={styles.fileInputButton} style={{float: 'left'}}>Upload</button>
+      </form>
+    </div>
   )
 }
 

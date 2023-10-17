@@ -2,6 +2,8 @@ import { useState, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
+
+
 const EditProfile = (props) => {
   const { state } = useLocation()
   const imgInputRef = useRef(null)
@@ -39,46 +41,62 @@ const EditProfile = (props) => {
     props.handleUpdateProfile(profileFormData, photoData.photo)
   }
   return (
-    <>
-      <h1>Edit profile</h1>
+    <div className={styles.editProfileContainer}>
+      <h1>Profile Settings</h1>
       <p className={styles.editMessage}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} >
-        <label >
-          Name
-          <input
-            type="text"
-            value={profileFormData.name}
-            name="name"
-            onChange={handleChange} />
-        </label>
-        <label >
-          Email
-          <input
-            type="text"
-            value={profileFormData.email}
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
-        <div className={styles.ppAvatar}>
-          {profile.photo ? (
-            <img src={profile.photo} alt="profile image" />
-          ) : (
-            <img src={avatar} alt="avatar" />
-          )}
-        </div>
-        <label>
-          Upload Photo
-          <input
-            type="file"
-            name="photo"
-            onChange={handleChangePhoto}
-            ref={imgInputRef}
-          />
-        </label>
-        <button type='submit'>Submit</button>
-      </form>
-    </>
-  );
+      <div className={styles.editProfileForm}>
+        <form autoComplete="off" onSubmit={handleSubmit} >
+          <div className={styles.editProfileWrapper}>
+            <div className={styles.ppAvatar}>
+              {profile.photo ? (
+                <img src={profile.photo} alt="profile image" />
+              ) : (
+                <img src={avatar} alt="avatar" />
+              )}
+            </div>
+            <div className={styles.labelWrapper}>
+              <label>
+                Upload Photo
+                <input
+                  type="file"
+                  name="photo"
+                  onChange={handleChangePhoto}
+                  ref={imgInputRef}
+                />
+              </label>
+            </div>
+          </div>
+          <div className={styles.editProfileWrapper}>
+            <div className={styles.labelWrapper}>
+              <label >
+                Name
+                <input
+                  type="text"
+                  value={profileFormData.name}
+                  name="name"
+                  onChange={handleChange} />
+              </label>
+            </div>
+          </div>
+          <div className={styles.editProfileWrapper}>
+          <div className={styles.labelWrapper}>
+            <label >
+              Email
+              <input
+                type="text"
+                value={profileFormData.email}
+                name="email"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          </div>
+          <div className={styles.editButtonWrapper}>
+            <button type='submit'>Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )
 }
-export default EditProfile;
+export default EditProfile

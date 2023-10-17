@@ -17,8 +17,6 @@ import PhotoCard from '../../components/PhotoCard/PhotoCard'
 import styles from './PostDetails.module.css'
 import likesIcon from "../../assets/icons/likes.png"
 import savesIcon from "../../assets/icons/saves.png"
-import map from "../../assets/icons/map.png"
-import watercolor from "../../assets/icons/comments.png"
 import AuthorInfo from '../../components/AuthorInfo/AuthorInfo'
 import DefaultPhoto from '../../assets/img/default-pic2.jpg'
 
@@ -84,32 +82,30 @@ const PostDetails = (props) => {
     setShowMorePhotosUploadField(true)
   }
 
-  const handleDeletePostPhoto = async () => {
-    const post = await postService.deletePostPhoto(postId)
-    setPost(post)
+  const handleDeleteMainPhoto = async () => {
+    const mainPhoto = await postService.deleteMainPhoto(postId)
+    setPost({...post, mainPhoto: mainPhoto})
   }
   
-  const handleAddPostPhoto = async (postId, photoData) => {
-    const post = await postService.addPostPhoto(postId, photoData)
-    setPost(post)
+  const handleAddMainPhoto = async (postId, photoData) => {
+    const mainPhoto = await postService.addMainPhoto(postId, photoData)
+    setPost({...post, mainPhoto: mainPhoto})
   }
 
   const handleAddMorePostPhotos = async (postId, photoData) => {
-    const post = await postService.addMorePostPhotos(postId, photoData)
-    setPost(post)
+    const photo = await postService.addMorePostPhotos(postId, photoData)
+    setPost({...post, morePhotos: [photo, ...post.morePhotos]})
   }
 
-  // const handleDeleteMorePhotos = async (idx) => {
-  //   const photoId = post.morePhotos[idx].split('/').pop().split('.')[0]
-  //   const deletedPhoto = await postService.deleteMorePostPhotos(photoId)
-  //   console.log(photoId, post.morePhotos)
-  //   setPost({...post, morePhotos: post.morePhotos.filter(p => p !== deletedPhoto)})
-  // }
+  const handleDeleteMorePhotos = async (photoId) => {
+    const deletedPhoto = await postService.deleteMorePostPhotos(postId, photoId)
+    setPost({...post, morePhotos: post.morePhotos.filter(p => p._id !== deletedPhoto._id)})
+  }
 
   if (!post) return <Loading />
 
   return ( 
-    <main>
+    <div>
       <div className={styles.cardDetailsContainer}>
         <div className={styles.textContainer}>
           <h1>{post.title}</h1>
@@ -125,14 +121,12 @@ const PostDetails = (props) => {
         <div className={styles.imageContainer}>
             <img src={post.mainPhoto ? post.mainPhoto : DefaultPhoto} alt="Post Main Photo" />
         </div>
-
-      </div>
         <div className={styles.imageCollection}>
-         {post.morePhotos.map((photo, idx) => 
-            <PhotoCard key={idx} photo={photo} idx={idx} /* handleDeleteMorePhotos={handleDeleteMorePhotos} *//>
+          {post.morePhotos.map((photo, idx) => 
+            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos}/>
           )}
         </div>
-
+      </div>
       <div className={styles.likeAndSaveBtn}>       
         <div className={styles.likeCount}>
           <img src={likesIcon} alt="Likes" className={styles.likeImg} />  
@@ -152,73 +146,77 @@ const PostDetails = (props) => {
           && post.author._id !== props.user?.profile 
           && !post.saves.some(p => p === props.user?.profile)
           && <button onClick={() => handleSavePost(props.user?.profile)} className={styles.saveBtn}>Save</button>
-        }
+        } 
+
+        {props.user && post.likes.some(p => p === props.user?.profile) && <p>Liked!</p>}
+        {props.user && post.saves.some(p => p === props.user?.profile) && <p>Saved! </p>}
         
       </div>
 
-      <div className={styles.secondRow}>
+      <div className={styles.buttonsContainer}>
         <div className={styles.cardDetailsBtn}>
           {post.author._id === props.user?.profile && (
             <>
               <Link to={`/posts/${postId}/edit`} state={post}>
-                <button>
+                <button  className={styles.editBtn}>
                   Edit
                 </button>
               </Link>
-              <button onClick={() => props.handleDeletePost(postId)}>
+              <button onClick={() => props.handleDeletePost(postId)} className={styles.deleteBtn}>
                 Delete
               </button>
+            </>
+          )}
+        </div>
+        <div className={styles.cardPhotosBtn}>
+          {post.author._id === props.user?.profile && (
+            <>
               <button onClick={handleShow}>
                 {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
               </button>
-              {post.mainPhoto && <button onClick={handleDeletePostPhoto}>
+              {post.mainPhoto && <button onClick={handleDeleteMainPhoto}>
                 Delete Main Photo
               </button>}
               {post.morePhotos.length < 5 && <button onClick={handleShowMore}>
                 Upload More Photos
               </button>}
-              {showPhotoUploadField && <PhotoUpload post={post} handleAddPostPhoto={handleAddPostPhoto} />}
+              {showPhotoUploadField && <PhotoUpload post={post} handleAddMainPhoto={handleAddMainPhoto} />}
               {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} />}
             </>
-          )}
-          
-          <div className={styles.map}>
-            <img src={map} alt="map" />
-          </div>
-
-          <div className={styles.recommendationsContainer}>
-            {post.author._id === props.user?.profile && (
-              <Recommendation user={props.user} handleAddRec={handleAddRec} />
-            )}
-            {post.recommendations.map((recommendation) => (
-              <RecCard
-                key={recommendation._id}
-                recommendation={recommendation}
-                user={props.user}
-                handleDeleteRec={handleDeleteRec}
-                handleEditRec={handleEditRec}
-                author={post.author}
-              />
-            ))} 
-          </div>
+          )}         
         </div>
-      </div>  
-
-      <div className={styles.commentsContainer}>
-        <div className={styles.commentsLines}>
-          {/* <hr className={styles.commentsLine} /> */}
-          <h3>Comments</h3>
-          {/* <img src={watercolor} alt="watercolor" /> */}
-          {/* <hr className={styles.commentsLine} /> */}
-        </div>
-        {props.user && <NewComment handleAddComment={handleAddComment} />}
-        {post.comments.map(comment => 
-          <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
-          />
-        )}
       </div>
 
-    </main>
+
+      <div className={styles.secondRow}>
+
+        <div className={styles.commentsContainer}>
+          <h3>Comments</h3>
+    
+          {props.user && <NewComment handleAddComment={handleAddComment} />}
+          {post.comments.map(comment => 
+            <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
+            />
+            )}
+        </div>  
+        <div className={styles.recommendationsContainer}>
+          {post.author._id === props.user?.profile && (
+            <Recommendation user={props.user} handleAddRec={handleAddRec} />
+          )}
+          {post.recommendations.map((recommendation) => (
+            <RecCard
+              key={recommendation._id}
+              recommendation={recommendation}
+              user={props.user}
+              handleDeleteRec={handleDeleteRec}
+              handleEditRec={handleEditRec}
+              author={post.author}
+            />
+          ))} 
+        </div>
+
+      </div>
+    </div>
   )
 }
 

@@ -10,18 +10,19 @@
   align-items: center;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
-  height: 150px;
+  /* height: 150px; */
 }
 
 .commentTextarea {
-  box-shadow: 0 0 0 0.5px black;
-  height: 100px;
+  outline: none; 
+  height: 150px;
   font-size: 15px;
   font-style: italic;
   height: 100px;
-  width: 300px;
+  width: 400px;
   margin-left: 5px;
   border-radius: 0;
+  padding: 10px;
 }
 
 .container button {
@@ -34,8 +35,8 @@
 }
 
 .container button[type="submit"] {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: flex;
   margin-left: 14px;
   border-radius: 50%;

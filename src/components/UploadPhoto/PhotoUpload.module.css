@@ -14,3 +14,22 @@
   display: block;
   margin: 10px auto;
 }
+
+
+.movePhotosUploadContainer{
+  position: relative;
+  overflow: hidden;
+  display: block;
+  /* border: solid 1px black; */
+  padding: 15px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.movePhotosUploadContainer input[type="file"] {
+  display: block;
+  font-size: 15px;
+  margin-top: 30px;
+}
+
+

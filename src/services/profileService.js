@@ -65,7 +65,19 @@ async function deleteProfile(){
 
 async function addFollow(profileId) {
   try {
-    const res = await fetch(`${BASE_URL}/${profileId}`, {
+    const res = await fetch(`${BASE_URL}/${profileId}/follow`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+async function unFollow(profileId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/unfollow`, {
       method: 'PATCH',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
@@ -114,6 +126,7 @@ export {
   updateProfile,
   deleteProfile,
   addFollow,
+  unFollow,
   showFollowing,
   showFollowers,
   explorePage

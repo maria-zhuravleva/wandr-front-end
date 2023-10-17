@@ -19,7 +19,7 @@ async function create(postFormData) {
   }
 }
 
-async function addPostPhoto(postId, photoData) {
+async function addMainPhoto(postId, photoData) {
   try {
     const photoFormData = new FormData()
     photoFormData.append('photo', photoData)
@@ -53,7 +53,7 @@ async function addMorePostPhotos(postId, photoData) {
   }
 }
 
-async function deletePostPhoto(postId) {
+async function deleteMainPhoto(postId) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/delete-main-photo`, {
       method: 'DELETE',
@@ -64,17 +64,18 @@ async function deletePostPhoto(postId) {
     console.log(err)
   }
 }
-// async function deleteMorePostPhotos(postId, photoId) {
-//   try {
-//     const res = await fetch(`${BASE_URL}/${postId}/delete-more-photos/${photoId}`, {
-//       method: 'DELETE',
-//       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-//     })
-//     return res.json()
-//   } catch (err) {
-//     console.log(err)
-//   }
-// }
+
+async function deleteMorePostPhotos(postId, photoId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/photos/${photoId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 async function show(postId) {
   try {
@@ -261,8 +262,8 @@ export {
   deletePost,
   likePost,
   savePost,
-  addPostPhoto,
-  deletePostPhoto,
+  addMainPhoto,
+  deleteMainPhoto,
   addMorePostPhotos,
-  // deleteMorePostPhotos,
+  deleteMorePostPhotos,
 }
