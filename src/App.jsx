@@ -1,6 +1,6 @@
 // npm modules
 import { useEffect, useState } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 // pages
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -35,6 +35,7 @@ function App() {
   const[errMsg,setErrMsg]=useState("")
   const[isSearch,setIsSearch]=useState(false)
 
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
@@ -58,6 +59,8 @@ function App() {
     }
     fetchAllPosts()
   }, [])
+
+
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.create(postFormData)
     setPosts([newPost, ...posts])
@@ -90,11 +93,16 @@ function App() {
     setSearchResults(filteredPostSearch)
     setIsSearch(true)
   }
+
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch} />} />
+      <Route
+        path="/"
+        element={<Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />}
+      />
         <Route
           path="/about"
           element={
@@ -171,7 +179,7 @@ function App() {
         />
         <Route
           path="/profiles/:profileId/following/posts"
-          element={<ExplorePage user={user} />}
+          element={<ExplorePage />}
         />
       </Routes>
     </>
