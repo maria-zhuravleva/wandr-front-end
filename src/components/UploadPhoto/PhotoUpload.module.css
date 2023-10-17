@@ -1,0 +1,16 @@
+.uploadPhotoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadPhotoForm {
+  text-align: center;
+}
+
+.uploadPhotoForm label,
+.uploadPhotoForm input,
+.uploadPhotoForm button {
+  display: block;
+  margin: 10px auto;
+}

@@ -1,66 +1,96 @@
 .loginContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; 
-  max-width: 1200px;
-  margin-top: -100px;
+  /* border: solid 1px black; */
+  height: 100vh;
 }
 
 .loginContainer h1 {
-  margin: 0;
-  padding: 0;
   font-size: 80px;
   writing-mode: vertical-lr;
   text-orientation: upright;
-  padding-right: 15px; 
-  border-right: 1px solid black; 
+  text-align: center;
+  padding-right: 50px; 
+  border-right: 2px solid black; 
   display: inline-block;
   margin-bottom: 150px;
+  margin-top: 150px;
   font-weight: 100;
-  position: absolute;
-  top: 15%;
-  right: 80%; 
 }
 
-.loginForm {
-  margin-left: 150px;
-  width: 600px; 
-  height: 600px;
-  padding: 20px; 
-  /* background-color: rgba(209, 223, 238, 0.6);  */
-  background-color: rgba(188, 201, 217, 0.5); 
-  padding: 20px;
-  position: relative;
-  box-sizing: border-box;
+.loginContainer p {
   text-align: center;
-  padding-top: 100px;
-}
-
-.loginLabel {
-  display: block;
-  margin-bottom: 8px;
   font-size: 20px;
+  margin-right: 250px;
+  font-weight: 100;
 }
 
-.loginLabel input {
-  display: block;
-  margin: 0 auto;
-  width: 60%;
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.loginMessage {
-  color: red;
-  margin-bottom: 16px;
-}
-
-.loginButtonWrapper {
+.loginFormContainer  {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 50px;
+  padding: 50px;
+  /* border: solid 1px black; */
+  background-color: rgba(208, 204, 199, 0.3);
+}
+
+.loginFormContainer  {
+  width: 650px;
+  height: 700px;
+  margin-top: 200px;
+  margin-left: 50px;
+}
+
+.loginFormContainer  .centeredText {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 90px;
+  margin-right: 0px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px black;
+  padding-top: 20px;
+  border-top: solid 1px black;
+}
+
+
+.loginFormContainer  label,
+.loginFormContainer  input {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.inputLoginWrapper input:focus {
+  border-style: solid; 
+}
+
+
+.loginFormContainer label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 100;
+  font-size: 20px;
+  padding-bottom: 60px;
+  text-align: center;
+  color: black;
+}
+
+.loginFormContainer input {
+  height: 40px;
+  font-size: 14px;
+  font-style: italic;
+  width: 300px;
+}
+
+
+.inputLoginWrapper input {
+  background-color: white;
+  padding: 10px; 
+  box-sizing: border-box;
 }
 
 
@@ -83,13 +113,44 @@
   font-weight: 100;
 }
 
-.signinImageWrapper {
-  position: absolute;
-  top: 70%;
-  right: -20%;
-  height: 100%;
+.cancelLink {
+  padding: 15px 25px;
+  margin-right: 45px;
+  width: 150px;
+  cursor: pointer;
+  border-radius: 0;
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+  background-color: transparent;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.cancelLink:hover,
+.loginButton:hover {
+  color: white;
+  background-color: black;
+}
+
+.loginImageWrapper {
+  flex: 1;
+}
+
+
+.loginImageWrapper {
+  width: 600px;
+  height: 750px;
   background: url('../../assets/img/signin.jpg');
-  background-size: cover;
-  width: 80%;
+  background-size: 100% 100%;
+  max-width: 600px;
+  max-height: 900px;
+  margin-top: -200px;
+  margin-right: 50px;
+  margin-left: 650px;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
 }
 

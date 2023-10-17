@@ -78,64 +78,81 @@ const Signup = ({ handleAuthEvt }) => {
   }
 
   return (
-    <main className={styles.signupContainer}>
+    <div className={styles.signupContainer}>
       <h1>SIGN UP</h1>
-      <p className={styles.signupMessage}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} className={styles.signupForm}>
-        <label className={styles.signupLabel}>
-          Name
-          <input type="text" value={name} name="name" onChange={handleChange} />
-        </label>
-        <label className={styles.signupLabel}>
-          Email
-          <input
-            type="text"
-            value={email}
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.signupLabel}>
-          Password
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.signupLabel}>
-          Confirm Password
-          <input
-            type="password"
-            value={passwordConf}
-            name="passwordConf"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.signupLabel}>
-          Upload Photo
-          <input 
-            type="file" 
-            name="photo" 
-            onChange={handleChangePhoto}
-            ref={imgInputRef}
-            className={styles.signupImg}
-          />
-        </label>
-        <div className={styles.signupButtonWrapper}>
-          <Link to="/" style={{ color: 'black', textDecoration: 'none', borderTop: '1px solid black', padding: '15px 20px', borderBottom: '1px solid black', width: '150px', cursor: 'pointer', borderRadius: '0', display: 'inline-block', textAlign: 'center', marginRight: '20px', fontSize: '20px'}}>CANCEL</Link>
-          <button
-            className={styles.signupButton}
-            disabled={ isFormInvalid() || isSubmitted }
-          >
-            {!isSubmitted ? 'Sign Up' : '🚀 Sending...'}
-          </button>
-        </div>
-        <div className={styles.signupImageWrapper}>
-        </div>
-      </form>
-    </main>
+      <h4 className={styles.signupMessage}>{message}</h4>
+      <div className={styles.signupFormWrapper}>
+        <form autoComplete="off" onSubmit={handleSubmit} className={styles.signupFormContainer}>
+          <p className={styles.signupText}>
+            Ready for new destinations? 
+            <br />
+            Sign upbelow
+          </p>
+          <div className={styles.inputSignupWrapper}>
+            <label className={styles.signupLabel}>
+              Name
+              <input type="text" value={name} name="name" onChange={handleChange} />
+            </label>
+          </div>
+          <div className={styles.inputSignupWrapper}>
+            <label className={styles.signupLabel}>
+              Email
+              <input
+                type="text"
+                value={email}
+                name="email"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div className={styles.inputSignupWrapper}>
+            <label className={styles.signupLabel}>
+              Password
+              <input
+                type="password"
+                value={password}
+                name="password"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div className={styles.inputSignupWrapper}>
+            <label className={styles.signupLabel}>
+              Confirm Password
+              <input
+                type="password"
+                value={passwordConf}
+                name="passwordConf"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div className={styles.inputSignupWrapper}>
+            <label className={styles.signupLabel}>
+              Upload Photo
+              <input 
+                type="file" 
+                name="photo" 
+                onChange={handleChangePhoto}
+                ref={imgInputRef}
+                className={styles.signupImg}
+              />
+            </label>
+          </div>
+          <div className={styles.signupButtonWrapper}>
+            <Link to="/" className={styles.cancelLink}>CANCEL</Link>
+            <button
+              className={styles.signupButton}
+              disabled={ isFormInvalid() || isSubmitted }
+            >
+              {!isSubmitted ? 'Sign Up' : 'Sending...'}
+            </button>
+          </div>
+        </form>
+          <div className={styles.signupImageWrapper}>
+          </div>
+      </div>
+    </div>
   )
 }
 

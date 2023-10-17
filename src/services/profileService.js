@@ -42,6 +42,22 @@ async function showProfile(profileId) {
     console.log(err)
   }
 }
+async function updateProfile(profileFormData){
+  try {
+    const res = await fetch(`${BASE_URL}/${profileFormData._id}`, {
+      method: 'PUT',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(profileFormData)
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+
+}
 
 async function addFollow(profileId) {
   try {
@@ -91,6 +107,7 @@ export {
   getAllProfiles, 
   addPhoto,
   showProfile,
+  updateProfile,
   addFollow,
   showFollowing,
   showFollowers,
