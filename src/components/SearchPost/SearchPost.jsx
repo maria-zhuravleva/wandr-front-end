@@ -29,7 +29,7 @@ const SearchPost = (props) => {
         onChange={handleChange}
         onClick={handleClearField}     
         style={{
-          color: '#999',       
+          color: 'black',       
           fontSize: '14px',
           fontStyle: 'italic',
           border: 'solid 1px black',

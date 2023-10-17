@@ -1,0 +1,113 @@
+.profilePageContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ppHeader,
+.ppAvatar,
+.ppInfo,
+.profilePosts,
+.savedPosts {
+  flex: 1 1 50%; 
+  box-sizing: border-box; 
+  padding: 20px; 
+}
+
+.ppHeader {
+  flex-basis: 100%; 
+}
+
+.ppHeader h1 {
+  text-align: center;
+  font-weight: 100;
+}
+
+.ppAvatar {
+  flex-basis: 20%; 
+}
+
+.ppAvatar img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.ppBio {
+  flex-basis: 60%; 
+  width: 500px;
+  height: 300px;
+  border: solid 1px black;
+  margin-top: 20px;
+  margin-right: 50px;
+  text-align: center;
+}
+
+.ppInfo {
+  flex-basis: 20%;
+  margin-left: 30px;
+  line-height: 5px;
+}
+
+.followersContainer {
+  flex-basis: 10%; 
+  line-height: 5px;
+  padding: 20px;
+  border: solid 1px black;
+  width: 100px;
+  margin-right: 890px;
+}
+
+.profilePosts,
+.savedPosts {
+  flex-basis: 100%; 
+}
+
+.profilePosts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ppH h1 {
+  font-weight: 100;
+  text-align: center;
+}
+
+.profilePostsSection {
+  flex-basis: 100%;
+  width: 1200px;
+  height: 900px;
+  border: solid 1px black;
+  margin-top: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+  text-align: center;
+}
+
+.savedPostsContainer {
+  flex-basis: 100%;
+  width: 1200px;
+  height: 900px;
+  border: solid 1px black;
+  margin-top: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.savedPostsContainer h1 {
+  font-weight: 100;
+  text-align: center;
+}
+
+.savedPosts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+
+
