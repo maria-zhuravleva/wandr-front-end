@@ -11,9 +11,19 @@ import styles from './ExplorePage.module.css'
 
 const ExplorePage = () => {
   // set state
+  const [followingPosts, setFollowingPosts] = useState([])
   // set useParams
+  const { profileId } = useParams()
 
   // useEffect for database query
+  useEffect(() => {
+    const fetchFollowingPosts = async () => {
+      const followingPostsData = await profileService.explorePage(profileId)
+      setFollowingPosts(followingPostsData)
+    }
+    fetchFollowingPosts()
+  }, [profileId])
+
   return (  
     <>
     <header>
