@@ -43,39 +43,52 @@ const LoginPage = ({ handleAuthEvt }) => {
     return !(email && password)
   }
 
+  
   return (
-    <main className={styles.loginContainer}>
+    <div className={styles.loginContainer}>
       <h1>LOG IN</h1>
-      <p className={styles.loginMessage}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} className={styles.loginForm}>
-        <label className={styles.loginLabel}>
-          Email
-          <input
-            type="text"
-            value={email}
-            name="email"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.loginLabel}>
-          Password
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </label>
-        <div className={styles.loginButtonWrapper}>
-          <Link to="/" style={{ color: 'black', textDecoration: 'none', borderTop: '1px solid black', padding: '15px 20px', borderBottom: '1px solid black', width: '150px', cursor: 'pointer', borderRadius: '0', display: 'inline-block', textAlign: 'center', marginRight: '20px', fontSize: '20px'}}>CANCEL</Link>
-          <button className={styles.loginButton} disabled={isFormInvalid()}>
-            Log In
-          </button>
+      <div className={styles.loginFormWrapper}>
+        <p className={styles.loginMessage}>{message}</p>
+        <form autoComplete="off" onSubmit={handleSubmit} className={styles.loginFormContainer}>
+          <p className={styles.centeredText}>
+            Back for more travels? Please log in below
+          </p>
+          <div className={styles.inputLoginWrapper}>
+            <label className={styles.loginLabel}>
+              Email
+              <input
+                type="text"
+                value={email}
+                name="email"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div className={styles.inputLoginWrapper}>
+            <label className={styles.loginLabel}>
+              Password
+              <input
+                type="password"
+                value={password}
+                name="password"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div className={styles.loginButtonWrapper}>
+            <Link to="/" className={styles.cancelLink}>
+              CANCEL
+            </Link>
+            <button className={styles.loginButton} disabled={isFormInvalid()}>
+              Log In
+            </button>
+          </div>
+
+        </form>
+        <div className={styles.loginImageWrapper}>
         </div>
-        <div className={styles.signinImageWrapper}>
-        </div>
-      </form>
-    </main>
+      </div>
+    </div>
   )
 }
 

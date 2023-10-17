@@ -37,6 +37,7 @@ const Profiles = () => {
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.namesContainer}>
+        <h3>Wanderers</h3>
           {profiles.map(profile => (
             <Link key={profile._id} to={`/profiles/${profile._id}`}>
               {profile.photo ? (
