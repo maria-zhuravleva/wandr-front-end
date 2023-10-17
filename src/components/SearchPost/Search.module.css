@@ -2,14 +2,33 @@
   display: flex;
   align-items: center;
   justify-content: flex-end; 
+  color: black;      
+  font-size: 14px;
+  font-style: italic;
+  height: 30px;
+  width: 200px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* .searchForm .searchImg {
+  outline: none; 
+  background: transparent;
+} */
+
+input[type="text"] {
+  outline: none;
+  padding: 10px;
+  margin-right: 10px;
+  width: 300px;
 }
 
 
-.searchIcon {
+.searchIcon button {
   cursor: pointer;
   width: 25px; 
   height: 25px;
-  outline: none;
+  outline: none; 
   background: transparent;
 }
 

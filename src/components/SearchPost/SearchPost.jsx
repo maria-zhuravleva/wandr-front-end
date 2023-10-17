@@ -19,7 +19,7 @@ const SearchPost = (props) => {
 }
   return (
     <form onSubmit={handleSubmit}
-      className="searchForm">
+    className={styles.searchForm}>
       <input
         type="text"
         name="query"
@@ -28,18 +28,9 @@ const SearchPost = (props) => {
         value={formData.query}
         onChange={handleChange}
         onClick={handleClearField}     
-        style={{
-          color: 'black',       
-          fontSize: '14px',
-          fontStyle: 'italic',
-          border: 'solid 1px black',
-          height: '30px',
-          width: '200px',
-          padding: '10px'
-        }}
       />
       <button type="submit" className={styles.searchIcon} >
-        <img src="src/assets/icons/search.png" alt="menu" className={styles.searchImg} />
+        <img src="src/assets/icons/search.png" alt="search" className={styles.searchImg} />
       </button>
 
     </form>
