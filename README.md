@@ -20,9 +20,8 @@ The planning materials are available on the Trello board linked [here](https://t
 - [Muguntha Duraraj](https://github.com/Muguntha96)- Database and Models Manager
 
 ## Attrbutions :
-![MDN](https://img.shields.io/badge/MDN%20Web%20Docs-000000.svg?style=for-the-badge&logo=MDN-Web-Docs&logoColor=white)
-## Attrbutions :
-![MDN](https://img.shields.io/badge/MDN%20Web%20Docs-000000.svg?style=for-the-badge&logo=MDN-Web-Docs&logoColor=white)
+- [MDN](https://img.shields.io/badge/MDN%20Web%20Docs-000000.svg?style=for-the-badge&logo=MDN-Web-Docs&logoColor=white)
+- [Cloudinary](https://console.cloudinary.com/pm/c-9dc28bf499a2ec03f2f3e267711001/developer-dashboard)
 ## Tools and Technologies :
 ![Git](https://img.shields.io/badge/Git-F05032.svg?style=for-the-badge&logo=Git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white)
