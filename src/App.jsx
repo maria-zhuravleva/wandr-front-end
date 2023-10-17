@@ -60,6 +60,11 @@ function App() {
     fetchAllPosts()
   }, [])
 
+  const handleDeleteProfile = async (profileId) =>{
+    await profileService.deleteProfile(profileId)
+      setUser(null)
+      navigate('/')
+  }
 
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.create(postFormData)
@@ -101,7 +106,11 @@ function App() {
       <Routes>
       <Route
         path="/"
-        element={<Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />}
+        element={
+        
+        <Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
+        
+        }
       />
         <Route
           path="/about"
@@ -122,6 +131,14 @@ function App() {
             <ProtectedRoute user={user}>
               <EditProfile user={user} handleUpdateProfile={handleUpdateProfile} />
             </ProtectedRoute>}
+        />
+          <Route
+          path="/profiles/:profileId"
+          element={
+           <ProtectedRoute user={user}>
+             <ProfilePage user={user} handleDeleteProfile={handleDeleteProfile} />
+           </ProtectedRoute>
+          }
         />
         <Route
           path="/auth/signup"

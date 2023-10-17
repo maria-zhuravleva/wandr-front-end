@@ -16,6 +16,7 @@ import PostCard from '../../components/PostCard/PostCard'
 import * as profileService from '../../services/profileService'
 
 const Landing = (props) => {
+  console.log(props)
   const publicPosts = props.posts.filter(post => post.public)
 
   const [followingPosts, setFollowingPosts] = useState([])
