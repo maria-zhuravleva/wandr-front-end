@@ -1,51 +1,123 @@
-.container {
-  height: 100%;
+.editPostContainer {
   display: flex;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  padding: 28px 21px;
-  align-items: center;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
 }
 
-.container input, textarea, button { 
-  width: 100%;
-  padding: 14px;
-  font-size: 14px;
-  resize: vertical;
-  border-radius: 5px;
-  margin: 7px 0px 14px 0px;
-  border: 1px solid var(--border);
-  font-family: canada-type-gibson, sans-serif;
+.editPostContainer h3 {
+  margin-top: 0;
+  font-size: 100px;
+  font-weight: 100;
+  margin-bottom: 20px;
+  color: #000; 
+  border-bottom: solid 1px black;
 }
 
-.container textarea {
-  min-height: 50px;
+.editPostForm {
+  margin-top: 100px;
+  padding: 20px;
+  width: 600px;
+  padding: 10px;
+  width: 600px;
+  height: 950px;
+  background: url('../../assets/img/editBackground.jpeg');
+  background-size: 100% 90%;
+  background-position: cover;
+  background-repeat: no-repeat;
 }
 
-.container label {
-  font-weight: 600;
-  margin: 7px 0px 14px 0px;
-}
-
-/* .container button {
-  color: white;
-  font-weight: 600;
-  margin: 21px 0px 0px 0px;
-  background: var(--primary);
-} */
-
-.container a {
-  border: none;
-  font-size: 14px;
-  background: none;
-  font-weight: 500;
-  margin-top: 14px;
+.editPostWrapper {
+  margin-top: 40px;
+  margin-bottom: 15px;
   text-align: center;
-  color: rgb(200, 200, 200);
 }
 
-input:focus, select:focus, textarea:focus {
-  outline: none;
-  border: 1px solid var(--primary);
+
+.editPostWrapper textarea {
+  height: 90px;
+  font-size: 14px;
+  font-style: italic;
+  border: solid 1px black;
+  width: 305px;
+  margin-left: 5px;
+  border-radius: 0;
+} 
+
+.editPostWrapper label {
+  display: block;
+  font-size: 23px;
+  font-weight: 100;
+  font-weight: 100;
+  margin-bottom: 5px;
+  text-align: center;
 }
+
+.editPostWrapper:first-child label {
+  padding-top: 25px; 
+}
+
+
+.editPostWrapper .makePublicLabel {
+  color: white;
+}
+
+.editPostForm input {
+  height: 40px;
+  font-size: 14px;
+  font-style: italic;
+  border: solid 1px black;
+  width: 305px;
+  padding: 10px;
+  border-radius: 0;
+}
+
+.editPostForm input:focus,
+.editPostForm textarea:focus {
+  outline: none;
+}
+
+
+.editPostWrapper input,
+.editPostWrapper textarea {
+  padding: 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.editPostButton {
+  text-align: center;
+}
+
+.editPostButton button {
+  font-family: 'DM Serif Text', sans-serif;
+  font-weight: 100;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  border-left: none; 
+  border-right: none;
+  width: 150px;
+  height: 60px;
+  outline: none;
+  background: transparent;
+  text-transform: uppercase;
+  border-radius: 0;
+  margin-top: 25px;
+}
+
+.editPostButton button:hover {
+  background: white; 
+  color: black; 
+}
+
+.editPostWrapper .checkbox {
+  width: 20px;
+  height: 20px;
+} 

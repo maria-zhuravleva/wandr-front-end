@@ -22,50 +22,62 @@ const EditPost = (props) => {
   }
 
   return ( 
-    <main className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title-input">Title</label>
-        <input
-          required
-          type="text"
-          name="title"
-          id="title-input"
-          value={formData.title}
-          placeholder="Title"
-          onChange={handleChange}
-        />
-        <label htmlFor="location-input">Location</label>
-        <input
-          required
-          type="text"
-          name="location"
-          id="location-input"
-          value={formData.location}
-          placeholder="Location"
-          onChange={handleChange}
-        />
-        <label htmlFor="content-input">Content</label>
-        <textarea
-          required
-          type="text"
-          name="content"
-          id="content-input"
-          value={formData.content}
-          placeholder="Content"
-          onChange={handleChange}
-        />
-        <label htmlFor="public-input">Make Public?</label>
-        <input 
-          type="checkbox"
-          name="public"
-          id="public-input"
-          checked={formData.public}
-          onChange={e => handleChecked(e, !formData.public)}
-        />
-        <button type="submit">Submit</button>
+    <div className={styles.editPostContainer}>
+      <h3>Refine Your Travel Itinerary</h3>
+      <form onSubmit={handleSubmit} className={styles.editPostForm}>
+        <div className={styles.editPostWrapper}>
+          <label htmlFor="title-input">Title</label>
+          <input
+            required
+            type="text"
+            name="title"
+            id="title-input"
+            value={formData.title}
+            placeholder="Title"
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.editPostWrapper}>
+          <label htmlFor="location-input">Location</label>
+          <input
+            required
+            type="text"
+            name="location"
+            id="location-input"
+            value={formData.location}
+            placeholder="Location"
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.editPostWrapper}>
+          <label htmlFor="content-input">Content</label>
+          <textarea
+            required
+            type="text"
+            name="content"
+            id="content-input"
+            value={formData.content}
+            placeholder="Content"
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.editPostWrapper}>
+          <label htmlFor="public-input" className={styles.makePublicLabel}>Make Public?</label>
+          <input 
+            type="checkbox"
+            name="public"
+            id="public-input"
+            checked={formData.public}
+            onChange={e => handleChecked(e, !formData.public)}
+            className={styles.checkbox}
+          />
+        </div>
+        <div className={styles.editPostButton}>
+          <button type="submit">Save</button>
+        </div>
       </form>
-    </main>
-   )
+    </div>
+  )
 }
- 
+
 export default EditPost
