@@ -59,7 +59,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  margin-top: 20px;
+  margin-right: 130px;
+  height: 150px;
 }
 
 .editCommentForm {

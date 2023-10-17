@@ -51,6 +51,7 @@
   border: solid 1px black;
   width: 305px;
   padding: 10px;
+  outline: none;
 }
 
 .recCard select {
@@ -60,6 +61,7 @@
   height: 50px;
   width: 300px;
   margin-left: 5px;
+  outline: none;
 }
 
 .recCard textarea {
@@ -71,6 +73,7 @@
   margin-left: 5px;
   border-radius: 0;
   padding: 10px;
+  outline: none;
 }
 
 
