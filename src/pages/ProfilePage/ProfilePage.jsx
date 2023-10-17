@@ -21,13 +21,15 @@ const ProfilePage = (props) => {
   console.log(props.user)
   const [profile, setProfile] = useState({})
   const { profileId } = useParams()
-
+  console.log(profileId)
   const [profilePosts, setProfilePosts] = useState([])
   const [savedProfilePosts, setSavedProfilePosts] = useState([])
 
   useEffect(() => {
     const fetchProfile = async () => {
       const ProfileData = await profileService.showProfile(profileId)
+      console.log("profiledata")
+      console.log(ProfileData)
       setProfile(ProfileData)
           if (ProfileData.posts && ProfileData.posts.length > 0  ) {
               const postDetails = await Promise.all(
@@ -67,7 +69,7 @@ const ProfilePage = (props) => {
           <img src={avatar} alt="avatar" />
         )}
       </div>
-      <div><Link to={`/profiles/${profileId}/edit`} state={props.user} ><button>Edit profile</button></Link></div>
+      <div className={styles.edit}><Link to={`/profiles/${profileId}/edit`} state={profile} ><button>Edit profile</button></Link></div>
       <div className={styles.ppBio}>
         <p>This is bio section</p>
       </div>

@@ -31,11 +31,9 @@ import NewPost from './pages/NewPost/NewPost'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
-  console.log(user)
-  const navigate = useNavigate()
+    const navigate = useNavigate()
   const [posts, setPosts] = useState([])
-  console.log(posts)
-  const [searchResults,setSearchResults]=useState([])
+s  const [searchResults,setSearchResults]=useState([])
   const[errMsg,setErrMsg]=useState("")
   const[isSearch,setIsSearch]=useState(false)
 
@@ -48,10 +46,13 @@ function App() {
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
-const handleUpdateprofile = async (profileFormData) =>{
-  const updateProfile = await profileService.update(profileFormData)
+const handleUpdateProfile = async (profileFormData,photoData) =>{
+  const updateProfile = await profileService.updateProfile(profileFormData)
+  if (photoData) {
+    await profileService.addPhoto(photoData)
+  }
   setUser(updateProfile)
-navigate(`/profiles/${updateProfile._id}`)
+navigate(`/profiles/${updateProfile.profile}`)
 }
   useEffect(() => {
     const fetchAllPosts =  async () => {
@@ -76,7 +77,7 @@ navigate(`/profiles/${updateProfile._id}`)
   }
 
   const handleUpDatePost = async (postFormData) => {
-    const updatedPost = await postService.update(postFormData)
+    const updatedPost = await postService.updateProfile(postFormData)
     setPosts(posts.map(p => p._id === postFormData._id ? updatedPost : p))
     navigate(`/posts/${updatedPost._id}`)
   }
@@ -121,7 +122,7 @@ navigate(`/profiles/${updateProfile._id}`)
         <Route 
           path='/profiles/:profileId/edit' element={
           <ProtectedRoute user={user}>
-            <EditProfile handleUpdateprofile={handleUpdateprofile} />
+            <EditProfile user={user} handleUpdateProfile={handleUpdateProfile} />
           </ProtectedRoute>}
         />
         <Route
