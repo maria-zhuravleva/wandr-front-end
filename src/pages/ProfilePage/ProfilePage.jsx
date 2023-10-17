@@ -22,8 +22,6 @@ const ProfilePage = (props) => {
   useEffect(() => {
     const fetchProfile = async () => {
       const ProfileData = await profileService.showProfile(profileId)
-      console.log("profiledata")
-      console.log(ProfileData)
       setProfile(ProfileData)
       if (ProfileData.posts && ProfileData.posts.length > 0) {
         const postDetails = await Promise.all(
@@ -44,10 +42,17 @@ const ProfilePage = (props) => {
     }
     fetchProfile()
   }, [profileId])
+
   const handleFollow = async (profileId) => {
-    const followedProfile = await profileService.addFollow(profileId)
-    setProfile(followedProfile)
+    const followerList = await profileService.addFollow(profileId)
+    setProfile({...profile, followers:  followerList})
   }
+
+  const handleUnFollow = async (profileId) => {
+    const followerList = await profileService.unFollow(profileId)
+    setProfile({...profile, followers:  followerList})
+  }
+
   return (
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
@@ -76,7 +81,7 @@ const ProfilePage = (props) => {
         <p>{profile.createdAt}</p>
       </div>
       <div className={styles.followersContainer}>
-        {<Following profile={profile} user={props.user} handleFollow={handleFollow} />}
+        {<Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
         <Link to={`/profiles/${profile._id}/following`}>
           View Following
         </Link>
