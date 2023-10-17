@@ -31,7 +31,7 @@ function App() {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
   const [posts, setPosts] = useState([])
-s  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState([])
   const [errMsg, setErrMsg] = useState("")
   const [isSearch, setIsSearch] = useState(false)
   const handleLogout = () => {
@@ -69,7 +69,7 @@ s  const [searchResults, setSearchResults] = useState([])
     navigate('/posts')
   }
   const handleUpDatePost = async (postFormData) => {
-    const updatedPost = await postService.updateProfile(postFormData)
+    const updatedPost = await postService.update(postFormData)
     setPosts(posts.map(p => p._id === postFormData._id ? updatedPost : p))
     navigate(`/posts/${updatedPost._id}`)
   }
