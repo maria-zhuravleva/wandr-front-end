@@ -108,7 +108,9 @@ function App() {
         path="/"
         element={
         
-        <Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
+        <ProtectedRoute user={user}>
+          <Landing user={user}  posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
+        </ProtectedRoute>
         
         }
       />
@@ -132,12 +134,12 @@ function App() {
               <EditProfile user={user} handleUpdateProfile={handleUpdateProfile} />
             </ProtectedRoute>}
         />
-          <Route
+        <Route
           path="/profiles/:profileId"
           element={
-           <ProtectedRoute user={user}>
-             <ProfilePage user={user} handleDeleteProfile={handleDeleteProfile} />
-           </ProtectedRoute>
+            <ProtectedRoute user={user}>
+              <ProfilePage user={user} handleDeleteProfile={handleDeleteProfile} />
+            </ProtectedRoute>
           }
         />
         <Route
