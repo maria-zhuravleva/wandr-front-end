@@ -48,6 +48,7 @@ const ProfilePage = (props) => {
     const followedProfile = await profileService.addFollow(profileId)
     setProfile(followedProfile)
   }
+
   return (
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
@@ -60,13 +61,6 @@ const ProfilePage = (props) => {
           <img src={avatar} alt="avatar" />
         )}
       </div>
-      <div className={styles.edit}>
-        {props.user?.profile === profileId && (
-          <Link to={`/profiles/${profileId}/edit`} state={profile} >
-            <button>Edit profile</button>
-          </Link>
-        )}
-      </div>
       <div className={styles.ppBio}>
         <p>This is bio section</p>
       </div>
@@ -74,6 +68,13 @@ const ProfilePage = (props) => {
         <h5>Member Since </h5>
         {/* change how the date is presented later */}
         <p>{profile.createdAt}</p>
+        <div className={styles.editProfileButton}>
+          {props.user?.profile === profileId && (
+            <Link to={`/profiles/${profileId}/edit`} state={profile} >
+              <button>Edit profile</button>
+            </Link>
+          )}
+        </div>
       </div>
       <div className={styles.followersContainer}>
         {<Following profile={profile} user={props.user} handleFollow={handleFollow} />}
