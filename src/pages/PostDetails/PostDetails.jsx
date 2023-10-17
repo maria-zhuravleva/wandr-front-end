@@ -11,6 +11,7 @@ import Recommendation from '../../components/Recommendation/Recommendation'
 import RecCard from '../../components/RecCard/RecCard'
 import PhotoUpload from '../../components/UploadPhoto/PhotoUpload'
 import MorePhotosUpload from '../../components/UploadPhoto/MorePhotosUpload'
+import PhotoCard from '../../components/PhotoCard/PhotoCard'
 
 //css
 import styles from './PostDetails.module.css'
@@ -94,8 +95,12 @@ const PostDetails = (props) => {
   }
 
   const handleAddMorePostPhotos = async (postId, photoData) => {
-    const photo = await postService.addPostPhoto(postId, photoData)
+    const photo = await postService.addMorePostPhotos(postId, photoData)
     setPost({...post, morePhotos: [photo, ...post.morePhotos]})
+  }
+
+  const handleDeleteMorePhotos = (idx) => {
+    setPost({...post, morePhotos: post.morePhotos.splice(idx, 1)})
   }
 
   if (!post) return <Loading />
@@ -117,7 +122,12 @@ const PostDetails = (props) => {
         <div className={styles.imageContainer}>
             <img src={post.mainPhoto ? post.mainPhoto : DefaultPhoto} alt="Post Main Photo" />
         </div>
-         
+        <div className={styles.imageCollection}>
+         {post.morePhotos.map((photo, idx) => 
+            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos}/>
+          )}
+        </div>
+
       </div>
 
       <div className={styles.likeAndSaveBtn}>       

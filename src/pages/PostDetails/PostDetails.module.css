@@ -191,7 +191,12 @@
   height: 50px;
 } */
 
+.imageCollection {
+  max-height: 250px;
+}
 
-
+.imageCollection img {
+  height: 200px;
+}
 
 
