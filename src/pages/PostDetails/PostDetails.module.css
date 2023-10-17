@@ -192,11 +192,10 @@
 } */
 
 .imageCollection {
-  max-height: 250px;
+  height: 200px;
+  display: flex;
 }
 
-.imageCollection img {
-  height: 200px;
-}
+
 
 
