@@ -1,27 +1,19 @@
-.mainContainer {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 100px;
-  grid-template-areas:
-    "cardDetailsContainer likeAndSaveBtn"
-    "cardDetailsBtn recommendationsContainer"
-    "commentsContainer commentsContainer";
-    height: 100vh;
-}
-
 .cardDetailsContainer {
-  grid-area: cardDetailsContainer;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between; 
   padding: 50px;
-  width: 1400px;
+  max-width: 800px;
   height: 800px;
   display: flex;
 }
 
+/* First Row */
 .textContainer {
-  flex: 1;
+  flex-basis: 80%;
   padding: 20px; 
+  padding-right: 50px;
 }
 
 .textContainer h1 {
@@ -39,10 +31,10 @@
 }
 
 .imageContainer {
-  flex: 1;
+  flex-basis: 20%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  max-height: 750px;
+  margin-left: 200px;
 }
 
 .imageContainer img {
@@ -50,11 +42,17 @@
   max-height: 100%;
 }
 
+
+
+.cardDetailsBtnContainer {
+  display: flex;
+}
+
 .likeAndSaveBtn {
-  grid-area: likeAndSaveBtn;
   display: flex;
   align-items: center;
 }
+
 
 .likeAndSaveBtn button {
   margin-right: 10px; 
@@ -76,24 +74,17 @@
   height: 15px;
 }
 
-.secondRow {
-  display: flex;
-  width: 1400px;
-  height: 800px;
-  padding: 60px;
-}
-
 .cardDetailsBtn {
-  display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  margin-left: 200px;
+  margin-left: 70px;
   margin-right: 40px;
+  float: left;
 }
 
 .cardDetailsBtn button,
 .likeBtn,
-.saveBtn {
+.saveBtn,
+.cardPhotosBtn button {
   font-family: 'DM Serif Text', sans-serif;
   font-weight: 100;
   cursor: pointer;
@@ -110,8 +101,11 @@
   text-transform: uppercase;
   margin: 0;
   border-radius: 0;
-  margin-bottom: 20px;
-  margin-left: -20px;
+}
+
+.cardDetailsBtn .editBtn,
+.cardDetailsBtn .deleteBtn {
+  padding-top: 18px;
 }
 
 .likeBtn,
@@ -126,7 +120,8 @@
 }
 
 
-.cardDetailsBtn button:hover {
+.cardDetailsBtn button:hover,
+.cardPhotosBtn button:hover {
   background: black; 
   color: white; 
 }
@@ -143,57 +138,89 @@
 
 .cardDetailsBtn button:first-child {
   margin-top: 50px;
+  margin-right: 50px;
+}
+
+.cardPhotosBtn button {
+  margin-right: 50px;
+  margin-top: 20px;
+  margin-left: 20px;
+  float: right;
+  max-width: 150px;
+  height: 60px;
+}
+
+.cardPhotosBtn button:first-child {
+  margin-right: 140px;
 }
 
 
-.map {
+.cardDetailsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardDetailsBtn,
+.cardPhotosBtn {
+  flex-basis: 48%;
+}
+
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .map {
+  flex-basis: 40%;
   height: 100px;
   margin-left: -150px;
   opacity: 0.1;
   margin-top: 20px;
+} */
+
+/* Second Row */
+
+.secondRow {
+  display: flex;
+  justify-content: center;
 }
 
 
 .recommendationsContainer {
-  padding: 50px;
+  flex-basis: 50%;
+  max-width: 600px;
   margin-bottom: 50px;
-  margin-left: 250px;
+  margin-left: 150px;
+  margin-right: -200px;
+  margin-top: 20px;
 }
 
+
 .commentsContainer {
+  flex-basis: 50%;
   display: flex;
   flex-direction: column;
-  width: 850px;
-  margin-left: 30px;
+  max-width: 600px;
   background-color: white;
   border-top: solid 1px black; 
   border-right: solid 1px black; 
-  margin-top: 0px;
-  padding: 0 50px;
+  margin-top: 100px;
+  margin-left: -300px;
 }
 
 .commentsContainer h3 {
-  margin-bottom: 0;
   height: 200px;
-  padding: 0 20px;
+  padding-top: 50px;
+  padding-right: 60px;
   font-weight: 100;
   font-size: 35px;
   text-align: center;
   background: url('../../assets/icons/comments.png');
   background-size: 90px; 
-  background-position: 465px 0;
+  background-position: 45px 0;
   background-repeat: no-repeat;
-}
-
-
-/* .commentsContainer .watercolor img {
-  width: 50px;
-  height: 50px;
-} */
-
-.imageCollection {
-  height: 200px;
-  display: flex;
 }
 
 

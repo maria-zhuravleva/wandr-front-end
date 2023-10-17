@@ -1,4 +1,4 @@
-.container {
+/* .container {
   padding: 0;
   display: flex;
   border: none;
@@ -53,4 +53,52 @@
 .container button[type="submit"] img {
   width: 18px;
   height: 18px;
+} */
+
+.editCommentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 130px;
+  height: 150px;
+}
+
+.editCommentForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.editCommentButton {
+  font-family: 'DM Serif Text', sans-serif;
+  font-weight: 100;
+  cursor: pointer;
+  font-size: 14px;
+  color: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: none; 
+  border-right: none;
+  width: 90px;
+  height: 40px;
+  outline: none;
+  background: transparent;
+  text-transform: uppercase;
+  margin: 0;
+  border-radius: 0;
+  margin-top: 20px;
+}
+
+.editCommentForm textarea {
+  height: 90px;
+  font-size: 14px;
+  font-style: italic;
+  border: solid 1px black;
+  width: 300px;
+  margin-left: 5px;
+  border-radius: 0;
+  padding: 10px;
+  outline: none;
 }
