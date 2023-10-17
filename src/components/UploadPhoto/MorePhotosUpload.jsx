@@ -35,7 +35,8 @@ const MorePhotosUpload = (props) => {
     }
     setPhotoData({ photo: e.target.files[0] })
   }
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     props.handleAddMorePostPhotos(props.post._id, photoData.photo)
   }
 

@@ -84,27 +84,25 @@ const PostDetails = (props) => {
     setShowMorePhotosUploadField(true)
   }
 
-  const handleDeletePostPhoto = async () => {
-    const post = await postService.deletePostPhoto(postId)
-    setPost(post)
+  const handleDeleteMainPhoto = async () => {
+    const mainPhoto = await postService.deleteMainPhoto(postId)
+    setPost({...post, mainPhoto: mainPhoto})
   }
   
-  const handleAddPostPhoto = async (postId, photoData) => {
-    const post = await postService.addPostPhoto(postId, photoData)
-    setPost(post)
+  const handleAddMainPhoto = async (postId, photoData) => {
+    const mainPhoto = await postService.addMainPhoto(postId, photoData)
+    setPost({...post, mainPhoto: mainPhoto})
   }
 
   const handleAddMorePostPhotos = async (postId, photoData) => {
-    const post = await postService.addMorePostPhotos(postId, photoData)
-    setPost(post)
+    const photo = await postService.addMorePostPhotos(postId, photoData)
+    setPost({...post, morePhotos: [photo, ...post.morePhotos]})
   }
 
-  // const handleDeleteMorePhotos = async (idx) => {
-  //   const photoId = post.morePhotos[idx].split('/').pop().split('.')[0]
-  //   const deletedPhoto = await postService.deleteMorePostPhotos(photoId)
-  //   console.log(photoId, post.morePhotos)
-  //   setPost({...post, morePhotos: post.morePhotos.filter(p => p !== deletedPhoto)})
-  // }
+  const handleDeleteMorePhotos = async (photoId) => {
+    const deletedPhoto = await postService.deleteMorePostPhotos(postId, photoId)
+    setPost({...post, morePhotos: post.morePhotos.filter(p => p._id !== deletedPhoto._id)})
+  }
 
   if (!post) return <Loading />
 
@@ -129,7 +127,7 @@ const PostDetails = (props) => {
       </div>
         <div className={styles.imageCollection}>
          {post.morePhotos.map((photo, idx) => 
-            <PhotoCard key={idx} photo={photo} idx={idx} /* handleDeleteMorePhotos={handleDeleteMorePhotos} *//>
+            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos} />
           )}
         </div>
 
@@ -171,13 +169,13 @@ const PostDetails = (props) => {
               <button onClick={handleShow}>
                 {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
               </button>
-              {post.mainPhoto && <button onClick={handleDeletePostPhoto}>
+              {post.mainPhoto && <button onClick={handleDeleteMainPhoto}>
                 Delete Main Photo
               </button>}
               {post.morePhotos.length < 5 && <button onClick={handleShowMore}>
                 Upload More Photos
               </button>}
-              {showPhotoUploadField && <PhotoUpload post={post} handleAddPostPhoto={handleAddPostPhoto} />}
+              {showPhotoUploadField && <PhotoUpload post={post} handleAddMainPhoto={handleAddMainPhoto} />}
               {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} />}
             </>
           )}
