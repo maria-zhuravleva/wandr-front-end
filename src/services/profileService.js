@@ -73,11 +73,26 @@ async function showFollowing(profileId){
   }
 }
 
+async function explorePage(profileId) {
+  try {
+    const authToken = tokenService.getToken()
+    const res = await fetch(`${BASE_URL}/${profileId}/following/posts`, {
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+      },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export { 
   getAllProfiles, 
   addPhoto,
   showProfile,
   addFollow,
   showFollowing,
-  showFollowers
+  showFollowers,
+  explorePage
 }
