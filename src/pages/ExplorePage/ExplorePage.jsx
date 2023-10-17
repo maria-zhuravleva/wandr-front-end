@@ -33,7 +33,6 @@ const ExplorePage = () => {
     <h1>Explore Page</h1>
     </header>
     <main>
-      {/* map over posts to a card component */}
       {followingPosts.length === 0 ? (
         <>
           <p>No posts by available by people you follow</p>
@@ -42,9 +41,13 @@ const ExplorePage = () => {
         // put link or btn to profiles page
       ) : (
         <>
-          {/* map over post to a card component */}
-          <p>mapped posts</p>
-        </>
+        {followingPosts.map((post) => {
+          if (post.public) {
+            return <PostCard key={post._id} post={post} />
+          }
+          return null
+        })}
+      </>
       )}
     </main>
 
