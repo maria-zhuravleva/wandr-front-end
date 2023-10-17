@@ -123,7 +123,7 @@ const PostDetails = (props) => {
         </div>
         <div className={styles.imageCollection}>
           {post.morePhotos.map((photo, idx) => 
-            <PhotoCard key={idx} photo={photo} idx={idx} /* handleDeleteMorePhotos={handleDeleteMorePhotos} *//>
+            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos}/>
           )}
         </div>
       </div>
