@@ -43,9 +43,9 @@ const MorePhotosUpload = (props) => {
   }
 
   return ( 
-    <div className={styles.movePhotosUploadContainer}>
-      <form onSubmit={handleSubmit}>
-        <label>Upload Photo
+    <div className={styles.uploadPhotoContainer}>
+      <form onSubmit={handleSubmit} className={styles.uploadPhotoForm}>
+        <label>Upload More Photos
           <input 
             type="file" 
             name="photo" 
@@ -53,7 +53,7 @@ const MorePhotosUpload = (props) => {
             ref={imgInputRef}
           />
         </label>
-        <button type="submit" className={styles.fileInputButton} style={{float: 'left'}}>Upload</button>
+        <button type="submit" className={styles.fileInputButton}>Upload</button>
       </form>
     </div>
   )
