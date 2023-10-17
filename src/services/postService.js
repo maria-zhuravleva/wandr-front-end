@@ -64,6 +64,17 @@ async function deletePostPhoto(postId) {
     console.log(err)
   }
 }
+// async function deleteMorePostPhotos(postId, photoId) {
+//   try {
+//     const res = await fetch(`${BASE_URL}/${postId}/delete-more-photos/${photoId}`, {
+//       method: 'DELETE',
+//       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+//     })
+//     return res.json()
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
 
 async function show(postId) {
   try {
@@ -253,4 +264,5 @@ export {
   addPostPhoto,
   deletePostPhoto,
   addMorePostPhotos,
+  // deleteMorePostPhotos,
 }

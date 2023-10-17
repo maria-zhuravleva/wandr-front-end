@@ -85,23 +85,26 @@ const PostDetails = (props) => {
   }
 
   const handleDeletePostPhoto = async () => {
-    const deletedPhoto = await postService.deletePostPhoto(postId)
-    setPost({...post, mainPhoto: deletedPhoto})
+    const post = await postService.deletePostPhoto(postId)
+    setPost(post)
   }
   
   const handleAddPostPhoto = async (postId, photoData) => {
-    const mainPhoto = await postService.addPostPhoto(postId, photoData)
-    setPost({...post, mainPhoto: mainPhoto})
+    const post = await postService.addPostPhoto(postId, photoData)
+    setPost(post)
   }
 
   const handleAddMorePostPhotos = async (postId, photoData) => {
-    const photo = await postService.addMorePostPhotos(postId, photoData)
-    setPost({...post, morePhotos: [photo, ...post.morePhotos]})
+    const post = await postService.addMorePostPhotos(postId, photoData)
+    setPost(post)
   }
 
-  const handleDeleteMorePhotos = (idx) => {
-    setPost({...post, morePhotos: post.morePhotos.splice(idx, 1)})
-  }
+  // const handleDeleteMorePhotos = async (idx) => {
+  //   const photoId = post.morePhotos[idx].split('/').pop().split('.')[0]
+  //   const deletedPhoto = await postService.deleteMorePostPhotos(photoId)
+  //   console.log(photoId, post.morePhotos)
+  //   setPost({...post, morePhotos: post.morePhotos.filter(p => p !== deletedPhoto)})
+  // }
 
   if (!post) return <Loading />
 
@@ -122,13 +125,13 @@ const PostDetails = (props) => {
         <div className={styles.imageContainer}>
             <img src={post.mainPhoto ? post.mainPhoto : DefaultPhoto} alt="Post Main Photo" />
         </div>
-        <div className={styles.imageCollection}>
-         {post.morePhotos.map((photo, idx) => 
-            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos}/>
-          )}
-        </div>
 
       </div>
+        <div className={styles.imageCollection}>
+         {post.morePhotos.map((photo, idx) => 
+            <PhotoCard key={idx} photo={photo} idx={idx} /* handleDeleteMorePhotos={handleDeleteMorePhotos} *//>
+          )}
+        </div>
 
       <div className={styles.likeAndSaveBtn}>       
         <div className={styles.likeCount}>
