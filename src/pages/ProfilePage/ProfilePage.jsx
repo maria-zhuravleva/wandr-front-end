@@ -14,6 +14,8 @@ import * as postService from '../../services/postService'
 // components
 import PostCard from "../../components/PostCard/PostCard"
 import Following from "../../components/Following/Following"
+//
+import EditProfile from "../EditProfile/EditProfile"
 
 const ProfilePage = (props) => {
   console.log(props.user)
@@ -65,7 +67,7 @@ const ProfilePage = (props) => {
           <img src={avatar} alt="avatar" />
         )}
       </div>
-      <div><Link to={`/profiles/${profileId}/edit`}><button>Edit profile</button></Link></div>
+      <div><Link to={`/profiles/${profileId}/edit`} state={props.user} ><button>Edit profile</button></Link></div>
       <div className={styles.ppBio}>
         <p>This is bio section</p>
       </div>

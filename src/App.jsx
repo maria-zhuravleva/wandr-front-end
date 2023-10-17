@@ -13,6 +13,7 @@ import PostDetails from './pages/PostDetails/PostDetails'
 import EditPost from './pages/EditPost/EditPost'
 import About from './pages/About/About'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
+import EditProfile from './pages/EditProfile/EditProfile'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -30,6 +31,7 @@ import NewPost from './pages/NewPost/NewPost'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  console.log(user)
   const navigate = useNavigate()
   const [posts, setPosts] = useState([])
   console.log(posts)
@@ -48,7 +50,7 @@ function App() {
   }
 const handleUpdateprofile = async (profileFormData) =>{
   const updateProfile = await profileService.update(profileFormData)
-  setUser(user.map(ele =>ele._id === profileFormData._id ? updateProfile : ele ))
+  setUser(updateProfile)
 navigate(`/profiles/${updateProfile._id}`)
 }
   useEffect(() => {
@@ -116,9 +118,12 @@ navigate(`/profiles/${updateProfile._id}`)
             </ProtectedRoute>
           }
         />
-        <Route path='/profils/:profileId/edit' element={<ProtectedRoute>
-        <  EditPost handleUpdateprofile={handleUpdateprofile} />
-        </ProtectedRoute>}/>
+        <Route 
+          path='/profiles/:profileId/edit' element={
+          <ProtectedRoute user={user}>
+            <EditProfile handleUpdateprofile={handleUpdateprofile} />
+          </ProtectedRoute>}
+        />
         <Route
           path="/auth/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}
