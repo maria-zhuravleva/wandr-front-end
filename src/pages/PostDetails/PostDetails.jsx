@@ -158,6 +158,7 @@ const PostDetails = (props) => {
 
       <div className={styles.secondRow}>
         <div className={styles.cardDetailsBtn}>
+          {console.log("CHECK: ",post.author._id === props.user?.profile)}
           {post.author._id === props.user?.profile && (
             <>
               <Link to={`/posts/${postId}/edit`} state={post}>
