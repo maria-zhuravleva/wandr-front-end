@@ -14,8 +14,8 @@ const PostList = (props) => {
       <div className={styles.postListHeading}>
         <h1>All Posts</h1>
       </div>
-      {props.errMsg && <h2>{props.errMsg}</h2>}
       <div className={styles.postListSearch}> <SearchPost handlePostSearch={props.handlePostSearch}/></div>
+      {props.errMsg && <h2 className={styles.noPostsMsg}>{props.errMsg}</h2>}
 
       <div className={styles.postCardContainer}>
         {props.isSearch 
