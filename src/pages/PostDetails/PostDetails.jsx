@@ -90,13 +90,13 @@ const PostDetails = (props) => {
   }
   
   const handleAddPostPhoto = async (postId, photoData) => {
-    const post = await postService.addPostPhoto(postId, photoData)
-    setPost(post)
+    const mainPhoto = await postService.addPostPhoto(postId, photoData)
+    setPost({...post, mainPhoto: mainPhoto})
   }
 
   const handleAddMorePostPhotos = async (postId, photoData) => {
-    const post = await postService.addMorePostPhotos(postId, photoData)
-    setPost(post)
+    const photo = await postService.addMorePostPhotos(postId, photoData)
+    setPost({...post, morePhotos: [photo, ...post.morePhotos]})
   }
 
   // const handleDeleteMorePhotos = async (idx) => {
