@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom"
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPerson } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import deleteIcon from "../../assets/icons/delete.png"
 // services
 import * as profileService from '../../services/profileService'
@@ -62,6 +62,12 @@ const ProfilePage = (props) => {
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
         <h1>{profile.name}</h1>
+        <div className={styles.topContributor}>
+          {profilePosts.length>5 || profile.followers>5 ? 
+          <div><FontAwesomeIcon icon={faUser} style={{color: "#24a333",fontSize:"40px"}} /></div>
+          : ""
+}
+        </div>
       </header>
       <div className={styles.ppAvatar}>
         {profile.photo ? (
