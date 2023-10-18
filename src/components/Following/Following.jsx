@@ -23,5 +23,5 @@ const Following = (props) => {
     </>
   )
 }
- 
+
 export default Following

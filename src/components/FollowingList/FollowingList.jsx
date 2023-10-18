@@ -5,6 +5,8 @@ import { useParams, Link } from "react-router-dom"
 // services
 import * as profileService from '../../services/profileService'
 
+// css
+import styles from './FollowingList.module.css'
 import avatar from "../../assets/icons/avatar.png"
 
 const FollowingList = () => {
@@ -30,7 +32,7 @@ const FollowingList = () => {
   }, [profileId])
 
   return ( 
-    <>
+    <div className={styles.followingListContainer}>
       <h1>Following: </h1>
       {followingList.length === 0 ? (
       <p>Not following anyone yet</p>
@@ -42,7 +44,7 @@ const FollowingList = () => {
         </Link>
       ))
     )}
-    </>
+    </div>
   )
 }
 
