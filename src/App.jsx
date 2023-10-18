@@ -1,6 +1,6 @@
 // npm modules
 import { useEffect, useState } from 'react'
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 // pages
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -25,10 +25,10 @@ import * as postService from './services/postService'
 // styles
 import './App.css'
 import NewPost from './pages/NewPost/NewPost'
-import FollowerList from './components/FollowerList/FollowerList'
-import FollowingList from './components/FollowingList/FollowingList'
+
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  const [profiles, setProfiles] = useState([])
   const navigate = useNavigate()
   const [posts, setPosts] = useState([])
   const [searchResults,setSearchResults]=useState([])
@@ -44,14 +44,7 @@ function App() {
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
-  const handleUpdateProfile = async (profileFormData, photoData) => {
-    const updateProfile = await profileService.updateProfile(profileFormData)
-    if (photoData) {
-      await profileService.addPhoto(photoData)
-    }
-    setUser(updateProfile)
-    navigate(`/profiles/${updateProfile.profile}`)
-  }
+
   useEffect(() => {
     const fetchAllPosts = async () => {
       const postData = await postService.index()
@@ -60,6 +53,27 @@ function App() {
     fetchAllPosts()
   }, [])
 
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      const profileData = await profileService.getAllProfiles()
+      setProfiles(profileData)
+    }
+    fetchProfiles()
+  }, [])
+
+  const handleUpdateProfile = async (profileFormData, photoData) => {
+    const updatedUser = await profileService.updateProfile(profileFormData, photoData)
+    setUser(updatedUser)
+    setProfiles(profiles.map(p => p._id === user.profile?._id ? user.profile : p))
+    navigate(`/profiles/${user.profile}`)
+  }
+  
+  const handleDeleteProfile = async (profileId) =>{
+    await profileService.deleteProfile(profileId)
+    authService.logout()
+      setUser(null)
+      navigate('/')
+  }
 
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.create(postFormData)
@@ -102,8 +116,10 @@ function App() {
       <Route
         path="/"
         element={
-          <Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
-      }
+        <ProtectedRoute user={user}>
+          <Landing user={user}  posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
+        </ProtectedRoute>
+                }
       />
         <Route
           path="/about"
@@ -115,7 +131,7 @@ function App() {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <Profiles user={user} />
+              <Profiles user={user} profiles={profiles}/>
             </ProtectedRoute>
           }
         />
@@ -124,6 +140,14 @@ function App() {
             <ProtectedRoute user={user}>
               <EditProfile user={user} handleUpdateProfile={handleUpdateProfile} />
             </ProtectedRoute>}
+        />
+        <Route
+          path="/profiles/:profileId"
+          element={
+            <ProtectedRoute user={user}>
+              <ProfilePage user={user} handleDeleteProfile={handleDeleteProfile} />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="/auth/signup"
