@@ -133,6 +133,18 @@ async function explorePage(profileId) {
   }
 }
 
+async function deleteSavedPosts(profileId, postId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/saves/${postId}`, {
+      method:'DELETE',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export { 
   getAllProfiles, 
   addPhoto,
@@ -143,5 +155,6 @@ export {
   unFollow,
   showFollowing,
   showFollowers,
-  explorePage
+  explorePage,
+  deleteSavedPosts,
 }

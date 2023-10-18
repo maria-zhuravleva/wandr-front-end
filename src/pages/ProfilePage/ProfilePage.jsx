@@ -6,12 +6,10 @@ import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPerson } from '@fortawesome/free-solid-svg-icons';
+import deleteIcon from "../../assets/icons/delete.png"
 // services
 import * as profileService from '../../services/profileService'
 import * as postService from '../../services/postService'
-// pages
-import FollowingIndex from "../FollowingIndex/FollowingIndex"
-import EditProfile from "../EditProfile/EditProfile"
 // components
 import PostCard from "../../components/PostCard/PostCard"
 import Following from "../../components/Following/Following"
@@ -20,37 +18,29 @@ const ProfilePage = (props) => {
   const [profile, setProfile] = useState({})
   const { profileId } = useParams()
   const [profilePosts, setProfilePosts] = useState([])
-  console.log(profilePosts)
   const [savedProfilePosts, setSavedProfilePosts] = useState([])
-const [isTopContributor,setIsTopContributor]=useState(false)
   useEffect(() => {
     const fetchProfile = async () => {
       const ProfileData = await profileService.showProfile(profileId)
       setProfile(ProfileData)
       
-      if (ProfileData.posts && ProfileData.posts.length > 0) {
-        const postDetails = await Promise.all(
-          ProfileData.posts.map(async (postId) => {
-            return await postService.show(postId)
-          })
-        )
-        setProfilePosts(postDetails);
-      }
-      if (ProfileData.saves && ProfileData.saves.length > 0) {
-        const savedPostDetails = await Promise.all(
-          ProfileData.saves.map(async (postId) => {
-            return await postService.show(postId)
-          })
-        )
-        setSavedProfilePosts(savedPostDetails)
-      }
-      if((profilePosts.length>1) || (profile.followers>4)){
-        setIsTopContributor(true)
-      }
+      const postDetails = await Promise.all(
+        ProfileData.posts.map(async (postId) => {
+          return await postService.show(postId)
+        })
+      )
+      setProfilePosts(postDetails)
+    
+      const savedPostDetails = await Promise.all(
+        ProfileData.saves.map(async (postId) => {
+          return await postService.show(postId)
+        })
+      )
+      setSavedProfilePosts(savedPostDetails)
     }
-    fetchProfile()
   
-  }, [profileId,profilePosts,profile.followers])
+    fetchProfile()
+  }, [profileId])
 
   const handleFollow = async (profileId) => {
     const followerList = await profileService.addFollow(profileId)
@@ -62,15 +52,16 @@ const [isTopContributor,setIsTopContributor]=useState(false)
     setProfile({...profile, followers:  followerList})
   }
 
+  const handleDeleteSavedPost = async (profileId, postId) => {
+    const saves = await profileService.deleteSavedPosts(profileId, postId)
+    setSavedProfilePosts(...saves)
+  }
+
+
   return (
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
         <h1>{profile.name}</h1>
-        {isTopContributor ?
-          <div className={styles.topContributor}>
-            <FontAwesomeIcon icon={faPerson} beat style={{color: "#1db45f",fontSize:'50px'}} />
-          </div>
-          : ""}
       </header>
       <div className={styles.ppAvatar}>
         {profile.photo ? (
@@ -120,9 +111,12 @@ const [isTopContributor,setIsTopContributor]=useState(false)
           {savedProfilePosts &&
             savedProfilePosts
               .filter((post) => post !== null) // Filter out null posts
-              .map((post) => (
-                <PostCard key={post._id} post={post} />
-              ))}
+              .map(post =>
+                <>
+                  <PostCard key={post._id} post={post} />
+                  <button onClick={() => handleDeleteSavedPost(profileId, post._id)}><img src={deleteIcon} className={styles.deleteIcon}/></button>
+                </>
+              )}
         </div>
       </div>
     </div>
