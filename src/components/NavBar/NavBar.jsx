@@ -13,10 +13,10 @@ const NavBar = ({ user, handleLogout }) => {
     setShowDropdown(!showDropdown)
   }
 
+
   return (
     <nav className={`${styles.container} ${showDropdown ? styles.fixed : ''}`}>
       <div className={styles.icon} onClick={toggleDropdown} style={{ cursor: 'pointer' }}>
-        {/* <img src="src/assets/icons/menu.png" alt="menu" className={styles.img} /> */}
         <img src={menuIcon} alt="Menu" className={styles.img} />             
       </div>
 
@@ -24,6 +24,7 @@ const NavBar = ({ user, handleLogout }) => {
         <ul className={styles.dropdownMenu}>
           <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink to={`/profiles/${user?.profile}`}>My Profile</NavLink></li>
           <li><NavLink to="/profiles">Profiles</NavLink></li>
           <li><NavLink to="/posts">All Posts</NavLink></li>
           <li><NavLink to="/posts/new">New Post</NavLink></li>
