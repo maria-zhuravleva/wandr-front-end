@@ -224,6 +224,18 @@ async function unlikePost(postId) {
   }
 }
 
+async function unsavePost(postId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/unsave`, {
+      method:'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   create,
   show,
@@ -241,4 +253,5 @@ export {
   addMorePostPhotos,
   deleteMorePostPhotos,
   unlikePost,
+  unsavePost,
 }
