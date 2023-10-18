@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom"
 // css
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPerson } from '@fortawesome/free-solid-svg-icons';
 // services
 import * as profileService from '../../services/profileService'
 import * as postService from '../../services/postService'
@@ -42,7 +44,7 @@ const [isTopContributor,setIsTopContributor]=useState(false)
         )
         setSavedProfilePosts(savedPostDetails)
       }
-      if((profilePosts.length>5) || (profile.followers>4)){
+      if((profilePosts.length>1) || (profile.followers>4)){
         setIsTopContributor(true)
       }
     }
@@ -65,8 +67,10 @@ const [isTopContributor,setIsTopContributor]=useState(false)
       <header className={styles.ppHeader}>
         <h1>{profile.name}</h1>
         {isTopContributor ?
-          <div>👍</div>
-          : null}
+          <div className={styles.topContributor}>
+            <FontAwesomeIcon icon={faPerson} beat style={{color: "#1db45f",fontSize:'50px'}} />
+          </div>
+          : ""}
       </header>
       <div className={styles.ppAvatar}>
         {profile.photo ? (
