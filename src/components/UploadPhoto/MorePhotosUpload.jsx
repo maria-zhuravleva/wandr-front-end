@@ -1,7 +1,5 @@
 //npm modules
 import { useState, useRef } from 'react'
-//services
-import * as postService from '../../services/postService'
 //css
 import styles from './PhotoUpload.module.css'
 

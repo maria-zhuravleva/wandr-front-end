@@ -9,7 +9,6 @@ import NewComment from '../../components/NewComment/NewComment'
 import CommentCard from '../../components/CommentCard/CommentCard'
 import Recommendation from '../../components/Recommendation/Recommendation'
 import RecCard from '../../components/RecCard/RecCard'
-import PhotoUpload from '../../components/UploadPhoto/PhotoUpload'
 import MorePhotosUpload from '../../components/UploadPhoto/MorePhotosUpload'
 import PhotoCard from '../../components/PhotoCard/PhotoCard'
 
@@ -24,13 +23,15 @@ const PostDetails = (props) => {
   const [post, setPost] = useState(null)
   const { postId } = useParams()
 
-  const [showPhotoUploadField, setShowPhotoUploadField] = useState(false)
   const [showMorePhotosUploadField, setShowMorePhotosUploadField] = useState(false)
+  const [currSlide, setCurrSlide] = useState(1)
+  const [slideCount, setSlideCount] = useState(1)
 
   useEffect(() => {
     const fetchPost = async () => {
       const PostData = await postService.show(postId)
       setPost(PostData)
+      setSlideCount(post.morePhotos.length)
     }
   fetchPost()
   }, [postId])
@@ -75,31 +76,28 @@ const PostDetails = (props) => {
     setPost({...post, saves: [...post.saves, save]})
   }
 
-  const handleShow = () => {
-    setShowPhotoUploadField(true)
-  }
   const handleShowMore = () => {
     setShowMorePhotosUploadField(true)
   }
 
-  const handleDeleteMainPhoto = async () => {
-    const mainPhoto = await postService.deleteMainPhoto(postId)
-    setPost({...post, mainPhoto: mainPhoto})
+  const handleChangeSlide = (e) => {
+    e.target.id === 'moveRight' ? setCurrSlide(currSlide + 1) : setCurrSlide(currSlide - 1)
   }
-  
-  const handleAddMainPhoto = async (postId, photoData) => {
-    const mainPhoto = await postService.addMainPhoto(postId, photoData)
-    setPost({...post, mainPhoto: mainPhoto})
+
+  const handleClickSlide = (idx) => {
+    setCurrSlide(idx + 1)
   }
 
   const handleAddMorePostPhotos = async (postId, photoData) => {
     const photo = await postService.addMorePostPhotos(postId, photoData)
-    setPost({...post, morePhotos: [photo, ...post.morePhotos]})
+    setPost({...post, morePhotos: [...post.morePhotos, photo]})
+    setSlideCount(slideCount + 1)
   }
 
   const handleDeleteMorePhotos = async (photoId) => {
     const deletedPhoto = await postService.deleteMorePostPhotos(postId, photoId)
     setPost({...post, morePhotos: post.morePhotos.filter(p => p._id !== deletedPhoto._id)})
+    setSlideCount(slideCount - 1)
   }
 
   if (!post) return <Loading />
@@ -119,11 +117,15 @@ const PostDetails = (props) => {
         </div>
   
         <div className={styles.imageContainer}>
-            <img src={post.mainPhoto ? post.mainPhoto : DefaultPhoto} alt="Post Main Photo" />
+            <img src={post.morePhotos[currSlide - 1] ? post.morePhotos[currSlide - 1].url : DefaultPhoto} alt="Post Photos" />
+        </div>
+        <div className={styles.imageButtons}>
+            {<button id='moveLeft' onClick={(e) => handleChangeSlide(e)} disabled={!(currSlide > 1)}>◀︎</button>}
+            {<button id='moveRight' onClick={(e) => handleChangeSlide(e)} disabled={!(slideCount > 1 && currSlide < slideCount)}>▶︎</button>}
         </div>
         <div className={styles.imageCollection}>
           {post.morePhotos.map((photo, idx) => 
-            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos}/>
+            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos} handleClickSlide={handleClickSlide}/>
           )}
         </div>
       </div>
@@ -174,16 +176,10 @@ const PostDetails = (props) => {
         <div className={styles.cardPhotosBtn}>
           {props.user?.profile && post.author?._id === props.user?.profile && (
             <>
-              <button onClick={handleShow}>
-                {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
-              </button>
-              {post.mainPhoto && <button onClick={handleDeleteMainPhoto}>
-                Delete Main Photo
+              {post.morePhotos.length < 6 
+              && <button onClick={handleShowMore}>
+                Upload Photos
               </button>}
-              {post.morePhotos.length < 5 && <button onClick={handleShowMore}>
-                Upload More Photos
-              </button>}
-              {showPhotoUploadField && <PhotoUpload post={post} handleAddMainPhoto={handleAddMainPhoto} />}
               {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} />}
             </>
           )}         

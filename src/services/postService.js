@@ -19,23 +19,6 @@ async function create(postFormData) {
   }
 }
 
-async function addMainPhoto(postId, photoData) {
-  try {
-    const photoFormData = new FormData()
-    photoFormData.append('photo', photoData)
-    const res = await fetch(`${BASE_URL}/${postId}/main-photo`, {
-      method: 'PATCH',
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`
-      },
-      body: photoFormData,
-    })
-    return await res.json()
-  } catch (err) {
-    throw new Error(err)
-  }
-}
-
 async function addMorePostPhotos(postId, photoData) {
   try {
     const photoFormData = new FormData()
@@ -50,18 +33,6 @@ async function addMorePostPhotos(postId, photoData) {
     return await res.json()
   } catch (err) {
     throw new Error(err)
-  }
-}
-
-async function deleteMainPhoto(postId) {
-  try {
-    const res = await fetch(`${BASE_URL}/${postId}/delete-main-photo`, {
-      method: 'DELETE',
-      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
-    })
-    return res.json()
-  } catch (err) {
-    console.log(err)
   }
 }
 
@@ -262,8 +233,6 @@ export {
   deletePost,
   likePost,
   savePost,
-  addMainPhoto,
-  deleteMainPhoto,
   addMorePostPhotos,
   deleteMorePostPhotos,
 }
