@@ -62,12 +62,10 @@ function App() {
   }, [])
 
   const handleUpdateProfile = async (profileFormData, photoData) => {
-    const updatedUser = await profileService.updateProfile(profileFormData, photoData)
-    setUser(updatedUser)
-    setProfiles(profiles.map(p => p._id === user.profile?._id ? user.profile : p))
+    await profileService.updateProfile(profileFormData, photoData)
     navigate(`/profiles/${user.profile}`)
   }
-  
+
   const handleDeleteProfile = async (profileId) =>{
     await profileService.deleteProfile(profileId)
     authService.logout()
