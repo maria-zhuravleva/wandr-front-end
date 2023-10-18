@@ -11,7 +11,7 @@ const PostCard = ({ post }) => {
       <Link to={`/posts/${post._id}`} key={post._id}>
         <article className={styles.postcardContainer}>
           <header>
-            <h1 key={post._id}>{post.title}</h1>
+            <h4 key={post._id}>{post.title}</h4>
             <AuthorInfo content={post}/>
           </header>
             <div className={styles.infoContainer}>

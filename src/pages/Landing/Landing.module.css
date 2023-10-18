@@ -44,7 +44,8 @@
 
 .desert button {
   margin-left: 10px;
-  font-family: 'DM Serif Text', serif;
+  /* font-family: 'DM Serif Text', serif; */
+  font-family: 'Ortica Linear', sans-serif;
   color: black;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
@@ -68,7 +69,8 @@
 
 .nordic button {
   margin-left: 10px;
-  font-family: 'DM Serif Text', serif;
+  /* font-family: 'DM Serif Text', serif; */
+  font-family: 'Ortica Linear', sans-serif;
   color: black;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
@@ -103,6 +105,7 @@
 }
 
 .nordic h1 {
+  font-family: 'DM Serif Text', sans-serif;
   color: black;
   height: 100vh;
 }
@@ -133,6 +136,7 @@
 .desert h1 {
   color: white;
   height: 100vh;
+  font-family: 'DM Serif Text', sans-serif;
 }
 
 

@@ -14,7 +14,7 @@ const NavBar = ({ user, handleLogout }) => {
     if (!showDropdown) {
       setTimeout(() => {
         setShowDropdown(false)
-      }, 3000) // 5000 milliseconds (5 seconds)
+      }, 4000) // 5000 milliseconds (5 seconds)
     }
   }
 
