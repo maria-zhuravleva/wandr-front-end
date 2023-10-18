@@ -67,6 +67,13 @@ function App() {
     setProfiles(profiles.map(p => p._id === user.profile?._id ? user.profile : p))
     navigate(`/profiles/${user.profile}`)
   }
+  
+  const handleDeleteProfile = async (profileId) =>{
+    await profileService.deleteProfile(profileId)
+    authService.logout()
+      setUser(null)
+      navigate('/')
+  }
 
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.create(postFormData)
@@ -108,7 +115,13 @@ function App() {
       <Routes>
       <Route
         path="/"
-        element={<Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />}
+        element={
+        
+        <ProtectedRoute user={user}>
+          <Landing user={user}  posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
+        </ProtectedRoute>
+        
+        }
       />
         <Route
           path="/about"
@@ -129,6 +142,14 @@ function App() {
             <ProtectedRoute user={user}>
               <EditProfile user={user} handleUpdateProfile={handleUpdateProfile} />
             </ProtectedRoute>}
+        />
+        <Route
+          path="/profiles/:profileId"
+          element={
+            <ProtectedRoute user={user}>
+              <ProfilePage user={user} handleDeleteProfile={handleDeleteProfile} />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="/auth/signup"

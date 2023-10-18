@@ -73,9 +73,12 @@ const ProfilePage = (props) => {
         <p>{new Date(profile.createdAt).toLocaleDateString()}</p>
         <div className={styles.editProfileButton}>
           {props.user?.profile === profileId && (
+           <>
             <Link to={`/profiles/${profileId}/edit`} state={profile} >
-              <button>Edit profile</button>
+              <button>Edit Profile</button>
             </Link>
+           <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
+           </>
           )}
         </div>
       </div>

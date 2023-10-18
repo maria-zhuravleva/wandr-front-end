@@ -65,6 +65,18 @@ async function updateProfile(profileFormData, photoData) {
   }
 }
 
+async function deleteProfile(profileId){
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}`, {
+      method:'DELETE',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 async function addFollow(profileId) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}/follow`, {
@@ -126,6 +138,7 @@ export {
   addPhoto,
   showProfile,
   updateProfile,
+  deleteProfile,
   addFollow,
   unFollow,
   showFollowing,
