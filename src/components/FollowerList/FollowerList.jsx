@@ -13,11 +13,15 @@ const FollowerList = () => {
   const { profileId } = useParams()
 
 useEffect(() => {
+  try {
   const fetchFollowers = async () => {
     const followerData = await profileService.showFollowers(profileId)
     setFollowerList(followerData)
   }
   fetchFollowers()
+} catch (error) {
+  console.error(error)
+}
 },[profileId])
 
   return (  

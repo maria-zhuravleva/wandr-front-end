@@ -25,10 +25,9 @@ const FollowingList = () => {
       } catch (error) {
         console.error(error)
       }
-    };
-  
-    fetchFollowing();
-  }, [profileId]);
+    }
+    fetchFollowing()
+  }, [profileId])
 
   return ( 
     <>
