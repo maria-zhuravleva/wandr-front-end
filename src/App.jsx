@@ -1,6 +1,6 @@
 // npm modules
 import { useEffect, useState } from 'react'
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 // pages
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -25,10 +25,10 @@ import * as postService from './services/postService'
 // styles
 import './App.css'
 import NewPost from './pages/NewPost/NewPost'
-import FollowerList from './components/FollowerList/FollowerList'
-import FollowingList from './components/FollowingList/FollowingList'
+
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  const [profiles, setProfiles] = useState([])
   const navigate = useNavigate()
   const [posts, setPosts] = useState([])
   const [searchResults,setSearchResults]=useState([])
@@ -44,11 +44,7 @@ function App() {
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
-  const handleUpdateProfile = async (profileFormData, photoData) => {
-    const updatedProfile = await profileService.updateProfile(profileFormData, photoData)
-    setUser({...user, profile: updatedProfile})
-    navigate(`/profiles/${updatedProfile._id}`)
-  }
+
   useEffect(() => {
     const fetchAllPosts = async () => {
       const postData = await postService.index()
@@ -57,6 +53,20 @@ function App() {
     fetchAllPosts()
   }, [])
 
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      const profileData = await profileService.getAllProfiles()
+      setProfiles(profileData)
+    }
+    fetchProfiles()
+  }, [])
+
+  const handleUpdateProfile = async (profileFormData, photoData) => {
+    const updatedUser = await profileService.updateProfile(profileFormData, photoData)
+    setUser(updatedUser)
+    setProfiles(profiles.map(p => p._id === user.profile?._id ? user.profile : p))
+    navigate(`/profiles/${user.profile}`)
+  }
 
   const handleAddPost = async (postFormData) => {
     const newPost = await postService.create(postFormData)
@@ -110,7 +120,7 @@ function App() {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <Profiles user={user} />
+              <Profiles user={user} profiles={profiles}/>
             </ProtectedRoute>
           }
         />

@@ -137,17 +137,17 @@ const PostDetails = (props) => {
           {post.saves.length}
         </div> 
 
-        {props.user?.profile && post.author._id !== props.user?.profile 
+        {props.user?.profile && post.author !== props.user?.profile 
         && <button 
-          disabled={post.likes?.some(p => p === props.user?.profile)} 
+          disabled={post.likes.some(p => p === props.user?.profile)} 
           onClick={() => handleLikePost(props.user?.profile)} 
           className={styles.likeBtn}>
             {post.likes.some(p => p === props.user?.profile) ? 'LIKED' : 'LIKE'}
         </button>
         }
-        {props.user?.profile && post.author._id !== props.user?.profile 
+        {props.user?.profile && post.author !== props.user?.profile 
         && <button 
-          disabled={post.saves?.some(p => p === props.user?.profile)} 
+          disabled={post.saves.some(p => p === props.user?.profile)} 
           onClick={() => handleSavePost(props.user?.profile)} 
           className={styles.saveBtn}>
             {post.saves.some(p => p === props.user?.profile) ? 'SAVED' : 'SAVE'}
@@ -158,7 +158,7 @@ const PostDetails = (props) => {
 
       <div className={styles.buttonsContainer}>
         <div className={styles.cardDetailsBtn}>
-          {post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author === props.user?.profile && (
             <>
               <Link to={`/posts/${postId}/edit`} state={post}>
                 <button  className={styles.editBtn}>
@@ -172,7 +172,7 @@ const PostDetails = (props) => {
           )}
         </div>
         <div className={styles.cardPhotosBtn}>
-          {post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author === props.user?.profile && (
             <>
               <button onClick={handleShow}>
                 {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
@@ -196,14 +196,14 @@ const PostDetails = (props) => {
         <div className={styles.commentsContainer}>
           <h3>Comments</h3>
     
-          {props.user && <NewComment handleAddComment={handleAddComment} />}
+          {props.user?.profile && <NewComment handleAddComment={handleAddComment} />}
           {post.comments.map(comment => 
             <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
             />
             )}
         </div>  
         <div className={styles.recommendationsContainer}>
-          {post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author === props.user?.profile && (
             <Recommendation user={props.user} handleAddRec={handleAddRec} />
           )}
           {post.recommendations.map((recommendation) => (

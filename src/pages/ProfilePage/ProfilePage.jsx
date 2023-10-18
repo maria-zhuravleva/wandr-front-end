@@ -70,8 +70,7 @@ const ProfilePage = (props) => {
       </div>
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>
-        {/* change how the date is presented later */}
-        <p>{profile.createdAt}</p>
+        <p>{new Date(profile.createdAt).toLocaleDateString()}</p>
         <div className={styles.editProfileButton}>
           {props.user?.profile === profileId && (
             <Link to={`/profiles/${profileId}/edit`} state={profile} >
