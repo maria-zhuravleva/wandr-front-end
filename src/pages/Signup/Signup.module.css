@@ -96,6 +96,7 @@
   font-size: 14px;
   font-style: italic;
   width: 300px;
+  outline: none;
 }
 
 .signupFormWrapper .signupMessage p {
@@ -115,7 +116,7 @@
 
 
 .signupButtonWrapper button {
-  font-family: 'DM Serif Text', serif;
+  font-family: 'Ortica Linear', sans-serif;
   color: black;
   border-top: 1px solid rgba(245, 232, 216, 1);
   border-bottom: 1px solid rgba(245, 232, 216, 1);

@@ -91,7 +91,10 @@ const Signup = ({ handleAuthEvt }) => {
           <div className={styles.inputSignupWrapper}>
             <label className={styles.signupLabel}>
               Name
-              <input type="text" value={name} name="name" onChange={handleChange} />
+              <input type="text" value={name} name="name" 
+              onChange={handleChange}
+              style={{color: 'rgba(245, 232, 216, 1) !important'}} 
+              />
             </label>
           </div>
           <div className={styles.inputSignupWrapper}>
@@ -102,6 +105,7 @@ const Signup = ({ handleAuthEvt }) => {
                 value={email}
                 name="email"
                 onChange={handleChange}
+                style={{color: 'rgba(245, 232, 216, 1) !important'}}
               />
             </label>
           </div>
