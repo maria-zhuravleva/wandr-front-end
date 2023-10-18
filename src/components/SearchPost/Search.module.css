@@ -30,6 +30,7 @@ input[type="text"] {
   height: 25px;
   outline: none; 
   background: transparent;
+  border: none;
 }
 
 .searchImg {

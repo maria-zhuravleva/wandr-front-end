@@ -4,12 +4,12 @@ import { Link, useParams } from "react-router-dom"
 // css
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPerson } from '@fortawesome/free-solid-svg-icons';
+import deleteIcon from "../../assets/icons/delete.png"
 // services
 import * as profileService from '../../services/profileService'
 import * as postService from '../../services/postService'
-// pages
-import FollowingIndex from "../FollowingIndex/FollowingIndex"
-import EditProfile from "../EditProfile/EditProfile"
 // components
 import PostCard from "../../components/PostCard/PostCard"
 import Following from "../../components/Following/Following"
@@ -23,23 +23,22 @@ const ProfilePage = (props) => {
     const fetchProfile = async () => {
       const ProfileData = await profileService.showProfile(profileId)
       setProfile(ProfileData)
-      if (ProfileData.posts && ProfileData.posts.length > 0) {
-        const postDetails = await Promise.all(
-          ProfileData.posts.map(async (postId) => {
-            return await postService.show(postId)
-          })
-        )
-        setProfilePosts(postDetails);
-      }
-      if (ProfileData.saves && ProfileData.saves.length > 0) {
-        const savedPostDetails = await Promise.all(
-          ProfileData.saves.map(async (postId) => {
-            return await postService.show(postId)
-          })
-        )
-        setSavedProfilePosts(savedPostDetails)
-      }
+      
+      const postDetails = await Promise.all(
+        ProfileData.posts.map(async (postId) => {
+          return await postService.show(postId)
+        })
+      )
+      setProfilePosts(postDetails)
+    
+      const savedPostDetails = await Promise.all(
+        ProfileData.saves.map(async (postId) => {
+          return await postService.show(postId)
+        })
+      )
+      setSavedProfilePosts(savedPostDetails)
     }
+  
     fetchProfile()
   }, [profileId])
 
@@ -52,6 +51,12 @@ const ProfilePage = (props) => {
     const followerList = await profileService.unFollow(profileId)
     setProfile({...profile, followers:  followerList})
   }
+
+  const handleDeleteSavedPost = async (profileId, postId) => {
+    const saves = await profileService.deleteSavedPosts(profileId, postId)
+    setSavedProfilePosts(...saves)
+  }
+
 
   return (
     <div className={styles.profilePageContainer}>
@@ -71,16 +76,15 @@ const ProfilePage = (props) => {
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>
         <p>{new Date(profile.createdAt).toLocaleDateString()}</p>
-        <div className={styles.editProfileButton}>
-          {props.user?.profile === profileId && (
-           <>
-            <Link to={`/profiles/${profileId}/edit`} state={profile} >
-              <button>Edit Profile</button>
-            </Link>
-           <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
-           </>
-          )}
-        </div>
+          {props.user?.profile === profileId && 
+            <div className={styles.editProfileButton}>
+              <Link to="/auth/change-password">CHANGE PASSWORD</Link>
+              <Link to={`/profiles/${profileId}/edit`} state={profile} >
+                <button>Edit Profile</button>
+              </Link>
+            <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
+            </div>
+          }
       </div>
       <div className={styles.followersContainer}>
         {<Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
@@ -95,7 +99,7 @@ const ProfilePage = (props) => {
         <div className={styles.profilePosts}>
           {profilePosts &&
             profilePosts
-              .filter((post) => post !== null && (post.public || props.user?.profile == post.author._id)) // Filter out null posts
+              .filter((post) => post !== null && (post.public || props.user?.profile == post.author?._id)) // Filter out null posts
               .map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}
@@ -107,9 +111,12 @@ const ProfilePage = (props) => {
           {savedProfilePosts &&
             savedProfilePosts
               .filter((post) => post !== null) // Filter out null posts
-              .map((post) => (
-                <PostCard key={post._id} post={post} />
-              ))}
+              .map(post =>
+                <>
+                  <PostCard key={post._id} post={post} />
+                  <button onClick={() => handleDeleteSavedPost(profileId, post._id)}><img src={deleteIcon} className={styles.deleteIcon}/></button>
+                </>
+              )}
         </div>
       </div>
     </div>

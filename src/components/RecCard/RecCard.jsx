@@ -28,8 +28,8 @@ const RecCard = (props) => {
       <p> <span>Description:  </span>{props.recommendation.text}</p>
 
       <div className={styles.recButtons}>
-        {props.author._id === props.user?.profile && <button onClick={() => handleShowForm()}>Edit</button>}
-        {props.author._id === props.user?.profile && (
+        {props.author?._id === props.user?.profile && <button onClick={() => handleShowForm()}>Edit</button>}
+        {props.author?._id === props.user?.profile && (
           <button onClick={() => props.handleDeleteRec(props.recommendation._id)}>Delete</button>
         )}
       </div>

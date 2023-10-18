@@ -8,7 +8,7 @@ import * as authService from '../../services/authService'
 // css
 import styles from './ChangePassword.module.css'
 
-const ChangePassword = ({ handleAuthEvt }) => {
+const ChangePassword = (props) => {
   const navigate = useNavigate()
   const [message, setMessage] = useState('')
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ const ChangePassword = ({ handleAuthEvt }) => {
     evt.preventDefault()
     try {
       await authService.changePassword(formData)
-      handleAuthEvt()
+      props.handleAuthEvt()
       navigate('/')
     } catch (err) {
       setMessage(err.message)
@@ -72,7 +72,7 @@ const ChangePassword = ({ handleAuthEvt }) => {
           />
         </label>
         <div>
-          <Link to="/">Cancel</Link>
+          <Link to={`/profiles/${props.user.profile}`}>Cancel</Link>
           <button className={styles.button} disabled={isFormInvalid()}>
             Change Password
           </button>

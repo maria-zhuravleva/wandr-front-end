@@ -16,8 +16,8 @@ import PostCard from '../../components/PostCard/PostCard'
 import * as profileService from '../../services/profileService'
 
 const Landing = (props) => {
-  console.log(props)
   const publicPosts = props.posts.filter(post => post.public)
+  const sortedPublicPosts = publicPosts.sort((b, a) => a.likes - b.likes).reverse()
 
   const [followingPosts, setFollowingPosts] = useState([])
 
@@ -67,7 +67,7 @@ const Landing = (props) => {
           <hr className={styles.topPostsLine} />
         </div>
         <div className={styles.topPostsContent}>
-          {publicPosts.map((post, idx) => 
+          {sortedPublicPosts.map((post, idx) => 
             <>
               {idx < 5 && <PostCard key={post._id} post={post}/>}
             </>
@@ -85,6 +85,7 @@ const Landing = (props) => {
     <hr className={styles.topPostsLine} />
   </div>}
   <div className={styles.topPostsContent}>
+
   {props.user?.profile && followingPosts.map((post, idx) => (
     post.public ? (
       <React.Fragment key={post._id}>
@@ -93,10 +94,17 @@ const Landing = (props) => {
     ) : null
   ))}
   </div>  
-    {props.user?.profile && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
-      <p>Explore the Most Recent Posts of your Following</p> 
-      <img src={arrowRight} alt="arrow" />
-    </Link>}
+    {props.user?.profile && !props.user?.profile.following &&
+      <Link to={`/profiles`} className={styles.landingPageArrow}>
+        <p>Explore the Top Creators</p>
+        <img src={arrowRight} alt="arrow" />
+      </Link>
+    }
+    {props.user?.profile && !!props.user?.profile.following && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
+        <p>Explore the Most Recent Posts of your Following</p> 
+        <img src={arrowRight} alt="arrow" />
+      </Link>
+    }
 </div>
     </>
   )
