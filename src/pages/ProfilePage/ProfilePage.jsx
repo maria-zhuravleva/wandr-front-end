@@ -94,9 +94,6 @@ const ProfilePage = (props) => {
               <Link to={`/profiles/${profileId}/edit`} state={profile} >
                 <button>Edit Profile</button>
               </Link>
-              <Link to="/auth/change-password">
-              <button>Change Password</button> 
-              </Link>
               <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
             </div>
           }
