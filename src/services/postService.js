@@ -65,14 +65,6 @@ async function index() {
     console.log(err)
   }
 }
-// async function filterSearch(){
-//   try {
-//     const res= await fetch(`${BASE_URL}/filterSearch`)
-//     return res.json()
-//   }  catch (err) {
-//     console.log(err)
-//   }
-// }
 
 async function deletePost(postId) {
   try {
@@ -218,11 +210,36 @@ async function savePost(postId) {
   }
 }
 
+async function unlikePost(postId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/unlike`, {
+      method: 'PATCH',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function unsavePost(postId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/unsave`, {
+      method:'PATCH',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   create,
   show,
   index,
-  // filterSearch,
   update,
   createComment,
   deleteComment,
@@ -235,4 +252,6 @@ export {
   savePost,
   addMorePostPhotos,
   deleteMorePostPhotos,
+  unlikePost,
+  unsavePost,
 }

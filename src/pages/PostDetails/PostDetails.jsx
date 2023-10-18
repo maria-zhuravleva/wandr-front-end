@@ -66,14 +66,44 @@ const PostDetails = (props) => {
     setPost({...post, recommendations: post.recommendations.map(rec => rec._id === recFormData._id ? editedRec : rec)})
   }
  
-  const handleLikePost = async (profileId) => {
-    const like = await postService.likePost(postId, profileId)
+  const handleLikePost = async () => {
+    const like = await postService.likePost(postId)
     setPost({...post, likes: [...post.likes, like]})
   }
 
-  const handleSavePost = async (profileId) => {
-    const save = await postService.savePost(postId, profileId)
+  const handleUnlikePost = async () => {
+    const unlike = await postService.unlikePost(postId)
+    setPost({...post, likes: post.likes.filter(p => p !== unlike)})
+  }
+
+  const handleClickLike = (e) => {
+    if (e.target.innerText === 'LIKE') {
+      handleLikePost(postId)
+      e.target.innerText = 'UNLIKE'
+    } else {
+      handleUnlikePost(postId)
+      e.target.innerText = 'LIKE'
+    }
+  }
+
+  const handleSavePost = async () => {
+    const save = await postService.savePost(postId)
     setPost({...post, saves: [...post.saves, save]})
+  }
+
+  const handleUnsavePost = async () => {
+    const saveList = await postService.unsavePost(postId)
+    setPost({...post, saves: saveList})
+  }
+
+  const handleClickSave = (e) => {
+    if (e.target.innerText === 'SAVE') {
+      handleSavePost()
+      e.target.innerText = 'UNSAVE'
+    } else {
+      handleUnsavePost()
+      e.target.innerText = 'SAVE'
+    }
   }
 
   const handleShowMore = () => {
@@ -141,18 +171,16 @@ const PostDetails = (props) => {
 
         {props.user?.profile && post.author?._id !== props.user?.profile 
         && <button 
-          disabled={post.likes.some(p => p === props.user?.profile)} 
-          onClick={() => handleLikePost(props.user?.profile)} 
+          onClick={handleClickLike} 
           className={styles.likeBtn}>
-            {post.likes.some(p => p === props.user?.profile) ? 'LIKED' : 'LIKE'}
+            {!post.likes.some(p => p === props.user?.profile) ? 'LIKE' : 'UNLIKE'}
         </button>
         }
         {props.user?.profile && post.author?._id !== props.user?.profile 
         && <button 
-          disabled={post.saves.some(p => p === props.user?.profile)} 
-          onClick={() => handleSavePost(props.user?.profile)} 
+          onClick={handleClickSave} 
           className={styles.saveBtn}>
-            {post.saves.some(p => p === props.user?.profile) ? 'SAVED' : 'SAVE'}
+            {!post.saves.some(p => p === props.user?.profile) ? 'SAVE' : 'UNSAVE'}
         </button>
         } 
 
