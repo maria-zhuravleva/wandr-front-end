@@ -42,7 +42,7 @@ async function showProfile(profileId) {
     console.log(err)
   }
 }
-async function updateProfile(profileFormData){
+async function updateProfile(profileFormData, photoData) {
   try {
     const res = await fetch(`${BASE_URL}/${profileFormData._id}`, {
       method: 'PUT',
@@ -52,11 +52,29 @@ async function updateProfile(profileFormData){
       },
       body: JSON.stringify(profileFormData)
     })
+    const json = await res.json()
+
+    if (json.err) throw new Error(json.err)
+
+    if (photoData) {
+      await addPhoto(photoData)
+    }
+    
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function deleteProfile(profileId){
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}`, {
+      method:'DELETE',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
     return res.json()
   } catch (err) {
     console.log(err)
   }
-
 }
 
 async function addFollow(profileId) {
@@ -120,6 +138,7 @@ export {
   addPhoto,
   showProfile,
   updateProfile,
+  deleteProfile,
   addFollow,
   unFollow,
   showFollowing,
