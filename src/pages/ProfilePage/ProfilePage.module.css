@@ -1,6 +1,8 @@
 .profilePageContainer {
   display: flex;
   flex-wrap: wrap;
+  max-width: 100vh;
+  max-height: 100%;
 }
 
 .ppHeader,
@@ -15,11 +17,32 @@
 
 .ppHeader {
   flex-basis: 100%; 
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.topContributorIcon {
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  position: absolute;
+  top: 28%;
+  right: 50%; 
+}
+
+.editProfileButton {
+  text-align: left;
+  margin-top: 50px;
 }
 
 .ppHeader h1 {
   text-align: center;
   font-weight: 100;
+  width: 400px;
+  margin-left: 35%;
+  border-bottom: solid 1px black;
+  padding-bottom: 15px;
 }
 
 .ppAvatar {
@@ -33,18 +56,17 @@
   margin-left: 20px;
 }
 
-.editProfileButton {
-  text-align: left;
-  margin-top: 50px; /* Adjust the value as needed */
+.topContributor {
+  margin-bottom: 3%;
 }
 
+
 .editProfileButton button {
-  font-family: 'DM Serif Text', serif;
+  font-family: 'Ortica Linear', sans-serif;
   color: black;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  padding: 15px 25px;
-  width: 150px;
+  width: 180px;
   height: 60px;
   cursor: pointer;
   border-left: none; 
@@ -56,7 +78,11 @@
   font-size: 15px;
   font-weight: 100;
   color: black;
+  padding: 10px 10px;
+  margin-right: 15px;
+  margin-top: 20px;
 }
+
 
 .editProfileButton button:hover {
   color: white;
@@ -65,12 +91,14 @@
 
 .ppBio {
   flex-basis: 60%; 
-  width: 500px;
+  max-width: 800px;
   height: 300px;
+  overflow: auto;
   border: solid 1px black;
   margin-top: 20px;
   margin-right: 50px;
-  text-align: center;
+  text-align: left;
+  padding: 10px;
 }
 
 .ppInfo {
@@ -81,12 +109,15 @@
 }
 
 .followersContainer {
-  flex-basis: 10%; 
+  flex-basis: 15%; 
   line-height: 5px;
   padding: 20px;
+  padding-top: 6px;
   border: solid 1px black;
   width: 100px;
-  margin-right: 890px;
+  height: 100px;
+  margin-left: 6%;
+  margin-right: 5%;
 }
 
 .profilePosts,
@@ -103,7 +134,11 @@
 
 .ppH h1 {
   font-weight: 100;
+  width: 400px;
+  margin-left: 33%;
+  padding-bottom: 10px;
   text-align: center;
+  border-bottom: solid 1px black;
 }
 
 .profilePostsSection {
@@ -127,11 +162,16 @@
   margin-left: 50px;
   margin-bottom: 50px;
   text-align: center;
+  padding-left: 6%;
 }
 
 .savedPostsContainer h1 {
   font-weight: 100;
+  max-width: 400px;
+  margin-left: 33%;
+  padding-bottom: 10px;
   text-align: center;
+  border-bottom: solid 1px black;
 }
 
 .savedPosts {
@@ -139,6 +179,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.savedPosts.deleteIcon {
+  background-color: transparent;
+  outline: none;
 }
 
 .deleteIcon {

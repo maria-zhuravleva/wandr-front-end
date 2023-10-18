@@ -5,8 +5,10 @@ import { Link, useParams } from "react-router-dom"
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 import deleteIcon from "../../assets/icons/delete.png"
+import topContributor from "../../assets/icons/top-contributor.png"
+        
 // services
 import * as profileService from '../../services/profileService'
 import * as postService from '../../services/postService'
@@ -61,13 +63,15 @@ const ProfilePage = (props) => {
   return (
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
-        <h1>{profile.name}</h1>
         <div className={styles.topContributor}>
           {profilePosts.length>5 || profile.followers>5 ? 
-          <div><FontAwesomeIcon icon={faUser} style={{color: "#24a333",fontSize:"40px"}} /></div>
+          <div> 
+            <img src={topContributor} alt="topContributorIcon" className={styles.topContributorIcon} />
+          </div>
           : ""
-}
+          }
         </div>
+        <h1>{profile.name}</h1>
       </header>
       <div className={styles.ppAvatar}>
         {profile.photo ? (
@@ -90,7 +94,10 @@ const ProfilePage = (props) => {
               <Link to={`/profiles/${profileId}/edit`} state={profile} >
                 <button>Edit Profile</button>
               </Link>
-            <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
+              <Link to="/auth/change-password">
+              <button>Change Password</button> 
+              </Link>
+              <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
             </div>
           }
       </div>
