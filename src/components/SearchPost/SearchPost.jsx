@@ -29,8 +29,8 @@ const SearchPost = (props) => {
         onChange={handleChange}
         onClick={handleClearField}     
       />
-      <button type="submit" className={styles.searchIcon} >
-        <img src="src/assets/icons/search.png" alt="search" className={styles.searchImg} />
+      <button type="submit" className={styles.searchIcon} style={{outline:'none', backgroundColor: 'white', border: 'none'}}>
+        <img src="src/assets/icons/search.png" alt="search" className={styles.searchImg}  />
       </button>
 
     </form>
