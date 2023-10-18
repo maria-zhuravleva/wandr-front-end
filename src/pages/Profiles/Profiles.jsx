@@ -9,16 +9,9 @@ import avatar from "../../assets/icons/avatar.png"
 import community from "../../assets/img/community.jpg"
 // pages
 import ProfilePage from '../ProfilePage/ProfilePage'
-const Profiles = () => {
-  const [profiles, setProfiles] = useState([])
-  useEffect(() => {
-    const fetchProfiles = async () => {
-      const profileData = await profileService.getAllProfiles()
-      setProfiles(profileData)
-    }
-    fetchProfiles()
-  }, [])
-  if (!profiles.length) {
+const Profiles = (props) => {
+
+  if (!props.profiles.length) {
     return <main className={styles.container}><h1>Loading...</h1></main>
   }
   return (
@@ -31,7 +24,7 @@ const Profiles = () => {
       <div className={styles.contentContainer}>
         <div className={styles.namesContainer}>
           <h3>Wanderers</h3>
-          {profiles.map(profile => (
+          {props.profiles.map(profile => (
             <Link key={profile._id} to={`/profiles/${profile._id}`}>
               {profile.photo ? (
                 <img src={profile.photo} alt="profile image" />

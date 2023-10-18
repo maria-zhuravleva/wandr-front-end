@@ -66,12 +66,11 @@ const ProfilePage = (props) => {
         )}
       </div>
       <div className={styles.ppBio}>
-        <p>This is bio section</p>
+        <p>{profile.bio}</p>
       </div>
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>
-        {/* change how the date is presented later */}
-        <p>{profile.createdAt}</p>
+        <p>{new Date(profile.createdAt).toLocaleDateString()}</p>
         <div className={styles.editProfileButton}>
           {props.user?.profile === profileId && (
            <>
@@ -96,7 +95,7 @@ const ProfilePage = (props) => {
         <div className={styles.profilePosts}>
           {profilePosts &&
             profilePosts
-              .filter((post) => post !== null && (post.public || props.user.profile == post.author._id)) // Filter out null posts
+              .filter((post) => post !== null && (post.public || props.user?.profile == post.author._id)) // Filter out null posts
               .map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}

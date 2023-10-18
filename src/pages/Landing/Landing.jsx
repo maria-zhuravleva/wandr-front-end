@@ -24,14 +24,14 @@ const Landing = (props) => {
   useEffect(() => {
     const fetchFollowingPosts = async () => {
       try {
-        const followingPostsData = await profileService.explorePage(props.user.profile)
+        const followingPostsData = await profileService.explorePage(props.user?.profile)
         setFollowingPosts(followingPostsData)
       } catch (error) {
         console.error(error)
       }
     }
     fetchFollowingPosts()
-  }, [props.user.profile])
+  }, [props.user?.profile])
 
   return (
     <>
@@ -79,13 +79,13 @@ const Landing = (props) => {
         </Link>
       </div>
       <div className={styles.topPosts}>
-  <div className={styles.topPostsLines}>
+  {props.user?.profile && <div className={styles.topPostsLines}>
     <hr className={styles.topPostsLine} />
     <h3>Explore Posts by Those You're Following</h3>
     <hr className={styles.topPostsLine} />
-  </div>
+  </div>}
   <div className={styles.topPostsContent}>
-  {followingPosts.map((post, idx) => (
+  {props.user?.profile && followingPosts.map((post, idx) => (
     post.public ? (
       <React.Fragment key={post._id}>
         {idx < 5 && <PostCard post={post} />}
@@ -93,10 +93,10 @@ const Landing = (props) => {
     ) : null
   ))}
   </div>  
-    <Link to={`/profiles/${props.user.profile}/following/posts`} className={styles.landingPageArrow}>
+    {props.user?.profile && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
       <p>Explore the Most Recent Posts of your Following</p> 
       <img src={arrowRight} alt="arrow" />
-    </Link>
+    </Link>}
 </div>
     </>
   )

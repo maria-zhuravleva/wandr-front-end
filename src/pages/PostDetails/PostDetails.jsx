@@ -64,7 +64,7 @@ const PostDetails = (props) => {
     const editedRec = await postService.editRec(postId, recFormData)
     setPost({...post, recommendations: post.recommendations.map(rec => rec._id === recFormData._id ? editedRec : rec)})
   }
-
+ 
   const handleLikePost = async (profileId) => {
     const like = await postService.likePost(postId, profileId)
     setPost({...post, likes: [...post.likes, like]})
@@ -130,34 +130,35 @@ const PostDetails = (props) => {
       <div className={styles.likeAndSaveBtn}>       
         <div className={styles.likeCount}>
           <img src={likesIcon} alt="Likes" className={styles.likeImg} />  
-          : {post.likes.length}
+          {post.likes.length}
         </div>
         <div className={styles.saveCount}>
           <img src={savesIcon} alt="Saves" className={styles.saveImg} /> 
-          : {post.saves.length}
+          {post.saves.length}
         </div> 
 
-        {props.user
-          && post.author._id !== props.user?.profile 
-          && !post.likes.some(p => p === props.user?.profile)
-          && <button onClick={() => handleLikePost(props.user.profile)} className={styles.likeBtn}>Like</button>
+        {props.user?.profile && post.author !== props.user?.profile 
+        && <button 
+          disabled={post.likes.some(p => p === props.user?.profile)} 
+          onClick={() => handleLikePost(props.user?.profile)} 
+          className={styles.likeBtn}>
+            {post.likes.some(p => p === props.user?.profile) ? 'LIKED' : 'LIKE'}
+        </button>
         }
-        {props.user
-          && post.author._id !== props.user?.profile 
-          && !post.saves.some(p => p === props.user?.profile)
-          && <button onClick={() => handleSavePost(props.user?.profile)} className={styles.saveBtn}>Save</button>
+        {props.user?.profile && post.author !== props.user?.profile 
+        && <button 
+          disabled={post.saves.some(p => p === props.user?.profile)} 
+          onClick={() => handleSavePost(props.user?.profile)} 
+          className={styles.saveBtn}>
+            {post.saves.some(p => p === props.user?.profile) ? 'SAVED' : 'SAVE'}
+        </button>
         } 
 
-        <div className={styles.savedLikedContainer}>
-          {props.user && post.likes.some(p => p === props.user?.profile) && <p className={styles.liked}>Liked!</p>}
-          {props.user && post.saves.some(p => p === props.user?.profile) && <p className={styles.saved}>Saved! </p>}
-        </div>
-        
       </div>
 
       <div className={styles.buttonsContainer}>
         <div className={styles.cardDetailsBtn}>
-          {post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author === props.user?.profile && (
             <>
               <Link to={`/posts/${postId}/edit`} state={post}>
                 <button  className={styles.editBtn}>
@@ -171,7 +172,7 @@ const PostDetails = (props) => {
           )}
         </div>
         <div className={styles.cardPhotosBtn}>
-          {post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author === props.user?.profile && (
             <>
               <button onClick={handleShow}>
                 {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
@@ -195,14 +196,14 @@ const PostDetails = (props) => {
         <div className={styles.commentsContainer}>
           <h3>Comments</h3>
     
-          {props.user && <NewComment handleAddComment={handleAddComment} />}
+          {props.user?.profile && <NewComment handleAddComment={handleAddComment} />}
           {post.comments.map(comment => 
             <CommentCard key={comment._id} comment={comment} user={props.user} handleDeleteComment={handleDeleteComment} handleEditComment={handleEditComment}
             />
             )}
         </div>  
         <div className={styles.recommendationsContainer}>
-          {post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author === props.user?.profile && (
             <Recommendation user={props.user} handleAddRec={handleAddRec} />
           )}
           {post.recommendations.map((recommendation) => (
