@@ -62,6 +62,7 @@ function App() {
 
   const handleDeleteProfile = async (profileId) =>{
     await profileService.deleteProfile(profileId)
+    authService.logout()
       setUser(null)
       navigate('/')
   }
