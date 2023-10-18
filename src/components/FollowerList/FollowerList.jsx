@@ -5,6 +5,8 @@ import { useParams, Link } from "react-router-dom"
 // services
 import * as profileService from '../../services/profileService'
 
+// css
+import styles from './FollowerList.module.css'
 import avatar from "../../assets/icons/avatar.png"
 
 
@@ -25,7 +27,7 @@ useEffect(() => {
 },[profileId])
 
   return (  
-    <>
+    <div className={styles.followersListContainer}>
     <h1>Followers: </h1>
     {followerList.length === 0 ? (
       <p>No followers yet</p>
@@ -37,7 +39,7 @@ useEffect(() => {
         </Link>
       ))
     )}
-    </>
+    </div>
   )
 }
 

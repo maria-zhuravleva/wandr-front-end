@@ -1,0 +1,10 @@
+.followingListContainer img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.followingListContainer h1 {
+  padding-bottom: 10px;
+  border-bottom: solid 1px black;
+}

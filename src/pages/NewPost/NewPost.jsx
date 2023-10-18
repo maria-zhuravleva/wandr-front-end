@@ -61,6 +61,7 @@ const NewPost = (props) => {
               type="text"
               name="content"
               id="content-input"
+              wrap="hard"
               value={formData.content}
               placeholder="Content"
               onChange={handleChange}

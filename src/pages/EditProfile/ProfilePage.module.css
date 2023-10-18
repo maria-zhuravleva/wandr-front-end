@@ -188,5 +188,102 @@
 }
 
 
+/* Edit Profile Page */
+
+.editProfileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  height: 100vh;
+  margin-top: 20px;
+}
+
+.editProfileForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 70%;
+  text-align: center;
+  border: solid 1px black;
+  padding: 20px;
+  padding-top: 0;
+  background-color: #1e2b3a;
+}
+
+.editProfileContainer h1 {
+  font-size: 50px;
+  color: #1e2b3a;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #1e2b3a;
+}
+
+.labelInputContainer label {
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  text-align: center;
+  color: #f2ebe5;
+}
+
+.labelInputContainer input{
+  width: 50%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  outline: none;
+  background-color: #f2ebe5;
+}
+
+.labelInputContainer textarea {
+  width: 50%;
+  height: 75%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  outline: none;
+  background-color: #f2ebe5;
+  margin-bottom: 30%;
+  resize: none;
+}
+
+
+.editProfileBtn {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.editProfileBtn button {
+  font-family: 'Ortica Linear', sans-serif;
+  color: #f2ebe5;
+  border-top: 1px solid #f2ebe5;
+  border-bottom: 1px solid #f2ebe5;
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  border-left: none; 
+  border-right: none;
+  outline: none;
+  background: transparent;
+  text-transform: uppercase;
+  border-radius: 0; 
+  font-size: 15px;
+  font-weight: 100;
+  padding: 10px 10px;
+  margin-right: 15px;
+  margin-top: 20px;
+}
+
+.editProfileBtn button:hover {
+  color: #1e2b3a;
+  background-color: #f2ebe5;
+}
+
+.ppAvatar.editAvatar{
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 
 

@@ -44,52 +44,61 @@ const EditProfile = (props) => {
     <div className={styles.editProfileContainer}>
       <h1>Profile Settings</h1>
       <p className={styles.editMessage}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} >
+      <form autoComplete="off" onSubmit={handleSubmit}  className={styles.editProfileForm} >
         <div className={styles.ppAvatar}>
           {profileFormData.photo ? (
-            <img src={profileFormData.photo} alt="profile image" />
+            <img src={profileFormData.photo} alt="profile image" className={styles.editAvatar} />
           ) : (
             <img src={avatar} alt="avatar" />
           )}
         </div>
 
-        <label>Change Profile Picture</label>
-        <input
-          type="file"
-          name="photo"
-          onChange={handleChangePhoto}
-          ref={imgInputRef}
-        />
+        <div className={styles.labelInputContainer}>
+          <label>Change Profile Picture</label>
+          <input
+            type="file"
+            name="photo"
+            onChange={handleChangePhoto}
+            ref={imgInputRef}
+          />
+        </div>
         
+        <div className={styles.labelInputContainer}>
+          <label>Name</label>
+          <input
+            type="text"
+            value={profileFormData.name}
+            name="name"
+            onChange={handleChange} 
+          />
+        </div>
+        <div className={styles.labelInputContainer}>
+          <label>Email</label>
+          <input
+            type="text"
+            value={props.user.email}
+            name="email"
+            onChange={handleChange}
+          />
+        </div>
+        <div className={styles.labelInputContainer}>
+        </div>
+        <div className={styles.labelInputContainer}>
+          <label>Bio</label>
+          <textarea
+            type="text"
+            value={profileFormData.bio}
+            name="bio"
+            onChange={handleChange}
+          />
+        </div>
 
-        <label>Name</label>
-        <input
-          type="text"
-          value={profileFormData.name}
-          name="name"
-          onChange={handleChange} 
-        />
-        
-        <label>Email</label>
-        <input
-          type="text"
-          value={props.user.email}
-          name="email"
-          onChange={handleChange}
-        />
-
-        <label>Bio</label>
-        <textarea
-          type="text"
-          value={profileFormData.bio}
-          name="bio"
-          onChange={handleChange}
-        />
-
-        <button type='submit'>Save Changes</button>
-      <Link to={`/profiles/${props.user.profile}`}>
-        <button>Cancel</button>
-      </Link>
+        <div className={styles.editProfileBtn}>
+          <Link to={`/profiles/${props.user.profile}`}>
+            <button>Cancel</button>
+          </Link>
+          <button type='submit'>Save Changes</button>
+        </div>
       </form>
     </div>
   )

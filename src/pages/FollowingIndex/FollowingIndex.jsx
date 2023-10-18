@@ -8,7 +8,10 @@ import FollowerList from "../../components/FollowerList/FollowerList"
 import FollowingList from "../../components/FollowingList/FollowingList"
 
 // services
-import * as profileService from "../../services/profileService";
+import * as profileService from "../../services/profileService"
+
+// css
+import styles from './FollowingIndex.module.css'
 
 const FollowingIndex = () => {
   const { profileId } = useParams()
@@ -25,12 +28,23 @@ const FollowingIndex = () => {
 
   return (  
     <>
-      <FollowerList />
-      <FollowingList />
+    <div className={styles.backBtn}>
       <Link to={`/profiles/${profile._id}`} >
-        <button>Back to {profile.name}'s profile</button>
+        <button>Back</button>
+        {/* <button>Back to {profile.name}'s profile</button> */}
       </Link>
-    </>
+    </div>
+    <div className={styles.followersFollowingContainer}>
+      <div className={styles.followerFollowingContainer}>
+        <div className={styles.followerContainer}> 
+          <FollowerList />
+        </div>
+        <div className={styles.followingContainer}>
+          <FollowingList />
+        </div>
+      </div>
+    </div>
+    </> 
   )
 }
 
