@@ -85,16 +85,15 @@ const [isTopContributor,setIsTopContributor]=useState(false)
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>
         <p>{new Date(profile.createdAt).toLocaleDateString()}</p>
-        <div className={styles.editProfileButton}>
-          {props.user?.profile === profileId && (
-           <>
-            <Link to={`/profiles/${profileId}/edit`} state={profile} >
-              <button>Edit Profile</button>
-            </Link>
-           <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
-           </>
-          )}
-        </div>
+          {props.user?.profile === profileId && 
+            <div className={styles.editProfileButton}>
+              <Link to="/auth/change-password">CHANGE PASSWORD</Link>
+              <Link to={`/profiles/${profileId}/edit`} state={profile} >
+                <button>Edit Profile</button>
+              </Link>
+            <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
+            </div>
+          }
       </div>
       <div className={styles.followersContainer}>
         {<Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
@@ -109,7 +108,7 @@ const [isTopContributor,setIsTopContributor]=useState(false)
         <div className={styles.profilePosts}>
           {profilePosts &&
             profilePosts
-              .filter((post) => post !== null && (post.public || props.user?.profile == post.author._id)) // Filter out null posts
+              .filter((post) => post !== null && (post.public || props.user?.profile == post.author?._id)) // Filter out null posts
               .map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}

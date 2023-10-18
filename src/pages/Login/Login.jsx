@@ -48,7 +48,6 @@ const LoginPage = ({ handleAuthEvt }) => {
     <div className={styles.loginContainer}>
       <h1>LOG IN</h1>
       <div className={styles.loginFormWrapper}>
-        <p className={styles.loginMessage}>{message}</p>
         <form autoComplete="off" onSubmit={handleSubmit} className={styles.loginFormContainer}>
           <p className={styles.centeredText}>
             Back for more travels? Please log in below
@@ -76,6 +75,7 @@ const LoginPage = ({ handleAuthEvt }) => {
             </label>
           </div>
           <div className={styles.loginButtonWrapper}>
+            <div className={styles.message}>{message}</div>
             <Link to="/" className={styles.cancelLink}>
               CANCEL
             </Link>

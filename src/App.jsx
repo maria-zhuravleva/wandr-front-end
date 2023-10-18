@@ -62,17 +62,13 @@ function App() {
   }, [])
 
   const handleUpdateProfile = async (profileFormData, photoData) => {
-    const updatedUser = await profileService.updateProfile(profileFormData, photoData)
-    setUser(updatedUser)
-    setProfiles(profiles.map(p => p._id === user.profile?._id ? user.profile : p))
+    await profileService.updateProfile(profileFormData, photoData)
     navigate(`/profiles/${user.profile}`)
   }
-  
+
   const handleDeleteProfile = async (profileId) =>{
     await profileService.deleteProfile(profileId)
-    authService.logout()
-      setUser(null)
-      navigate('/')
+    handleLogout()
   }
 
   const handleAddPost = async (postFormData) => {
@@ -116,10 +112,8 @@ function App() {
       <Route
         path="/"
         element={
-        <ProtectedRoute user={user}>
           <Landing user={user}  posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
-        </ProtectedRoute>
-                }
+        }
       />
         <Route
           path="/about"
@@ -161,7 +155,7 @@ function App() {
           path="/auth/change-password"
           element={
             <ProtectedRoute user={user}>
-              <ChangePassword handleAuthEvt={handleAuthEvt} />
+              <ChangePassword handleAuthEvt={handleAuthEvt} user={user}/>
             </ProtectedRoute>
           }
         />
