@@ -16,7 +16,7 @@ import PostCard from '../../components/PostCard/PostCard'
 import * as profileService from '../../services/profileService'
 
 const Landing = (props) => {
-  const publicPosts = props.posts.filter(post => post.public)
+  const publicPosts = props.posts.filter(post => post.public).sort((a,b) => a.likes > b.likes)
 
   const [followingPosts, setFollowingPosts] = useState([])
 
@@ -99,7 +99,7 @@ const Landing = (props) => {
         <img src={arrowRight} alt="arrow" />
       </Link>
     }
-    {props.user?.profile && props.user?.profile.following && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
+    {props.user?.profile && !!props.user?.profile.following && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
         <p>Explore the Most Recent Posts of your Following</p> 
         <img src={arrowRight} alt="arrow" />
       </Link>

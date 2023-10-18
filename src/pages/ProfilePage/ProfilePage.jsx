@@ -94,7 +94,7 @@ const ProfilePage = (props) => {
         <div className={styles.profilePosts}>
           {profilePosts &&
             profilePosts
-              .filter((post) => post !== null && (post.public || props.user?.profile == post.author._id)) // Filter out null posts
+              .filter((post) => post !== null && (post.public || props.user?.profile == post.author?._id)) // Filter out null posts
               .map((post) => (
                 <PostCard key={post._id} post={post} />
               ))}

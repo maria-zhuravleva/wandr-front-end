@@ -137,7 +137,7 @@ const PostDetails = (props) => {
           {post.saves.length}
         </div> 
 
-        {props.user?.profile && post.author._id !== props.user?.profile 
+        {props.user?.profile && post.author?._id !== props.user?.profile 
         && <button 
           disabled={post.likes.some(p => p === props.user?.profile)} 
           onClick={() => handleLikePost(props.user?.profile)} 
@@ -145,7 +145,7 @@ const PostDetails = (props) => {
             {post.likes.some(p => p === props.user?.profile) ? 'LIKED' : 'LIKE'}
         </button>
         }
-        {props.user?.profile && post.author._id !== props.user?.profile 
+        {props.user?.profile && post.author?._id !== props.user?.profile 
         && <button 
           disabled={post.saves.some(p => p === props.user?.profile)} 
           onClick={() => handleSavePost(props.user?.profile)} 
@@ -158,7 +158,7 @@ const PostDetails = (props) => {
 
       <div className={styles.buttonsContainer}>
         <div className={styles.cardDetailsBtn}>
-          {props.user?.profile && post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author?._id === props.user?.profile && (
             <>
               <Link to={`/posts/${postId}/edit`} state={post}>
                 <button  className={styles.editBtn}>
@@ -172,7 +172,7 @@ const PostDetails = (props) => {
           )}
         </div>
         <div className={styles.cardPhotosBtn}>
-          {props.user?.profile && post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author?._id === props.user?.profile && (
             <>
               <button onClick={handleShow}>
                 {post.mainPhoto ? 'Edit Main Photo' : 'Upload Main Photo'}
@@ -203,7 +203,7 @@ const PostDetails = (props) => {
             )}
         </div>  
         <div className={styles.recommendationsContainer}>
-          {props.user?.profile && post.author._id === props.user?.profile && (
+          {props.user?.profile && post.author?._id === props.user?.profile && (
             <Recommendation user={props.user} handleAddRec={handleAddRec} />
           )}
           {post.recommendations.map((recommendation) => (
