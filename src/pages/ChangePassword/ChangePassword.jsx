@@ -40,40 +40,47 @@ const ChangePassword = (props) => {
   }
 
   return (
-    <main className={styles.container}>
+    <main className={styles.changePasswordContainer}>
       <h1>Change Password</h1>
       <p className={styles.message}>{message}</p>
-      <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
-        <label className={styles.label}>
-          Current Password
-          <input
-            type="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          New Password
-          <input
-            type="password"
-            value={newPassword}
-            name="newPassword"
-            onChange={handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Confirm New Password
-          <input
-            type="password"
-            value={newPasswordConf}
-            name="newPasswordConf"
-            onChange={handleChange}
-          />
-        </label>
-        <div>
-          <Link to={`/profiles/${props.user.profile}`}>Cancel</Link>
-          <button className={styles.button} disabled={isFormInvalid()}>
+      <form autoComplete="off" onSubmit={handleSubmit} className={styles.changePasswordForm}>
+        <div className={styles.labelInputWrapper}>
+          <label className={styles.label}>
+            Current Password
+            <input
+              type="password"
+              value={password}
+              name="password"
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className={styles.labelInputWrapper}>
+          <label className={styles.label}>
+            New Password
+            <input
+              type="password"
+              value={newPassword}
+              name="newPassword"
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className={styles.labelInputWrapper}>
+          <label className={styles.label}>
+            Confirm New Password
+            <input
+              type="password"
+              value={newPasswordConf}
+              name="newPasswordConf"
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+        <div className={styles.changePasswordBtnContainer}>
+          <Link to={`/profiles/${props.user.profile}`}>
+            <button>Cancel</button></Link>
+          <button disabled={isFormInvalid()}>
             Change Password
           </button>
         </div>
