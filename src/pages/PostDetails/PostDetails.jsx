@@ -91,13 +91,13 @@ const PostDetails = (props) => {
   const handleAddMorePostPhotos = async (postId, photoData) => {
     const photo = await postService.addMorePostPhotos(postId, photoData)
     setPost({...post, morePhotos: [...post.morePhotos, photo]})
-    setSlideCount(post.morePhotos.length)
+    setSlideCount(slideCount + 1)
   }
 
   const handleDeleteMorePhotos = async (photoId) => {
     const deletedPhoto = await postService.deleteMorePostPhotos(postId, photoId)
     setPost({...post, morePhotos: post.morePhotos.filter(p => p._id !== deletedPhoto._id)})
-    setSlideCount(post.morePhotos.length)
+    setSlideCount(slideCount - 1)
   }
 
   if (!post) return <Loading />
@@ -117,11 +117,11 @@ const PostDetails = (props) => {
         </div>
   
         <div className={styles.imageContainer}>
-            <img src={post.morePhotos[currSlide - 1] ? post.morePhotos[currSlide - 1].url : DefaultPhoto} alt="Post Photos" />
+            <img src={slideCount ? post.morePhotos[currSlide - 1].url : DefaultPhoto} alt="Post Photos" />
         </div>
         <div className={styles.imageButtons}>
-            {<button id='moveLeft' onClick={(e) => handleChangeSlide(e)} disabled={currSlide === 1}>◀︎</button>}
-            {<button id='moveRight' onClick={(e) => handleChangeSlide(e)} disabled={slideCount === 1 || currSlide === slideCount}>▶︎</button>}
+            {<button id='moveLeft' onClick={(e) => handleChangeSlide(e)} disabled={!slideCount || currSlide === 1}>◀︎</button>}
+            {<button id='moveRight' onClick={(e) => handleChangeSlide(e)} disabled={!slideCount || slideCount === 1 || currSlide === slideCount}>▶︎</button>}
         </div>
         <div className={styles.imageCollection}>
           {post.morePhotos.map((photo, idx) => 
