@@ -79,7 +79,7 @@ const ProfilePage = (props) => {
           {props.user?.profile === profileId && 
             <div className={styles.editProfileButton}>
               <Link to="/auth/change-password">
-                <button>CHANGE PASSWORD</button>
+                <button>Change password</button>
               </Link>
               <Link to={`/profiles/${profileId}/edit`} state={profile} >
                 <button>Edit Profile</button>
