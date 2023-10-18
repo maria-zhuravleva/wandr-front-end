@@ -16,10 +16,10 @@ const Following = (props) => {
     <>
       <p>Followers: {props.profile.followers?.length}</p>
       <p>Following: {props.profile.following?.length}</p>
-      {!props.profile?._id === props.user?.profile && 
+      {props.profile?._id !== props.user?.profile && 
           <button onClick={handleClick}>
-              {!props.profile.followers?.some(p => p._id === props.user?.profile) 
-              ? 'Follow' : 'Unfollow'}
+            {!props.profile.followers?.some(p => p === props.user?.profile) 
+            ? 'Follow' : 'Unfollow'}
           </button>
       }
     </>

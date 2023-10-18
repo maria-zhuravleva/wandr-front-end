@@ -87,7 +87,7 @@ const ProfilePage = (props) => {
           }
       </div>
       <div className={styles.followersContainer}>
-        {<Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
+        {props.user?.profile && <Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
         <Link to={`/profiles/${profile._id}/following`}>
           View Following
         </Link>
