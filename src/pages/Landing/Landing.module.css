@@ -22,7 +22,7 @@
 }
 
 /* Search Section */
-.dessert input {
+.desert input {
   display: flex;
   align-items: center;
   justify-content: flex-end; 
@@ -42,7 +42,7 @@
   margin-top: 50px;
 }
 
-.dessert button {
+.desert button {
   margin-left: 10px;
   font-family: 'DM Serif Text', serif;
   color: black;
@@ -62,7 +62,7 @@
   color: white;
 }
 
-.dessert button:hover {
+.desert button:hover {
   color: #704429;
 }
 
@@ -116,21 +116,21 @@
   max-width: 40%;
 }
 
-.dessert.banner {
+.desert.banner {
   height: 100%; 
-  background: url('../../assets/img/dessert.jpg');
+  background: url('../../assets/img/desert.jpg');
   background-size: cover;
   width: 100%;
 }
 
-.dessert.columnOne  {
+.desert.columnOne  {
   height: 100%; 
-  background: url('../../assets/img/dessert-pic2.jpg');
+  background: url('../../assets/img/desert-pic2.jpg');
   background-size: cover;
   width: 100%;
 }
 
-.dessert h1 {
+.desert h1 {
   color: white;
   height: 100vh;
 }
@@ -211,20 +211,20 @@
   line-height: 100px;
 }
 
-.dessert.elementH5 {
+.desert.elementH5 {
   color:#845849;
 }
 
-.dessert.elementP {
+.desert.elementP {
   color:#4c2f21;
 }
 
-.dessert.customLink {
+.desert.customLink {
   color: #4c2f21;
   border: 1px solid #4c2f21;
 }
 
-.dessert.customLink:hover {
+.desert.customLink:hover {
   background-color: #4c2f21;
   color: #f0eeea;
 }

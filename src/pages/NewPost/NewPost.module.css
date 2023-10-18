@@ -18,7 +18,7 @@
   font-weight: 100;
 }
 
-.newPostH1.dessert {
+.newPostH1.desert {
   /* color: rgb(109, 66, 16); */
   color: #7a5237;
   border-right: 2px solid #7a5237; 
@@ -47,7 +47,7 @@
   border: solid 1px white;
 }
 
-.newPostFormContainer.dessert {
+.newPostFormContainer.desert {
   background-color: #be996f;
 }
 
@@ -67,7 +67,7 @@
   background-repeat: no-repeat;
 }
 
-.imageWrapper.dessert {
+.imageWrapper.desert {
   background: url('../../assets/img/dessert-form.jpg');
   background-size: 100% 100%;
   max-width: 500px;

@@ -8,7 +8,7 @@ import * as profileService from '../../services/profileService'
 import styles from './Profiles.module.css'
 import avatar from "../../assets/icons/avatar.png"
 import community from "../../assets/img/community.jpg"
-import dessertPic from "../../assets/img/dessert-pic3.jpg"
+import desertPic from "../../assets/img/desert-pic3.jpg"
 // pages
 import ProfilePage from '../ProfilePage/ProfilePage'
 const Profiles = (props) => {
@@ -39,7 +39,7 @@ const Profiles = (props) => {
           ))}
         </div>
         <div className={styles.communityImg}>
-          <img src={theme === 'dessert' ? dessertPic : community} alt="image" />
+          <img src={theme === 'desert' ? desertPic : community} alt="image" />
         </div>
       </div>
     </div>

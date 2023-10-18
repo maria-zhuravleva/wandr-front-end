@@ -1,4 +1,5 @@
 import React from "react"
+import { useTheme } from '../../components/ThemeContext/ThemeContext'
 //components
 import PostCard from "../../components/PostCard/PostCard"
 import SearchPost from "../../components/SearchPost/SearchPost"
@@ -7,11 +8,12 @@ import SearchPost from "../../components/SearchPost/SearchPost"
 import styles from './PostList.module.css'
 
 const PostList = (props) => {
+  const { theme, setTheme } = useTheme()
 
 
   return ( 
     <div className={styles.postListContainer}>
-      <div className={styles.postListHeading}>
+      <div className={`${styles.postListHeading} ${styles[theme]}`}>
         <h1>All Posts</h1>
       </div>
       <div className={styles.postListSearch}> <SearchPost handlePostSearch={props.handlePostSearch}/></div>
