@@ -2,20 +2,43 @@
   display: flex;
   align-items: center;
   justify-content: flex-end; 
+  color: black;      
+  font-size: 14px;
+  font-style: italic;
+  height: 30px;
+  width: 200px;
+  padding: 10px;
+  margin-top: 20px;
 }
 
 
-.searchIcon {
+input[type="text"] {
+  outline: none;
+  padding: 10px;
+  margin-right: 0px;
+  width: 300px;
+  height: 30px;
+  background-color: transparent;
+  font-style: italic;
+  /* border: solid 1px black; */
+}
+
+.searchIcon button {
   cursor: pointer;
   width: 25px; 
   height: 25px;
-  outline: none;
+  outline: none; 
   background: transparent;
   border: none;
+  margin-left: 0px;
+  padding-left: 0;
 }
 
 .searchImg {
   width: 100%;
   width: 25px; 
   height: 25px;
+  margin-left: 0px;
+  padding-left: 0;
 }
+
