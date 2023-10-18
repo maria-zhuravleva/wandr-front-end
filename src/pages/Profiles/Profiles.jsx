@@ -1,15 +1,18 @@
 // npm modules
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../../components/ThemeContext/ThemeContext'
 // services
 import * as profileService from '../../services/profileService'
 // css
 import styles from './Profiles.module.css'
 import avatar from "../../assets/icons/avatar.png"
 import community from "../../assets/img/community.jpg"
+import desertPic from "../../assets/img/desert-pic3.jpg"
 // pages
 import ProfilePage from '../ProfilePage/ProfilePage'
 const Profiles = (props) => {
+  const { theme, setTheme } = useTheme()
 
   if (!props.profiles.length) {
     return <main className={styles.container}><h1>Loading...</h1></main>
@@ -36,7 +39,7 @@ const Profiles = (props) => {
           ))}
         </div>
         <div className={styles.communityImg}>
-          <img src={community} alt="avatar" />
+          <img src={theme === 'desert' ? desertPic : community} alt="image" />
         </div>
       </div>
     </div>
