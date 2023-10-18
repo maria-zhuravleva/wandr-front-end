@@ -1,9 +1,11 @@
 // npm modules
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 // services
 import * as profileService from '../../services/profileService'
+
+import avatar from "../../assets/icons/avatar.png"
 
 const FollowingList = () => {
   const [followingList, setFollowingList] = useState([])
@@ -11,11 +13,21 @@ const FollowingList = () => {
 
   useEffect(() => {
     const fetchFollowing = async () => {
-      const followingData = await profileService.showFollowing(profileId)
-      setFollowingList(followingData)
+      try {
+        const followingData = await profileService.showFollowing(profileId)
+        const followingWithProfileData = await Promise.all(
+          followingData.map(async (following) => {
+            const profileData = await profileService.showProfile(following._id)
+            return { ...following, profile: profileData }
+          })
+        )
+        setFollowingList(followingWithProfileData)
+      } catch (error) {
+        console.error(error)
+      }
     }
     fetchFollowing()
-  },[profileId])
+  }, [profileId])
 
   return ( 
     <>
@@ -23,11 +35,12 @@ const FollowingList = () => {
       {followingList.length === 0 ? (
       <p>Not following anyone yet</p>
     ) : (
-      <ul>
-          {followingList.map((follower) => (
-            <li key={follower._id}>{follower.name}</li>
-          ))}
-        </ul>
+      followingList.map((follower) => (
+        <Link key={follower._id} to={`/profiles/${follower._id}`}>
+          <img src={follower.profile.photo || avatar} alt="profile image" />
+          <p>{follower.profile.name}</p>
+        </Link>
+      ))
     )}
     </>
   )
