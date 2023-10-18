@@ -100,9 +100,26 @@ const ProfilePage = (props) => {
       </div>
       <div className={styles.followersContainer}>
         {props.user?.profile && <Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
-        <Link to={`/profiles/${profile._id}/following`}>
+        <Link
+          to={`/profiles/${profile._id}/following`}
+          className={styles.following}
+          style={{
+            textDecoration: 'none',
+            color: '#000', 
+            transition: 'color 0.3s', 
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.color = '#6f7275'; 
+            e.target.style.borderBottom = 'solid 1px #6f7275';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.borderBottom = 'none';
+            e.target.style.color = '#000';
+          }}
+        >
           View Following
         </Link>
+
       </div>
       <div className={styles.profilePostsSection}>
         <div className={styles.ppH}>

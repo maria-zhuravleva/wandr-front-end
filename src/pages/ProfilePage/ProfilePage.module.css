@@ -120,6 +120,11 @@
   margin-right: 5%;
 }
 
+.followersContainer.following button:hover {
+  color: red important!;
+  border-bottom: solid 1px black;
+}
+
 .profilePosts,
 .savedPosts {
   flex-basis: 100%; 
