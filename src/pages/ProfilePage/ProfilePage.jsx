@@ -87,7 +87,7 @@ const ProfilePage = (props) => {
           }
       </div>
       <div className={styles.followersContainer}>
-        {<Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
+        {props.user?.profile && <Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
         <Link to={`/profiles/${profile._id}/following`}>
           View Following
         </Link>
@@ -105,21 +105,25 @@ const ProfilePage = (props) => {
               ))}
         </div>
       </div>
+      {props.user?.profile === profileId && (
       <div className={styles.savedPostsContainer}>
         <h1>{profile.name}'s Saved Posts</h1>
         <div className={styles.savedPosts}>
           {savedProfilePosts &&
             savedProfilePosts
-              .filter((post) => post !== null) // Filter out null posts
-              .map(post =>
+              .filter((post) => post !== null) 
+              .map((post) => (
                 <>
                   <PostCard key={post._id} post={post} />
-                  <button onClick={() => handleDeleteSavedPost(profileId, post._id)}><img src={deleteIcon} className={styles.deleteIcon}/></button>
+                  <button onClick={() => handleDeleteSavedPost(profileId, post._id)}>
+                    <img src={deleteIcon} className={styles.deleteIcon} />
+                  </button>
                 </>
-              )}
+              ))}
         </div>
       </div>
-    </div>
-  )
+    )}
+  </div>
+)
 }
 export default ProfilePage
