@@ -116,12 +116,10 @@ function App() {
       <Route
         path="/"
         element={
-        
         <ProtectedRoute user={user}>
           <Landing user={user}  posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
         </ProtectedRoute>
-        
-        }
+                }
       />
         <Route
           path="/about"
