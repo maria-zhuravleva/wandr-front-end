@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
 
@@ -87,6 +87,9 @@ const EditProfile = (props) => {
         />
 
         <button type='submit'>Save Changes</button>
+      <Link to={`/profiles/${props.user.profile}`}>
+        <button>Cancel</button>
+      </Link>
       </form>
     </div>
   )
