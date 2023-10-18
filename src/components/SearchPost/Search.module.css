@@ -11,18 +11,17 @@
   margin-top: 20px;
 }
 
-/* .searchForm .searchImg {
-  outline: none; 
-  background: transparent;
-} */
 
 input[type="text"] {
-  outline: none important!;
+  outline: none;
   padding: 10px;
-  margin-right: 10px;
+  margin-right: 0px;
   width: 300px;
+  height: 30px;
+  background-color: transparent;
+  font-style: italic;
+  /* border: solid 1px black; */
 }
-
 
 .searchIcon button {
   cursor: pointer;
@@ -31,10 +30,15 @@ input[type="text"] {
   outline: none; 
   background: transparent;
   border: none;
+  margin-left: 0px;
+  padding-left: 0;
 }
 
 .searchImg {
   width: 100%;
   width: 25px; 
   height: 25px;
+  margin-left: 0px;
+  padding-left: 0;
 }
+

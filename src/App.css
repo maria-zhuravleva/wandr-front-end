@@ -19,10 +19,33 @@ body {
   overflow: auto;
 }
 
-
 a {
   color: black;
   text-decoration: none;
+}
+
+.container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.banner {
+  height: 80%; 
+  background: url('../../assets/img/default.jpg');
+  background-size: cover;
+  width: 100%;
+}
+
+/* Nordic Theme */
+.container.nordic {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+/* Dessert Theme */
+.container.dessert {
+  --bg-color: #ffcccb;
+  --text-color: #8b4513;
 }
 
 @media only screen and (max-width: 414px) {
