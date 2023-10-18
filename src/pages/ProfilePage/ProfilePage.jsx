@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom"
 // css
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPerson } from '@fortawesome/free-solid-svg-icons';
 // services
 import * as profileService from '../../services/profileService'
 import * as postService from '../../services/postService'
@@ -18,11 +20,14 @@ const ProfilePage = (props) => {
   const [profile, setProfile] = useState({})
   const { profileId } = useParams()
   const [profilePosts, setProfilePosts] = useState([])
+  console.log(profilePosts)
   const [savedProfilePosts, setSavedProfilePosts] = useState([])
+const [isTopContributor,setIsTopContributor]=useState(false)
   useEffect(() => {
     const fetchProfile = async () => {
       const ProfileData = await profileService.showProfile(profileId)
       setProfile(ProfileData)
+      
       if (ProfileData.posts && ProfileData.posts.length > 0) {
         const postDetails = await Promise.all(
           ProfileData.posts.map(async (postId) => {
@@ -39,9 +44,13 @@ const ProfilePage = (props) => {
         )
         setSavedProfilePosts(savedPostDetails)
       }
+      if((profilePosts.length>1) || (profile.followers>4)){
+        setIsTopContributor(true)
+      }
     }
     fetchProfile()
-  }, [profileId])
+  
+  }, [profileId,profilePosts,profile.followers])
 
   const handleFollow = async (profileId) => {
     const followerList = await profileService.addFollow(profileId)
@@ -57,6 +66,11 @@ const ProfilePage = (props) => {
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
         <h1>{profile.name}</h1>
+        {isTopContributor ?
+          <div className={styles.topContributor}>
+            <FontAwesomeIcon icon={faPerson} beat style={{color: "#1db45f",fontSize:'50px'}} />
+          </div>
+          : ""}
       </header>
       <div className={styles.ppAvatar}>
         {profile.photo ? (
