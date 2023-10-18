@@ -99,7 +99,7 @@ const Landing = (props) => {
         <img src={arrowRight} alt="arrow" />
       </Link>
     }
-    {props.user?.profile && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
+    {props.user?.profile && props.user?.profile.following && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
         <p>Explore the Most Recent Posts of your Following</p> 
         <img src={arrowRight} alt="arrow" />
       </Link>
