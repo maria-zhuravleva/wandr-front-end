@@ -71,16 +71,15 @@ const ProfilePage = (props) => {
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>
         <p>{new Date(profile.createdAt).toLocaleDateString()}</p>
-        <div className={styles.editProfileButton}>
-          {props.user?.profile === profileId && (
-           <>
-            <Link to={`/profiles/${profileId}/edit`} state={profile} >
-              <button>Edit Profile</button>
-            </Link>
-           <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
-           </>
-          )}
-        </div>
+          {props.user?.profile === profileId && 
+            <div className={styles.editProfileButton}>
+              <Link to="/auth/change-password">CHANGE PASSWORD</Link>
+              <Link to={`/profiles/${profileId}/edit`} state={profile} >
+                <button>Edit Profile</button>
+              </Link>
+            <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
+            </div>
+          }
       </div>
       <div className={styles.followersContainer}>
         {<Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}

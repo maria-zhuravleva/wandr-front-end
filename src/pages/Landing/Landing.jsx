@@ -84,6 +84,7 @@ const Landing = (props) => {
     <hr className={styles.topPostsLine} />
   </div>}
   <div className={styles.topPostsContent}>
+
   {props.user?.profile && followingPosts.map((post, idx) => (
     post.public ? (
       <React.Fragment key={post._id}>
@@ -92,10 +93,16 @@ const Landing = (props) => {
     ) : null
   ))}
   </div>  
-    {props.user?.profile && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
+    {props.user?.profile && !props.user?.profile.following
+    ? <Link to={`/profiles`} className={styles.landingPageArrow}>
+      <p>Explore the Top Creators</p>
+      <img src={arrowRight} alt="arrow" />
+    </Link>
+    : <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
       <p>Explore the Most Recent Posts of your Following</p> 
       <img src={arrowRight} alt="arrow" />
-    </Link>}
+    </Link>
+    }
 </div>
     </>
   )

@@ -68,9 +68,7 @@ function App() {
 
   const handleDeleteProfile = async (profileId) =>{
     await profileService.deleteProfile(profileId)
-    authService.logout()
-      setUser(null)
-      navigate('/')
+    handleLogout()
   }
 
   const handleAddPost = async (postFormData) => {
@@ -161,7 +159,7 @@ function App() {
           path="/auth/change-password"
           element={
             <ProtectedRoute user={user}>
-              <ChangePassword handleAuthEvt={handleAuthEvt} />
+              <ChangePassword handleAuthEvt={handleAuthEvt} user={user}/>
             </ProtectedRoute>
           }
         />
