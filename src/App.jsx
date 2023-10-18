@@ -101,7 +101,9 @@ function App() {
       <Routes>
       <Route
         path="/"
-        element={<Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />}
+        element={<ProtectedRoute user={user}>
+          <Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
+        </ProtectedRoute>}
       />
         <Route
           path="/about"
