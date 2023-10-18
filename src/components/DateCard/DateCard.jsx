@@ -13,8 +13,7 @@ const DateCard = ({ createdAt }) => {
 
   return (
     <div className={styles.dateContainer}>
-      {Calendar}
-      <h5>{date}</h5>
+      <h5>{Calendar} {date}</h5>
     </div>
   )
 }
