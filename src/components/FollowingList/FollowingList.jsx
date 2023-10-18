@@ -1,9 +1,11 @@
 // npm modules
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 // services
 import * as profileService from '../../services/profileService'
+
+import avatar from "../../assets/icons/avatar.png"
 
 const FollowingList = () => {
   const [followingList, setFollowingList] = useState([])
@@ -23,11 +25,12 @@ const FollowingList = () => {
       {followingList.length === 0 ? (
       <p>Not following anyone yet</p>
     ) : (
-      <ul>
-          {followingList.map((follower) => (
-            <li key={follower._id}>{follower.name}</li>
-          ))}
-        </ul>
+      followingList.map((follower) => (
+        <Link key={follower._id} to={`/profiles/${follower._id}`}>
+          <img src={follower.photo || avatar} alt="profile image" />
+          <p>{follower.name}</p>
+        </Link>
+      ))
     )}
     </>
   )
