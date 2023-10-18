@@ -71,6 +71,21 @@ const PostDetails = (props) => {
     setPost({...post, likes: [...post.likes, like]})
   }
 
+  const handleUnlikePost = async () => {
+    const unlike = await postService.unlikePost(postId)
+    setPost({...post, likes: post.likes.filter(p => p !== unlike)})
+  }
+
+  const handleClickLike = (e) => {
+    if (e.target.innerText === 'LIKE') {
+      handleLikePost(postId)
+      e.target.innerText = 'UNLIKE'
+    } else {
+      handleUnlikePost(postId)
+      e.target.innerText = 'LIKE'
+    }
+  }
+
   const handleSavePost = async (profileId) => {
     const save = await postService.savePost(postId, profileId)
     setPost({...post, saves: [...post.saves, save]})
@@ -141,10 +156,9 @@ const PostDetails = (props) => {
 
         {props.user?.profile && post.author?._id !== props.user?.profile 
         && <button 
-          disabled={post.likes.some(p => p === props.user?.profile)} 
-          onClick={() => handleLikePost(props.user?.profile)} 
+          onClick={handleClickLike} 
           className={styles.likeBtn}>
-            {post.likes.some(p => p === props.user?.profile) ? 'LIKED' : 'LIKE'}
+            {!post.likes.some(p => p === props.user?.profile) ? 'LIKE' : 'UNLIKE'}
         </button>
         }
         {props.user?.profile && post.author?._id !== props.user?.profile 

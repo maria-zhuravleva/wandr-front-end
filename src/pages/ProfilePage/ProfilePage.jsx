@@ -88,9 +88,6 @@ const ProfilePage = (props) => {
         <p>{new Date(profile.createdAt).toLocaleDateString()}</p>
           {props.user?.profile === profileId && 
             <div className={styles.editProfileButton}>
-              <Link to="/auth/change-password">
-                <button>Change password</button>
-              </Link>
               <Link to={`/profiles/${profileId}/edit`} state={profile} >
                 <button>Edit Profile</button>
               </Link>
