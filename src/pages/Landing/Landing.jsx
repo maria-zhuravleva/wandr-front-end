@@ -41,7 +41,7 @@ const Landing = (props) => {
       <div className={styles.searchThemesContainer}> 
         <div className={`${styles.themeWrapper} ${styles[theme]}`}>
           <button onClick={() => setTheme('nordic')}>nordic</button>
-          <button onClick={() => setTheme('dessert')}>dessert</button>
+          <button onClick={() => setTheme('desert')}>desert</button>
         </div>
         <div className={`${styles.searchpost} ${styles[theme]}`}>
         {props.errMsg && <h2>{props.errMsg}</h2>}
@@ -64,19 +64,19 @@ const Landing = (props) => {
         </div>
 
         <div className={styles.column}>
-          <h5>Our Mission</h5>
+          <h5 className={`${styles.elementH5} ${styles[theme]}`}>Our Mission</h5>
           <div className={styles.quotesWrapper}>
             <img src={quotes} alt="quotes" className={styles.quotes} />
           </div>
-          <p>Explore the world, and let every adventure be a story worth telling</p>
+          <p className={`${styles.elementP} ${styles[theme]}`}>Explore the world, and let every adventure be a story worth telling</p>
           <div className={styles.linkWrapper}>
-            <Link to="/about" className={styles.customLink}>Learn more</Link>
+            <Link to="/about" className={`${styles.customLink} ${styles[theme]}`}>Learn more</Link>
           </div>
         </div>
       </div>
 
       {/* Top Posts Section */}
-      <div className={styles.topPosts}>
+      <div className={styles.topPosts} >
         <div className={styles.topPostsLines}>
           <hr className={styles.topPostsLine} />
           <h3>Top Posts</h3>
@@ -89,10 +89,12 @@ const Landing = (props) => {
             </>
           )}
         </div>
-        <Link to="/posts" className={styles.landingPageArrow}>
-          <p>See More</p> 
-          <img src={arrowRight} alt="arrow" />
-        </Link>
+        <div className={styles.landingPageArrowContainer}>
+          <Link to="/posts" className={styles.landingPageArrow}>
+            <p>See More</p> 
+            <img src={arrowRight} alt="arrow" />
+          </Link>
+        </div>
       </div>
 
       <div className={styles.topPosts}>

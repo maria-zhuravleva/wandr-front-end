@@ -1,5 +1,6 @@
 //npm modules
 import { useState } from 'react'
+import { useTheme } from '../../components/ThemeContext/ThemeContext'
 
 //components
 import { initialState } from './initialState.js'
@@ -9,6 +10,7 @@ import styles from './NewPost.module.css'
 
 const NewPost = (props) => {
   const [formData, setFormData] = useState(initialState)
+  const { theme, setTheme } = useTheme()
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value})
@@ -25,9 +27,9 @@ const NewPost = (props) => {
 
   return ( 
     <div className={styles.newPostContainer}>
-      <h1>NEW POST</h1>
+      <h1 className={`${styles.newPostH1} ${styles[theme]}`}>NEW POST</h1>
       <div className={styles.newPostFormWrapper}>
-        <form onSubmit={handleSubmit} className={styles.newPostFormContainer}>
+        <form onSubmit={handleSubmit} className={`${styles.newPostFormContainer} ${styles[theme]}`}>
           <div className={styles.inputWrapper}>
             <label htmlFor="title-input">Title</label>
             <input
@@ -81,7 +83,7 @@ const NewPost = (props) => {
         </form>
 
       </div>
-      <div className={styles.imageWrapper}></div>
+      <div className={`${styles.imageWrapper} ${styles[theme]}`}></div>
     </div>
   )
 }

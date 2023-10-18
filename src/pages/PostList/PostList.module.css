@@ -12,7 +12,21 @@
   position: relative;
 }
 
-.postListHeading {
+/* .postListHeading {
+  background-image: url('../../assets/img/header.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  height: 250px; 
+  width: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+} */
+
+
+.postListHeading.nordic {
   background-image: url('../../assets/img/header.jpg');
   background-size: cover;
   background-position: center;
@@ -24,6 +38,20 @@
   justify-content: center;
   position: relative;
 }
+
+.postListHeading.desert {
+  background-image: url('../../assets/img/header-desert.jpg');
+  background-size: cover;
+  /* background-position: ; */
+  text-align: center;
+  height: 250px; 
+  width: 1500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 
 .postListHeading::after {
   content: "";

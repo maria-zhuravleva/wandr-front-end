@@ -10,7 +10,12 @@ const NavBar = ({ user, handleLogout }) => {
   const [showDropdown, setShowDropdown] = useState(false)
 
   const toggleDropdown = () => {
-    setShowDropdown(!showDropdown)
+    setShowDropdown(prev => !prev)
+    if (!showDropdown) {
+      setTimeout(() => {
+        setShowDropdown(false)
+      }, 3000) // 5000 milliseconds (5 seconds)
+    }
   }
 
 
@@ -43,24 +48,5 @@ const NavBar = ({ user, handleLogout }) => {
     </nav>
   )
 }
-
-      {/* {user ?
-        <ul>
-          <li>Welcome, {user.name}</li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
-          <li><NavLink to="/posts">All Posts</NavLink></li>
-          <li><NavLink to="/posts/new">New Post</NavLink></li>
-          <li><NavLink to="/">Home Page</NavLink></li>
-          <li><NavLink to="/auth/change-password">Change Password</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-        </ul>
-      :
-      <ul>
-          <li><NavLink to="/about">About</NavLink></li>
-          <li><NavLink to="/auth/login">Log In</NavLink></li>
-          <li><NavLink to="/auth/signup">Sign Up</NavLink></li>
-        </ul>
-      } */}
 
 export default NavBar
