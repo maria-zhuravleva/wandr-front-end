@@ -56,5 +56,19 @@
 }
 
 .imageContainer {
-  height: 45%;
+  height: 40%;
+}
+
+.infoContainer {
+  display: flex;
+}
+
+.infoContainer img {
+  width: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.infoContainer p {
+  margin: 5px;
 }

@@ -16,7 +16,8 @@ import PostCard from '../../components/PostCard/PostCard'
 import * as profileService from '../../services/profileService'
 
 const Landing = (props) => {
-  const publicPosts = props.posts.filter(post => post.public).sort((a,b) => a.likes > b.likes)
+  const publicPosts = props.posts.filter(post => post.public)
+  const sortedPublicPosts = publicPosts.sort((b, a) => a.likes - b.likes).reverse()
 
   const [followingPosts, setFollowingPosts] = useState([])
 
@@ -66,7 +67,7 @@ const Landing = (props) => {
           <hr className={styles.topPostsLine} />
         </div>
         <div className={styles.topPostsContent}>
-          {publicPosts.map((post, idx) => 
+          {sortedPublicPosts.map((post, idx) => 
             <>
               {idx < 5 && <PostCard key={post._id} post={post}/>}
             </>

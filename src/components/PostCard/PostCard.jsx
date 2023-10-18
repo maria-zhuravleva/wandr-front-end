@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import AuthorInfo from '../AuthorInfo/AuthorInfo'
 //css
 import styles from './PostCard.module.css'
+import likesIcon from "../../assets/icons/likes.png"
 
 const PostCard = ({ post }) => {
   return ( 
@@ -13,7 +14,10 @@ const PostCard = ({ post }) => {
             <h1 key={post._id}>{post.title}</h1>
             <AuthorInfo content={post}/>
           </header>
-          <p key={post._id}>{post.location}</p>
+            <div className={styles.infoContainer}>
+              <p><img src={likesIcon}/> {post.likes.length}</p>
+              <p key={post._id}>{post.location}</p>
+            </div>
           {post.mainPhoto && <img className={styles.imageContainer} src={post.mainPhoto} />}
         </article>
       </Link>
