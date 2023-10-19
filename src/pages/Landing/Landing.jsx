@@ -94,14 +94,14 @@ const Landing = (props) => {
       </div>}
 
       <div className={styles.topPostsContent}>
-        {props.user?.profile && followingPosts.map((post, idx) => (
+        {props.user?.profile && Array.isArray(followingPosts) && followingPosts.map((post, idx) => (
           post.public ? (
-            <React.Fragment key={post._id}>
-              {idx < 5 && <PostCard post={post} />}
-            </React.Fragment>
-          ) : null
-        ))}
-      </div> 
+          <React.Fragment key={post._id}>
+            {idx < 5 && <PostCard post={post} />}
+          </React.Fragment>
+        ) : null
+  ))}
+</div>
       
       {props.user?.profile && <Link to={`/profiles/${props.user?.profile}/following/posts`} className={styles.landingPageArrow}>
           <p>Explore the Most Recent Posts of your Following</p> 
