@@ -11,13 +11,10 @@ import styles from './ExplorePage.module.css'
 // components
 import PostCard from "../../components/PostCard/PostCard"
 
-
 const ExplorePage = () => {
-
   const [followingPosts, setFollowingPosts] = useState([])
   const { profileId } = useParams()
 
-  // useEffect for database query
   useEffect(() => {
     const fetchFollowingPosts = async () => {
       const followingPostsData = await profileService.explorePage(profileId)
@@ -27,7 +24,7 @@ const ExplorePage = () => {
     fetchFollowingPosts()
   }, [profileId])
 
-  return (  
+  return (
     <div className={styles.exploreListContainer}>
       <div className={styles.exploreListHeading}>
         <h1>Explore Page</h1>
