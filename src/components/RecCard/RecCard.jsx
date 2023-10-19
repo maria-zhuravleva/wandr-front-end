@@ -24,7 +24,7 @@ const RecCard = (props) => {
       <h4> <span>Name: </span>{props.recommendation.name}</h4>
       <p> <span>Activity:  </span>{props.recommendation.activity}</p>
       <p> <span>How Long:  </span>{props.recommendation.time}</p>
-      <p> <span>Rating:  </span>{props.recommendation.rating}/5</p>
+      <p> <span>Rating:  </span>{props.recommendation.rating}</p>
       <p> <span>Description:  </span>{props.recommendation.text}</p>
 
       <div className={styles.recButtons}>
