@@ -17,20 +17,17 @@ const CommentCard = (props) => {
     setShowForm(false)
   }
 
-  return ( 
+  return (
     <div className={styles.commentContainer}>
       <header>
-        {<AuthorInfo content={props.comment}/>}
+        {<AuthorInfo content={props.comment} />}
       </header>
       <p>{props.comment.text}</p>
-      
       <div className={styles.editDeleteComment}>
         {props.comment.author?._id === props.user?.profile && <button onClick={() => handleShowForm()}>Edit</button>}
         {props.comment.author?._id === props.user?.profile && <button onClick={() => props.handleDeleteComment(props.comment._id)}>Delete</button>}
       </div>
-      
-      {/* show edit comment form on button click */}
-      {showForm && <EditComment comment={props.comment} handleEditComment={props.handleEditComment} handleHideForm={handleHideForm}/>}
+      {showForm && <EditComment comment={props.comment} handleEditComment={props.handleEditComment} handleHideForm={handleHideForm} />}
     </div>
   )
 }

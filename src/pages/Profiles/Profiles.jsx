@@ -1,16 +1,13 @@
 // npm modules
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../../components/ThemeContext/ThemeContext'
-// services
-import * as profileService from '../../services/profileService'
+
 // css
 import styles from './Profiles.module.css'
 import avatar from "../../assets/icons/avatar.png"
 import community from "../../assets/img/community.jpg"
 import desertPic from "../../assets/img/desert-pic3.jpg"
-// pages
-import ProfilePage from '../ProfilePage/ProfilePage'
+
 const Profiles = (props) => {
   const { theme, setTheme } = useTheme()
 
@@ -45,4 +42,5 @@ const Profiles = (props) => {
     </div>
   )
 }
+
 export default Profiles

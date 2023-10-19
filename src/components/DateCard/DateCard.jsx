@@ -1,8 +1,6 @@
-// components
-
-
 // css
 import styles from './DateCard.module.css'
+
 //assets
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'

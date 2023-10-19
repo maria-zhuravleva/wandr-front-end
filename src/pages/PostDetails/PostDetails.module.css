@@ -69,6 +69,13 @@
   font-size: 15px;
 }
 
+.imageButtons button:hover {
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.716);
+  color: white;
+  cursor: pointer;
+}
+
 .cardDetailsBtnContainer {
   display: flex;
 }

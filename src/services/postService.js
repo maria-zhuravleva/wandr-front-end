@@ -1,13 +1,13 @@
 //services
 import * as tokenService from './tokenService'
 
-const BASE_URL=`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`
 
 async function create(postFormData) {
   try {
     const res = await fetch(BASE_URL, {
       method: 'POST',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
@@ -60,7 +60,7 @@ async function show(postId) {
 async function index() {
   try {
     const res = await fetch(BASE_URL)
-  return res.json()
+    return res.json()
   } catch (err) {
     console.log(err)
   }
@@ -82,7 +82,7 @@ async function update(postFormData) {
   try {
     const res = await fetch(`${BASE_URL}/${postFormData._id}`, {
       method: 'PUT',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
@@ -99,7 +99,7 @@ async function createComment(postId, commentFormData) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/comments`, {
       method: 'POST',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
@@ -127,7 +127,7 @@ async function editComment(postId, commentFormData) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/comments/${commentFormData._id}`, {
       method: 'PATCH',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
@@ -143,7 +143,7 @@ async function createRec(postId, rec) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/recommendations`, {
       method: 'POST',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
@@ -167,11 +167,11 @@ async function deleteRec(postId, recId) {
   }
 }
 
-async function editRec(postId, recFormData){
+async function editRec(postId, recFormData) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/recommendations/${recFormData._id}`, {
       method: 'PATCH',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
@@ -187,12 +187,12 @@ async function likePost(postId) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/likes`, {
       method: 'PATCH',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
       },
     })
     return res.json()
-  } catch (err) { 
+  } catch (err) {
     console.log(err)
   }
 }
@@ -200,12 +200,12 @@ async function savePost(postId) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/saves`, {
       method: 'PATCH',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
       },
     })
     return res.json()
-  } catch (err) { 
+  } catch (err) {
     console.log(err)
   }
 }
@@ -214,7 +214,7 @@ async function unlikePost(postId) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/unlike`, {
       method: 'PATCH',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
       },
     })
@@ -227,7 +227,7 @@ async function unlikePost(postId) {
 async function unsavePost(postId) {
   try {
     const res = await fetch(`${BASE_URL}/${postId}/unsave`, {
-      method:'PATCH',
+      method: 'PATCH',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return res.json()

@@ -18,13 +18,11 @@ const NavBar = ({ user, handleLogout }) => {
     }
   }
 
-
   return (
     <nav className={`${styles.container} ${showDropdown ? styles.fixed : ''}`}>
       <div className={styles.icon} onClick={toggleDropdown} style={{ cursor: 'pointer' }}>
-        <img src={menuIcon} alt="Menu" className={styles.img} />             
+        <img src={menuIcon} alt="Menu" className={styles.img} />
       </div>
-
       {user && showDropdown && (
         <ul className={styles.dropdownMenu}>
           <li><NavLink to="/">Home</NavLink></li>
@@ -36,7 +34,6 @@ const NavBar = ({ user, handleLogout }) => {
           <li><NavLink to="" onClick={handleLogout}>Log Out</NavLink></li>
         </ul>
       )}
-
       {!user && (
         <ul>
           <li><NavLink to="/">Home</NavLink></li>

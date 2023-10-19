@@ -11,11 +11,11 @@ const EditPost = (props) => {
   const { theme, setTheme } = useTheme()
   
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleChecked = (e, status) => {
-    setFormData({...formData, public: status})
+    setFormData({ ...formData, public: status })
   }
 
   const handleSubmit = (e) => {
@@ -23,7 +23,7 @@ const EditPost = (props) => {
     props.handleUpDatePost(formData)
   }
 
-  return ( 
+  return (
     <div className={styles.editPostContainer}>
       <h3>Refine Your Travel Itinerary</h3>
       <form onSubmit={handleSubmit} className={`${styles.editPostForm} ${styles[theme]}`}>

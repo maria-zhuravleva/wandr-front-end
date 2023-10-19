@@ -6,10 +6,12 @@ import { Link, useParams } from "react-router-dom"
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
 import deleteIcon from "../../assets/icons/delete.png"
-import topContributor from "../../assets/icons/top-contributor.png"       
+import topContributor from "../../assets/icons/top-contributor.png"
+
 // services
 import * as profileService from '../../services/profileService'
 import * as postService from '../../services/postService'
+
 // components
 import PostCard from "../../components/PostCard/PostCard"
 import Following from "../../components/Following/Following"
@@ -21,22 +23,17 @@ const ProfilePage = (props) => {
   const [savedProfilePosts, setSavedProfilePosts] = useState([])
   const [isFollowing, setIsFollowing] = useState(false)
 
-
-
   useEffect(() => {
     const fetchProfile = async () => {
       const ProfileData = await profileService.showProfile(profileId)
       setProfile(ProfileData)
-
       setIsFollowing(ProfileData.followers?.some(p => p === props.user?.profile))
-      
       const postDetails = await Promise.all(
         ProfileData.posts.map(async (postId) => {
           return await postService.show(postId)
         })
       )
       setProfilePosts(postDetails)
-    
       const savedPostDetails = await Promise.all(
         ProfileData.saves.map(async (postId) => {
           return await postService.show(postId)
@@ -44,18 +41,17 @@ const ProfilePage = (props) => {
       )
       setSavedProfilePosts(savedPostDetails)
     }
-  
     fetchProfile()
   }, [profileId, props.user?.profile])
 
   const handleFollow = async (profileId) => {
     const followerList = await profileService.addFollow(profileId)
-    setProfile({...profile, followers:  followerList})
+    setProfile({ ...profile, followers: followerList })
   }
 
   const handleUnFollow = async (profileId) => {
     const followerList = await profileService.unFollow(profileId)
-    setProfile({...profile, followers:  followerList})
+    setProfile({ ...profile, followers: followerList })
   }
 
   const handleDeleteSavedPost = async (profileId, postId) => {
@@ -63,17 +59,16 @@ const ProfilePage = (props) => {
     setSavedProfilePosts(...saves)
   }
 
-
   return (
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
         <div className={styles.topContributor}>
-        <h1>{profile.name}</h1>
-          {profilePosts.length>5 || profile.followers>5 ? 
-          <div> 
-            <img src={topContributor} alt="topContributorIcon" className={styles.topContributorIcon} />
-          </div>
-          : ""
+          <h1>{profile.name}</h1>
+          {profilePosts.length > 5 || profile.followers > 5 ?
+            <div>
+              <img src={topContributor} alt="topContributorIcon" className={styles.topContributorIcon} />
+            </div>
+            : ""
           }
         </div>
       </header>
@@ -90,25 +85,25 @@ const ProfilePage = (props) => {
       <div className={styles.ppInfo}>
         <h5>Member Since </h5>
         <p>{new Date(profile.createdAt).toLocaleDateString()}</p>
-          {props.user?.profile === profileId && 
-            <div className={styles.editProfileButton}>
-              <Link to={`/profiles/${profileId}/edit`} state={profile} >
-                <button>Edit Profile</button>
-              </Link>
-              <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
-              <Link to="/auth/change-password">
-                <button>Change Password</button>
-              </Link>
-            </div>
-          }
+        {props.user?.profile === profileId &&
+          <div className={styles.editProfileButton}>
+            <Link to={`/profiles/${profileId}/edit`} state={profile} >
+              <button>Edit Profile</button>
+            </Link>
+            <button onClick={() => props.handleDeleteProfile(profileId)}>Delete Profile</button>
+            <Link to="/auth/change-password">
+              <button>Change Password</button>
+            </Link>
+          </div>
+        }
       </div>
       <div className={styles.followersContainer}>
         {props.user?.profile && (
-          <Following 
-            profile={profile} 
-            user={props.user} 
-            handleFollow={handleFollow} 
-            handleUnFollow={handleUnFollow} 
+          <Following
+            profile={profile}
+            user={props.user}
+            handleFollow={handleFollow}
+            handleUnFollow={handleUnFollow}
             isFollowing={isFollowing}
           />
         )}
@@ -127,24 +122,25 @@ const ProfilePage = (props) => {
         </div>
       </div>
       {props.user?.profile === profileId && (
-      <div className={styles.savedPostsContainer}>
-        <h1>{profile.name}'s Saved Posts</h1>
-        <div className={styles.savedPosts}>
-          {savedProfilePosts &&
-            savedProfilePosts
-              .filter((post) => post !== null) 
-              .map((post) => (
-                <>
-                  <PostCard key={post._id} post={post} />
-                  <button onClick={() => handleDeleteSavedPost(profileId, post._id)}>
-                    <img src={deleteIcon} className={styles.deleteIcon} />
-                  </button>
-                </>
-              ))}
+        <div className={styles.savedPostsContainer}>
+          <h1>{profile.name}'s Saved Posts</h1>
+          <div className={styles.savedPosts}>
+            {savedProfilePosts &&
+              savedProfilePosts
+                .filter((post) => post !== null)
+                .map((post) => (
+                  <>
+                    <PostCard key={post._id} post={post} />
+                    <button onClick={() => handleDeleteSavedPost(profileId, post._id)}>
+                      <img src={deleteIcon} className={styles.deleteIcon} />
+                    </button>
+                  </>
+                ))}
+          </div>
         </div>
-      </div>
-    )}
-  </div>
-)
+      )}
+    </div>
+  )
 }
+
 export default ProfilePage
