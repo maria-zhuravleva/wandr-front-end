@@ -4,8 +4,8 @@ import { Link, useParams } from "react-router-dom"
 // css
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { faUser } from '@fortawesome/free-solid-svg-icons'
 import deleteIcon from "../../assets/icons/delete.png"
 import topContributor from "../../assets/icons/top-contributor.png"
         
@@ -21,10 +21,15 @@ const ProfilePage = (props) => {
   const { profileId } = useParams()
   const [profilePosts, setProfilePosts] = useState([])
   const [savedProfilePosts, setSavedProfilePosts] = useState([])
+  const [isFollowing, setIsFollowing] = useState(false)
+
+
   useEffect(() => {
     const fetchProfile = async () => {
       const ProfileData = await profileService.showProfile(profileId)
       setProfile(ProfileData)
+
+      setIsFollowing(ProfileData.followers?.some(p => p === props.user?.profile))
       
       const postDetails = await Promise.all(
         ProfileData.posts.map(async (postId) => {
@@ -42,7 +47,7 @@ const ProfilePage = (props) => {
     }
   
     fetchProfile()
-  }, [profileId])
+  }, [profileId, props.user?.profile])
 
   const handleFollow = async (profileId) => {
     const followerList = await profileService.addFollow(profileId)
@@ -96,27 +101,15 @@ const ProfilePage = (props) => {
           }
       </div>
       <div className={styles.followersContainer}>
-        {props.user?.profile && <Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
-        {/* <Link
-          to={`/profiles/${profile._id}/following`}
-          className={styles.following}
-          style={{
-            textDecoration: 'none',
-            color: '#000', 
-            transition: 'color 0.3s', 
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.color = '#6f7275'; 
-            e.target.style.borderBottom = 'solid 1px #6f7275';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.borderBottom = 'none';
-            e.target.style.color = '#000';
-          }}
-        >
-          View Following
-        </Link>  */}
-
+        {props.user?.profile && (
+          <Following 
+            profile={profile} 
+            user={props.user} 
+            handleFollow={handleFollow} 
+            handleUnFollow={handleUnFollow} 
+            isFollowing={isFollowing}
+          />
+        )}
       </div>
       <div className={styles.profilePostsSection}>
         <div className={styles.ppH}>
