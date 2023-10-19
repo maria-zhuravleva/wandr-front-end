@@ -18,7 +18,7 @@ const PostCard = ({ post }) => {
               <p><img src={likesIcon}/> {post.likes.length}</p>
               <p key={post._id}>{post.location}</p>
             </div>
-          {post.mainPhoto && <img className={styles.imageContainer} src={post.mainPhoto} />}
+          {post.morePhotos[0] && <img className={styles.imageContainer} src={post.morePhotos[0].url} />}
         </article>
       </Link>
   )
