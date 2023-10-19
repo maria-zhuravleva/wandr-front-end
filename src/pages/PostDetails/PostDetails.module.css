@@ -11,7 +11,7 @@
 
 /* First Row */
 .textContainer {
-  flex-basis: 80%;
+  flex-basis: 25%;
   padding: 20px; 
   /* padding-right: 50px; */
   overflow: scroll;
@@ -38,18 +38,34 @@
 }
 
 .imageContainer {
-  flex-basis: 30%;
+  flex-basis: 70%;
   display: flex;
-  max-height: 700px;
-  max-width: 400px;
+  max-height: 600px;
+  max-width: 300px;
   margin-left: 7%;
+  margin-right: 2%;
   padding-top: 100px;
   padding-bottom: 0;
   margin-bottom: 0;
+  margin-top: 15%;
+}
+
+
+.imageContainer button {
+  width: 25px;
+  height: 25px;
+  margin-top: 170%;
 }
 
 .imageCollection {
   padding-top: 100px;
+  max-width: 110px;
+}
+
+.imageContainer .imageButtons button {
+  width: 25px;
+  height: 25px;
+  margin-right: 100px;
 }
 
 .imageContainer img {
