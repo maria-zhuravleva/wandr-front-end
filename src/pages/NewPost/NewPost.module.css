@@ -57,13 +57,12 @@
 
 .imageWrapper.nordic {
   background: url('../../assets/img/form.jpg');
-  background-size: 100% 100%;
+  background-size: cover;
   max-width: 500px;
   max-height: 600px;
   margin-top: 700px;
-  margin-right: 50px;
-  margin-left: -140px;
-  background-position: 0px 0px;
+  margin-right: 10%;
+  margin-left: -10%;
   background-repeat: no-repeat;
 }
 
