@@ -9,7 +9,7 @@ import likesIcon from "../../assets/icons/likes.png"
 const PostCard = ({ post }) => {
   return ( 
       <Link to={`/posts/${post._id}`} key={post._id}>
-        <article className={styles.postcardContainer} >
+        <article className={styles.postcardContainer}>
           <header>
             <h4 key={post._id}>{post.title}</h4>
             <AuthorInfo content={post}/>
@@ -18,7 +18,7 @@ const PostCard = ({ post }) => {
               <p><img src={likesIcon}/> {post.likes.length}</p>
               <p key={post._id}>{post.location}</p>
             </div>
-          {post.morePhotos[0] && <img className={styles.imageContainer} src={post.morePhotos[0].url} />}
+          {post.mainPhoto && <img className={styles.imageContainer} src={post.mainPhoto} />}
         </article>
       </Link>
   )

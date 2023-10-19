@@ -13,7 +13,7 @@
 }
 
 .allProfilesContainer p {
-  font-size: 30px;
+  font-size: 18px;
   margin-right: 10px;
 }
 
@@ -39,9 +39,9 @@
 }
 
 .allProfilesContainer h1 {
-  width: 1550px;
-  font-weight: 100;
-  font-size: 70px;
+  width: 100%;
+  font-weight: 60;
+  font-size: 60px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 70px;
@@ -49,7 +49,7 @@
   max-width: 100%;
   padding: 20px;
   padding-bottom: 40px;
-  border-bottom: solid 2px black;
+  border-bottom: solid 1px black;
 }
 
 .allProfilesContainer img {
@@ -67,8 +67,8 @@
 }
 
 .contentContainer h3 {
-  font-size: 40px;
-  font-weight: 100;
+  font-size: 20px;
+  font-weight: 500;
   margin: 0 auto;
   margin-bottom: 50px;
   padding-bottom: 30px;
@@ -76,8 +76,8 @@
 
 .namesContainer {
   flex: 1;
-  border-right: solid 2px black;
-  border-top: solid 2px black;
+  border-right: solid 1px black;
+  border-top: solid 1px black;
   margin-right: 90px;
   margin-left: 50px;
   padding-top: 50px;
@@ -86,9 +86,9 @@
 }
 
 .communityImg img {
-  width: 700px;
-  height: 1000px;
+  width: 500px;
+  height: 650px;
   border-radius: 0;
   margin-right: 70px;
-  margin-top: 50px;
+  margin-top: 30px;
 }

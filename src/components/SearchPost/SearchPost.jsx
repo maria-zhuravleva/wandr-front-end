@@ -36,7 +36,7 @@ const SearchPost = (props) => {
         border: theme === 'nordic' ? '1px solid black': '1px solid black',
       }}    
       />
-      <button type="submit" className={styles.searchIcon} style={{outline:'none', backgroundColor: 'transparent', border: 'none'}}>
+      <button type="submit" className={styles.searchIcon} style={{outline:'none', backgroundColor: 'transparent', border: 'none', cursor: 'pointer'}}>
         <img src={searchIcon} alt="search" className={styles.searchImg}  />
       </button>
 

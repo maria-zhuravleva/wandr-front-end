@@ -9,7 +9,7 @@
 .searchThemesContainer {
   display: flex;
   justify-content: space-between;
-  height: 30px;
+  height: 20px;
   margin-top: 0;
   z-index: 1;
 }
@@ -19,18 +19,6 @@
   align-items: center;
   justify-content: flex-end; 
   margin-right: 50px; 
-}
-
-/* Search Section */
-.desert input {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; 
-  margin-left: 50px;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  z-index: 1;
 }
 
 /* Themes Wrapper */
@@ -44,13 +32,12 @@
 
 .desert button {
   margin-left: 10px;
-  /* font-family: 'DM Serif Text', serif; */
   font-family: 'Ortica Linear', sans-serif;
   color: black;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   padding: 0px 10px;
-  width: 80px;
+  width: 60px;
   cursor: pointer;
   border-left: none; 
   border-right: none;
@@ -58,7 +45,7 @@
   outline: none;
   background: transparent;
   border-radius: 0; 
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 100;
   color: white;
 }
@@ -69,14 +56,13 @@
 
 .nordic button {
   margin-left: 10px;
-  /* font-family: 'DM Serif Text', serif; */
   font-family: 'Ortica Linear', sans-serif;
   color: black;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   padding: 0px 10px;
   padding-bottom: 0;
-  width: 80px;
+  width: 60px;
   cursor: pointer;
   border-left: none; 
   border-right: none;
@@ -84,7 +70,7 @@
   outline: none;
   background: transparent;
   border-radius: 0; 
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 100;
 }
 
@@ -102,6 +88,7 @@
   background: url('../../assets/img/default.jpg');
   background-size: cover;
   width: 100%;
+  margin-top: 10px;
 }
 
 .nordic h1 {
@@ -121,6 +108,7 @@
 
 .desert.banner {
   height: 100%; 
+  margin-top: 10px;
   background: url('../../assets/img/desert.jpg');
   background-size: cover;
   width: 100%;
@@ -145,7 +133,7 @@
   margin: 0 auto;
   margin-top: -30px;
   font-weight: 400;
-  font-size: 100px;
+  font-size: 90px;
 }
 
 /* Two Columns Container */
@@ -194,25 +182,24 @@
 }
 
 .column p {
-  font-size: 20px;
+  font-size: 15px;
+  font-weight: 500;
   width: 200px;
   text-align: center;
   font-weight: 100;
   z-index: 1;
-  margin-top: -12%;
+  margin-top: -20%;
   margin-left: 10%;
-  margin-bottom: 10%;
+  margin-bottom: 20%;
 }
 
 .column h5 {
-  font-size: 85px;
-  width: 270px;
+  font-size: 50px;
+  width: 200px;
   text-align: center;
-  line-height: 80px;
   margin-bottom: 20px;
   margin-top: 10%;
   font-weight: 100;
-  line-height: 100px;
 }
 
 .desert.elementH5 {
@@ -252,9 +239,10 @@
 
 .customLink {
   text-decoration: none;
+  font-size: 13px;
   color: black;
   border: 1px solid black;
-  padding: 15px 20px;
+  padding: 10px 25px;
   display: block;
   font-weight: 50;
   transition: background-color 0.3s, color 0.3s;
@@ -281,10 +269,12 @@
   align-items: center;
   justify-content: center;
   gap: 30px;
-  min-width: 200px;
+  width: 900px;
   min-height: 400px;
   margin-top: -50px;
+  overflow-y: auto;
 }
+
 
 .topPosts img {
   margin: 10px;
@@ -304,7 +294,7 @@
 
 .topPosts h3 {
   margin: 10px 15px;
-  font-size: 24px;
+  font-size: 20px;
   margin-top: 25px;
   font-weight: 100;
   padding-bottom: 10px;
@@ -341,7 +331,7 @@
   margin-right: 10px;
   padding-top: 20px;
   font-weight: 100;
-  font-size: 20px;
+  font-size: 18px;
 } 
 
 
