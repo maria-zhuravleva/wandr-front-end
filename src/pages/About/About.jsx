@@ -3,7 +3,6 @@ import { useTheme } from '../../components/ThemeContext/ThemeContext'
 
 // css
 import styles from './About.module.css'
-import missionImage from "../../assets/img/default-pic2.jpg"
 import aboutMaria from "../../assets/img/aboutMaria.jpg"
 import aboutBrooklyn from "../../assets/img/aboutBrooklyn.png"
 import aboutTran from "../../assets/img/aboutTran.png"

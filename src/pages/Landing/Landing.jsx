@@ -11,7 +11,7 @@ import arrowRight from "../../assets/icons/arrow-right.png"
 import quotes from "../../assets/icons/quotes.png"
 
 //components
-import SearchPost from '../../components/SearchPost/SearchPost'
+// import SearchPost from '../../components/SearchPost/SearchPost'
 import PostCard from '../../components/PostCard/PostCard'
 
 // services

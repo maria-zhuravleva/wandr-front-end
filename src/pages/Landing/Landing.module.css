@@ -56,7 +56,6 @@
 
 .nordic button {
   margin-left: 10px;
-  /* font-family: 'DM Serif Text', serif; */
   font-family: 'Ortica Linear', sans-serif;
   color: black;
   border-top: 1px solid transparent;
@@ -276,7 +275,9 @@
   overflow-y: auto;
 }
 
-
+.topPosts {
+  overflow-y: auto;
+}
 
 .topPosts img {
   margin: 10px;
