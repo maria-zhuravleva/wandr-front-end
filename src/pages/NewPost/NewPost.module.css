@@ -1,12 +1,11 @@
 .newPostContainer {
   display: flex;
   justify-content: space-between;
-  /* border: solid 1px black; */
   height: 100vh;
 }
 
 .newPostContainer h1 {
-  font-size: 80px;
+  font-size: 60px;
   writing-mode: vertical-lr;
   text-orientation: upright;
   text-align: center;
@@ -19,7 +18,6 @@
 }
 
 .newPostH1.desert {
-  /* color: rgb(109, 66, 16); */
   color: #7a5237;
   border-right: 2px solid #7a5237; 
 }
@@ -36,9 +34,9 @@
 }
 
 .newPostFormContainer {
-  width: 800px;
-  height: 900px;
-  margin-top: 200px;
+  width: 450px;
+  height: 800px;
+  margin-top: 100px;
 }
 
 .newPostFormContainer input,
@@ -58,11 +56,11 @@
 .imageWrapper.nordic {
   background: url('../../assets/img/form.jpg');
   background-size: cover;
-  max-width: 500px;
+  max-width: 450px;
+  width: 450px;
   max-height: 600px;
-  margin-top: 700px;
-  margin-right: 10%;
-  margin-left: -10%;
+  margin-top: 400px;
+  margin-right: 1%;
   background-repeat: no-repeat;
 }
 
@@ -70,10 +68,10 @@
   background: url('../../assets/img/desert-form.jpg');
   background-size: 100% 100%;
   max-width: 500px;
+  max-width: 500px;
   max-height: 600px;
-  margin-top: 700px;
-  margin-right: 50px;
-  margin-left: -140px;
+  /* margin-right: 50px;
+  margin-left: -140px; */
   background-position: 0px 0px;
   background-repeat: no-repeat;
 }
@@ -85,7 +83,7 @@
 .newPostFormContainer input,
 .newPostFormContainer textarea {
   margin-bottom: 30px;
-  width: 100%;
+  width: 20%;
 }
 
 .newPostFormContainer input,
@@ -95,28 +93,29 @@
 }
 
 .newPostFormContainer label {
+  width: 200px;
   display: block;
-  font-size: 25px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  padding-bottom: 15px;
+  margin: 0 auto;
   text-align: center;
   color: white;
 }
 
 .newPostFormContainer input {
-  height: 40px;
+  height: 30px;
   font-size: 18px;
   font-style: italic;
   padding: 5px;
-  width: 350px;
+  width: 300px;
   padding: 10px;
 }
 
 .newPostFormContainer textarea {
-  height: 100px;
+  height: 150px;
   font-size: 18px;
   font-style: italic;
-  width: 350px;
-  height: 250px;
+  width: 300px;
   margin-left: 5px;
   border-radius: 0;
 }
@@ -132,14 +131,14 @@
 
 .newPostFormContainer button {
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
   color: white;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
   border-left: none; 
   border-right: none;
-  width: 150px;
-  height: 50px;
+  width: 100px;
+  height: 40px;
   outline: none;
   background: transparent;
   text-transform: uppercase;
@@ -154,8 +153,8 @@
 } 
 
 .inputWrapper .checkbox {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 } 
 
 
