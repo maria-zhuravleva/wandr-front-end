@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { useLocation, Link } from 'react-router-dom'
+
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
 

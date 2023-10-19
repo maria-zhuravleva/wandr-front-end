@@ -1,6 +1,7 @@
 // npm modules
 import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
+import { useTheme } from '../../components/ThemeContext/ThemeContext'
 // css
 import styles from './ProfilePage.module.css'
 import avatar from "../../assets/icons/avatar.png"
@@ -22,6 +23,7 @@ const ProfilePage = (props) => {
   const [profilePosts, setProfilePosts] = useState([])
   const [savedProfilePosts, setSavedProfilePosts] = useState([])
   const [isFollowing, setIsFollowing] = useState(false)
+  const { theme, setTheme } = useTheme()
 
 
   useEffect(() => {
@@ -114,7 +116,7 @@ const ProfilePage = (props) => {
           />
         )}
       </div>
-      <div className={styles.profilePostsSection}>
+      <div className={`${styles.profilePostsSection} ${styles[theme]}`}>
         <div className={styles.ppH}>
           <h1>{profile.name}'s Posts</h1>
         </div>
