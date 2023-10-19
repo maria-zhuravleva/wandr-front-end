@@ -91,6 +91,9 @@ const About = () => {
               <Link to="https://www.linkedin.com/in/muguntha-durairaj/" target="_blank" rel="noopener noreferrer"
               style={{
                 textDecoration: 'none',
+                padding:'5%',
+                marginLeft:'60%',
+                fontSize:'15px'
               }}
               onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
               onMouseLeave={(e) => e.target.style.textDecoration = 'none'}

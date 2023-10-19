@@ -20,7 +20,7 @@
 
 
 .uploadPhotoContainer  input[type="file"] {
-  font-size: 15px;
+  font-size: 10px;
 }
 
 .uploadPhotoContainer button {
@@ -30,8 +30,10 @@
 .uploadPhotoButton,
 .uploadPhotoContainer .fileInputButton {
   width: 100px;
-  height: 40px;
+  height: 45px;
 }
+
+
 
 
 
