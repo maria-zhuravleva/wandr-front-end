@@ -5,13 +5,11 @@ import { useTheme } from '../../components/ThemeContext/ThemeContext'
 // css
 import styles from './Landing.module.css'
 
-// import missionImage from "../../assets/img/default-pic2.jpg"
 import arrowRight from "../../assets/icons/arrow-right.png"
 import quotes from "../../assets/icons/quotes.png"
 import FollowingPosts from '../../components/FollowingPosts/FollowingPosts'
 
 //components
-// import SearchPost from '../../components/SearchPost/SearchPost'
 import PostCard from '../../components/PostCard/PostCard'
 
 const Landing = (props) => {

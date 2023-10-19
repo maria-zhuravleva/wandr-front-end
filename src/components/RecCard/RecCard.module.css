@@ -55,3 +55,7 @@
 .recCardContainer h2 {
   font-weight: 100;
 }
+
+.recCardContainer p {
+  white-space: pre-wrap;
+}
