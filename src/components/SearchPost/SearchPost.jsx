@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useTheme } from '../../components/ThemeContext/ThemeContext'
 
 import styles from './Search.module.css'
+import searchIcon from '../../assets/icons/search.png'
 
 const SearchPost = (props) => {
   const [formData,setFormData]=useState({query:''})
@@ -18,7 +19,7 @@ const SearchPost = (props) => {
   }
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handlePostSearch(formData)
+    props.handlePostSearch(formData)          
 }
   return (
     <form onSubmit={handleSubmit}
@@ -36,7 +37,7 @@ const SearchPost = (props) => {
       }}    
       />
       <button type="submit" className={styles.searchIcon} style={{outline:'none', backgroundColor: 'transparent', border: 'none'}}>
-        <img src="src/assets/icons/search.png" alt="search" className={styles.searchImg}  />
+        <img src={searchIcon} alt="search" className={styles.searchImg}  />
       </button>
 
     </form>
