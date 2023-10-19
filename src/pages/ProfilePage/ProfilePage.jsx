@@ -68,8 +68,8 @@ const ProfilePage = (props) => {
   return (
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
-        <h1>{profile.name}</h1>
         <div className={styles.topContributor}>
+        <h1>{profile.name}</h1>
           {profilePosts.length>5 || profile.followers>5 ? 
           <div> 
             <img src={topContributor} alt="topContributorIcon" className={styles.topContributorIcon} />

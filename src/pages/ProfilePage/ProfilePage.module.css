@@ -16,20 +16,13 @@
 }
 
 .ppHeader {
+  height: 10vh; 
   flex-basis: 100%; 
   display: flex;
+  justify-content: center;
   align-items: center;
-  position: relative;
 }
 
-.topContributorIcon {
-  width: 15px;
-  height: 15px;
-  text-align: center;
-  position: absolute;
-  top: 28%;
-  right: 49%; 
-}
 
 .editProfileButton {
   text-align: left;
@@ -56,9 +49,6 @@
   margin-left: 20px;
 }
 
-.topContributor {
-  margin-bottom: 3%;
-}
 
 
 .editProfileButton button {
@@ -120,10 +110,6 @@
   margin-right: 5%;
 }
 
-.followersContainer.following button:hover {
-  color: red important!;
-  border-bottom: solid 1px black;
-}
 
 .profilePosts,
 .savedPosts {
@@ -137,13 +123,32 @@
   gap: 20px;
 }
 
-.ppH h1 {
+.topContributor {
+  margin-bottom: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topContributor h1 {
   font-weight: 100;
-  width: 400px;
-  margin-left: 33%;
+  width: 100%;
   padding-bottom: 10px;
+  margin-right: 10px;
   text-align: center;
   border-bottom: solid 1px black;
+  display: inline-block;
+}
+
+.topContributorIcon {
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  vertical-align: middle;
+  margin-bottom: 200%;
+  /* position: absolute;
+  top: 28%;
+  right: 49%;  */
 }
 
 .profilePostsSection {
@@ -170,7 +175,8 @@
   padding-left: 6%;
 }
 
-.savedPostsContainer h1 {
+.savedPostsContainer h1,
+.profilePostsSection h1 {
   font-weight: 100;
   max-width: 400px;
   margin-left: 33%;
@@ -178,6 +184,7 @@
   text-align: center;
   border-bottom: solid 1px black;
 }
+
 
 .savedPosts {
   display: flex;
