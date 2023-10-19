@@ -14,7 +14,7 @@ const NavBar = ({ user, handleLogout }) => {
     if (!showDropdown) {
       setTimeout(() => {
         setShowDropdown(false)
-      }, 4000) // 5000 milliseconds (5 seconds)
+      }, 4000)
     }
   }
 
@@ -30,7 +30,7 @@ const NavBar = ({ user, handleLogout }) => {
           <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="/about">About</NavLink></li>
           <li><NavLink to={`/profiles/${user?.profile}`}>My Profile</NavLink></li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
+          <li><NavLink to="/profiles">Wanderers</NavLink></li>
           <li><NavLink to="/posts">All Posts</NavLink></li>
           <li><NavLink to="/posts/new">New Post</NavLink></li>
           <li><NavLink to="" onClick={handleLogout}>Log Out</NavLink></li>

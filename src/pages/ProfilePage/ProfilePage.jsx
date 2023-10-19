@@ -63,6 +63,7 @@ const ProfilePage = (props) => {
   return (
     <div className={styles.profilePageContainer}>
       <header className={styles.ppHeader}>
+        <h1>{profile.name}</h1>
         <div className={styles.topContributor}>
           {profilePosts.length>5 || profile.followers>5 ? 
           <div> 
@@ -71,7 +72,6 @@ const ProfilePage = (props) => {
           : ""
           }
         </div>
-        <h1>{profile.name}</h1>
       </header>
       <div className={styles.ppAvatar}>
         {profile.photo ? (
@@ -97,7 +97,7 @@ const ProfilePage = (props) => {
       </div>
       <div className={styles.followersContainer}>
         {props.user?.profile && <Following profile={profile} user={props.user} handleFollow={handleFollow} handleUnFollow={handleUnFollow} />}
-        <Link
+        {/* <Link
           to={`/profiles/${profile._id}/following`}
           className={styles.following}
           style={{
@@ -115,7 +115,7 @@ const ProfilePage = (props) => {
           }}
         >
           View Following
-        </Link>
+        </Link>  */}
 
       </div>
       <div className={styles.profilePostsSection}>
