@@ -38,6 +38,7 @@ const MorePhotosUpload = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleAddMorePostPhotos(props.post._id, photoData.photo)
+    props.handleHideMore()
   }
 
   return ( 
