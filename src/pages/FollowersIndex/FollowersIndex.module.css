@@ -12,9 +12,12 @@
   align-items: flex-start;
 }
 
-.followingContainer {
+.followerContainer{
   width: 100%; 
   padding: 20px;
+}
+
+.followerContainer {
   margin-right: 50%;
 }
 

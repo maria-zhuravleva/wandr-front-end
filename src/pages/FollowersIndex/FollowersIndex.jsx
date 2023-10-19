@@ -4,16 +4,16 @@ import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 
 // components
-// import FollowerList from "../../components/FollowerList/FollowerList"
-import FollowingList from "../../components/FollowingList/FollowingList"
+import FollowerList from "../../components/FollowerList/FollowerList"
+// import FollowingList from "../../components/FollowingList/FollowingList"
 
 // services
 import * as profileService from "../../services/profileService"
 
 // css
-import styles from './FollowingIndex.module.css'
+import styles from './FollowersIndex.module.css'
 
-const FollowingIndex = () => {
+const FollowersIndex = () => {
   const { profileId } = useParams()
   const [profile, setProfile] = useState({})
 
@@ -35,16 +35,16 @@ const FollowingIndex = () => {
     </div>
     <div className={styles.followersFollowingContainer}>
       <div className={styles.followerFollowingContainer}>
-        {/* <div className={styles.followerContainer}> 
+        <div className={styles.followerContainer}> 
           <FollowerList />
-        </div> */}
-        <div className={styles.followingContainer}>
-          <FollowingList />
         </div>
+        {/* <div className={styles.followingContainer}>
+          <FollowingList />
+        </div> */}
       </div>
     </div>
     </> 
   )
 }
 
-export default FollowingIndex
+export default FollowersIndex
