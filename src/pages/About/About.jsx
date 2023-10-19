@@ -7,6 +7,7 @@ import missionImage from "../../assets/img/default-pic2.jpg"
 import aboutMaria from "../../assets/img/aboutMaria.jpg"
 import aboutBrooklyn from "../../assets/img/aboutBrooklyn.png"
 import aboutTran from "../../assets/img/aboutTran.png"
+import aboutMuguntha from "../../assets/img/aboutMuguntha.jpg"
 
 const About = () => {
   const { theme, setTheme } = useTheme()
@@ -86,9 +87,9 @@ const About = () => {
             </div>
           </div>
           <div className={styles.imageContainer}>
-            <img src={missionImage} alt="image" />
-            <div className={styles.imageText}>
-              <Link to="https://www.linkedin.com/in/mariia-zhuravleva/" target="_blank" rel="noopener noreferrer"
+            <img src={aboutMuguntha} alt="image" />
+            <div className={styles.aboutMuguntha}>
+              <Link to="https://www.linkedin.com/in/muguntha-durairaj/" target="_blank" rel="noopener noreferrer"
               style={{
                 textDecoration: 'none',
               }}

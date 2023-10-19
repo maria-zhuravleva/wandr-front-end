@@ -43,16 +43,7 @@ const Landing = (props) => {
           <button onClick={() => setTheme('nordic')}>nordic</button>
           <button onClick={() => setTheme('desert')}>desert</button>
         </div>
-        {/* <div className={`${styles.searchpost} ${styles[theme]}`}>
-        {props.errMsg && <h2>{props.errMsg}</h2>}
-          <SearchPost handlePostSearch={props.handlePostSearch}/>
-          {props.searchResults.map(post =>
-            <PostCard key={post._id}
-            post={post}/>)}
-        </div> */}
       </div>
-
-      {/* Banner */}
       <div className={styles.bannerWrapper}>
         <div className={`${styles.banner} ${styles[theme]}`}>
         <h1>Wandr</h1>
@@ -74,8 +65,6 @@ const Landing = (props) => {
           </div>
         </div>
       </div>
-
-      {/* Top Posts Section */}
       <div className={styles.topPosts} >
         <div className={styles.topPostsLines}>
           <hr className={styles.topPostsLine} />
