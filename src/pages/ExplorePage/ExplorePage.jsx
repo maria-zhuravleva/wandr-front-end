@@ -18,7 +18,6 @@ const ExplorePage = () => {
   useEffect(() => {
     const fetchFollowingPosts = async () => {
       const followingPostsData = await profileService.explorePage(profileId)
-      console.log("Following Posts Data:", followingPostsData)
       setFollowingPosts(followingPostsData)
     }
     fetchFollowingPosts()
