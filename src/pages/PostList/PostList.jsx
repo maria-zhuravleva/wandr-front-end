@@ -10,6 +10,7 @@ import styles from './PostList.module.css'
 const PostList = (props) => {
   const { theme, setTheme } = useTheme()
 
+  if (!props.posts) return <h2>Loading posts...</h2>
 
   return ( 
     <div className={styles.postListContainer}>
