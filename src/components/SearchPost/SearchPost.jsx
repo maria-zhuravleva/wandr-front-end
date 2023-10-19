@@ -1,29 +1,32 @@
+// npm modules
 import { useState } from "react"
 import { useTheme } from '../../components/ThemeContext/ThemeContext'
 
+// css
 import styles from './Search.module.css'
 import searchIcon from '../../assets/icons/search.png'
 
 const SearchPost = (props) => {
-  const [formData,setFormData]=useState({query:''})
+  const [formData, setFormData] = useState({ query: '' })
   const { theme, setTheme } = useTheme()
-  
-  
+
   const handleChange = evt => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value})
+    setFormData({ ...formData, [evt.target.name]: evt.target.value })
     props.handlePostSearch(formData)
 
   }
   const handleClearField = e => {
-    setFormData({...formData, [e.target.name]: ''})
+    setFormData({ ...formData, [e.target.name]: '' })
   }
+
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handlePostSearch(formData)          
-}
+    props.handlePostSearch(formData)
+  }
+
   return (
     <form onSubmit={handleSubmit}
-    className={styles.searchForm}>
+      className={styles.searchForm}>
       <input
         type="text"
         name="query"
@@ -31,15 +34,15 @@ const SearchPost = (props) => {
         placeholder="Search"
         value={formData.query}
         onChange={handleChange}
-        onClick={handleClearField} 
-        style={{ backgroundColor: theme === 'nordic' ? 'white' : 'transparent',
-        border: theme === 'nordic' ? '1px solid black': '1px solid black',
-      }}    
+        onClick={handleClearField}
+        style={{
+          backgroundColor: theme === 'nordic' ? 'white' : 'transparent',
+          border: theme === 'nordic' ? '1px solid black' : '1px solid black',
+        }}
       />
-      <button type="submit" className={styles.searchIcon} style={{outline:'none', backgroundColor: 'transparent', border: 'none', cursor: 'pointer'}}>
-        <img src={searchIcon} alt="search" className={styles.searchImg}  />
+      <button type="submit" className={styles.searchIcon} style={{ outline: 'none', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}>
+        <img src={searchIcon} alt="search" className={styles.searchImg} />
       </button>
-
     </form>
   )
 }

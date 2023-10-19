@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 
 // components
-// import FollowerList from "../../components/FollowerList/FollowerList"
 import FollowingList from "../../components/FollowingList/FollowingList"
 
 // services
@@ -25,25 +24,21 @@ const FollowingIndex = () => {
     fetchProfile()
   }, [profileId])
 
-
-  return (  
+  return (
     <>
-    <div className={styles.backBtn}>
-      <Link to={`/profiles/${profile._id}`} >
-        <button>Back</button>
-      </Link>
-    </div>
-    <div className={styles.followersFollowingContainer}>
-      <div className={styles.followerFollowingContainer}>
-        {/* <div className={styles.followerContainer}> 
-          <FollowerList />
-        </div> */}
-        <div className={styles.followingContainer}>
-          <FollowingList />
+      <div className={styles.backBtn}>
+        <Link to={`/profiles/${profile._id}`} >
+          <button>Back</button>
+        </Link>
+      </div>
+      <div className={styles.followersFollowingContainer}>
+        <div className={styles.followerFollowingContainer}>
+          <div className={styles.followingContainer}>
+            <FollowingList />
+          </div>
         </div>
       </div>
-    </div>
-    </> 
+    </>
   )
 }
 

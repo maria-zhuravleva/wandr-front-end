@@ -1,19 +1,20 @@
 //npm modules
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+
 //css
 import styles from './EditPost.module.css'
 
 const EditPost = (props) => {
   const { state } = useLocation()
   const [formData, setFormData] = useState(state)
-  
+
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleChecked = (e, status) => {
-    setFormData({...formData, public: status})
+    setFormData({ ...formData, public: status })
   }
 
   const handleSubmit = (e) => {
@@ -21,7 +22,7 @@ const EditPost = (props) => {
     props.handleUpDatePost(formData)
   }
 
-  return ( 
+  return (
     <div className={styles.editPostContainer}>
       <h3>Refine Your Travel Itinerary</h3>
       <form onSubmit={handleSubmit} className={styles.editPostForm}>
@@ -63,7 +64,7 @@ const EditPost = (props) => {
         </div>
         <div className={styles.editPostWrapper}>
           <label htmlFor="public-input" className={styles.makePublicLabel}>Make Public?</label>
-          <input 
+          <input
             type="checkbox"
             name="public"
             id="public-input"

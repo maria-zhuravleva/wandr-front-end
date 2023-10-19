@@ -1,6 +1,7 @@
 // npm modules
 import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
+
 // pages
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -16,13 +17,16 @@ import EditProfile from './pages/EditProfile/EditProfile'
 import FollowingIndex from './pages/FollowingIndex/FollowingIndex'
 import FollowersIndex from './pages/FollowersIndex/FollowersIndex'
 import ExplorePage from './pages/ExplorePage/ExplorePage'
+
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import * as postService from './services/postService'
+
 // styles
 import './App.css'
 import NewPost from './pages/NewPost/NewPost'
@@ -32,16 +36,16 @@ function App() {
   const [profiles, setProfiles] = useState([])
   const navigate = useNavigate()
   const [posts, setPosts] = useState([])
-  const [searchResults,setSearchResults]=useState([])
-  const[errMsg,setErrMsg]=useState("")
-  const[isSearch,setIsSearch]=useState(false)
-
+  const [searchResults, setSearchResults] = useState([])
+  const [errMsg, setErrMsg] = useState("")
+  const [isSearch, setIsSearch] = useState(false)
 
   const handleLogout = () => {
     authService.logout()
     setUser(null)
     navigate('/')
   }
+
   const handleAuthEvt = () => {
     setUser(authService.getUser())
   }
@@ -67,7 +71,7 @@ function App() {
     navigate(`/profiles/${user.profile}`)
   }
 
-  const handleDeleteProfile = async (profileId) =>{
+  const handleDeleteProfile = async (profileId) => {
     await profileService.deleteProfile(profileId)
     handleLogout()
   }
@@ -77,16 +81,19 @@ function App() {
     setPosts([newPost, ...posts])
     navigate('/posts')
   }
+
   const handleDeletePost = async (postId) => {
     const deletedPost = await postService.deletePost(postId)
     setPosts(posts.filter(p => p._id !== deletedPost._id))
     navigate('/posts')
   }
+
   const handleUpDatePost = async (postFormData) => {
     const updatedPost = await postService.update(postFormData)
     setPosts(posts.map(p => p._id === postFormData._id ? updatedPost : p))
     navigate(`/posts/${updatedPost._id}`)
   }
+
   const handlePostSearch = formData => {
     let filteredPostSearch = posts
     if (formData.query) {
@@ -105,17 +112,16 @@ function App() {
     setIsSearch(true)
   }
 
-
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-      <Route
-        path="/"
-        element={
-          <Landing user={user}  posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch}  />
-        }
-      />
+        <Route
+          path="/"
+          element={
+            <Landing user={user} posts={posts} errMsg={errMsg} searchResults={searchResults} handlePostSearch={handlePostSearch} isSearch={isSearch} />
+          }
+        />
         <Route
           path="/about"
           element={
@@ -126,7 +132,7 @@ function App() {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <Profiles user={user} profiles={profiles}/>
+              <Profiles user={user} profiles={profiles} />
             </ProtectedRoute>
           }
         />
@@ -156,7 +162,7 @@ function App() {
           path="/auth/change-password"
           element={
             <ProtectedRoute user={user}>
-              <ChangePassword handleAuthEvt={handleAuthEvt} user={user}/>
+              <ChangePassword handleAuthEvt={handleAuthEvt} user={user} />
             </ProtectedRoute>
           }
         />
@@ -210,4 +216,5 @@ function App() {
     </>
   )
 }
+
 export default App
