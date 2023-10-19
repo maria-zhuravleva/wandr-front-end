@@ -1,17 +1,16 @@
 .newPostContainer {
   display: flex;
   justify-content: space-between;
-  /* border: solid 1px black; */
   height: 100vh;
 }
 
 .newPostContainer h1 {
-  font-size: 80px;
+  font-size: 60px;
   writing-mode: vertical-lr;
   text-orientation: upright;
   text-align: center;
   padding-right: 50px; 
-  border-right: 2px solid black; 
+  border-right: 1px solid black; 
   display: inline-block;
   margin-bottom: 150px;
   margin-top: 150px;
@@ -19,9 +18,8 @@
 }
 
 .newPostH1.desert {
-  /* color: rgb(109, 66, 16); */
   color: #7a5237;
-  border-right: 2px solid #7a5237; 
+  border-right: 1px solid #7a5237; 
 }
 
 .newPostFormContainer {
