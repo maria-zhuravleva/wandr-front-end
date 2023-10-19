@@ -5,6 +5,8 @@ import { useTheme } from '../../components/ThemeContext/ThemeContext'
 import styles from './About.module.css'
 import missionImage from "../../assets/img/default-pic2.jpg"
 import aboutMaria from "../../assets/img/aboutMaria.jpg"
+import aboutBrooklyn from "../../assets/img/aboutBrooklyn.png"
+import aboutTran from "../../assets/img/aboutTran.png"
 
 const About = () => {
   const { theme, setTheme } = useTheme()
@@ -42,9 +44,9 @@ const About = () => {
         </div>
         <div className={`${styles.ourImages} ${styles[theme]}`}>
           <div className={styles.imageContainer}>
-            <img src={missionImage} alt="image" />
+            <img src={aboutTran} alt="image" />
             <div className={styles.imageText}>
-              <Link to="https://www.linkedin.com/in/mariia-zhuravleva/" target="_blank" rel="noopener noreferrer"
+              <Link to="https://www.linkedin.com/in/tran-huynh-nguyen/" target="_blank" rel="noopener noreferrer"
               style={{
                 textDecoration: 'none',
               }}
@@ -56,23 +58,9 @@ const About = () => {
             </div>
           </div>
           <div className={styles.imageContainer}>
-            <img src={missionImage} alt="image" />
+            <img src={aboutBrooklyn} alt="image" />
             <div className={styles.imageText}>
-              <Link to="https://www.linkedin.com/in/mariia-zhuravleva/" target="_blank" rel="noopener noreferrer"
-              style={{
-                textDecoration: 'none',
-              }}
-              onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
-              onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
-              >
-                LinkedIn
-              </Link>
-            </div>
-          </div>
-          <div className={styles.imageContainer}>
-            <img src={missionImage} alt="image" />
-            <div className={styles.imageText}>
-              <Link to="https://www.linkedin.com/in/mariia-zhuravleva/" target="_blank" rel="noopener noreferrer"
+              <Link to="https://www.linkedin.com/in/brooklin-lee/" target="_blank" rel="noopener noreferrer"
               style={{
                 textDecoration: 'none',
               }}
@@ -92,6 +80,20 @@ const About = () => {
                 }}
                 onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
                 onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
+              >
+                LinkedIn
+              </Link>
+            </div>
+          </div>
+          <div className={styles.imageContainer}>
+            <img src={missionImage} alt="image" />
+            <div className={styles.imageText}>
+              <Link to="https://www.linkedin.com/in/mariia-zhuravleva/" target="_blank" rel="noopener noreferrer"
+              style={{
+                textDecoration: 'none',
+              }}
+              onMouseEnter={(e) => e.target.style.textDecoration = 'underline'}
+              onMouseLeave={(e) => e.target.style.textDecoration = 'none'}
               >
                 LinkedIn
               </Link>
