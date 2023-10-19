@@ -93,8 +93,8 @@ const EditRec = (props) => {
           rows={4}
           cols={30}
         />
-        <button type="submit" className={styles.editRecBtn}>Submit</button>
       </form>
+      <button type="submit" className={styles.editRecBtn}>Submit</button>
     </div>
   )
 }
