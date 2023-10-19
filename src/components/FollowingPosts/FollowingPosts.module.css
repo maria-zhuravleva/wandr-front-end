@@ -1,0 +1,31 @@
+.landingPageArrowContainer {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  margin-right: 15px;
+}
+
+.landingPageArrow img {
+  width: 50px;
+  height: 35px;
+  margin-bottom: 15px;
+}
+
+.landingPageArrow {
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  color: black;
+}
+
+.landingPageArrow img:hover {
+  cursor: pointer;
+}
+
+.landingPageArrow p {
+  margin-right: 10px;
+  padding-top: 20px;
+  font-weight: 100;
+  font-size: 20px;
+} 
