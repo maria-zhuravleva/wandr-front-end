@@ -24,6 +24,8 @@ const FollowingPosts = (props) => {
     fetchFollowingPosts()
   }, [props.user?.profile])
 
+  if (!followingPosts) return <h4>Loading posts...</h4>
+
   return ( 
     <>
       {followingPosts.map((post, idx) => (

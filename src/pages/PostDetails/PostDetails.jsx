@@ -110,6 +110,10 @@ const PostDetails = (props) => {
     setShowMorePhotosUploadField(true)
   }
 
+  const handleHideMore = () => {
+    setShowMorePhotosUploadField(false)
+  }
+
   const handleChangeSlide = (e) => {
     e.target.id === 'moveRight' ? setCurrSlide(currSlide + 1) : setCurrSlide(currSlide - 1)
   }
@@ -208,7 +212,7 @@ const PostDetails = (props) => {
               && <button onClick={handleShowMore}>
                 Upload Photos
               </button>}
-              {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} />}
+              {showMorePhotosUploadField && <MorePhotosUpload post={post} handleAddMorePostPhotos={handleAddMorePostPhotos} handleHideMore={handleHideMore}/>}
             </>
           )}         
         </div>

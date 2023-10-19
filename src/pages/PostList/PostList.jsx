@@ -3,6 +3,7 @@ import { useTheme } from '../../components/ThemeContext/ThemeContext'
 //components
 import PostCard from "../../components/PostCard/PostCard"
 import SearchPost from "../../components/SearchPost/SearchPost"
+import Loading from "../../components/Loading/Loading"
 
 // css
 import styles from './PostList.module.css'
@@ -10,6 +11,7 @@ import styles from './PostList.module.css'
 const PostList = (props) => {
   const { theme, setTheme } = useTheme()
 
+  if (!props.posts) return <Loading />
 
   return ( 
     <div className={styles.postListContainer}>
