@@ -31,21 +31,21 @@
   background-size: cover;
   background-position: center;
   text-align: center;
-  height: 250px; 
-  width: 1500px;
+  height: 200px; 
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-top: 10px;
 }
 
 .postListHeading.desert {
   background-image: url('../../assets/img/header-desert.jpg');
   background-size: cover;
-  /* background-position: ; */
   text-align: center;
-  height: 250px; 
-  width: 1500px;
+  height: 200px; 
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +65,7 @@
 
 .postListHeading h1 {
   font-weight: 100;
-  font-size: 80px;
+  font-size: 60px;
   color: white;
   position: relative;
   z-index: 1;
@@ -78,14 +78,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  max-width: 1200px; 
-  width: 100%;
+  max-width:100%; 
+  width: 300px;
+  height: 500px;
 }
-
-/* .postCardContainer .noPostsMsg h2 {
-  font-weight: 100;
-  font-size: 100px;
-} */
 
 
 

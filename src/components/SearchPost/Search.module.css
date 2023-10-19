@@ -1,7 +1,7 @@
 .searchForm {
   display: flex;
   align-items: center;
-  justify-content: flex-end; 
+  justify-content: flex-start; 
   color: black;      
   font-size: 14px;
   font-style: italic;
@@ -16,8 +16,8 @@ input[type="text"] {
   outline: none;
   padding: 10px;
   margin-right: 0px;
-  width: 300px;
-  height: 30px;
+  width: 270px;
+  height: 25px;
   /* background-color: transparent; */
   font-style: italic;
   /* border: solid 1px black; */
