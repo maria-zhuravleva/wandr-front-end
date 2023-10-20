@@ -1,6 +1,5 @@
 .signupContainer {
   display: flex;
-  /* border: solid 1px black; */
   max-height: 100vh;
 }
 
@@ -8,6 +7,7 @@
   width: 700px;
   height: 900px;
   margin-bottom: 0;
+  margin-left: 1%;
 }
 
 .signupContainer h1 {
@@ -50,7 +50,6 @@
   width: 500px;
   height: 800px;
   margin-top: 70px;
-  /* margin-left: 20px; */
 }
 
 

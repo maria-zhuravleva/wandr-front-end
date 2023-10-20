@@ -154,26 +154,26 @@
   line-height: 1.9;
   break-inside: avoid-column; 
   margin-right: 5%;
-  border-left: solid 2px black;
-  border-bottom: solid 2px black;
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
 } 
 
 
 .paragraphAbout.desert p {
-  border-left: solid 2px #876e56;
-  border-bottom: solid 2px #876e56;
+  border-left: solid 1px #876e56;
+  border-bottom: solid 1px #876e56;
 }
 
 .ourImages.desert {
-  border-top: solid 2px #876e56;
-  border-right: solid 2px #876e56;
+  border-top: solid 1px #876e56;
+  border-right: solid 1px #876e56;
 }
 
 .ourImages {
   display: flex;
   flex-wrap: wrap;
-  border-top: solid 2px black;
-  border-right: solid 2px black;
+  border-top: solid 1px black;
+  border-right: solid 1px black;
 }
 
 .pSpan {
@@ -196,7 +196,6 @@
   width: 450%;
   height: 100%;
   margin: 10px;
-  /* position: relative; */
   display: flex;
   flex-wrap: wrap;
 }

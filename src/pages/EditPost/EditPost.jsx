@@ -1,14 +1,15 @@
 //npm modules
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-
+import { useTheme } from '../../components/ThemeContext/ThemeContext'
 //css
 import styles from './EditPost.module.css'
 
 const EditPost = (props) => {
   const { state } = useLocation()
   const [formData, setFormData] = useState(state)
-
+  const { theme, setTheme } = useTheme()
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -25,8 +26,8 @@ const EditPost = (props) => {
   return (
     <div className={styles.editPostContainer}>
       <h3>Refine Your Travel Itinerary</h3>
-      <form onSubmit={handleSubmit} className={styles.editPostForm}>
-        <div className={styles.editPostWrapper}>
+      <form onSubmit={handleSubmit} className={`${styles.editPostForm} ${styles[theme]}`}>
+        <div className={`${styles.editPostWrapper} ${styles[theme]}`}>
           <label htmlFor="title-input">Title</label>
           <input
             required
@@ -38,7 +39,7 @@ const EditPost = (props) => {
             onChange={handleChange}
           />
         </div>
-        <div className={styles.editPostWrapper}>
+        <div className={`${styles.editPostWrapper} ${styles[theme]}`}>
           <label htmlFor="location-input">Location</label>
           <input
             required
@@ -50,7 +51,7 @@ const EditPost = (props) => {
             onChange={handleChange}
           />
         </div>
-        <div className={styles.editPostWrapper}>
+        <div className={`${styles.editPostWrapper} ${styles[theme]}`}>
           <label htmlFor="content-input">Content</label>
           <textarea
             required
@@ -63,8 +64,8 @@ const EditPost = (props) => {
           />
         </div>
         <div className={styles.editPostWrapper}>
-          <label htmlFor="public-input" className={styles.makePublicLabel}>Make Public?</label>
-          <input
+          <label htmlFor="public-input" className={`${styles.makePublicLabel} ${styles[theme]}`}>Make Public?</label>
+          <input 
             type="checkbox"
             name="public"
             id="public-input"
@@ -73,7 +74,7 @@ const EditPost = (props) => {
             className={styles.checkbox}
           />
         </div>
-        <div className={styles.editPostButton}>
+        <div className={`${styles.editPostButton} ${styles[theme]}`}>
           <button type="submit">Save</button>
         </div>
       </form>

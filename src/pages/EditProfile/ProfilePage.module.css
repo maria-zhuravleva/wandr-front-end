@@ -14,7 +14,8 @@
 }
 
 .ppHeader {
-  flex-basis: 100%; 
+  flex-basis: 100%;
+  margin-bottom: 0;
 }
 
 .ppHeader h1 {
@@ -27,9 +28,10 @@
 }
 
 .ppAvatar img {
-  width: 300px;
-  height: 300px;
+  max-width: 200px;
+  max-height: 200px;
   border-radius: 50%;
+  margin-top: 5%;
 }
 
 .ppBio {
@@ -114,24 +116,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100vh;
 }
 
 .editProfileContainer h1 {
   text-align: center;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: 100;
 
 }
 
 .editProfileForm {
-  width: 600px; /* Adjust the width as needed */
+  max-width: 550px; 
+  margin-top: 0;
 }
 
 .editProfileWrapper {
   margin-bottom: 15px;
   text-align: center;
-  /* border: solid 1px black; */
 }
 
 .editProfileWrapper input {
@@ -178,7 +179,6 @@
   border-radius: 0; 
   font-size: 15px;
   font-weight: 100;
-  color: black;
   margin-top: 20px;
 }
 
@@ -195,8 +195,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; 
-  height: 100vh;
-  margin-top: 20px;
+  height: 85vh;
 }
 
 .editProfileForm {
@@ -204,7 +203,7 @@
   flex-direction: column;
   justify-content: center;
   width: 50%;
-  height: 70%;
+  height: 95%;
   text-align: center;
   border: solid 1px black;
   padding: 20px;
@@ -221,6 +220,7 @@
 
 .labelInputContainer label {
   display: block;
+  font-size: 15px;
   margin-bottom: 15px;
   margin-top: 10px;
   text-align: center;
@@ -234,6 +234,7 @@
   box-sizing: border-box;
   outline: none;
   background-color: #f2ebe5;
+  border: none;
 }
 
 .labelInputContainer textarea {
@@ -246,6 +247,7 @@
   background-color: #f2ebe5;
   margin-bottom: 30%;
   resize: none;
+  border: none;
 }
 
 
@@ -259,8 +261,8 @@
   color: #f2ebe5;
   border-top: 1px solid #f2ebe5;
   border-bottom: 1px solid #f2ebe5;
-  width: 180px;
-  height: 60px;
+  width: 150px;
+  height: 50px;
   cursor: pointer;
   border-left: none; 
   border-right: none;
@@ -268,9 +270,9 @@
   background: transparent;
   text-transform: uppercase;
   border-radius: 0; 
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 100;
-  padding: 10px 10px;
+  padding: 5px 5px;
   margin-right: 15px;
   margin-top: 20px;
 }
@@ -284,6 +286,5 @@
   margin-bottom: 0;
   padding-bottom: 0;
 }
-
 
 

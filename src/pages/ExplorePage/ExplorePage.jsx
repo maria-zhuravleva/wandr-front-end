@@ -32,10 +32,6 @@ const ExplorePage = () => {
         {followingPosts.length === 0 ? (
           <>
             <p>No posts by available by people you follow</p>
-            <h4>Explore more people to follow here!</h4>
-            <Link to={'/profiles'}>
-              <button>Explore More Profiles</button>
-            </Link>
           </>
         ) : (
           <>
