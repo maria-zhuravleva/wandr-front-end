@@ -41,11 +41,14 @@ const MorePhotosUpload = (props) => {
     props.handleHideMore()
   }
 
+
+
   return ( 
     <div className={styles.uploadPhotoContainer}>
       <form onSubmit={handleSubmit} className={styles.uploadPhotoForm}>
         <label>Upload More Photos
           <input 
+            required
             type="file" 
             name="photo" 
             onChange={handleChangePhoto}
