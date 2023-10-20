@@ -83,7 +83,6 @@ const LoginPage = ({ handleAuthEvt }) => {
               Log In
             </button>
           </div>
-
         </form>
         <div className={styles.loginImageWrapper}>
         </div>
