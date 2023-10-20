@@ -16,9 +16,14 @@
 .postCardContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 1200px; 
   width: 100%;
+  margin-left: 25%;
+}
+
+.postCardContainer p {
+  text-align: center;
+  width: 450px;
+  margin-left: 45%;
 }
 
 .exploreBtn button {

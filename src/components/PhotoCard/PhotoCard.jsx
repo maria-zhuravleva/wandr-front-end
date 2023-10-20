@@ -6,13 +6,13 @@ const PhotoCard = (props) => {
     props.handleClickSlide(idx)
   }
 
-  return ( 
+  return (
     <main className={styles.morePhotosContainer}>
       <button onClick={() => handleClickImg(props.idx)}>
-        <img src={props.photo.url} alt={`Post Photo ${props.idx}`} className={styles.userImg}/>
+        <img src={props.photo.url} alt={`Post Photo ${props.idx}`} className={styles.userImg} />
       </button>
       <button onClick={() => props.handleDeleteMorePhotos(props.photo._id)}>
-        <img src={deleteIcon} alt="Delete" className={styles.deleteIcon} style={{outline: 'none', border: 'none'}} />  
+        <img src={deleteIcon} alt="Delete" className={styles.deleteIcon} style={{ outline: 'none', border: 'none' }} />
       </button>
     </main>
   )

@@ -1,13 +1,14 @@
 // npm modules
 import { useState } from "react";
 
+// css
 import styles from './EditRec.module.css'
 
 const EditRec = (props) => {
   const [formData, setFormData] = useState(props.recommendation)
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e) => {
@@ -16,10 +17,10 @@ const EditRec = (props) => {
     props.handleHideForm()
   }
 
-  return (  
+  return (
     <div className={styles.editRecContainer}>
       <form onSubmit={handleSubmit} className={styles.editRecForm}>
-      <label htmlFor="name-input">Name:</label>
+        <label htmlFor="name-input">Name:</label>
         <input
           required
           type="text"
@@ -76,11 +77,11 @@ const EditRec = (props) => {
           step="1"
           onChange={handleChange}
         >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
         <label htmlFor="text-input">Tell us about it:</label>
         <textarea
@@ -93,7 +94,9 @@ const EditRec = (props) => {
           rows={4}
           cols={30}
         />
-        <button type="submit" className={styles.editRecBtn}>Submit</button>
+        <div>
+          <button type="submit" className={styles.editRecBtn}>Submit</button>
+        </div>
       </form>
     </div>
   )

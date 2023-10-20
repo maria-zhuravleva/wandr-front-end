@@ -1,5 +1,6 @@
 //npm modules
 import { useState, useRef } from 'react'
+
 //css
 import styles from './PhotoUpload.module.css'
 
@@ -26,9 +27,9 @@ const MorePhotosUpload = (props) => {
       errMsg = "Image must be in gif, jpeg/jpg, png, svg, or webp format"
       isFileInvalid = true
     }
-    
+
     setMessage(errMsg)
-    
+
     if (isFileInvalid) {
       imgInputRef.current.value = null
       return

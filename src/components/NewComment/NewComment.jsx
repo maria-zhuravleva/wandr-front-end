@@ -1,25 +1,26 @@
 //npm modules
 import { useState } from "react"
+
 //css
 import styles from './NewComment.module.css'
 import sendArrow from "../../assets/icons/send.png"
 
 const NewComment = (props) => {
-  const [formData, setFormData] = useState({text: ''})
+  const [formData, setFormData] = useState({ text: '' })
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
-  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     props.handleAddComment(formData)
     setFormData({ text: '' })
   }
 
-  return ( 
+  return (
     <form className={styles.container} onSubmit={handleSubmit}>
-      <textarea 
+      <textarea
         required
         type='text'
         name='text'

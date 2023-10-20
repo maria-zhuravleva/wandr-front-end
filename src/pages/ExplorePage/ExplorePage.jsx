@@ -11,23 +11,19 @@ import styles from './ExplorePage.module.css'
 // components
 import PostCard from "../../components/PostCard/PostCard"
 
-
 const ExplorePage = () => {
-
   const [followingPosts, setFollowingPosts] = useState([])
   const { profileId } = useParams()
 
-  // useEffect for database query
   useEffect(() => {
     const fetchFollowingPosts = async () => {
       const followingPostsData = await profileService.explorePage(profileId)
-      console.log("Following Posts Data:", followingPostsData)
       setFollowingPosts(followingPostsData)
     }
     fetchFollowingPosts()
   }, [profileId])
 
-  return (  
+  return (
     <div className={styles.exploreListContainer}>
       <div className={styles.exploreListHeading}>
         <h1>Explore Page</h1>
@@ -36,10 +32,6 @@ const ExplorePage = () => {
         {followingPosts.length === 0 ? (
           <>
             <p>No posts by available by people you follow</p>
-            <h4>Explore more people to follow here!</h4>
-            <Link to={'/profiles'}>
-              <button>Explore More Profiles</button>
-            </Link>
           </>
         ) : (
           <>

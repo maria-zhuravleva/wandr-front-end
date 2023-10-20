@@ -46,29 +46,26 @@ async function updateProfile(profileFormData, photoData) {
   try {
     const res = await fetch(`${BASE_URL}/${profileFormData._id}`, {
       method: 'PUT',
-      headers: { 
+      headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(profileFormData)
     })
     const json = await res.json()
-
     if (json.err) throw new Error(json.err)
-
     if (photoData) {
       await addPhoto(photoData)
     }
-    
   } catch (err) {
     throw new Error(err)
   }
 }
 
-async function deleteProfile(profileId){
+async function deleteProfile(profileId) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}`, {
-      method:'DELETE',
+      method: 'DELETE',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return res.json()
@@ -110,7 +107,7 @@ async function showFollowers(profileId) {
   }
 }
 
-async function showFollowing(profileId){
+async function showFollowing(profileId) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}/following`)
     return res.json()
@@ -136,7 +133,7 @@ async function explorePage(profileId) {
 async function deleteSavedPosts(profileId, postId) {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}/saves/${postId}`, {
-      method:'DELETE',
+      method: 'DELETE',
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return res.json()
@@ -145,8 +142,8 @@ async function deleteSavedPosts(profileId, postId) {
   }
 }
 
-export { 
-  getAllProfiles, 
+export {
+  getAllProfiles,
   addPhoto,
   showProfile,
   updateProfile,

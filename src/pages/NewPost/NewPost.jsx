@@ -13,11 +13,11 @@ const NewPost = (props) => {
   const { theme, setTheme } = useTheme()
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleChecked = (e, status) => {
-    setFormData({...formData, public: status})
+    setFormData({ ...formData, public: status })
   }
 
   const handleSubmit = (e) => {
@@ -25,7 +25,7 @@ const NewPost = (props) => {
     props.handleAddPost(formData)
   }
 
-  return ( 
+  return (
     <div className={styles.newPostContainer}>
       <h1 className={`${styles.newPostH1} ${styles[theme]}`}>NEW POST</h1>
       <div className={styles.newPostFormWrapper}>
@@ -69,7 +69,7 @@ const NewPost = (props) => {
           </div>
           <div className={styles.inputWrapper}>
             <label htmlFor="public-input">Make Public?</label>
-            <input 
+            <input
               type="checkbox"
               name="public"
               id="public-input"
@@ -82,9 +82,8 @@ const NewPost = (props) => {
             <button type="submit">Submit</button>
           </div>
         </form>
-
       </div>
-      <div className={`${styles.imageWrapper} ${styles[theme]}`}></div>
+      <div className={`${styles.newPostImageWrapper} ${styles[theme]}`}></div>
     </div>
   )
 }
