@@ -11,9 +11,11 @@ const PhotoCard = (props) => {
       <button onClick={() => handleClickImg(props.idx)}>
         <img src={props.photo.url} alt={`Post Photo ${props.idx}`} className={styles.userImg} />
       </button>
-      {props.user?.profile === props.author._id && <button onClick={() => props.handleDeleteMorePhotos(props.photo._id)}>
-        <img src={deleteIcon} alt="Delete" className={styles.deleteIcon} style={{ outline: 'none', border: 'none' }} />
-      </button>}
+      {props.user?.profile && props.post.author?._id === props.user?.profile &&
+        <button onClick={() => props.handleDeleteMorePhotos(props.photo._id)}>
+          <img src={deleteIcon} alt="Delete" className={styles.deleteIcon} style={{ outline: 'none', border: 'none' }} />
+        </button>
+      }
     </main>
   )
 }
