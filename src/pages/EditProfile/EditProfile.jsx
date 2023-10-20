@@ -9,7 +9,7 @@ const EditProfile = (props) => {
   const imgInputRef = useRef(null)
   const [message, setMessage] = useState('')
   const { state } = useLocation()
-  const [profileFormData, setProfileFormData] = useState(state)
+  const [profileFormData, setProfileFormData] = useState({...state, email: props.user.email})
   const [photoData, setPhotoData] = useState({ photo: null })
   const handleChange = (e) => {
     setProfileFormData({ ...profileFormData, [e.target.name]: e.target.value })
@@ -77,7 +77,7 @@ const EditProfile = (props) => {
           <label>Email</label>
           <input
             type="text"
-            value={props.user.email}
+            value={profileFormData.email}
             name="email"
             onChange={handleChange}
           />
