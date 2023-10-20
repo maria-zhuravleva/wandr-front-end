@@ -47,11 +47,8 @@
   margin-top: 5vh;
   background-color: rgba(107, 77, 56, 0.9);
   padding: 10%;
-}
-
-.loginFormContainer  {
   max-height: 100%;
-  overflow-y: auto; 
+  height: fit-content;
 }
 
 .loginFormContainer  .centeredText {
@@ -105,6 +102,9 @@
   box-sizing: border-box;
 }
 
+.loginButtonWrapper a {
+  margin: 5px;
+}
 
 .loginButtonWrapper button {
   font-family: 'Ortica Linear', sans-serif;
@@ -112,6 +112,7 @@
   border-top: 1px solid #eae0d5;;
   border-bottom: 1px solid #eae0d5;;
   padding: 15px 15px;
+  margin: 5px;
   width: 100px;
   cursor: pointer;
   border-left: none; 
