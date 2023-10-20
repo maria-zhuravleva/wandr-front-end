@@ -11,7 +11,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
   background-color: white;
@@ -40,7 +41,7 @@ a {
 }
 
 .banner {
-  height: 80%; 
+  height: 80%;
   background: url('../../assets/img/default.jpg');
   background-size: cover;
   width: 100%;
@@ -62,6 +63,7 @@ a {
   .container ul {
     padding-left: 0px;
   }
+
   .container li {
     font-size: 15px;
   }
