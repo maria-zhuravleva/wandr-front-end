@@ -6,7 +6,7 @@
 
 .loginFormWrapper {
   margin-bottom: 0;
-  margin-left: 5%;
+  margin-left: 1%;
 }
 
 .loginContainer h1 {
@@ -161,9 +161,9 @@
   background-size: cover;
   max-width: 450px;
   max-height: 650px;
-  margin-top: -60vh;
+  margin-top: -65vh;
   margin-right: 170px;
-  margin-left: 100%;
+  margin-left: 75%;
   background-position: 0px 0px;
   background-repeat: no-repeat;
 }
