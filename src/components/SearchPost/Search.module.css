@@ -18,9 +18,7 @@ input[type="text"] {
   margin-right: 0px;
   width: 270px;
   height: 25px;
-  /* background-color: transparent; */
   font-style: italic;
-  /* border: solid 1px black; */
 }
 
 .searchIcon button {

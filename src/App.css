@@ -1,10 +1,8 @@
 @font-face {
   font-family: 'Ortica Linear';
   src: url('./assets/OrticaLinear-Regular.otf');
-  /* src: url('OrticaLinear-Regular.otf') format('truetype'); */
   font-family: 'DM Serif Text';
   src: url('./assets/DMSerifText-Regular.ttf');
-  /* src: url('DMSerifText-Regular.ttf') format('truetype'); */
 }
 
 * {
@@ -17,7 +15,6 @@ html, body {
   background-color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* font-family: 'DM Serif Text', sans-serif; */
   font-family: 'Ortica Linear', sans-serif;
 }
 

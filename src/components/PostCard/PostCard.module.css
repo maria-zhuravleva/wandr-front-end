@@ -14,23 +14,6 @@
   margin-bottom: 14px;
 }
 
-/* .container span {
-  display: flex;
-  align-items: center;
-  margin: 7px 0px 12px 0px;
-  justify-content: space-between;
-}
-
-.container span img {
-  margin: 0;
-  width: 32px;
-	height: 32px;
-  opacity: .8;
-  padding: 3px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-} */
-
 .postcardContainer h4 {
   margin: 0;
   font-size: 15px;
