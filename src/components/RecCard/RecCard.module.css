@@ -12,6 +12,7 @@
   height: 500px;
   background-color: #383230; 
   color: white;
+  overflow-y: auto;
 }
 
 .recCardContainer button {
