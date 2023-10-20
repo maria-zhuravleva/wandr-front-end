@@ -159,7 +159,7 @@ const PostDetails = (props) => {
         </div>
         <div className={styles.imageCollection}>
           {post.morePhotos.map((photo, idx) =>
-            <PhotoCard key={idx} photo={photo} idx={idx} handleDeleteMorePhotos={handleDeleteMorePhotos} handleClickSlide={handleClickSlide} />
+            <PhotoCard key={idx} photo={photo} idx={idx} post={post} user={props.user} handleDeleteMorePhotos={handleDeleteMorePhotos} handleClickSlide={handleClickSlide} />
           )}
         </div>
       </div>
