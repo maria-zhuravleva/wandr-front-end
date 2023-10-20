@@ -83,7 +83,7 @@ const NewPost = (props) => {
           </div>
         </form>
       </div>
-      <div className={`${styles.imageWrapper} ${styles[theme]}`}></div>
+      <div className={`${styles.newPostImageWrapper} ${styles[theme]}`}></div>
     </div>
   )
 }
