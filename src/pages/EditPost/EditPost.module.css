@@ -22,7 +22,7 @@
   width: 600px;
   height: 900px;
   background: url('../../assets/img/editBackground.jpeg');
-  background-size: 100% 90%;
+  background-size: 100% 100%;
   background-position: cover;
   background-repeat: no-repeat;
 }
@@ -33,7 +33,7 @@
   width: 600px;
   height: 900px;
   background: url('../../assets/img/edit-post-nordic.jpg');
-  background-size: 100% 90%;
+  background-size: 100% 100%;
   background-position: cover;
   background-repeat: no-repeat;
 } 
@@ -44,7 +44,7 @@
   width: 600px;
   height: 900px;
   background: url('../../assets/img/edit-post-desert.jpg');
-  background-size: 100% 90%;
+  background-size: 100% 100%;
   background-position: cover;
   background-repeat: no-repeat;
 } 

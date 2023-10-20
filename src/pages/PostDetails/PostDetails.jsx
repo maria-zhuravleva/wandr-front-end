@@ -154,8 +154,6 @@ const PostDetails = (props) => {
           <img src={slideCount ? post.morePhotos[currSlide - 1].url : DefaultPhoto} alt="Post Photos" />
           {<button id='moveLeft' onClick={(e) => handleChangeSlide(e)} disabled={!slideCount || currSlide === 1}>◀︎</button>}
           {<button id='moveRight' onClick={(e) => handleChangeSlide(e)} disabled={!slideCount || slideCount === 1 || currSlide === slideCount}>▶︎</button>}
-          {/* <div className={styles.imageButtons}>
-          </div> */}
         </div>
         <div className={styles.imageCollection}>
           {post.morePhotos.map((photo, idx) =>
