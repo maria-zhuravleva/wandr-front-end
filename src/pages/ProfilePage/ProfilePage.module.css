@@ -172,10 +172,10 @@
   border: solid 1px black;
   margin-top: 20px;
   margin-right: 50px;
-  margin-left: 50px;
+  margin-left: 100px;
   margin-bottom: 50px;
   text-align: center;
-  padding-left: 6%;
+  padding-left: 2%;
   overflow-y: auto;
 }
 
